@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hsport.wxprogram.mapper.CeyiceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Ceyice">
+        <id column="id" property="id" />
+        <result column="fmsfyrbjp" property="fmsfyrbjp" />
+        <result column="tzhsmxzj" property="tzhsmxzj" />
+        <result column="rcysqkDX" property="rcysqkDX" />
+        <result column="ysxwxgDX" property="ysxwxgDX" />
+        <result column="sfyydxg" property="sfyydxg" />
+        <result column="mzcjydpl" property="mzcjydpl" />
+        <result column="ydcxsj" property="ydcxsj" />
+        <result column="buweiYdSunsDX" property="buweiYdSunsDX" />
+        <result column="sfjcay" property="sfjcay" />
+        <result column="pjsmsj" property="pjsmsj" />
+        <result column="rcsmzlDX" property="rcsmzlDX" />
+        <result column="rcpbqkDX" property="rcpbqkDX" />
+        <result column="yqJianfeiJLDX" property="yqJianfeiJLDX" />
+        <result column="rcylfx" property="rcylfx" />
+        <result column="dsjfqkFantan" property="dsjfqkFantan" />
+        <result column="userID" property="userID" />
+    </resultMap>
+
+</mapper>
