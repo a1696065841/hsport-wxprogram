@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hsport.wxprogram.mapper.TodayburncaloriesMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Todayburncalories">
+        <id column="id" property="id" />
+        <result column="burnCaloriesPer" property="burnCaloriesPer" />
+        <result column="BurnCalories" property="BurnCalories" />
+        <result column="BurnType" property="BurnType" />
+        <result column="sportsBpm" property="sportsBpm" />
+        <result column="lifeBpm" property="lifeBpm" />
+        <result column="SportsQD" property="SportsQD" />
+        <result column="dayWeight" property="dayWeight" />
+        <result column="dayMood" property="dayMood" />
+        <result column="dayBurns" property="dayBurns" />
+        <result column="sportsPlanID" property="sportsPlanID" />
+        <result column="coachPlanPer" property="coachPlanPer" />
+        <result column="coachTimes" property="coachTimes" />
+        <result column="aerobicTimes" property="aerobicTimes" />
+        <result column="stepNumbers" property="stepNumbers" />
+        <result column="date" property="date" />
+        <result column="userID" property="userID" />
+    </resultMap>
+
+    <select id="selectTodayBurn" parameterType="Integer" resultMap="BaseResultMap">
+        SELECT  tb.BurnCalories FROM t_todayBurncalories tb LEFT JOIN t_sportsplan s ON tb.sportsPlanID=s.id WHERE tb.sportsPlanID=#{id}   </select>
+
+</mapper>

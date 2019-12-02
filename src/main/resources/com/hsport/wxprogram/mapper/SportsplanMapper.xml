@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hsport.wxprogram.mapper.SportsplanMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Sportsplan">
+        <id column="id" property="id"/>
+        <result column="planObjectives" property="planObjectives"/>
+        <result column="planUseDays" property="planUseDays"/>
+        <result column="userID" property="userID"/>
+        <result column="masterPlanBurn" property="masterPlanBurn"/>
+        <result column="masterPlanIntake" property="masterPlanIntake"/>
+        <result column="planStratTime" property="planStratTime"/>
+        <result column="planEndDate" property="planEndDate"/>
+        <result column="planType" property="planType"/>
+    </resultMap>
+
+    <select id="selectAllPlanWithUser" parameterType="Integer" resultMap="BaseResultMap">
+       SELECT  * FROM t_sportsplan s LEFT JOIN t_user u ON s.userID=u.id
+    </select>
+    <select id="selectPlanByUserID" parameterType="Integer" resultMap="BaseResultMap">
+       SELECT s.* FROM t_sportsplan s LEFT JOIN t_user u ON s.userID=u.id WHERE s.userID=#{id}   </select>
+
+</mapper>

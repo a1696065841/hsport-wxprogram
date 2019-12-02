@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hsport.wxprogram.mapper.YsxgMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Ysxg">
+        <id column="id" property="id" />
+        <result column="sancanGL" property="sancanGL" />
+        <result column="psSFczf" property="psSFczf" />
+        <result column="kouweiPH" property="kouweiPH" />
+        <result column="yinpingPH" property="yinpingPH" />
+        <result column="yinshiPH" property="yinshiPH" />
+        <result column="riYSL" property="riYSL" />
+        <result column="psSFcls" property="psSFcls" />
+        <result column="jcDidian" property="jcDidian" />
+        <result column="sfJSguo" property="sfJSguo" />
+        <result column="sfSWgm" property="sfSWgm" />
+        <result column="psSFyj" property="psSFyj" />
+        <result column="userID" property="userID" />
+    </resultMap>
+
+</mapper>

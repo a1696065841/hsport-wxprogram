@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hsport.wxprogram.mapper.TodaysportsplansMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Todaysportsplans">
+        <id column="id" property="id" />
+        <result column="planName" property="planName" />
+        <result column="planType" property="planType" />
+        <result column="plansSchedule" property="plansSchedule" />
+        <result column="planPer" property="planPer"/>
+        <result column="todaySP_id" property="todayspId" />
+    </resultMap>
+
+</mapper>

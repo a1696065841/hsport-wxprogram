@@ -1,0 +1,16 @@
+server:
+  port: 4396
+spring:
+  application:
+    name: hsport
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/Hsport
+      username: root
+      password: 123456
+mybatis-plus:
+  mapper-locations: classpath:com/hsport/wxprogram/mapper/*Mapper.xml
+  type-aliases-package: com.hsport.wxprogram.domain,com.hsport.wxprogram.query
+logging:
+  level:
+    com.hsport.*: error

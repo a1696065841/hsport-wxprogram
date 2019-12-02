@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hsport.wxprogram.mapper.IntakeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Intake">
+        <id column="id" property="id" />
+        <result column="intakeCalories" property="intakeCalories" />
+        <result column="foodWeight" property="foodWeight" />
+        <result column="proPer" property="proPer" />
+        <result column="CarbonIntake" property="CarbonIntake" />
+        <result column="cellulosePer" property="cellulosePer" />
+        <result column="waterIntake" property="waterIntake" />
+        <result column="sportsPlanID" property="sportsPlanID" />
+    </resultMap>
+
+</mapper>

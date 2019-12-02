@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hsport.wxprogram.mapper.JibingMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Jibing">
+        <id column="id" property="id" />
+        <result column="gxy" property="gxy" />
+        <result column="dxy" property="dxy" />
+        <result column="gxt" property="gxt" />
+        <result column="dxt" property="dxt" />
+        <result column="xuezhiYC" property="xuezhiYC" />
+        <result column="tfORnsgORjk" property="tfORnsgORjk" />
+        <result column="jiajian" property="jiajian" />
+        <result column="cangdaoWT" property="cangdaoWT" />
+        <result column="danNangWT" property="danNangWT" />
+        <result column="shengzangWT" property="shengzangWT" />
+        <result column="guanjieWT" property="guanjieWT" />
+        <result column="qitaWT" property="qitaWT" />
+        <result column="userID" property="userID" />
+    </resultMap>
+
+</mapper>

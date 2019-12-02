@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hsport.wxprogram.mapper.ProductMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Product">
+        <id column="id" property="id" />
+        <result column="productName" property="productName" />
+        <result column="pirce" property="pirce" />
+        <result column="pro_desc" property="proDesc" />
+        <result column="userID" property="userID" />
+        <result column="pro_type" property="proType" />
+    </resultMap>
+
+</mapper>
