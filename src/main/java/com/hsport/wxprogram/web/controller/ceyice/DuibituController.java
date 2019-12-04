@@ -1,5 +1,7 @@
-package com.hsport.wxprogram.web.controller;
+package com.hsport.wxprogram.web.controller.ceyice;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.IDuibituService;
 import com.hsport.wxprogram.domain.Duibitu;
 import com.hsport.wxprogram.query.DuibituQuery;
@@ -78,6 +80,13 @@ public class DuibituController {
         return duibituService.selectList(null);
     }
 
+    @ApiOperation(value = "根据该用户的id查询对比图")
+    @RequestMapping(value = "/getListByUserID/{id}", method = RequestMethod.GET)
+    public List<Duibitu> getListByUserID(@PathVariable("id")Integer id) {
+        EntityWrapper<Duibitu> userEntityWrapper = new EntityWrapper<>();
+        userEntityWrapper.eq("userID", id);
+        return duibituService.selectList(userEntityWrapper);
+    }
 
     /**
     * 分页查询数据

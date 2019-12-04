@@ -1,5 +1,6 @@
-package com.hsport.wxprogram.web.controller;
+package com.hsport.wxprogram.web.controller.ceyice;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.service.IJibingService;
 import com.hsport.wxprogram.domain.Jibing;
 import com.hsport.wxprogram.query.JibingQuery;
@@ -66,7 +67,14 @@ public class JibingController {
         return jibingService.selectById(id);
     }
 
-
+    @ApiOperation(value="根据user的id来获取Jibing详细信息")
+    @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
+    public Jibing v(@PathVariable("id")Integer id)
+    {
+        EntityWrapper<Jibing> jibingEntityWrapper = new EntityWrapper<>();
+        jibingEntityWrapper.eq("userID",id);
+        return jibingService.selectOne(jibingEntityWrapper);
+    }
     /**
     * 查看所有的员工信息
     * @return

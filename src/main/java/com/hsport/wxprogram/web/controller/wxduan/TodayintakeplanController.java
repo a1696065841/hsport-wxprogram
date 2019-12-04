@@ -1,4 +1,4 @@
-package com.hsport.wxprogram.web.controller;
+package com.hsport.wxprogram.web.controller.wxduan;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.domain.*;
@@ -7,6 +7,7 @@ import com.hsport.wxprogram.service.ISportsplanService;
 import com.hsport.wxprogram.service.ITodayintakeplanService;
 import com.hsport.wxprogram.query.TodayintakeplanQuery;
 import com.hsport.wxprogram.util.AjaxResult;
+import com.hsport.wxprogram.util.DateUtil;
 import com.hsport.wxprogram.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
 import io.swagger.annotations.ApiOperation;
@@ -77,6 +78,30 @@ public class TodayintakeplanController {
         return todayintakeplanService.selectById(id);
     }
 
+    @ApiOperation(value="根据user的id来获取详细信息")
+    @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
+    public List<Todayintakeplan> getByUserID(@PathVariable("id")Integer id)
+    {
+        EntityWrapper<Todayintakeplan> todayintakeplanEntityWrapper = new EntityWrapper<>();
+        todayintakeplanEntityWrapper.eq("userID",id);
+        return todayintakeplanService.selectList(todayintakeplanEntityWrapper);
+    }
+
+    @ApiOperation(value="根据user的id来获取详细信息")
+    @RequestMapping(value = "/getSanCanByUserID/{id}",method = RequestMethod.GET)
+    public HashMap getSanCanByUserID(@PathVariable("id")Integer id)
+    {
+        HashMap<String, Integer> stringIntegerHashMap = new HashMap<>();
+        EntityWrapper<Todayintakeplan> todayintakeplanEntityWrapper = new EntityWrapper<>();
+        todayintakeplanEntityWrapper.eq("userID",id);
+        todayintakeplanEntityWrapper.eq("date", DateUtil.today());
+        Todayintakeplan todayintakeplan = todayintakeplanService.selectOne(todayintakeplanEntityWrapper);
+        stringIntegerHashMap.put("zaocan",todayintakeplan.getBreakfastIntake());
+        stringIntegerHashMap.put("wucan",todayintakeplan.getLunchIntake());
+        stringIntegerHashMap.put("wancan",todayintakeplan.getDinnerIntake());
+        stringIntegerHashMap.put("jiacan",todayintakeplan.getMealAdditionIntake());
+        return stringIntegerHashMap;
+    }
 
     /**
     * 查看所有的员工信息
@@ -94,7 +119,7 @@ public class TodayintakeplanController {
     public HashMap<String, Object> getByuserID(@PathVariable("id")Integer id){
         DateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
         Todayintakeplan todayintakeplan=null;
-        List<Food> todaysportsplans=null;
+        List<Food> todayfood=null;
         HashMap<String, Object> stringObjectHashMap = new HashMap<>();
         //查询用户正在进行的计划
         EntityWrapper<Sportsplan> spWrapper = new EntityWrapper<>();
@@ -115,9 +140,9 @@ public class TodayintakeplanController {
         if (todayintakeplan!=null){
             EntityWrapper<Food> foodEntityWrapper = new EntityWrapper<>();
             foodEntityWrapper.eq("todayIntakePlanID",todayintakeplan.getId());
-            todaysportsplans = foodService.selectList(foodEntityWrapper);
+            todayfood = foodService.selectList(foodEntityWrapper);
         }
-        stringObjectHashMap.put("todaysportsplans",todaysportsplans);
+        stringObjectHashMap.put("todayFood",todayfood);
         return stringObjectHashMap;
     }
     /**

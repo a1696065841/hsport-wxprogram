@@ -1,4 +1,4 @@
-package com.hsport.wxprogram.web.controller;
+package com.hsport.wxprogram.web.controller.ceyice;
 
 import com.hsport.wxprogram.service.IGymService;
 import com.hsport.wxprogram.domain.Gym;

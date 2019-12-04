@@ -1,5 +1,7 @@
-package com.hsport.wxprogram.web.controller;
+package com.hsport.wxprogram.web.controller.ceyice;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.Sljk;
 import com.hsport.wxprogram.service.ISportsprogramService;
 import com.hsport.wxprogram.domain.Sportsprogram;
 import com.hsport.wxprogram.query.SportsprogramQuery;
@@ -67,6 +69,14 @@ public class SportsprogramController {
     }
 
 
+    @ApiOperation(value="根据user的id来获取详细信息")
+    @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
+    public Sportsprogram getByUserID(@PathVariable("id")Integer id)
+    {
+        EntityWrapper<Sportsprogram> sportsprogramEntityWrapper = new EntityWrapper<>();
+        sportsprogramEntityWrapper.eq("userID",id);
+        return sportsprogramService.selectOne(sportsprogramEntityWrapper);
+    }
     /**
     * 查看所有的员工信息
     * @return

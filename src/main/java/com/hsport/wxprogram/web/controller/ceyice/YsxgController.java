@@ -1,5 +1,7 @@
-package com.hsport.wxprogram.web.controller;
+package com.hsport.wxprogram.web.controller.ceyice;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.Sportsprogram;
 import com.hsport.wxprogram.service.IYsxgService;
 import com.hsport.wxprogram.domain.Ysxg;
 import com.hsport.wxprogram.query.YsxgQuery;
@@ -65,7 +67,14 @@ public class YsxgController {
         return ysxgService.selectById(id);
     }
 
-
+    @ApiOperation(value="根据user的id来获取详细信息")
+    @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
+    public Ysxg getByUserID(@PathVariable("id")Integer id)
+    {
+        EntityWrapper<Ysxg> sportsprogramEntityWrapper = new EntityWrapper<>();
+        sportsprogramEntityWrapper.eq("userID",id);
+        return ysxgService.selectOne(sportsprogramEntityWrapper);
+    }
     /**
     * 查看所有的员工信息
     * @return

@@ -15,7 +15,13 @@
         <result column="jjlxrdh" property="jjlxrdh" />
         <result column="jjlxrxm" property="jjlxrxm" />
         <result column="coachID" property="coachID" />
+        <result column="genTime" property="genTime" />
+        <result column="loginTime" property="loginTime" />
+        <result column="loginCount" property="loginCount" />
+        <result column="roleID" property="roleID" />
+        <result column="userType" property="userType" />
         <result column="bodyID" property="bodyID" />
+        <result column="password" property="password"/>
     </resultMap>
-
+    
 </mapper>

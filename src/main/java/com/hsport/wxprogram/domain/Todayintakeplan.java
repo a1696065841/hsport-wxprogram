@@ -4,11 +4,12 @@ import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ * <p>
  * </p>
  *
  * @author lhb
@@ -24,6 +25,11 @@ public class Todayintakeplan extends Model<Todayintakeplan> {
     /**
      * 计划摄入上限
      */
+    private Integer breakfastIntake;
+    private Integer lunchIntake;
+    private Integer dinnerIntake;
+    private Integer mealAdditionIntake;
+
     private Integer intakePlan;
     private Integer userID;
     private String date;
@@ -70,6 +76,38 @@ public class Todayintakeplan extends Model<Todayintakeplan> {
         return intakeSJ;
     }
 
+    public Integer getBreakfastIntake() {
+        return breakfastIntake;
+    }
+
+    public void setBreakfastIntake(Integer breakfastIntake) {
+        this.breakfastIntake = breakfastIntake;
+    }
+
+    public Integer getLunchIntake() {
+        return lunchIntake;
+    }
+
+    public void setLunchIntake(Integer lunchIntake) {
+        this.lunchIntake = lunchIntake;
+    }
+
+    public Integer getDinnerIntake() {
+        return dinnerIntake;
+    }
+
+    public void setDinnerIntake(Integer dinnerIntake) {
+        this.dinnerIntake = dinnerIntake;
+    }
+
+    public Integer getMealAdditionIntake() {
+        return mealAdditionIntake;
+    }
+
+    public void setMealAdditionIntake(Integer mealAdditionIntake) {
+        this.mealAdditionIntake = mealAdditionIntake;
+    }
+
     public void setIntakeSJ(Integer intakeSJ) {
         this.intakeSJ = intakeSJ;
     }
@@ -90,12 +128,12 @@ public class Todayintakeplan extends Model<Todayintakeplan> {
     @Override
     public String toString() {
         return "Todayintakeplan{" +
-        ", id=" + id +
-        ", intakePlan=" + intakePlan +
-        ", userID=" + userID +
-        ", date=" + date +
-        ", intakeSJ=" + intakeSJ +
-        ", sportsPlanID=" + sportsPlanID +
-        "}";
+                ", id=" + id +
+                ", intakePlan=" + intakePlan +
+                ", userID=" + userID +
+                ", date=" + date +
+                ", intakeSJ=" + intakeSJ +
+                ", sportsPlanID=" + sportsPlanID +
+                "}";
     }
 }

@@ -1,4 +1,4 @@
-package com.hsport.wxprogram.web.controller;
+package com.hsport.wxprogram.web.controller.wxduan;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.domain.Sportsplan;
@@ -101,6 +101,7 @@ public class TodayspController {
         spWrapper.eq("planType",1);
         spWrapper.eq("userID",1);
         Sportsplan sportsplan = sportsplanService.selectOne(spWrapper);
+        System.out.println(sportsplan);
         //当前计划进行日期的第几天
         if(sportsplan!=null){
             String planStratTime = sportsplan.getPlanStratTime();
@@ -119,6 +120,7 @@ public class TodayspController {
             //日期是今天
             todayspEntityWrapper.eq("date",simpleDateFormat.format(new Date()));
             Todaysp todaysp = todayspService.selectOne(todayspEntityWrapper);
+            System.out.println("todaySP!!!!"+todaysp);
             if(todaysp!=null){
                 EntityWrapper<Todaysportsplans> todaysportsplansEntityWrapper = new EntityWrapper<>();
                 todaysportsplansEntityWrapper.eq("todaySP_id",todaysp.getId());

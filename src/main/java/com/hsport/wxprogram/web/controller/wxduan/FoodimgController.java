@@ -1,4 +1,4 @@
-package com.hsport.wxprogram.web.controller;
+package com.hsport.wxprogram.web.controller.wxduan;
 
 import com.hsport.wxprogram.service.IFoodimgService;
 import com.hsport.wxprogram.domain.Foodimg;
@@ -106,9 +106,13 @@ public class FoodimgController {
         Path path = Paths.get(UPLOAD_FOLDER + "/");
         //获取当前登录用户  需要修改
         foodimg.setUserID(1);
+        foodimg.setCoachID(1);
         foodimg.setTodayintakeplanID(1);
         try {
             String s = picUtil.singleFileUpload(multipartFile, path);
+            if (s.equals("文件为空，请重新上传")){
+                return AjaxResult.me().setMessage("文件为空，请重新上传！");
+            }
             foodimg.setFoodImgUrl(s);
             foodimgService.insert(foodimg);
             return AjaxResult.me();

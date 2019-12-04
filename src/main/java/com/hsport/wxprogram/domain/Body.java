@@ -44,6 +44,21 @@ public class Body extends Model<Body> {
      * 大腿围度
      */
     private Integer thighCircum;
+
+    public Integer getArmCircum() {
+        return armCircum;
+    }
+
+    public void setArmCircum(Integer armCircum) {
+        this.armCircum = armCircum;
+    }
+
+    /**
+     * 臂围
+
+     */
+    private Integer armCircum;
+
 //
 //    public User getUserID() {
 //        return userID;

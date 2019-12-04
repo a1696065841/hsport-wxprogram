@@ -1,6 +1,8 @@
 server:
   port: 4396
 spring:
+  http:
+    multipart:
   application:
     name: hsport
   datasource:
@@ -13,4 +15,6 @@ mybatis-plus:
   type-aliases-package: com.hsport.wxprogram.domain,com.hsport.wxprogram.query
 logging:
   level:
-    com.hsport.*: error
+    com.hsport.*: debug
+  file:
+    name: wxprogram.log

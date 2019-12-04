@@ -1,4 +1,4 @@
-package com.hsport.wxprogram.web.controller;
+package com.hsport.wxprogram.web.controller.wxduan;
 
 import com.hsport.wxprogram.service.IUserProService;
 import com.hsport.wxprogram.domain.UserPro;

@@ -7,7 +7,10 @@
         <id column="id" property="id" />
         <result column="sportsImgUrl" property="sportsImgUrl" />
         <result column="userID" property="userID" />
-        <result column="todayspID" property="todayspID" />
+        <result column="date" property="date" />
+        <result column="todayburncaloriesID" property="todayburncaloriesID" />
+        <result column="burnCalories" property="burnCalories" />
+        <result column="burnType" property="burnType" />
     </resultMap>
 
 </mapper>

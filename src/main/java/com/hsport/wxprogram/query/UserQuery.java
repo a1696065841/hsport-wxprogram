@@ -1,11 +1,12 @@
 package com.hsport.wxprogram.query;
 
-import com.hsport.wxprogram.util.BaseQuery;
 
 /**
  *
  * @author lhb
- * @since 2019-11-21
+ * @since 2019-11-29
  */
-public class UserQuery extends BaseQuery {
+import com.hsport.wxprogram.util.BaseQuery;
+
+public class UserQuery extends BaseQuery{
 }

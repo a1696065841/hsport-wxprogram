@@ -1,5 +1,7 @@
-package com.hsport.wxprogram.web.controller;
+package com.hsport.wxprogram.web.controller.wxduan;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.Ysxg;
 import com.hsport.wxprogram.service.ITodayintakeService;
 import com.hsport.wxprogram.domain.Todayintake;
 import com.hsport.wxprogram.query.TodayintakeQuery;
@@ -69,6 +71,7 @@ public class TodayintakeController {
     {
         return todayintakeService.selectById(id);
     }
+
 
 
     /**

@@ -41,6 +41,15 @@ public class Sportsplan extends Model<Sportsplan> {
     private String planStratTime;
     private Integer planType;
     private String planEndDate;
+    private Integer coachID;
+
+    public Integer getCoachID() {
+        return coachID;
+    }
+
+    public void setCoachID(Integer coachID) {
+        this.coachID = coachID;
+    }
 
     public Integer getPlanType() {
         return planType;
@@ -129,6 +138,7 @@ public class Sportsplan extends Model<Sportsplan> {
         ", masterPlanBurn=" + masterPlanBurn +
         ", masterPlanIntake=" + masterPlanIntake +
         ", planStratTime=" + planStratTime +
+        ",coachID=" + coachID +
         "}";
     }
 }

@@ -1,5 +1,6 @@
 package com.hsport.wxprogram.web.controller;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.domain.vo.CeyiceVo;
 import com.hsport.wxprogram.service.ICeyiceService;
 import com.hsport.wxprogram.domain.Ceyice;
@@ -88,11 +89,18 @@ public class CeyiceController {
     //获取用户
     @ApiOperation(value="根据url的id来获取Ceyice详细信息")
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Ceyice get(@PathVariable("id")Integer id)
-    {
+    public Ceyice get(@PathVariable("id")Integer id) {
         return ceyiceService.selectById(id);
     }
 
+    //获取用户
+    @ApiOperation(value="根据用户的id来获取Ceyice详细信息")
+    @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
+    public Ceyice getByUserID(@PathVariable("id")Integer id) {
+        EntityWrapper<Ceyice> ceyiceEntityWrapper = new EntityWrapper<>();
+        ceyiceEntityWrapper.eq("userID",id);
+        return ceyiceService.selectOne(ceyiceEntityWrapper);
+    }
 
     /**
     * 查看所有的员工信息
@@ -105,7 +113,6 @@ public class CeyiceController {
         return ceyiceService.selectList(null);
     }
 
-
     /**
     * 分页查询数据
     *
@@ -114,10 +121,10 @@ public class CeyiceController {
     */
     @ApiOperation(value="来获取所有Ceyice详细信息并分页", notes="根据page页数和传入的query查询条件 来获取某些Ceyice详细信息")
     @RequestMapping(value = "/json",method = RequestMethod.POST)
-    public PageList<Ceyice> json(@RequestBody CeyiceQuery query)
-    {
+    public PageList<Ceyice> json(@RequestBody CeyiceQuery query){
         Page<Ceyice> page = new Page<Ceyice>(query.getPage(),query.getRows());
             page = ceyiceService.selectPage(page);
             return new PageList<Ceyice>(page.getTotal(),page.getRecords());
     }
+
 }

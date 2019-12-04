@@ -1,6 +1,6 @@
 package com.hsport.wxprogram.util;
 
-import com.guoli.domain.Employee;
+import com.hsport.wxprogram.domain.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
@@ -12,19 +12,19 @@ public class UserContext {
 
     /**
      * 设置当前登录用户
-     * @param employee
+     * @param user
      */
-    public static void setUser(Employee employee){
+    public static void setUser(User user){
         Subject currentUser = SecurityUtils.getSubject();
-        currentUser.getSession().setAttribute(CURRENT_LOGIN_USER,employee);
+        currentUser.getSession().setAttribute(CURRENT_LOGIN_USER,user);
     }
 
     /**
      * 获取当前登录用户
      * @return  employee
      */
-    public static Employee getUser(){
+    public static User getUser(){
         Subject currentUser = SecurityUtils.getSubject();
-        return (Employee) currentUser.getSession().getAttribute(CURRENT_LOGIN_USER);
+        return (User) currentUser.getSession().getAttribute(CURRENT_LOGIN_USER);
     }
 }

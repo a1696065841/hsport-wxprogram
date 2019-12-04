@@ -32,6 +32,25 @@ public class Todaysp extends Model<Todaysp> {
      */
     private Integer sportsPlanID;
 
+    private Integer coachID;
+
+    private Integer userID;
+
+    public Integer getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Integer userID) {
+        this.userID = userID;
+    }
+
+    public Integer getCoachID() {
+        return coachID;
+    }
+
+    public void setCoachID(Integer coachID) {
+        this.coachID = coachID;
+    }
 
     public Integer getId() {
         return id;

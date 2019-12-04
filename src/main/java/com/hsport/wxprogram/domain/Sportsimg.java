@@ -1,12 +1,15 @@
 package com.hsport.wxprogram.domain;
 
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ * <p>
  * </p>
  *
  * @author lhb
@@ -17,10 +20,48 @@ public class Sportsimg extends Model<Sportsimg> {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer id;
+    @TableId(value = "id", type = IdType.AUTO)
+    private int id;
     private String sportsImgUrl;
     private Integer userID;
     private Integer todayspID;
+    private String date;
+    private Integer todayburncaloriesID;
+    private String burnType;
+
+    public String getBurnType() {
+        return burnType;
+    }
+
+    public void setBurnType(String burnType) {
+        this.burnType = burnType;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Integer getTodayburncaloriesID() {
+        return todayburncaloriesID;
+    }
+
+    public void setTodayburncaloriesID(Integer todayburncaloriesID) {
+        this.todayburncaloriesID = todayburncaloriesID;
+    }
+
+    public Integer getBurnCalories() {
+        return burnCalories;
+    }
+
+    public void setBurnCalories(Integer burnCalories) {
+        this.burnCalories = burnCalories;
+    }
+
+    private Integer burnCalories;
 
 
     public Integer getId() {
@@ -63,10 +104,10 @@ public class Sportsimg extends Model<Sportsimg> {
     @Override
     public String toString() {
         return "Sportsimg{" +
-        ", id=" + id +
-        ", sportsImgUrl=" + sportsImgUrl +
-        ", userID=" + userID +
-        ", todayspID=" + todayspID +
-        "}";
+                ", id=" + id +
+                ", sportsImgUrl=" + sportsImgUrl +
+                ", userID=" + userID +
+                ", todayspID=" + todayspID +
+                "}";
     }
 }

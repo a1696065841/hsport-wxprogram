@@ -13,6 +13,7 @@
         <result column="planStratTime" property="planStratTime"/>
         <result column="planEndDate" property="planEndDate"/>
         <result column="planType" property="planType"/>
+        <result column="coachID" property="coachID"/>
     </resultMap>
 
     <select id="selectAllPlanWithUser" parameterType="Integer" resultMap="BaseResultMap">

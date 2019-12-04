@@ -4,8 +4,6 @@ import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
-import org.springframework.stereotype.Component;
-
 import java.io.Serializable;
 
 /**
@@ -14,7 +12,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author lhb
- * @since 2019-11-21
+ * @since 2019-11-29
  */
 @TableName("t_user")
 public class User extends Model<User> {
@@ -33,15 +31,33 @@ public class User extends Model<User> {
     private Integer jjlxrdh;
     private String jjlxrxm;
     private Integer coachID;
+    private String password;
 
-    public Integer getBodyID() {
-        return bodyID;
+    public String getPassword() {
+        return password;
     }
 
-    public void setBodyID(Integer bodyID) {
-        this.bodyID = bodyID;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
+    /**
+     * 创建时间
+     */
+    private String genTime;
+    /**
+     * 登陆时间
+     */
+    private String loginTime;
+    /**
+     * 登陆次数
+     */
+    private Integer loginCount;
+    private Integer roleID;
+    /**
+     * userType
+     */
+    private Integer userType;
     private Integer bodyID;
 
 
@@ -133,6 +149,54 @@ public class User extends Model<User> {
         this.coachID = coachID;
     }
 
+    public String getGenTime() {
+        return genTime;
+    }
+
+    public void setGenTime(String genTime) {
+        this.genTime = genTime;
+    }
+
+    public String getLoginTime() {
+        return loginTime;
+    }
+
+    public void setLoginTime(String loginTime) {
+        this.loginTime = loginTime;
+    }
+
+    public Integer getLoginCount() {
+        return loginCount;
+    }
+
+    public void setLoginCount(Integer loginCount) {
+        this.loginCount = loginCount;
+    }
+
+    public Integer getRoleID() {
+        return roleID;
+    }
+
+    public void setRoleID(Integer roleID) {
+        this.roleID = roleID;
+    }
+
+    public Integer getUserType() {
+        return userType;
+    }
+
+    public void setUserType(Integer userType) {
+        this.userType = userType;
+    }
+
+    public Integer getBodyID() {
+        return bodyID;
+    }
+
+    public void setBodyID(Integer bodyID) {
+        this.bodyID = bodyID;
+    }
+
     @Override
     protected Serializable pkVal() {
         return this.id;
@@ -152,6 +216,12 @@ public class User extends Model<User> {
         ", jjlxrdh=" + jjlxrdh +
         ", jjlxrxm=" + jjlxrxm +
         ", coachID=" + coachID +
+        ", genTime=" + genTime +
+        ", loginTime=" + loginTime +
+        ", loginCount=" + loginCount +
+        ", roleID=" + roleID +
+        ", userType=" + userType +
+        ", bodyID=" + bodyID +
         "}";
     }
 }

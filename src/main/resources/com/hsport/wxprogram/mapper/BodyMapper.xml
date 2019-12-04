@@ -15,6 +15,7 @@
         <result column="hipline" property="hipline"/>
         <result column="calfGirth" property="calfGirth"/>
         <result column="thighCircum" property="thighCircum"/>
+        <result column="armCircum" property="armCircum"/>
         <result column="userID" property="userID" />
     </resultMap>
 <!--<association column="userID" property="userID" javaType="com.hsport.wxprogram.domain.User" >

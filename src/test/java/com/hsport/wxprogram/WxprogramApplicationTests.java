@@ -64,12 +64,5 @@ class WxprogramApplicationTests {
         long endTime = System.nanoTime();
         System.out.println("程序运行时间： "+(endTime-startTime)+"ns");
     }
-    @Test
-    public void test3(){
-        long startTime = System.nanoTime();
-        List list = bodyService.selectBodyByUser();
-        long endTime = System.nanoTime();
-        System.out.println("程序运行时间： "+(endTime-startTime)+"ns");
-        System.out.println(list);
-    }
+  
 }

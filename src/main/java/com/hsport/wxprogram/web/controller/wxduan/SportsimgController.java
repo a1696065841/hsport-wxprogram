@@ -1,4 +1,4 @@
-package com.hsport.wxprogram.web.controller;
+package com.hsport.wxprogram.web.controller.wxduan;
 
 import com.hsport.wxprogram.domain.Foodimg;
 import com.hsport.wxprogram.service.ISportsimgService;
@@ -112,6 +112,7 @@ public class SportsimgController {
             if (s.equals("文件为空，请重新上传")){
                 return AjaxResult.me().setMessage("文件为空，请重新上传！");
             }
+            sportsimg.setSportsImgUrl(s);
             sportsimg.setSportsImgUrl(s);
             sportsimgService.insert(sportsimg);
             return AjaxResult.me();

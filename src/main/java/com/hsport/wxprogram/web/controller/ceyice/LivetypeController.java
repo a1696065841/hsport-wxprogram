@@ -1,5 +1,7 @@
-package com.hsport.wxprogram.web.controller;
+package com.hsport.wxprogram.web.controller.ceyice;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.Jibing;
 import com.hsport.wxprogram.service.ILivetypeService;
 import com.hsport.wxprogram.domain.Livetype;
 import com.hsport.wxprogram.query.LivetypeQuery;
@@ -66,7 +68,14 @@ public class LivetypeController {
         return livetypeService.selectById(id);
     }
 
-
+    @ApiOperation(value="根据user的id来获取详细信息")
+    @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
+    public Livetype getByUserID(@PathVariable("id")Integer id)
+    {
+        EntityWrapper<Livetype> livetypeEntityWrapper = new EntityWrapper<>();
+        livetypeEntityWrapper.eq("userID",id);
+        return livetypeService.selectOne(livetypeEntityWrapper);
+    }
     /**
     * 查看所有的员工信息
     * @return

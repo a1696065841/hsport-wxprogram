@@ -4,7 +4,11 @@ import com.hsport.wxprogram.domain.Todayintakeplan;
 import com.hsport.wxprogram.mapper.TodayintakeplanMapper;
 import com.hsport.wxprogram.service.ITodayintakeplanService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  * <p>
@@ -16,5 +20,15 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TodayintakeplanServiceImpl extends ServiceImpl<TodayintakeplanMapper, Todayintakeplan> implements ITodayintakeplanService {
+    @Autowired
+    TodayintakeplanMapper todayintakeplanMapper;
 
+    @Override
+    public Todayintakeplan selectTodayIntakePlanByUserID(Integer id,String date) {
+        Todayintakeplan todayintakeplan = new Todayintakeplan();
+        todayintakeplan.setUserID(id);
+        todayintakeplan.setDate(date);
+       todayintakeplanMapper.selectOne(todayintakeplan);
+        return null;
+    }
 }

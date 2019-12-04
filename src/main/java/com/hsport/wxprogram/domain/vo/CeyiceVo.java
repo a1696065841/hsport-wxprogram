@@ -8,7 +8,7 @@ import com.hsport.wxprogram.domain.Ceyice;
 
 import java.io.Serializable;
 
-public class CeiyiceVo {
+public class CeyiceVo {
         @TableId(value = "id", type = IdType.AUTO)
         private Integer id;
         /**
@@ -48,7 +48,7 @@ public class CeiyiceVo {
          * 平均睡眠时间
          */
         private Integer pjsmsj;
-        private char[] rcsmzlDC;
+        private char[] rcsmzlDX;
         private char[] rcpbqkDX;
         /**
          * 以前有过的减肥经历多选
@@ -153,12 +153,12 @@ public class CeiyiceVo {
             this.pjsmsj = pjsmsj;
         }
 
-        public char[] getRcsmzlDC() {
-            return rcsmzlDC;
+        public char[] getrcsmzlDX() {
+            return rcsmzlDX;
         }
 
-        public void setRcsmzlDC(char[] rcsmzlDC) {
-            this.rcsmzlDC = rcsmzlDC;
+        public void setrcsmzlDX(char[] rcsmzlDX) {
+            this.rcsmzlDX = rcsmzlDX;
         }
 
         public char[] getRcpbqkDX() {
@@ -217,7 +217,7 @@ public class CeiyiceVo {
                     ", buweiYdSunsDX=" + buweiYdSunsDX +
                     ", sfjcay=" + sfjcay +
                     ", pjsmsj=" + pjsmsj +
-                    ", rcsmzlDC=" + rcsmzlDC +
+                    ", rcsmzlDX=" + rcsmzlDX +
                     ", rcpbqkDX=" + rcpbqkDX +
                     ", yqJianfeiJLDX=" + yqJianfeiJLDX +
                     ", rcylfx=" + rcylfx +

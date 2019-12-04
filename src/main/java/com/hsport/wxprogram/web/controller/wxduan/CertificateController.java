@@ -1,11 +1,14 @@
-package com.hsport.wxprogram.web.controller;
+package com.hsport.wxprogram.web.controller.wxduan;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.service.ICertificateService;
 import com.hsport.wxprogram.domain.Certificate;
 import com.hsport.wxprogram.query.CertificateQuery;
 import com.hsport.wxprogram.util.AjaxResult;
 import com.hsport.wxprogram.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +26,7 @@ public class CertificateController {
     * @param certificate  传递的实体
     * @return Ajaxresult转换结果
     */
+    @ApiOperation(value="新建一个教练证书并绑定该教练")
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Certificate certificate){
         try {
@@ -61,7 +65,14 @@ public class CertificateController {
         return certificateService.selectById(id);
     }
 
-
+    @ApiOperation(value="根据教练的ID来获取教练所拥有的证书详细信息")
+    @RequestMapping(value = "/getByCoachID/{id}",method = RequestMethod.GET)
+    public List<Certificate> getByCoachID(@PathVariable("id")Integer id)
+    {
+        EntityWrapper<Certificate> certificateEntityWrapper = new EntityWrapper<>();
+        certificateEntityWrapper.eq("coachID",id);
+        return certificateService.selectList(certificateEntityWrapper);
+    }
     /**
     * 查看所有的员工信息
     * @return

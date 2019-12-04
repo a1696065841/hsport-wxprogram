@@ -1,8 +1,10 @@
 package com.hsport.wxprogram.service;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.domain.User;
 import com.baomidou.mybatisplus.service.IService;
-import com.hsport.wxprogram.util.AjaxResult;
+
+import java.util.List;
 
 /**
  * <p>
@@ -10,8 +12,9 @@ import com.hsport.wxprogram.util.AjaxResult;
  * </p>
  *
  * @author lhb
- * @since 2019-11-21
+ * @since 2019-11-29
  */
 public interface IUserService extends IService<User> {
-    void insertTest();
+    List<User> findUserByCoachID(Integer id);
+
 }

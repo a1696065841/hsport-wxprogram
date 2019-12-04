@@ -9,6 +9,8 @@
         <result column="todayBurnCalorie" property="todayBurnCalorie" />
         <result column="date" property="date" />
         <result column="sportsPlanID" property="sportsPlanID" />
+        <result column="coachID" property="coachID"/>
+        <result column="userID" property="userID"/>
     </resultMap>
 
 </mapper>
