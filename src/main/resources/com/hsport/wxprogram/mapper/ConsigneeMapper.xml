@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hsport.wxprogram.mapper.ConsigneeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Consignee">
+        <id column="id" property="id" />
+        <result column="userID" property="userID" />
+        <result column="address" property="address" />
+        <result column="consigneeName" property="consigneeName" />
+        <result column="consigneePhone" property="consigneePhone" />
+        <result column="beizhu" property="beizhu" />
+    </resultMap>
+
+</mapper>
