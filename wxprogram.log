@@ -1,0 +1,1111 @@
+2019-12-04 11:44:28.819  INFO 9476 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Starting WxprogramApplication on DESKTOP-7KELHOS with PID 9476 (D:\opensource\workSpaceIDEA\wxprogram\target\classes started by 16960 in D:\opensource\workSpaceIDEA\wxprogram)
+2019-12-04 11:44:28.824 DEBUG 9476 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+2019-12-04 11:44:28.824  INFO 9476 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : No active profile set, falling back to default profiles: default
+2019-12-04 11:44:28.867  INFO 9476 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-04 11:44:28.868  INFO 9476 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-04 11:44:30.013  INFO 9476 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-04 11:44:30.015  INFO 9476 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-04 11:44:30.061  INFO 9476 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32ms. Found 0 repository interfaces.
+2019-12-04 11:44:30.363  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:44:30.387  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.hsport.wxprogram.config.TxAnoConfig$$EnhancerBySpringCGLIB$$e9d9270a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:44:30.391  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:44:30.392  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:44:30.413  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:44:30.435  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.zaxxer.hikari.HikariDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:44:30.445  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:44:30.448  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:44:30.453  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:44:30.454  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:44:30.459  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:44:30.470  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txSource' of type [org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:44:30.471  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txInterceptor' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:44:30.473  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'pointcutAdvisor' of type [org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:44:30.854  INFO 9476 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 4396 (http)
+2019-12-04 11:44:30.863  INFO 9476 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-12-04 11:44:30.863  INFO 9476 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-04 11:44:30.966  INFO 9476 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-12-04 11:44:30.966  INFO 9476 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2098 ms
+2019-12-04 11:44:31.176  INFO 9476 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-12-04 11:44:31.762  INFO 9476 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-12-04 11:44:33.076  INFO 9476 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2019-12-04 11:44:33.159  INFO 9476 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-12-04 11:44:33.712  INFO 9476 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-12-04 11:44:33.727  INFO 9476 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-12-04 11:44:33.790  INFO 9476 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-12-04 11:44:33.928  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2019-12-04 11:44:33.931  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2019-12-04 11:44:33.935  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_1
+2019-12-04 11:44:33.937  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_1
+2019-12-04 11:44:33.940  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_1
+2019-12-04 11:44:33.942  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2019-12-04 11:44:33.945  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2019-12-04 11:44:33.951  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_2
+2019-12-04 11:44:33.952  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_2
+2019-12-04 11:44:33.956  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_2
+2019-12-04 11:44:33.958  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2019-12-04 11:44:33.965  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_3
+2019-12-04 11:44:33.972  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_3
+2019-12-04 11:44:33.974  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_3
+2019-12-04 11:44:33.979  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_3
+2019-12-04 11:44:33.984  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2019-12-04 11:44:33.988  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_4
+2019-12-04 11:44:33.998  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_4
+2019-12-04 11:44:34.000  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_4
+2019-12-04 11:44:34.004  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_4
+2019-12-04 11:44:34.006  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2019-12-04 11:44:34.010  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_5
+2019-12-04 11:44:34.013  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_5
+2019-12-04 11:44:34.015  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_5
+2019-12-04 11:44:34.019  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_5
+2019-12-04 11:44:34.021  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2019-12-04 11:44:34.026  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_6
+2019-12-04 11:44:34.029  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_6
+2019-12-04 11:44:34.032  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_6
+2019-12-04 11:44:34.036  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_6
+2019-12-04 11:44:34.041  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_7
+2019-12-04 11:44:34.046  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_7
+2019-12-04 11:44:34.050  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_7
+2019-12-04 11:44:34.053  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_7
+2019-12-04 11:44:34.057  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_7
+2019-12-04 11:44:34.060  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_8
+2019-12-04 11:44:34.063  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_8
+2019-12-04 11:44:34.067  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_8
+2019-12-04 11:44:34.069  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_8
+2019-12-04 11:44:34.072  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_8
+2019-12-04 11:44:34.074  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_9
+2019-12-04 11:44:34.078  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_9
+2019-12-04 11:44:34.081  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_9
+2019-12-04 11:44:34.083  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_9
+2019-12-04 11:44:34.086  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_9
+2019-12-04 11:44:34.088  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_10
+2019-12-04 11:44:34.093  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_10
+2019-12-04 11:44:34.096  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_10
+2019-12-04 11:44:34.098  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_10
+2019-12-04 11:44:34.103  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_10
+2019-12-04 11:44:34.105  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_11
+2019-12-04 11:44:34.108  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_11
+2019-12-04 11:44:34.112  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_11
+2019-12-04 11:44:34.114  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_11
+2019-12-04 11:44:34.117  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_11
+2019-12-04 11:44:34.129  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2019-12-04 11:44:34.137  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_12
+2019-12-04 11:44:34.141  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_12
+2019-12-04 11:44:34.145  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_12
+2019-12-04 11:44:34.146  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_12
+2019-12-04 11:44:34.150  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_12
+2019-12-04 11:44:34.153  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_13
+2019-12-04 11:44:34.156  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_13
+2019-12-04 11:44:34.161  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_13
+2019-12-04 11:44:34.163  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_13
+2019-12-04 11:44:34.167  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_13
+2019-12-04 11:44:34.169  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_14
+2019-12-04 11:44:34.173  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_14
+2019-12-04 11:44:34.176  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_14
+2019-12-04 11:44:34.178  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_14
+2019-12-04 11:44:34.182  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_14
+2019-12-04 11:44:34.185  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: chuanTuUsingPOST_1
+2019-12-04 11:44:34.187  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_15
+2019-12-04 11:44:34.190  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_15
+2019-12-04 11:44:34.194  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_15
+2019-12-04 11:44:34.195  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_15
+2019-12-04 11:44:34.199  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_15
+2019-12-04 11:44:34.201  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_16
+2019-12-04 11:44:34.205  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_16
+2019-12-04 11:44:34.209  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_16
+2019-12-04 11:44:34.211  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_16
+2019-12-04 11:44:34.219  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_16
+2019-12-04 11:44:34.222  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_17
+2019-12-04 11:44:34.226  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_17
+2019-12-04 11:44:34.228  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_17
+2019-12-04 11:44:34.230  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_17
+2019-12-04 11:44:34.234  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_17
+2019-12-04 11:44:34.236  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_18
+2019-12-04 11:44:34.241  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_18
+2019-12-04 11:44:34.247  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_18
+2019-12-04 11:44:34.249  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_18
+2019-12-04 11:44:34.253  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_18
+2019-12-04 11:44:34.255  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_19
+2019-12-04 11:44:34.259  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_19
+2019-12-04 11:44:34.262  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_19
+2019-12-04 11:44:34.264  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_19
+2019-12-04 11:44:34.268  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_19
+2019-12-04 11:44:34.270  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_20
+2019-12-04 11:44:34.273  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_20
+2019-12-04 11:44:34.279  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_20
+2019-12-04 11:44:34.280  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_20
+2019-12-04 11:44:34.283  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_20
+2019-12-04 11:44:34.286  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_21
+2019-12-04 11:44:34.289  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_21
+2019-12-04 11:44:34.291  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByuserIDUsingGET_1
+2019-12-04 11:44:34.293  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_21
+2019-12-04 11:44:34.295  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_21
+2019-12-04 11:44:34.298  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_21
+2019-12-04 11:44:34.301  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_22
+2019-12-04 11:44:34.304  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_22
+2019-12-04 11:44:34.307  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_22
+2019-12-04 11:44:34.309  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_22
+2019-12-04 11:44:34.312  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_22
+2019-12-04 11:44:34.315  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_23
+2019-12-04 11:44:34.316  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_23
+2019-12-04 11:44:34.319  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_23
+2019-12-04 11:44:34.321  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_23
+2019-12-04 11:44:34.326  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_23
+2019-12-04 11:44:34.328  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_24
+2019-12-04 11:44:34.332  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_24
+2019-12-04 11:44:34.357  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_24
+2019-12-04 11:44:34.361  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_24
+2019-12-04 11:44:34.363  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_24
+2019-12-04 11:44:34.365  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_25
+2019-12-04 11:44:34.369  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_25
+2019-12-04 11:44:34.372  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_25
+2019-12-04 11:44:34.374  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_25
+2019-12-04 11:44:34.377  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_25
+2019-12-04 11:44:34.418  INFO 9476 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 4396 (http) with context path ''
+2019-12-04 11:44:34.421  INFO 9476 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Started WxprogramApplication in 6.023 seconds (JVM running for 7.078)
+2019-12-04 11:45:26.239  INFO 9476 --- [http-nio-4396-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-04 11:45:26.239  INFO 9476 --- [http-nio-4396-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-12-04 11:45:26.252  INFO 9476 --- [http-nio-4396-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 13 ms
+2019-12-04 11:45:26.289  WARN 9476 --- [http-nio-4396-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
+2019-12-04 11:45:32.345 DEBUG 9476 --- [http-nio-4396-exec-5] c.h.w.m.SportsplanMapper.selectList      : ==>  Preparing: SELECT id AS id,planObjectives,planUseDays,userID,masterPlanBurn,masterPlanIntake,planStratTime,planType,planEndDate,coachID FROM t_sportsplan WHERE (planType = ? AND userID = ?) 
+2019-12-04 11:45:32.361 DEBUG 9476 --- [http-nio-4396-exec-5] c.h.w.m.SportsplanMapper.selectList      : ==> Parameters: 1(Integer), 1(Integer)
+2019-12-04 11:45:32.374 DEBUG 9476 --- [http-nio-4396-exec-5] c.h.w.m.SportsplanMapper.selectList      : <==      Total: 1
+2019-12-04 11:45:32.379 DEBUG 9476 --- [http-nio-4396-exec-5] c.h.w.m.T.selectList                     : ==>  Preparing: SELECT id AS id,intakePlan,userID,`date`,intakeSJ,sportsPlanID FROM t_todayintakeplan WHERE (sportsPlanID = ? AND date = ?) 
+2019-12-04 11:45:32.380 DEBUG 9476 --- [http-nio-4396-exec-5] c.h.w.m.T.selectList                     : ==> Parameters: 1(Integer), 2019.12.04(String)
+2019-12-04 11:45:32.381 DEBUG 9476 --- [http-nio-4396-exec-5] c.h.w.m.T.selectList                     : <==      Total: 0
+2019-12-04 11:46:04.161 DEBUG 9476 --- [http-nio-4396-exec-6] c.h.w.m.SportsplanMapper.selectList      : ==>  Preparing: SELECT id AS id,planObjectives,planUseDays,userID,masterPlanBurn,masterPlanIntake,planStratTime,planType,planEndDate,coachID FROM t_sportsplan WHERE (planType = ? AND userID = ?) 
+2019-12-04 11:46:04.161 DEBUG 9476 --- [http-nio-4396-exec-6] c.h.w.m.SportsplanMapper.selectList      : ==> Parameters: 1(Integer), 1(Integer)
+2019-12-04 11:46:04.162 DEBUG 9476 --- [http-nio-4396-exec-6] c.h.w.m.SportsplanMapper.selectList      : <==      Total: 1
+2019-12-04 11:46:04.163 DEBUG 9476 --- [http-nio-4396-exec-6] c.h.w.m.T.selectList                     : ==>  Preparing: SELECT id AS id,intakePlan,userID,`date`,intakeSJ,sportsPlanID FROM t_todayintakeplan WHERE (sportsPlanID = ? AND date = ?) 
+2019-12-04 11:46:04.164 DEBUG 9476 --- [http-nio-4396-exec-6] c.h.w.m.T.selectList                     : ==> Parameters: 1(Integer), 2019.12.04(String)
+2019-12-04 11:46:04.165 DEBUG 9476 --- [http-nio-4396-exec-6] c.h.w.m.T.selectList                     : <==      Total: 1
+2019-12-04 11:46:04.168 DEBUG 9476 --- [http-nio-4396-exec-6] c.h.w.mapper.FoodMapper.selectList       : ==>  Preparing: SELECT id AS id,foodName,foodType,foodPro,carbon,xianweisu,todayIntakePlanID,foodWeight,foodCalories,foodFat,userID FROM t_food WHERE (todayIntakePlanID = ?) 
+2019-12-04 11:46:04.169 DEBUG 9476 --- [http-nio-4396-exec-6] c.h.w.mapper.FoodMapper.selectList       : ==> Parameters: 3(Integer)
+2019-12-04 11:46:04.170 DEBUG 9476 --- [http-nio-4396-exec-6] c.h.w.mapper.FoodMapper.selectList       : <==      Total: 0
+2019-12-04 11:47:51.779 DEBUG 9476 --- [http-nio-4396-exec-7] c.h.w.m.SportsplanMapper.selectList      : ==>  Preparing: SELECT id AS id,planObjectives,planUseDays,userID,masterPlanBurn,masterPlanIntake,planStratTime,planType,planEndDate,coachID FROM t_sportsplan WHERE (planType = ? AND userID = ?) 
+2019-12-04 11:47:51.780 DEBUG 9476 --- [http-nio-4396-exec-7] c.h.w.m.SportsplanMapper.selectList      : ==> Parameters: 1(Integer), 1(Integer)
+2019-12-04 11:47:51.781 DEBUG 9476 --- [http-nio-4396-exec-7] c.h.w.m.SportsplanMapper.selectList      : <==      Total: 1
+2019-12-04 11:47:51.781 DEBUG 9476 --- [http-nio-4396-exec-7] c.h.w.m.T.selectList                     : ==>  Preparing: SELECT id AS id,intakePlan,userID,`date`,intakeSJ,sportsPlanID FROM t_todayintakeplan WHERE (sportsPlanID = ? AND date = ?) 
+2019-12-04 11:47:51.782 DEBUG 9476 --- [http-nio-4396-exec-7] c.h.w.m.T.selectList                     : ==> Parameters: 1(Integer), 2019.12.04(String)
+2019-12-04 11:47:51.782 DEBUG 9476 --- [http-nio-4396-exec-7] c.h.w.m.T.selectList                     : <==      Total: 1
+2019-12-04 11:47:51.783 DEBUG 9476 --- [http-nio-4396-exec-7] c.h.w.mapper.FoodMapper.selectList       : ==>  Preparing: SELECT id AS id,foodName,foodType,foodPro,carbon,xianweisu,todayIntakePlanID,foodWeight,foodCalories,foodFat,userID FROM t_food WHERE (todayIntakePlanID = ?) 
+2019-12-04 11:47:51.783 DEBUG 9476 --- [http-nio-4396-exec-7] c.h.w.mapper.FoodMapper.selectList       : ==> Parameters: 3(Integer)
+2019-12-04 11:47:51.784 DEBUG 9476 --- [http-nio-4396-exec-7] c.h.w.mapper.FoodMapper.selectList       : <==      Total: 1
+2019-12-04 11:48:30.764  INFO 9476 --- [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-12-04 11:48:30.767  INFO 9476 --- [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-12-04 11:48:31.220  INFO 9476 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Starting WxprogramApplication on DESKTOP-7KELHOS with PID 9476 (D:\opensource\workSpaceIDEA\wxprogram\target\classes started by 16960 in D:\opensource\workSpaceIDEA\wxprogram)
+2019-12-04 11:48:31.220 DEBUG 9476 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+2019-12-04 11:48:31.220  INFO 9476 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : No active profile set, falling back to default profiles: default
+2019-12-04 11:48:31.629  INFO 9476 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-04 11:48:31.629  INFO 9476 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-04 11:48:31.648  INFO 9476 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18ms. Found 0 repository interfaces.
+2019-12-04 11:48:31.716  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:48:31.719  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.hsport.wxprogram.config.TxAnoConfig$$EnhancerBySpringCGLIB$$e9d9270a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:48:31.721  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:48:31.722  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:48:31.729  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:48:31.735  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.zaxxer.hikari.HikariDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:48:31.739  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:48:31.740  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:48:31.742  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:48:31.742  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:48:31.742  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:48:31.745  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txSource' of type [org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:48:31.745  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txInterceptor' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:48:31.746  INFO 9476 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'pointcutAdvisor' of type [org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 11:48:31.797  WARN 9476 --- [restartedMain] org.apache.tomcat.util.modeler.Registry  : The MBean registry cannot be disabled because it has already been initialised
+2019-12-04 11:48:31.867  INFO 9476 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 4396 (http)
+2019-12-04 11:48:31.868  INFO 9476 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-12-04 11:48:31.868  INFO 9476 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-04 11:48:31.892  INFO 9476 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-12-04 11:48:31.892  INFO 9476 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 670 ms
+2019-12-04 11:48:31.945  INFO 9476 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2019-12-04 11:48:31.950  INFO 9476 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2019-12-04 11:48:32.755  INFO 9476 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2019-12-04 11:48:32.794  INFO 9476 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-12-04 11:48:33.029  INFO 9476 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-12-04 11:48:33.030  INFO 9476 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-12-04 11:48:33.054  INFO 9476 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-12-04 11:48:33.077  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2019-12-04 11:48:33.079  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2019-12-04 11:48:33.080  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_1
+2019-12-04 11:48:33.081  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_1
+2019-12-04 11:48:33.083  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_1
+2019-12-04 11:48:33.084  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2019-12-04 11:48:33.086  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2019-12-04 11:48:33.089  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_2
+2019-12-04 11:48:33.090  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_2
+2019-12-04 11:48:33.092  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_2
+2019-12-04 11:48:33.094  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2019-12-04 11:48:33.098  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_3
+2019-12-04 11:48:33.101  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_3
+2019-12-04 11:48:33.103  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_3
+2019-12-04 11:48:33.106  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_3
+2019-12-04 11:48:33.109  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2019-12-04 11:48:33.112  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_4
+2019-12-04 11:48:33.118  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_4
+2019-12-04 11:48:33.120  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_4
+2019-12-04 11:48:33.122  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_4
+2019-12-04 11:48:33.124  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2019-12-04 11:48:33.127  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_5
+2019-12-04 11:48:33.129  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_5
+2019-12-04 11:48:33.131  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_5
+2019-12-04 11:48:33.133  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_5
+2019-12-04 11:48:33.135  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2019-12-04 11:48:33.138  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_6
+2019-12-04 11:48:33.140  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_6
+2019-12-04 11:48:33.142  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_6
+2019-12-04 11:48:33.145  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_6
+2019-12-04 11:48:33.148  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_7
+2019-12-04 11:48:33.151  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_7
+2019-12-04 11:48:33.153  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_7
+2019-12-04 11:48:33.155  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_7
+2019-12-04 11:48:33.158  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_7
+2019-12-04 11:48:33.159  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_8
+2019-12-04 11:48:33.162  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_8
+2019-12-04 11:48:33.164  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_8
+2019-12-04 11:48:33.165  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_8
+2019-12-04 11:48:33.168  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_8
+2019-12-04 11:48:33.170  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_9
+2019-12-04 11:48:33.173  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_9
+2019-12-04 11:48:33.175  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_9
+2019-12-04 11:48:33.176  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_9
+2019-12-04 11:48:33.179  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_9
+2019-12-04 11:48:33.181  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_10
+2019-12-04 11:48:33.185  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_10
+2019-12-04 11:48:33.187  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_10
+2019-12-04 11:48:33.188  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_10
+2019-12-04 11:48:33.192  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_10
+2019-12-04 11:48:33.193  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_11
+2019-12-04 11:48:33.196  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_11
+2019-12-04 11:48:33.198  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_11
+2019-12-04 11:48:33.199  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_11
+2019-12-04 11:48:33.202  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_11
+2019-12-04 11:48:33.206  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2019-12-04 11:48:33.212  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_12
+2019-12-04 11:48:33.215  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_12
+2019-12-04 11:48:33.217  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_12
+2019-12-04 11:48:33.218  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_12
+2019-12-04 11:48:33.221  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_12
+2019-12-04 11:48:33.222  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_13
+2019-12-04 11:48:33.225  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_13
+2019-12-04 11:48:33.227  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_13
+2019-12-04 11:48:33.229  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_13
+2019-12-04 11:48:33.231  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_13
+2019-12-04 11:48:33.233  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_14
+2019-12-04 11:48:33.235  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_14
+2019-12-04 11:48:33.238  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_14
+2019-12-04 11:48:33.238  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_14
+2019-12-04 11:48:33.241  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_14
+2019-12-04 11:48:33.242  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: chuanTuUsingPOST_1
+2019-12-04 11:48:33.245  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_15
+2019-12-04 11:48:33.247  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_15
+2019-12-04 11:48:33.249  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_15
+2019-12-04 11:48:33.250  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_15
+2019-12-04 11:48:33.253  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_15
+2019-12-04 11:48:33.255  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_16
+2019-12-04 11:48:33.259  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_16
+2019-12-04 11:48:33.261  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_16
+2019-12-04 11:48:33.263  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_16
+2019-12-04 11:48:33.268  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_16
+2019-12-04 11:48:33.271  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_17
+2019-12-04 11:48:33.274  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_17
+2019-12-04 11:48:33.277  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_17
+2019-12-04 11:48:33.278  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_17
+2019-12-04 11:48:33.281  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_17
+2019-12-04 11:48:33.283  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_18
+2019-12-04 11:48:33.287  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_18
+2019-12-04 11:48:33.293  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_18
+2019-12-04 11:48:33.294  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_18
+2019-12-04 11:48:33.298  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_18
+2019-12-04 11:48:33.300  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_19
+2019-12-04 11:48:33.303  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_19
+2019-12-04 11:48:33.306  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_19
+2019-12-04 11:48:33.307  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_19
+2019-12-04 11:48:33.310  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_19
+2019-12-04 11:48:33.311  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_20
+2019-12-04 11:48:33.315  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_20
+2019-12-04 11:48:33.318  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_20
+2019-12-04 11:48:33.320  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_20
+2019-12-04 11:48:33.322  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_20
+2019-12-04 11:48:33.324  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_21
+2019-12-04 11:48:33.327  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_21
+2019-12-04 11:48:33.329  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByuserIDUsingGET_1
+2019-12-04 11:48:33.331  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_21
+2019-12-04 11:48:33.332  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_21
+2019-12-04 11:48:33.334  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_21
+2019-12-04 11:48:33.336  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_22
+2019-12-04 11:48:33.339  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_22
+2019-12-04 11:48:33.341  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_22
+2019-12-04 11:48:33.343  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_22
+2019-12-04 11:48:33.345  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_22
+2019-12-04 11:48:33.346  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_23
+2019-12-04 11:48:33.348  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_23
+2019-12-04 11:48:33.351  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_23
+2019-12-04 11:48:33.352  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_23
+2019-12-04 11:48:33.356  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_23
+2019-12-04 11:48:33.357  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_24
+2019-12-04 11:48:33.360  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_24
+2019-12-04 11:48:33.362  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_24
+2019-12-04 11:48:33.363  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_24
+2019-12-04 11:48:33.365  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_24
+2019-12-04 11:48:33.367  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_25
+2019-12-04 11:48:33.370  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_25
+2019-12-04 11:48:33.372  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_25
+2019-12-04 11:48:33.374  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_25
+2019-12-04 11:48:33.377  INFO 9476 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_25
+2019-12-04 11:48:33.384  INFO 9476 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 4396 (http) with context path ''
+2019-12-04 11:48:33.384  INFO 9476 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Started WxprogramApplication in 2.192 seconds (JVM running for 246.041)
+2019-12-04 11:48:33.386  INFO 9476 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-12-04 11:48:40.646  INFO 9476 --- [http-nio-4396-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-04 11:48:40.647  INFO 9476 --- [http-nio-4396-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-12-04 11:48:40.654  INFO 9476 --- [http-nio-4396-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2019-12-04 11:48:40.664 DEBUG 9476 --- [http-nio-4396-exec-3] c.h.w.m.SportsplanMapper.selectList      : ==>  Preparing: SELECT id AS id,planObjectives,planUseDays,userID,masterPlanBurn,masterPlanIntake,planStratTime,planType,planEndDate,coachID FROM t_sportsplan WHERE (planType = ? AND userID = ?) 
+2019-12-04 11:48:40.665 DEBUG 9476 --- [http-nio-4396-exec-3] c.h.w.m.SportsplanMapper.selectList      : ==> Parameters: 1(Integer), 1(Integer)
+2019-12-04 11:48:40.666 DEBUG 9476 --- [http-nio-4396-exec-3] c.h.w.m.SportsplanMapper.selectList      : <==      Total: 1
+2019-12-04 11:48:40.670 DEBUG 9476 --- [http-nio-4396-exec-3] c.h.w.m.T.selectList                     : ==>  Preparing: SELECT id AS id,intakePlan,userID,`date`,intakeSJ,sportsPlanID FROM t_todayintakeplan WHERE (sportsPlanID = ? AND date = ?) 
+2019-12-04 11:48:40.670 DEBUG 9476 --- [http-nio-4396-exec-3] c.h.w.m.T.selectList                     : ==> Parameters: 1(Integer), 2019.12.04(String)
+2019-12-04 11:48:40.671 DEBUG 9476 --- [http-nio-4396-exec-3] c.h.w.m.T.selectList                     : <==      Total: 1
+2019-12-04 11:48:40.674 DEBUG 9476 --- [http-nio-4396-exec-3] c.h.w.mapper.FoodMapper.selectList       : ==>  Preparing: SELECT id AS id,foodName,foodType,foodPro,carbon,xianweisu,todayIntakePlanID,foodWeight,foodCalories,foodFat,userID FROM t_food WHERE (todayIntakePlanID = ?) 
+2019-12-04 11:48:40.674 DEBUG 9476 --- [http-nio-4396-exec-3] c.h.w.mapper.FoodMapper.selectList       : ==> Parameters: 3(Integer)
+2019-12-04 11:48:40.674 DEBUG 9476 --- [http-nio-4396-exec-3] c.h.w.mapper.FoodMapper.selectList       : <==      Total: 1
+2019-12-04 14:15:16.003  INFO 9152 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Starting WxprogramApplication on DESKTOP-7KELHOS with PID 9152 (D:\opensource\workSpaceIDEA\wxprogram\target\classes started by 16960 in D:\opensource\workSpaceIDEA\wxprogram)
+2019-12-04 14:15:16.006 DEBUG 9152 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+2019-12-04 14:15:16.006  INFO 9152 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : No active profile set, falling back to default profiles: default
+2019-12-04 14:15:16.057  INFO 9152 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-04 14:15:16.058  INFO 9152 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-04 14:15:17.139  INFO 9152 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-04 14:15:17.141  INFO 9152 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-04 14:15:17.182  INFO 9152 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27ms. Found 0 repository interfaces.
+2019-12-04 14:15:17.582  INFO 9152 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:15:17.604  INFO 9152 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.hsport.wxprogram.config.TxAnoConfig$$EnhancerBySpringCGLIB$$5d2c5dd1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:15:17.608  INFO 9152 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:15:17.609  INFO 9152 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:15:17.628  INFO 9152 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:15:17.649  INFO 9152 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.zaxxer.hikari.HikariDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:15:17.657  INFO 9152 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:15:17.661  INFO 9152 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:15:17.665  INFO 9152 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:15:17.666  INFO 9152 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:15:17.670  INFO 9152 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:15:17.680  INFO 9152 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txSource' of type [org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:15:17.681  INFO 9152 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txInterceptor' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:15:17.684  INFO 9152 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'pointcutAdvisor' of type [org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:15:18.074  INFO 9152 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 4396 (http)
+2019-12-04 14:15:18.083  INFO 9152 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-12-04 14:15:18.084  INFO 9152 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-04 14:15:18.184  INFO 9152 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-12-04 14:15:18.184  INFO 9152 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2126 ms
+2019-12-04 14:15:18.413  INFO 9152 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-12-04 14:15:19.002  INFO 9152 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-12-04 14:15:19.976  WARN 9152 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'burncaloriesController' defined in file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\web\controller\wxduan\BurncaloriesController.class]: Post-processing of merged bean definition failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hsport.wxprogram.web.controller.wxduan.BurncaloriesController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@69d6019d]
+2019-12-04 14:15:19.977  INFO 9152 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-12-04 14:15:19.987  INFO 9152 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-12-04 14:15:19.990  INFO 9152 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2019-12-04 14:15:20.000  INFO 9152 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-12-04 14:15:20.011 ERROR 9152 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'burncaloriesController' defined in file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\web\controller\wxduan\BurncaloriesController.class]: Post-processing of merged bean definition failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.hsport.wxprogram.web.controller.wxduan.BurncaloriesController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@69d6019d]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$$Lambda$171/1747176656.getObject(Unknown Source) ~[na:na]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878) ~[spring-context-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141) ~[spring-boot-2.2.1.RELEASE.jar:2.2.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747) [spring-boot-2.2.1.RELEASE.jar:2.2.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.2.1.RELEASE.jar:2.2.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-2.2.1.RELEASE.jar:2.2.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) [spring-boot-2.2.1.RELEASE.jar:2.2.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215) [spring-boot-2.2.1.RELEASE.jar:2.2.1.RELEASE]
+	at com.hsport.wxprogram.WxprogramApplication.main(WxprogramApplication.java:10) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[na:1.8.0_25]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.2.1.RELEASE.jar:2.2.1.RELEASE]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.hsport.wxprogram.web.controller.wxduan.BurncaloriesController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@69d6019d]
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:728) ~[spring-core-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.util.ReflectionUtils.doWithLocalFields(ReflectionUtils.java:660) ~[spring-core-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.buildResourceMetadata(CommonAnnotationBeanPostProcessor.java:382) ~[spring-context-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.findResourceMetadata(CommonAnnotationBeanPostProcessor.java:363) ~[spring-context-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessMergedBeanDefinition(CommonAnnotationBeanPostProcessor.java:311) ~[spring-context-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyMergedBeanDefinitionPostProcessors(AbstractAutowireCapableBeanFactory.java:1094) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	... 21 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: Lcom/hsport/wxprogram/service/IBurncaloriesService;
+	at java.lang.Class.getDeclaredFields0(Native Method) ~[na:1.8.0_25]
+	at java.lang.Class.privateGetDeclaredFields(Class.java:2575) ~[na:1.8.0_25]
+	at java.lang.Class.getDeclaredFields(Class.java:1908) ~[na:1.8.0_25]
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:723) ~[spring-core-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	... 27 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.hsport.wxprogram.service.IBurncaloriesService
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:372) ~[na:1.8.0_25]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:361) ~[na:1.8.0_25]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_25]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:360) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_25]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_25]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:144) ~[spring-boot-devtools-2.2.1.RELEASE.jar:2.2.1.RELEASE]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_25]
+	... 31 common frames omitted
+
+2019-12-04 14:15:58.766  INFO 12864 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Starting WxprogramApplication on DESKTOP-7KELHOS with PID 12864 (D:\opensource\workSpaceIDEA\wxprogram\target\classes started by 16960 in D:\opensource\workSpaceIDEA\wxprogram)
+2019-12-04 14:15:58.770 DEBUG 12864 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+2019-12-04 14:15:58.770  INFO 12864 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : No active profile set, falling back to default profiles: default
+2019-12-04 14:15:58.824  INFO 12864 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-04 14:15:58.824  INFO 12864 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-04 14:16:00.037  INFO 12864 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-04 14:16:00.039  INFO 12864 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-04 14:16:00.077  INFO 12864 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23ms. Found 0 repository interfaces.
+2019-12-04 14:16:00.438  INFO 12864 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:16:00.468  INFO 12864 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.hsport.wxprogram.config.TxAnoConfig$$EnhancerBySpringCGLIB$$22ae7735] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:16:00.473  INFO 12864 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:16:00.473  INFO 12864 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:16:00.496  INFO 12864 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:16:00.521  INFO 12864 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.zaxxer.hikari.HikariDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:16:00.531  INFO 12864 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:16:00.534  INFO 12864 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:16:00.539  INFO 12864 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:16:00.540  INFO 12864 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:16:00.546  INFO 12864 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:16:00.559  INFO 12864 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txSource' of type [org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:16:00.560  INFO 12864 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txInterceptor' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:16:00.563  INFO 12864 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'pointcutAdvisor' of type [org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:16:01.012  INFO 12864 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 4396 (http)
+2019-12-04 14:16:01.023  INFO 12864 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-12-04 14:16:01.024  INFO 12864 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-04 14:16:01.129  INFO 12864 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-12-04 14:16:01.129  INFO 12864 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2305 ms
+2019-12-04 14:16:01.449  INFO 12864 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-12-04 14:16:02.058  INFO 12864 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-12-04 14:16:02.421  WARN 12864 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bodyServiceImpl': Unsatisfied dependency expressed through field 'baseMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bodyMapper' defined in file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\mapper\BodyMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/spring/boot/starter/MybatisPlusAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\mapper\IntakeMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\mapper\IntakeMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.hsport.wxprogram.domain.Intake'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.hsport.wxprogram.domain.Intake
+2019-12-04 14:16:02.421  INFO 12864 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-12-04 14:16:02.427  INFO 12864 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-12-04 14:16:02.430  INFO 12864 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2019-12-04 14:16:02.441  INFO 12864 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-12-04 14:16:02.456 ERROR 12864 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bodyServiceImpl': Unsatisfied dependency expressed through field 'baseMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bodyMapper' defined in file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\mapper\BodyMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/spring/boot/starter/MybatisPlusAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\mapper\IntakeMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\mapper\IntakeMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.hsport.wxprogram.domain.Intake'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.hsport.wxprogram.domain.Intake
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:639) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:116) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:397) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1429) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$$Lambda$158/908622141.getObject(Unknown Source) ~[na:na]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878) ~[spring-context-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141) ~[spring-boot-2.2.1.RELEASE.jar:2.2.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747) [spring-boot-2.2.1.RELEASE.jar:2.2.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.2.1.RELEASE.jar:2.2.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-2.2.1.RELEASE.jar:2.2.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) [spring-boot-2.2.1.RELEASE.jar:2.2.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215) [spring-boot-2.2.1.RELEASE.jar:2.2.1.RELEASE]
+	at com.hsport.wxprogram.WxprogramApplication.main(WxprogramApplication.java:10) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[na:1.8.0_25]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.2.1.RELEASE.jar:2.2.1.RELEASE]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bodyMapper' defined in file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\mapper\BodyMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/spring/boot/starter/MybatisPlusAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\mapper\IntakeMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\mapper\IntakeMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.hsport.wxprogram.domain.Intake'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.hsport.wxprogram.domain.Intake
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1533) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1413) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$$Lambda$158/908622141.getObject(Unknown Source) ~[na:na]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1287) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1207) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:636) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	... 25 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/spring/boot/starter/MybatisPlusAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\mapper\IntakeMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\mapper\IntakeMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.hsport.wxprogram.domain.Intake'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.hsport.wxprogram.domain.Intake
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:645) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:625) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$$Lambda$158/908622141.getObject(Unknown Source) ~[na:na]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1287) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1207) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1518) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	... 37 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\mapper\IntakeMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\mapper\IntakeMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.hsport.wxprogram.domain.Intake'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.hsport.wxprogram.domain.Intake
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:640) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	... 51 common frames omitted
+Caused by: org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\mapper\IntakeMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\mapper\IntakeMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.hsport.wxprogram.domain.Intake'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.hsport.wxprogram.domain.Intake
+	at com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean.buildSqlSessionFactory(MybatisSqlSessionFactoryBean.java:585) ~[mybatis-plus-core-2.2.0.jar:na]
+	at com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean.afterPropertiesSet(MybatisSqlSessionFactoryBean.java:385) ~[mybatis-plus-core-2.2.0.jar:na]
+	at com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean.getObject(MybatisSqlSessionFactoryBean.java:608) ~[mybatis-plus-core-2.2.0.jar:na]
+	at com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusAutoConfiguration.sqlSessionFactory(MybatisPlusAutoConfiguration.java:177) ~[mybatis-plus-boot-starter-2.2.0.jar:na]
+	at com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$c86e16d9.CGLIB$sqlSessionFactory$0(<generated>) ~[mybatis-plus-boot-starter-2.2.0.jar:na]
+	at com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$c86e16d9$$FastClassBySpringCGLIB$$1a992c5f.invoke(<generated>) ~[mybatis-plus-boot-starter-2.2.0.jar:na]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244) ~[spring-core-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:363) ~[spring-context-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	at com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$c86e16d9.sqlSessionFactory(<generated>) ~[mybatis-plus-boot-starter-2.2.0.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[na:1.8.0_25]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.2.1.RELEASE.jar:5.2.1.RELEASE]
+	... 52 common frames omitted
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\opensource\workSpaceIDEA\wxprogram\target\classes\com\hsport\wxprogram\mapper\IntakeMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.hsport.wxprogram.domain.Intake'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.hsport.wxprogram.domain.Intake
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:120) ~[mybatis-3.4.6.jar:3.4.6]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:92) ~[mybatis-3.4.6.jar:3.4.6]
+	at com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean.buildSqlSessionFactory(MybatisSqlSessionFactoryBean.java:583) ~[mybatis-plus-core-2.2.0.jar:na]
+	... 65 common frames omitted
+Caused by: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.hsport.wxprogram.domain.Intake'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.hsport.wxprogram.domain.Intake
+	at org.apache.ibatis.builder.BaseBuilder.resolveClass(BaseBuilder.java:118) ~[mybatis-3.4.6.jar:3.4.6]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:265) ~[mybatis-3.4.6.jar:3.4.6]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:252) ~[mybatis-3.4.6.jar:3.4.6]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElements(XMLMapperBuilder.java:244) ~[mybatis-3.4.6.jar:3.4.6]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:116) ~[mybatis-3.4.6.jar:3.4.6]
+	... 67 common frames omitted
+Caused by: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.hsport.wxprogram.domain.Intake'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.hsport.wxprogram.domain.Intake
+	at org.apache.ibatis.type.TypeAliasRegistry.resolveAlias(TypeAliasRegistry.java:120) ~[mybatis-3.4.6.jar:3.4.6]
+	at org.apache.ibatis.builder.BaseBuilder.resolveAlias(BaseBuilder.java:149) ~[mybatis-3.4.6.jar:3.4.6]
+	at org.apache.ibatis.builder.BaseBuilder.resolveClass(BaseBuilder.java:116) ~[mybatis-3.4.6.jar:3.4.6]
+	... 71 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Cannot find class: com.hsport.wxprogram.domain.Intake
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:200) ~[mybatis-3.4.6.jar:3.4.6]
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:89) ~[mybatis-3.4.6.jar:3.4.6]
+	at org.apache.ibatis.io.Resources.classForName(Resources.java:261) ~[mybatis-3.4.6.jar:3.4.6]
+	at org.apache.ibatis.type.TypeAliasRegistry.resolveAlias(TypeAliasRegistry.java:116) ~[mybatis-3.4.6.jar:3.4.6]
+	... 73 common frames omitted
+
+2019-12-04 14:17:30.793  INFO 820 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Starting WxprogramApplication on DESKTOP-7KELHOS with PID 820 (D:\opensource\workSpaceIDEA\wxprogram\target\classes started by 16960 in D:\opensource\workSpaceIDEA\wxprogram)
+2019-12-04 14:17:30.796 DEBUG 820 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+2019-12-04 14:17:30.796  INFO 820 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : No active profile set, falling back to default profiles: default
+2019-12-04 14:17:30.849  INFO 820 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-04 14:17:30.850  INFO 820 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-04 14:17:31.762  INFO 820 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-04 14:17:31.764  INFO 820 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-04 14:17:31.800  INFO 820 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23ms. Found 0 repository interfaces.
+2019-12-04 14:17:32.095  INFO 820 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:17:32.117  INFO 820 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.hsport.wxprogram.config.TxAnoConfig$$EnhancerBySpringCGLIB$$81563b78] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:17:32.120  INFO 820 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:17:32.121  INFO 820 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:17:32.139  INFO 820 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:17:32.160  INFO 820 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.zaxxer.hikari.HikariDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:17:32.169  INFO 820 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:17:32.172  INFO 820 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:17:32.177  INFO 820 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:17:32.178  INFO 820 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:17:32.182  INFO 820 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:17:32.194  INFO 820 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txSource' of type [org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:17:32.194  INFO 820 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txInterceptor' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:17:32.197  INFO 820 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'pointcutAdvisor' of type [org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:17:32.567  INFO 820 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 4396 (http)
+2019-12-04 14:17:32.576  INFO 820 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-12-04 14:17:32.576  INFO 820 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-04 14:17:32.672  INFO 820 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-12-04 14:17:32.673  INFO 820 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1823 ms
+2019-12-04 14:17:32.883  INFO 820 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-12-04 14:17:33.469  INFO 820 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-12-04 14:17:34.720  INFO 820 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2019-12-04 14:17:34.803  INFO 820 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-12-04 14:17:35.387  INFO 820 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-12-04 14:17:35.402  INFO 820 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-12-04 14:17:35.463  INFO 820 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-12-04 14:17:35.604  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2019-12-04 14:17:35.609  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2019-12-04 14:17:35.616  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_1
+2019-12-04 14:17:35.617  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_1
+2019-12-04 14:17:35.621  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_1
+2019-12-04 14:17:35.624  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2019-12-04 14:17:35.631  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2019-12-04 14:17:35.638  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_2
+2019-12-04 14:17:35.640  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_2
+2019-12-04 14:17:35.647  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_2
+2019-12-04 14:17:35.652  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2019-12-04 14:17:35.657  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_3
+2019-12-04 14:17:35.669  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_3
+2019-12-04 14:17:35.671  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_3
+2019-12-04 14:17:35.675  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_3
+2019-12-04 14:17:35.678  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2019-12-04 14:17:35.682  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_4
+2019-12-04 14:17:35.687  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_4
+2019-12-04 14:17:35.689  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_4
+2019-12-04 14:17:35.693  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_4
+2019-12-04 14:17:35.695  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2019-12-04 14:17:35.700  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_5
+2019-12-04 14:17:35.703  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_5
+2019-12-04 14:17:35.705  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_5
+2019-12-04 14:17:35.710  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_5
+2019-12-04 14:17:35.714  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2019-12-04 14:17:35.719  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_6
+2019-12-04 14:17:35.722  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_6
+2019-12-04 14:17:35.725  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_6
+2019-12-04 14:17:35.729  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_6
+2019-12-04 14:17:35.731  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_7
+2019-12-04 14:17:35.735  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_7
+2019-12-04 14:17:35.739  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_7
+2019-12-04 14:17:35.741  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_7
+2019-12-04 14:17:35.743  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_7
+2019-12-04 14:17:35.746  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_8
+2019-12-04 14:17:35.749  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_8
+2019-12-04 14:17:35.753  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_8
+2019-12-04 14:17:35.755  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_8
+2019-12-04 14:17:35.759  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_8
+2019-12-04 14:17:35.763  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_9
+2019-12-04 14:17:35.767  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_9
+2019-12-04 14:17:35.769  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingGET_1
+2019-12-04 14:17:35.772  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_9
+2019-12-04 14:17:35.774  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_9
+2019-12-04 14:17:35.776  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_9
+2019-12-04 14:17:35.788  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2019-12-04 14:17:35.796  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_10
+2019-12-04 14:17:35.800  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_10
+2019-12-04 14:17:35.803  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_10
+2019-12-04 14:17:35.805  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_10
+2019-12-04 14:17:35.808  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_10
+2019-12-04 14:17:35.810  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_11
+2019-12-04 14:17:35.813  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_11
+2019-12-04 14:17:35.817  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_11
+2019-12-04 14:17:35.819  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_11
+2019-12-04 14:17:35.823  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_11
+2019-12-04 14:17:35.825  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_12
+2019-12-04 14:17:35.828  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_12
+2019-12-04 14:17:35.830  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingGET_2
+2019-12-04 14:17:35.834  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_12
+2019-12-04 14:17:35.836  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_12
+2019-12-04 14:17:35.839  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_12
+2019-12-04 14:17:35.841  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: chuanTuUsingPOST_1
+2019-12-04 14:17:35.843  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_13
+2019-12-04 14:17:35.847  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_13
+2019-12-04 14:17:35.850  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_13
+2019-12-04 14:17:35.852  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_13
+2019-12-04 14:17:35.855  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_13
+2019-12-04 14:17:35.857  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_14
+2019-12-04 14:17:35.861  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_14
+2019-12-04 14:17:35.864  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_14
+2019-12-04 14:17:35.866  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_14
+2019-12-04 14:17:35.873  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_14
+2019-12-04 14:17:35.876  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_15
+2019-12-04 14:17:35.879  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_15
+2019-12-04 14:17:35.881  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingGET_3
+2019-12-04 14:17:35.884  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_15
+2019-12-04 14:17:35.886  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_15
+2019-12-04 14:17:35.889  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_15
+2019-12-04 14:17:35.891  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_16
+2019-12-04 14:17:35.896  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_16
+2019-12-04 14:17:35.903  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_16
+2019-12-04 14:17:35.905  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_16
+2019-12-04 14:17:35.909  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_16
+2019-12-04 14:17:35.911  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_17
+2019-12-04 14:17:35.914  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_17
+2019-12-04 14:17:35.917  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_17
+2019-12-04 14:17:35.919  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_17
+2019-12-04 14:17:35.922  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_17
+2019-12-04 14:17:35.924  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_18
+2019-12-04 14:17:35.928  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_18
+2019-12-04 14:17:35.930  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingGET_4
+2019-12-04 14:17:35.936  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_18
+2019-12-04 14:17:35.937  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_18
+2019-12-04 14:17:35.941  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_18
+2019-12-04 14:17:35.943  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_19
+2019-12-04 14:17:35.946  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_19
+2019-12-04 14:17:35.948  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByuserIDUsingGET_1
+2019-12-04 14:17:35.950  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_19
+2019-12-04 14:17:35.952  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_19
+2019-12-04 14:17:35.955  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_19
+2019-12-04 14:17:35.957  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_20
+2019-12-04 14:17:35.960  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_20
+2019-12-04 14:17:35.962  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_20
+2019-12-04 14:17:35.964  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_20
+2019-12-04 14:17:35.966  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_20
+2019-12-04 14:17:35.968  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_21
+2019-12-04 14:17:35.970  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_21
+2019-12-04 14:17:35.972  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_21
+2019-12-04 14:17:35.974  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_21
+2019-12-04 14:17:35.978  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_21
+2019-12-04 14:17:35.980  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_22
+2019-12-04 14:17:35.983  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_22
+2019-12-04 14:17:35.986  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_22
+2019-12-04 14:17:35.988  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_22
+2019-12-04 14:17:35.990  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_22
+2019-12-04 14:17:35.992  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_23
+2019-12-04 14:17:35.995  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_23
+2019-12-04 14:17:35.997  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingGET_5
+2019-12-04 14:17:36.000  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_23
+2019-12-04 14:17:36.001  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_23
+2019-12-04 14:17:36.005  INFO 820 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_23
+2019-12-04 14:17:36.046  INFO 820 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 4396 (http) with context path ''
+2019-12-04 14:17:36.049  INFO 820 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Started WxprogramApplication in 5.683 seconds (JVM running for 6.628)
+2019-12-04 14:19:37.343  INFO 820 --- [http-nio-4396-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-04 14:19:37.343  INFO 820 --- [http-nio-4396-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-12-04 14:19:37.354  INFO 820 --- [http-nio-4396-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2019-12-04 14:19:37.456 DEBUG 820 --- [http-nio-4396-exec-1] c.h.w.m.T.selectList                     : ==>  Preparing: SELECT id AS id,breakfastIntake,lunchIntake,dinnerIntake,mealAdditionIntake,intakePlan,userID,`date`,intakeSJ,sportsPlanID FROM t_todayintakeplan WHERE (userID = ?) 
+2019-12-04 14:19:37.471 DEBUG 820 --- [http-nio-4396-exec-1] c.h.w.m.T.selectList                     : ==> Parameters: 1(Integer)
+2019-12-04 14:19:37.500 DEBUG 820 --- [http-nio-4396-exec-1] c.h.w.m.T.selectList                     : <==      Total: 3
+2019-12-04 14:19:37.501  WARN 820 --- [http-nio-4396-exec-1] c.baomidou.mybatisplus.mapper.SqlHelper  : Warn: execute Method There are  3 results.
+2019-12-04 14:20:42.837  INFO 16432 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Starting WxprogramApplication on DESKTOP-7KELHOS with PID 16432 (D:\opensource\workSpaceIDEA\wxprogram\target\classes started by 16960 in D:\opensource\workSpaceIDEA\wxprogram)
+2019-12-04 14:20:42.839 DEBUG 16432 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+2019-12-04 14:20:42.840  INFO 16432 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : No active profile set, falling back to default profiles: default
+2019-12-04 14:20:42.881  INFO 16432 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-04 14:20:42.882  INFO 16432 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-04 14:20:43.863  INFO 16432 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-04 14:20:43.865  INFO 16432 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-04 14:20:43.902  INFO 16432 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24ms. Found 0 repository interfaces.
+2019-12-04 14:20:44.213  INFO 16432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:20:44.234  INFO 16432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.hsport.wxprogram.config.TxAnoConfig$$EnhancerBySpringCGLIB$$86f1fb8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:20:44.238  INFO 16432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:20:44.239  INFO 16432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:20:44.257  INFO 16432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:20:44.278  INFO 16432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.zaxxer.hikari.HikariDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:20:44.287  INFO 16432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:20:44.290  INFO 16432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:20:44.294  INFO 16432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:20:44.295  INFO 16432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:20:44.300  INFO 16432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:20:44.310  INFO 16432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txSource' of type [org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:20:44.311  INFO 16432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txInterceptor' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:20:44.313  INFO 16432 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'pointcutAdvisor' of type [org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:20:44.681  INFO 16432 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 4396 (http)
+2019-12-04 14:20:44.690  INFO 16432 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-12-04 14:20:44.690  INFO 16432 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-04 14:20:44.789  INFO 16432 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-12-04 14:20:44.789  INFO 16432 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1907 ms
+2019-12-04 14:20:44.998  INFO 16432 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-12-04 14:20:45.587  INFO 16432 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-12-04 14:20:46.818  INFO 16432 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2019-12-04 14:20:46.902  INFO 16432 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-12-04 14:20:47.474  INFO 16432 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-12-04 14:20:47.489  INFO 16432 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-12-04 14:20:47.557  INFO 16432 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-12-04 14:20:47.697  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2019-12-04 14:20:47.700  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2019-12-04 14:20:47.706  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_1
+2019-12-04 14:20:47.707  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_1
+2019-12-04 14:20:47.712  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_1
+2019-12-04 14:20:47.714  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2019-12-04 14:20:47.721  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2019-12-04 14:20:47.728  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_2
+2019-12-04 14:20:47.730  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_2
+2019-12-04 14:20:47.736  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_2
+2019-12-04 14:20:47.741  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2019-12-04 14:20:47.745  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_3
+2019-12-04 14:20:47.756  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_3
+2019-12-04 14:20:47.758  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_3
+2019-12-04 14:20:47.762  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_3
+2019-12-04 14:20:47.764  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2019-12-04 14:20:47.767  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_4
+2019-12-04 14:20:47.773  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_4
+2019-12-04 14:20:47.775  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_4
+2019-12-04 14:20:47.778  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_4
+2019-12-04 14:20:47.781  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2019-12-04 14:20:47.785  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_5
+2019-12-04 14:20:47.789  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_5
+2019-12-04 14:20:47.791  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_5
+2019-12-04 14:20:47.795  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_5
+2019-12-04 14:20:47.800  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2019-12-04 14:20:47.805  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_6
+2019-12-04 14:20:47.808  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_6
+2019-12-04 14:20:47.810  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_6
+2019-12-04 14:20:47.814  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_6
+2019-12-04 14:20:47.817  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_7
+2019-12-04 14:20:47.820  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_7
+2019-12-04 14:20:47.824  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_7
+2019-12-04 14:20:47.826  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_7
+2019-12-04 14:20:47.828  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_7
+2019-12-04 14:20:47.831  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_8
+2019-12-04 14:20:47.835  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_8
+2019-12-04 14:20:47.838  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_8
+2019-12-04 14:20:47.840  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_8
+2019-12-04 14:20:47.844  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_8
+2019-12-04 14:20:47.848  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_9
+2019-12-04 14:20:47.852  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_9
+2019-12-04 14:20:47.853  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingGET_1
+2019-12-04 14:20:47.856  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_9
+2019-12-04 14:20:47.858  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_9
+2019-12-04 14:20:47.861  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_9
+2019-12-04 14:20:47.873  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2019-12-04 14:20:47.881  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_10
+2019-12-04 14:20:47.884  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_10
+2019-12-04 14:20:47.887  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_10
+2019-12-04 14:20:47.889  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_10
+2019-12-04 14:20:47.892  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_10
+2019-12-04 14:20:47.893  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_11
+2019-12-04 14:20:47.896  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_11
+2019-12-04 14:20:47.899  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_11
+2019-12-04 14:20:47.901  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_11
+2019-12-04 14:20:47.904  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_11
+2019-12-04 14:20:47.906  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_12
+2019-12-04 14:20:47.909  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_12
+2019-12-04 14:20:47.911  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingGET_2
+2019-12-04 14:20:47.915  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_12
+2019-12-04 14:20:47.916  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_12
+2019-12-04 14:20:47.919  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_12
+2019-12-04 14:20:47.921  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: chuanTuUsingPOST_1
+2019-12-04 14:20:47.923  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_13
+2019-12-04 14:20:47.927  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_13
+2019-12-04 14:20:47.930  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_13
+2019-12-04 14:20:47.932  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_13
+2019-12-04 14:20:47.934  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_13
+2019-12-04 14:20:47.937  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_14
+2019-12-04 14:20:47.941  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_14
+2019-12-04 14:20:47.944  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_14
+2019-12-04 14:20:47.946  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_14
+2019-12-04 14:20:47.952  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_14
+2019-12-04 14:20:47.956  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_15
+2019-12-04 14:20:47.960  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_15
+2019-12-04 14:20:47.962  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingGET_3
+2019-12-04 14:20:47.965  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_15
+2019-12-04 14:20:47.967  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_15
+2019-12-04 14:20:47.969  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_15
+2019-12-04 14:20:47.971  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_16
+2019-12-04 14:20:47.977  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_16
+2019-12-04 14:20:47.983  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_16
+2019-12-04 14:20:47.985  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_16
+2019-12-04 14:20:47.990  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_16
+2019-12-04 14:20:47.992  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_17
+2019-12-04 14:20:47.996  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_17
+2019-12-04 14:20:47.999  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_17
+2019-12-04 14:20:48.001  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_17
+2019-12-04 14:20:48.005  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_17
+2019-12-04 14:20:48.007  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_18
+2019-12-04 14:20:48.010  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_18
+2019-12-04 14:20:48.012  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingGET_4
+2019-12-04 14:20:48.018  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_18
+2019-12-04 14:20:48.020  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_18
+2019-12-04 14:20:48.023  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_18
+2019-12-04 14:20:48.025  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_19
+2019-12-04 14:20:48.028  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_19
+2019-12-04 14:20:48.030  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByuserIDUsingGET_1
+2019-12-04 14:20:48.033  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_19
+2019-12-04 14:20:48.034  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_19
+2019-12-04 14:20:48.037  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_19
+2019-12-04 14:20:48.039  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_20
+2019-12-04 14:20:48.042  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_20
+2019-12-04 14:20:48.045  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_20
+2019-12-04 14:20:48.047  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_20
+2019-12-04 14:20:48.050  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_20
+2019-12-04 14:20:48.052  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_21
+2019-12-04 14:20:48.053  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_21
+2019-12-04 14:20:48.056  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_21
+2019-12-04 14:20:48.058  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_21
+2019-12-04 14:20:48.063  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_21
+2019-12-04 14:20:48.066  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_22
+2019-12-04 14:20:48.069  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_22
+2019-12-04 14:20:48.072  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_22
+2019-12-04 14:20:48.074  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_22
+2019-12-04 14:20:48.076  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_22
+2019-12-04 14:20:48.078  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_23
+2019-12-04 14:20:48.083  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_23
+2019-12-04 14:20:48.084  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingGET_5
+2019-12-04 14:20:48.088  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_23
+2019-12-04 14:20:48.089  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_23
+2019-12-04 14:20:48.093  INFO 16432 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_23
+2019-12-04 14:20:48.133  INFO 16432 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 4396 (http) with context path ''
+2019-12-04 14:20:48.136  INFO 16432 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Started WxprogramApplication in 5.721 seconds (JVM running for 6.647)
+2019-12-04 14:20:55.973  INFO 16432 --- [http-nio-4396-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-04 14:20:55.974  INFO 16432 --- [http-nio-4396-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-12-04 14:20:55.983  INFO 16432 --- [http-nio-4396-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2019-12-04 14:20:56.084 DEBUG 16432 --- [http-nio-4396-exec-2] c.h.w.m.T.selectList                     : ==>  Preparing: SELECT id AS id,breakfastIntake,lunchIntake,dinnerIntake,mealAdditionIntake,intakePlan,userID,`date`,intakeSJ,sportsPlanID FROM t_todayintakeplan WHERE (userID = ? AND date = ?) 
+2019-12-04 14:20:56.099 DEBUG 16432 --- [http-nio-4396-exec-2] c.h.w.m.T.selectList                     : ==> Parameters: 1(Integer), 2019.12.04(String)
+2019-12-04 14:20:56.111 DEBUG 16432 --- [http-nio-4396-exec-2] c.h.w.m.T.selectList                     : <==      Total: 1
+2019-12-04 14:24:13.449 DEBUG 16432 --- [http-nio-4396-exec-4] c.h.w.m.T.selectList                     : ==>  Preparing: SELECT id AS id,breakfastIntake,lunchIntake,dinnerIntake,mealAdditionIntake,intakePlan,userID,`date`,intakeSJ,sportsPlanID FROM t_todayintakeplan WHERE (userID = ?) 
+2019-12-04 14:24:13.450 DEBUG 16432 --- [http-nio-4396-exec-4] c.h.w.m.T.selectList                     : ==> Parameters: 1(Integer)
+2019-12-04 14:24:13.451 DEBUG 16432 --- [http-nio-4396-exec-4] c.h.w.m.T.selectList                     : <==      Total: 3
+2019-12-04 14:24:13.452  WARN 16432 --- [http-nio-4396-exec-4] c.baomidou.mybatisplus.mapper.SqlHelper  : Warn: execute Method There are  3 results.
+2019-12-04 14:25:07.955  INFO 2244 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Starting WxprogramApplication on DESKTOP-7KELHOS with PID 2244 (D:\opensource\workSpaceIDEA\wxprogram\target\classes started by 16960 in D:\opensource\workSpaceIDEA\wxprogram)
+2019-12-04 14:25:07.960 DEBUG 2244 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+2019-12-04 14:25:07.960  INFO 2244 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : No active profile set, falling back to default profiles: default
+2019-12-04 14:25:08.014  INFO 2244 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-04 14:25:08.014  INFO 2244 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-04 14:25:09.042  INFO 2244 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-04 14:25:09.044  INFO 2244 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-04 14:25:09.079  INFO 2244 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22ms. Found 0 repository interfaces.
+2019-12-04 14:25:09.366  INFO 2244 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:25:09.388  INFO 2244 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.hsport.wxprogram.config.TxAnoConfig$$EnhancerBySpringCGLIB$$dddb1bea] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:25:09.391  INFO 2244 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:25:09.392  INFO 2244 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:25:09.411  INFO 2244 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:25:09.432  INFO 2244 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.zaxxer.hikari.HikariDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:25:09.441  INFO 2244 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:25:09.444  INFO 2244 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:25:09.448  INFO 2244 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:25:09.449  INFO 2244 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:25:09.454  INFO 2244 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:25:09.464  INFO 2244 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txSource' of type [org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:25:09.465  INFO 2244 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txInterceptor' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:25:09.467  INFO 2244 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'pointcutAdvisor' of type [org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-04 14:25:09.838  INFO 2244 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 4396 (http)
+2019-12-04 14:25:09.847  INFO 2244 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-12-04 14:25:09.848  INFO 2244 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-04 14:25:09.939  INFO 2244 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-12-04 14:25:09.939  INFO 2244 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1924 ms
+2019-12-04 14:25:10.149  INFO 2244 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-12-04 14:25:10.732  INFO 2244 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-12-04 14:25:12.010  INFO 2244 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2019-12-04 14:25:12.093  INFO 2244 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-12-04 14:25:12.650  INFO 2244 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-12-04 14:25:12.665  INFO 2244 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-12-04 14:25:12.733  INFO 2244 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-12-04 14:25:12.891  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2019-12-04 14:25:12.894  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2019-12-04 14:25:12.900  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_1
+2019-12-04 14:25:12.901  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_1
+2019-12-04 14:25:12.905  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_1
+2019-12-04 14:25:12.908  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2019-12-04 14:25:12.915  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2019-12-04 14:25:12.921  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_2
+2019-12-04 14:25:12.923  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_2
+2019-12-04 14:25:12.929  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_2
+2019-12-04 14:25:12.933  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2019-12-04 14:25:12.938  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_3
+2019-12-04 14:25:12.949  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_3
+2019-12-04 14:25:12.952  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_3
+2019-12-04 14:25:12.956  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_3
+2019-12-04 14:25:12.959  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2019-12-04 14:25:12.963  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_4
+2019-12-04 14:25:12.969  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_4
+2019-12-04 14:25:12.971  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_4
+2019-12-04 14:25:12.975  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_4
+2019-12-04 14:25:12.977  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2019-12-04 14:25:12.982  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_5
+2019-12-04 14:25:12.986  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_5
+2019-12-04 14:25:12.988  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_5
+2019-12-04 14:25:12.992  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_5
+2019-12-04 14:25:12.996  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2019-12-04 14:25:13.001  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_6
+2019-12-04 14:25:13.005  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_6
+2019-12-04 14:25:13.007  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_6
+2019-12-04 14:25:13.011  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_6
+2019-12-04 14:25:13.014  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_7
+2019-12-04 14:25:13.018  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_7
+2019-12-04 14:25:13.021  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_7
+2019-12-04 14:25:13.023  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_7
+2019-12-04 14:25:13.026  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_7
+2019-12-04 14:25:13.028  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_8
+2019-12-04 14:25:13.033  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_8
+2019-12-04 14:25:13.036  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_8
+2019-12-04 14:25:13.038  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_8
+2019-12-04 14:25:13.042  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_8
+2019-12-04 14:25:13.046  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_9
+2019-12-04 14:25:13.050  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_9
+2019-12-04 14:25:13.051  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingGET_1
+2019-12-04 14:25:13.055  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_9
+2019-12-04 14:25:13.057  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_9
+2019-12-04 14:25:13.060  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_9
+2019-12-04 14:25:13.072  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2019-12-04 14:25:13.079  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_10
+2019-12-04 14:25:13.083  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_10
+2019-12-04 14:25:13.086  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_10
+2019-12-04 14:25:13.088  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_10
+2019-12-04 14:25:13.091  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_10
+2019-12-04 14:25:13.093  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_11
+2019-12-04 14:25:13.096  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_11
+2019-12-04 14:25:13.099  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_11
+2019-12-04 14:25:13.101  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_11
+2019-12-04 14:25:13.104  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_11
+2019-12-04 14:25:13.106  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_12
+2019-12-04 14:25:13.110  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_12
+2019-12-04 14:25:13.111  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingGET_2
+2019-12-04 14:25:13.115  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_12
+2019-12-04 14:25:13.116  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_12
+2019-12-04 14:25:13.119  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_12
+2019-12-04 14:25:13.122  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: chuanTuUsingPOST_1
+2019-12-04 14:25:13.123  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_13
+2019-12-04 14:25:13.127  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_13
+2019-12-04 14:25:13.130  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_13
+2019-12-04 14:25:13.132  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_13
+2019-12-04 14:25:13.135  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_13
+2019-12-04 14:25:13.137  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_14
+2019-12-04 14:25:13.141  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_14
+2019-12-04 14:25:13.143  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_14
+2019-12-04 14:25:13.146  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_14
+2019-12-04 14:25:13.152  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_14
+2019-12-04 14:25:13.156  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_15
+2019-12-04 14:25:13.161  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_15
+2019-12-04 14:25:13.162  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingGET_3
+2019-12-04 14:25:13.166  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_15
+2019-12-04 14:25:13.167  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_15
+2019-12-04 14:25:13.170  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_15
+2019-12-04 14:25:13.172  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_16
+2019-12-04 14:25:13.177  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_16
+2019-12-04 14:25:13.183  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_16
+2019-12-04 14:25:13.185  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_16
+2019-12-04 14:25:13.189  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_16
+2019-12-04 14:25:13.191  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_17
+2019-12-04 14:25:13.195  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_17
+2019-12-04 14:25:13.198  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_17
+2019-12-04 14:25:13.200  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_17
+2019-12-04 14:25:13.203  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_17
+2019-12-04 14:25:13.205  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_18
+2019-12-04 14:25:13.209  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_18
+2019-12-04 14:25:13.211  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingGET_4
+2019-12-04 14:25:13.217  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_18
+2019-12-04 14:25:13.218  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_18
+2019-12-04 14:25:13.221  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_18
+2019-12-04 14:25:13.224  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_19
+2019-12-04 14:25:13.227  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_19
+2019-12-04 14:25:13.229  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByuserIDUsingGET_1
+2019-12-04 14:25:13.232  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_19
+2019-12-04 14:25:13.234  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_19
+2019-12-04 14:25:13.237  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_19
+2019-12-04 14:25:13.239  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_20
+2019-12-04 14:25:13.242  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_20
+2019-12-04 14:25:13.245  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_20
+2019-12-04 14:25:13.247  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_20
+2019-12-04 14:25:13.250  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_20
+2019-12-04 14:25:13.252  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_21
+2019-12-04 14:25:13.254  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_21
+2019-12-04 14:25:13.257  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_21
+2019-12-04 14:25:13.259  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_21
+2019-12-04 14:25:13.264  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_21
+2019-12-04 14:25:13.266  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_22
+2019-12-04 14:25:13.269  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_22
+2019-12-04 14:25:13.272  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_22
+2019-12-04 14:25:13.273  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_22
+2019-12-04 14:25:13.276  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_22
+2019-12-04 14:25:13.278  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_23
+2019-12-04 14:25:13.282  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_23
+2019-12-04 14:25:13.283  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingGET_5
+2019-12-04 14:25:13.285  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_23
+2019-12-04 14:25:13.288  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_23
+2019-12-04 14:25:13.291  INFO 2244 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_23
+2019-12-04 14:25:13.332  INFO 2244 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 4396 (http) with context path ''
+2019-12-04 14:25:13.334  INFO 2244 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Started WxprogramApplication in 5.881 seconds (JVM running for 6.818)
+2019-12-04 14:25:16.320  INFO 2244 --- [http-nio-4396-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-04 14:25:16.320  INFO 2244 --- [http-nio-4396-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-12-04 14:25:16.329  INFO 2244 --- [http-nio-4396-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2019-12-04 14:25:16.425 DEBUG 2244 --- [http-nio-4396-exec-3] c.h.w.m.T.selectList                     : ==>  Preparing: SELECT id AS id,breakfastIntake,lunchIntake,dinnerIntake,mealAdditionIntake,intakePlan,userID,`date`,intakeSJ,sportsPlanID FROM t_todayintakeplan WHERE (userID = ?) 
+2019-12-04 14:25:16.440 DEBUG 2244 --- [http-nio-4396-exec-3] c.h.w.m.T.selectList                     : ==> Parameters: 1(Integer)
+2019-12-04 14:25:16.453 DEBUG 2244 --- [http-nio-4396-exec-3] c.h.w.m.T.selectList                     : <==      Total: 3
+2019-12-04 14:27:15.739 DEBUG 2244 --- [http-nio-4396-exec-9] c.h.w.m.T.selectList                     : ==>  Preparing: SELECT id AS id,breakfastIntake,lunchIntake,dinnerIntake,mealAdditionIntake,intakePlan,userID,`date`,intakeSJ,sportsPlanID FROM t_todayintakeplan WHERE (userID = ?) 
+2019-12-04 14:27:15.740 DEBUG 2244 --- [http-nio-4396-exec-9] c.h.w.m.T.selectList                     : ==> Parameters: 1(Integer)
+2019-12-04 14:27:15.741 DEBUG 2244 --- [http-nio-4396-exec-9] c.h.w.m.T.selectList                     : <==      Total: 3
+2019-12-04 14:27:37.615 DEBUG 2244 --- [http-nio-4396-exec-6] c.h.w.m.SportsplanMapper.selectList      : ==>  Preparing: SELECT id AS id,planObjectives,planUseDays,userID,masterPlanBurn,masterPlanIntake,planStratTime,planType,planEndDate,coachID FROM t_sportsplan WHERE (planType = ? AND userID = ?) 
+2019-12-04 14:27:37.615 DEBUG 2244 --- [http-nio-4396-exec-6] c.h.w.m.SportsplanMapper.selectList      : ==> Parameters: 1(Integer), 1(Integer)
+2019-12-04 14:27:37.616 DEBUG 2244 --- [http-nio-4396-exec-6] c.h.w.m.SportsplanMapper.selectList      : <==      Total: 1
+2019-12-04 14:27:37.617 DEBUG 2244 --- [http-nio-4396-exec-6] c.h.w.m.T.selectList                     : ==>  Preparing: SELECT id AS id,breakfastIntake,lunchIntake,dinnerIntake,mealAdditionIntake,intakePlan,userID,`date`,intakeSJ,sportsPlanID FROM t_todayintakeplan WHERE (sportsPlanID = ? AND date = ?) 
+2019-12-04 14:27:37.618 DEBUG 2244 --- [http-nio-4396-exec-6] c.h.w.m.T.selectList                     : ==> Parameters: 1(Integer), 2019.12.04(String)
+2019-12-04 14:27:37.618 DEBUG 2244 --- [http-nio-4396-exec-6] c.h.w.m.T.selectList                     : <==      Total: 1
+2019-12-04 14:27:37.621 DEBUG 2244 --- [http-nio-4396-exec-6] c.h.w.mapper.FoodMapper.selectList       : ==>  Preparing: SELECT id AS id,foodName,foodType,foodPro,carbon,xianweisu,todayIntakePlanID,foodWeight,foodCalories,foodFat,userID FROM t_food WHERE (todayIntakePlanID = ?) 
+2019-12-04 14:27:37.622 DEBUG 2244 --- [http-nio-4396-exec-6] c.h.w.mapper.FoodMapper.selectList       : ==> Parameters: 3(Integer)
+2019-12-04 14:27:37.622 DEBUG 2244 --- [http-nio-4396-exec-6] c.h.w.mapper.FoodMapper.selectList       : <==      Total: 1
