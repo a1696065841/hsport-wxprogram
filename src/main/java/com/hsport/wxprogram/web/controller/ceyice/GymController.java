@@ -1,5 +1,6 @@
 package com.hsport.wxprogram.web.controller.ceyice;
 
+import com.hsport.wxprogram.domain.Region;
 import com.hsport.wxprogram.service.IGymService;
 import com.hsport.wxprogram.domain.Gym;
 import com.hsport.wxprogram.query.GymQuery;
@@ -78,7 +79,11 @@ public class GymController {
         return gymService.selectList(null);
     }
 
-
+    @ApiOperation(value="获取市下面的地区")
+    @RequestMapping(value ="/selectGymByAreaID/{id}",method = RequestMethod.GET)
+    public List<Gym> selectGymByAreaID(@PathVariable("id")Integer id) {
+        return gymService.selectGymByAreaID(id);
+    }
     /**
     * 分页查询数据
     *

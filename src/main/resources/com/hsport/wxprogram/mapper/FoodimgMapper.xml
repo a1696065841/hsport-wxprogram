@@ -16,6 +16,7 @@
         <result column="foodWeight" property="foodWeight"/>
         <result column="coachID" property="coachID"/>
         <result column="foodCalories" property="foodCalories"/>
+        <result column="imgName" property="imgName" />
     </resultMap>
 
 </mapper>

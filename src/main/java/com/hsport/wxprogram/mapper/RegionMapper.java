@@ -1,8 +1,8 @@
 package com.hsport.wxprogram.mapper;
 
-import com.hsport.wxprogram.domain.Gym;
+import com.hsport.wxprogram.domain.Region;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.hsport.wxprogram.query.GymQuery;
+import com.hsport.wxprogram.query.RegionQuery;
 import com.hsport.wxprogram.util.AjaxResult;
 import com.hsport.wxprogram.util.PageList;
 
@@ -12,13 +12,13 @@ import java.util.List;
 
 
 @org.apache.ibatis.annotations.Mapper
-public interface GymMapper extends BaseMapper<Gym>{
+public interface RegionMapper extends BaseMapper<Region>{
     /**
      * 保存和修改公用的
-     * @param gym  传递的实体
+     * @param region  传递的实体
      * @return Ajaxresult转换结果
      */
-    AjaxResult save(Gym gym);
+    AjaxResult save(Region region);
 
     /**
      * 删除对象信息
@@ -29,14 +29,14 @@ public interface GymMapper extends BaseMapper<Gym>{
 
     //获取用户
     @RequestMapping("/{id}")
-    Gym get(@RequestParam(value="id",required=true) Integer id);
+    Region get(@RequestParam(value="id",required=true) Integer id);
 
 
     /**
      * 查看所有的员工信息
      * @return
      */
-    public List<Gym> list();
+    public List<Region> list();
 
     /**
      * 分页查询数据
@@ -44,7 +44,11 @@ public interface GymMapper extends BaseMapper<Gym>{
      * @param query 查询对象
      * @return PageList 分页对象
      */
-    PageList<Gym> json(@RequestBody GymQuery query);
+    PageList<Region> json(@RequestBody RegionQuery query);
 
-    List<Gym> selectGymByAreaID(Integer id);
+    List<Region> selectCity();
+
+    List<Region> selectAreaByCityID(Integer id);
+
+
 }

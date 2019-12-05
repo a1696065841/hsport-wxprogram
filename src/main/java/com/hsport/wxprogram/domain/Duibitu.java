@@ -30,10 +30,18 @@ public class Duibitu extends Model<Duibitu> {
     private String imgType;
     private String date;
     private Integer userID;
-
+    private  String imgName;
 
     public Integer getId() {
         return id;
+    }
+
+    public String getImgName() {
+        return imgName;
+    }
+
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
     }
 
     public void setId(Integer id) {

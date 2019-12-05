@@ -11,6 +11,8 @@
         <result column="todayburncaloriesID" property="todayburncaloriesID" />
         <result column="burnCalories" property="burnCalories" />
         <result column="burnType" property="burnType" />
+        <result column="imgName" property="imgName" />
+
     </resultMap>
 
 </mapper>

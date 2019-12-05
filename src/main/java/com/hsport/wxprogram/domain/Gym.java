@@ -32,6 +32,15 @@ public class Gym extends Model<Gym> {
     private String xCoordinate;
     private String yCoordinate;
     private String gym_name;
+    private String imgName;
+
+    public String getImgName() {
+        return imgName;
+    }
+
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
+    }
 
     public String getGym_name() {
         return gym_name;

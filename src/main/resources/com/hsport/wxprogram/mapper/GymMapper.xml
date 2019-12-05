@@ -13,6 +13,10 @@
         <result column="xCoordinate" property="xCoordinate"/>
         <result column="yCoordinate" property="yCoordinate"/>
         <result column="gym_name" property="gym_name"/>
+        <result column="imgName" property="imgName" />
     </resultMap>
 
+    <select id="selectGymByAreaID" parameterType="Integer" resultType="Gym">
+        SELECT g.* FROM t_gym g LEFT JOIN t_region  r ON g.region_id=r.id WHERE region_id=#{id}
+    </select>
 </mapper>
