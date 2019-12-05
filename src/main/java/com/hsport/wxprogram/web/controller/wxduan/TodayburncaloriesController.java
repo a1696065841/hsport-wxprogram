@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -69,7 +70,11 @@ public class TodayburncaloriesController {
         return todayburncaloriesService.selectById(id);
     }
 
-
+    @ApiOperation(value="来获取用户的平均摄消耗和总消耗 已过天数等详细信息")
+    @RequestMapping(value = "/getAvgAndAllByUserID/{id}",method = RequestMethod.GET)
+    public HashMap getAvgAndAllByUserID(@PathVariable("id") Integer id){
+        return  todayburncaloriesService.getAvgAndAllByUserID(id);
+    }
     @ApiOperation(value = "根据url用户的id来获取今天Todayburncalories详细信息")
     @RequestMapping(value = "/getByUser/{id}", method = RequestMethod.GET)
     public Todayburncalories getByUser(@PathVariable("id") Integer id) {

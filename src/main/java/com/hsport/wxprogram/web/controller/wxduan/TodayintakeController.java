@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -83,6 +84,11 @@ public class TodayintakeController {
     public List<Todayintake> list(){
 
         return todayintakeService.selectList(null);
+    }
+    @ApiOperation(value="来获取用户的平均摄入和总摄入 已过天数等详细信息")
+    @RequestMapping(value = "/getAvgAndAllByUserID/{id}",method = RequestMethod.GET)
+    public HashMap getAvgAndAllByUserID(@PathVariable("id") Integer id){
+        return todayintakeService.getAvgAndAllByUserID(id);
     }
 
 

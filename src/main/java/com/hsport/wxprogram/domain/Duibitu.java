@@ -4,11 +4,12 @@ import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ * <p>
  * </p>
  *
  * @author lhb
@@ -24,8 +25,9 @@ public class Duibitu extends Model<Duibitu> {
     /**
      * 正面照
      */
-    private String zhengMzhao;
-    private String ceMzhao;
+    private String imgUrl;
+
+    private String imgType;
     private String date;
     private Integer userID;
 
@@ -38,20 +40,20 @@ public class Duibitu extends Model<Duibitu> {
         this.id = id;
     }
 
-    public String getZhengMzhao() {
-        return zhengMzhao;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setZhengMzhao(String zhengMzhao) {
-        this.zhengMzhao = zhengMzhao;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
-    public String getCeMzhao() {
-        return ceMzhao;
+    public String getImgType() {
+        return imgType;
     }
 
-    public void setCeMzhao(String ceMzhao) {
-        this.ceMzhao = ceMzhao;
+    public void setImgType(String imgType) {
+        this.imgType = imgType;
     }
 
     public String getDate() {
@@ -78,11 +80,11 @@ public class Duibitu extends Model<Duibitu> {
     @Override
     public String toString() {
         return "Duibitu{" +
-        ", id=" + id +
-        ", zhengMzhao=" + zhengMzhao +
-        ", ceMzhao=" + ceMzhao +
-        ", date=" + date +
-        ", userID=" + userID +
-        "}";
+                "id=" + id +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", imgType='" + imgType + '\'' +
+                ", date='" + date + '\'' +
+                ", userID=" + userID +
+                '}';
     }
 }

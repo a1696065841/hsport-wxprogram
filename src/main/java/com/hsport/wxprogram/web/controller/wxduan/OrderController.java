@@ -87,7 +87,7 @@ public class OrderController {
     */
     @ApiOperation(value="来获取所有Order详细信息并分页", notes="根据page页数和传入的query查询条件 来获取某些Order详细信息")
     @RequestMapping(value = "/json",method = RequestMethod.POST)
-    public PageList<Order> json(@RequestBody OrderQuery query)
+    public PageList<Order> json(@RequestBody OrderQuery  query)
     {
         Page<Order> page = new Page<Order>(query.getPage(),query.getRows());
             page = orderService.selectPage(page);

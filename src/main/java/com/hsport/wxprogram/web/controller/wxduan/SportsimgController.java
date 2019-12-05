@@ -79,7 +79,6 @@ public class SportsimgController {
     @ApiOperation(value="来获取所有Sportsimg详细信息")
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public List<Sportsimg> list(){
-
         return sportsimgService.selectList(null);
     }
 
@@ -92,8 +91,7 @@ public class SportsimgController {
     */
     @ApiOperation(value="来获取所有Sportsimg详细信息并分页", notes="根据page页数和传入的query查询条件 来获取某些Sportsimg详细信息")
     @RequestMapping(value = "/json",method = RequestMethod.POST)
-    public PageList<Sportsimg> json(@RequestBody SportsimgQuery query)
-    {
+    public PageList<Sportsimg> json(@RequestBody SportsimgQuery query) {
         Page<Sportsimg> page = new Page<Sportsimg>(query.getPage(),query.getRows());
             page = sportsimgService.selectPage(page);
             return new PageList<Sportsimg>(page.getTotal(),page.getRecords());

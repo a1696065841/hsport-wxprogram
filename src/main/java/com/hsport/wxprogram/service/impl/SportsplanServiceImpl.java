@@ -5,12 +5,14 @@ import com.hsport.wxprogram.domain.Sportsplan;
 import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.mapper.SportsplanMapper;
 import com.hsport.wxprogram.mapper.UserMapper;
+import com.hsport.wxprogram.query.SportsplanQuery;
 import com.hsport.wxprogram.service.ISportsplanService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -29,5 +31,10 @@ public class SportsplanServiceImpl extends ServiceImpl<SportsplanMapper, Sportsp
     @Override
     public List selectPlanByUserID(Integer id) {
         return sportsplanMapper.selectPlanByUserID(id);
+    }
+
+    @Override
+    public   List<HashMap> selectEverDayIntakeAndBurn(SportsplanQuery sportsplanQuery) {
+        return  sportsplanMapper.selectEverDayIntakeAndBurn(sportsplanQuery);
     }
 }

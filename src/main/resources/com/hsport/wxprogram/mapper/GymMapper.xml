@@ -8,6 +8,11 @@
         <result column="gym_address" property="gymAddress" />
         <result column="gym_phone" property="gymPhone" />
         <result column="gym_mark" property="gymMark" />
+        <result column="region_id" property="region_id"/>
+        <result column="gym_url" property="gym_url"/>
+        <result column="xCoordinate" property="xCoordinate"/>
+        <result column="yCoordinate" property="yCoordinate"/>
+        <result column="gym_name" property="gym_name"/>
     </resultMap>
 
 </mapper>

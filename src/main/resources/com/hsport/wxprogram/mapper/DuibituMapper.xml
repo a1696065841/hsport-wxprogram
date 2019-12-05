@@ -9,6 +9,8 @@
         <result column="ceMzhao" property="ceMzhao" />
         <result column="date" property="date" />
         <result column="userID" property="userID" />
+        <result column="imgUrl" property="imgUrl" />
+        <result column="imgType" property="imgType" />
     </resultMap>
 
 </mapper>

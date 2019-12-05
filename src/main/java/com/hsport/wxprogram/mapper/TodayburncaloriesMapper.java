@@ -8,6 +8,7 @@ import com.hsport.wxprogram.util.PageList;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -45,4 +46,6 @@ public interface TodayburncaloriesMapper extends BaseMapper<Todayburncalories>{
      * @return PageList 分页对象
      */
     PageList<Todayburncalories> json(@RequestBody TodayburncaloriesQuery query);
+    //获取平均总值和已过天数
+    HashMap getAvgAndAllByUserID(Integer id);
 }

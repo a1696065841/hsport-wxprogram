@@ -112,7 +112,7 @@ public class CoachController {
     @RequestMapping(value = "/getUserListByCoachID/{id}", method = RequestMethod.GET)
     public List<User> getUserListByCoachID(@PathVariable("id")Integer id) {
         EntityWrapper<User> userEntityWrapper = new EntityWrapper<>();
-        userEntityWrapper.eq("coachID", id);
+        userEntityWrapper.eq("userID", id);
         return userService.selectList(userEntityWrapper);
     }
 

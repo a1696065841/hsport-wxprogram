@@ -4,7 +4,10 @@ import com.hsport.wxprogram.domain.Todayintake;
 import com.hsport.wxprogram.mapper.TodayintakeMapper;
 import com.hsport.wxprogram.service.ITodayintakeService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
 
 /**
  * <p>
@@ -16,5 +19,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TodayintakeServiceImpl extends ServiceImpl<TodayintakeMapper, Todayintake> implements ITodayintakeService {
+    @Autowired
+    TodayintakeMapper todayintakeMapper;
 
+    @Override
+    public HashMap getAvgAndAllByUserID(Integer id) {
+        return todayintakeMapper.getAvgAndAllByUserID(id);
+    }
 }

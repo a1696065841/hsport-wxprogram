@@ -1,9 +1,12 @@
 package com.hsport.wxprogram.web.controller.wxduan;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.IFoodimgService;
 import com.hsport.wxprogram.domain.Foodimg;
 import com.hsport.wxprogram.query.FoodimgQuery;
 import com.hsport.wxprogram.util.AjaxResult;
+import com.hsport.wxprogram.util.DateUtil;
 import com.hsport.wxprogram.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.hsport.wxprogram.util.picUtil;
@@ -83,6 +86,14 @@ public class FoodimgController {
     }
 
 
+    @ApiOperation(value = "根据该用户的id查询今天上传的食物图片")
+    @RequestMapping(value = "/getFoodListByUserID/{id}", method = RequestMethod.GET)
+    public List<Foodimg> getFoodListByUserID(@PathVariable("id")Integer id) {
+        EntityWrapper<Foodimg> userEntityWrapper = new EntityWrapper<>();
+        userEntityWrapper.eq("date", DateUtil.today());
+        userEntityWrapper.eq("userID", id);
+        return foodimgService.getFoodListByUserID(id);
+    }
     /**
     * 分页查询数据
     *

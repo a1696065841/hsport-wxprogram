@@ -8,6 +8,7 @@ import com.hsport.wxprogram.util.PageList;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -45,4 +46,6 @@ public interface TodayintakeMapper extends BaseMapper<Todayintake>{
      * @return PageList 分页对象
      */
     PageList<Todayintake> json(@RequestBody TodayintakeQuery query);
+
+    HashMap getAvgAndAllByUserID(Integer id);
 }

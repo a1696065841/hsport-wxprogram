@@ -1,5 +1,7 @@
 package com.hsport.wxprogram.web.controller;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.Certificate;
 import com.hsport.wxprogram.service.IConsigneeService;
 import com.hsport.wxprogram.domain.Consignee;
 import com.hsport.wxprogram.query.ConsigneeQuery;
@@ -77,7 +79,14 @@ public class ConsigneeController {
         return consigneeService.selectList(null);
     }
 
-
+    @ApiOperation(value="根据用户的ID来获取用户的收件地址等信息")
+    @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
+    public List<Consignee> getByUserID(@PathVariable("id")Integer id)
+    {
+        EntityWrapper<Consignee> certificateEntityWrapper = new EntityWrapper<>();
+        certificateEntityWrapper.eq("coachID",id);
+        return consigneeService.selectList(certificateEntityWrapper);
+    }
     /**
     * 分页查询数据
     *

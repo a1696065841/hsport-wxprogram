@@ -4,16 +4,21 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Todayintake">
-        <id column="id" property="id" />
-        <result column="intakeCalories" property="intakeCalories" />
-        <result column="dayIntake" property="dayIntake" />
-        <result column="proPer" property="proPer" />
-        <result column="CarbonIntake" property="CarbonIntake" />
-        <result column="cellulosePer" property="cellulosePer" />
-        <result column="waterIntake" property="waterIntake" />
-        <result column="date" property="date" />
-        <result column="sportsPlanID" property="sportsPlanID" />
-        <result column="userID" property="userID" />
+        <id column="id" property="id"/>
+        <result column="intakeCalories" property="intakeCalories"/>
+        <result column="dayIntake" property="dayIntake"/>
+        <result column="proPer" property="proPer"/>
+        <result column="CarbonIntake" property="CarbonIntake"/>
+        <result column="cellulosePer" property="cellulosePer"/>
+        <result column="waterIntake" property="waterIntake"/>
+        <result column="date" property="date"/>
+        <result column="sportsPlanID" property="sportsPlanID"/>
+        <result column="userID" property="userID"/>
     </resultMap>
 
+    <select id="getAvgAndAllByUserID" parameterType="integer" resultType="map">
+  SELECT SUM(dayIntake),AVG(dayIntake),DATEDIFF(DATE_SUB(curdate(),INTERVAL 0 DAY),str_to_date(s.planStratTime,'%Y.%m.%d')) usedays
+  FROM t_todayintake i LEFT JOIN t_sportsplan s ON i.sportsPlanID=s.id
+   WHERE i.userID=1
+    </select>
 </mapper>

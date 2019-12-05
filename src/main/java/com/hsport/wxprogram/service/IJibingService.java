@@ -2,6 +2,7 @@ package com.hsport.wxprogram.service;
 
 import com.hsport.wxprogram.domain.Jibing;
 import com.baomidou.mybatisplus.service.IService;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * <p>
@@ -12,5 +13,5 @@ import com.baomidou.mybatisplus.service.IService;
  * @since 2019-11-26
  */
 public interface IJibingService extends IService<Jibing> {
-
+    public Jibing getByUserID(Integer id);
 }

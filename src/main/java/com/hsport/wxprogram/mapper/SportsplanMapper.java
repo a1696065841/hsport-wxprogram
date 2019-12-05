@@ -8,6 +8,7 @@ import com.hsport.wxprogram.util.PageList;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -47,4 +48,6 @@ public interface SportsplanMapper extends BaseMapper<Sportsplan>{
     PageList<Sportsplan> json(@RequestBody SportsplanQuery query);
 
     List<Sportsplan> selectPlanByUserID(Integer id);
+
+    List<HashMap> selectEverDayIntakeAndBurn (SportsplanQuery sportsplanQuery);
 }

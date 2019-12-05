@@ -22,6 +22,9 @@ public class Swagger2 {
                 .select()
                 //对外暴露服务的包,以controller的方式暴露,所以就是controller的包.
                 .apis(RequestHandlerSelectors.basePackage("com.hsport.wxprogram.web.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.hsport.wxprogram.web.controller.ceytice"))
+                .apis(RequestHandlerSelectors.basePackage("com.hsport.wxprogram.web.controller.wxduan"))
+                .apis(RequestHandlerSelectors.basePackage("com.hsport.wxprogram.web.controller.system"))
                 .paths(PathSelectors.any())
                 .build();
     }

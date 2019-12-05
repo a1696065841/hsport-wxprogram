@@ -67,14 +67,13 @@ public class JibingController {
         return jibingService.selectById(id);
     }
 
+
     @ApiOperation(value="根据user的id来获取Jibing详细信息")
     @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
-    public Jibing v(@PathVariable("id")Integer id)
-    {
-        EntityWrapper<Jibing> jibingEntityWrapper = new EntityWrapper<>();
-        jibingEntityWrapper.eq("userID",id);
-        return jibingService.selectOne(jibingEntityWrapper);
+    public Jibing getByUserID(@PathVariable("id")Integer id){
+        return jibingService.getByUserID(id);
     }
+    
     /**
     * 查看所有的员工信息
     * @return

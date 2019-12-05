@@ -26,4 +26,9 @@
     <select id="selectTodayBurn" parameterType="Integer" resultMap="BaseResultMap">
         SELECT  tb.BurnCalories FROM t_todayBurncalories tb LEFT JOIN t_sportsplan s ON tb.sportsPlanID=s.id WHERE tb.sportsPlanID=#{id}   </select>
 
+    <select id="getAvgAndAllByUserID" parameterType="Integer" resultType="map">
+        SELECT SUM(dayBurns),AVG(dayBurns),DATEDIFF(DATE_SUB(curdate(),INTERVAL 0 DAY),str_to_date(s.planStratTime,'%Y.%m.%d')) usedays
+        FROM t_todayburncalories b LEFT JOIN t_sportsplan s ON b.sportsPlanID=s.id
+        WHERE b.userID= #{id}
+    </select>
 </mapper>

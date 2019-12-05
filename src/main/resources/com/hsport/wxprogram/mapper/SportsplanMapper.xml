@@ -22,4 +22,9 @@
     <select id="selectPlanByUserID" parameterType="Integer" resultMap="BaseResultMap">
        SELECT s.* FROM t_sportsplan s LEFT JOIN t_user u ON s.userID=u.id WHERE s.userID=#{id}   </select>
 
+    <select id="selectEverDayIntakeAndBurn"  parameterType="com.hsport.wxprogram.query.SportsplanQuery" resultType="map">
+     SELECT b.userID,b.dayBurns,i.dayIntake,b.date FROM t_todayburncalories b,t_todayintake i
+     where b.userID=#{userID} AND b.userID=i.userID AND b.date=i.date order by i.date desc
+     limit #{page},#{rows}
+   </select>
 </mapper>

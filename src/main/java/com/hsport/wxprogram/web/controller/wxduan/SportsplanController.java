@@ -114,6 +114,23 @@ public class SportsplanController {
         return sportsplanService.selectPlanByUserID(id);
     }
 
+    @ApiOperation(value="来获取用户的平均摄入消耗和总摄入消耗 已过天数等详细信息")
+    @RequestMapping(value = "/getAvgAndAllByUserID/{id}",method = RequestMethod.GET)
+    public HashMap getAvgAndAllByUserID(@PathVariable("id") Integer id){
+        HashMap<String, Map> stringMapHashMap = new HashMap<>();
+        HashMap avgAndAllByUserID = todayburncaloriesService.getAvgAndAllByUserID(id);
+        HashMap avgAndAllByUserID1 = todayintakeService.getAvgAndAllByUserID(id);
+        stringMapHashMap.put("IntakeAvgAndAllByUserID",avgAndAllByUserID1);
+        stringMapHashMap.put("BurnAvgAndAllByUserID",avgAndAllByUserID);
+        return stringMapHashMap;
+    }
+
+    @ApiOperation(value="来获取用户每天的消耗摄入的值")
+    @RequestMapping(value = "/selectEverDayIntakeAndBurn",method = RequestMethod.POST)
+    public  List<HashMap> selectEverDayIntakeAndBurn(@RequestBody SportsplanQuery sportsplanQuery){
+        System.out.println(sportsplanQuery);
+        return sportsplanService.selectEverDayIntakeAndBurn(sportsplanQuery);
+    }
     @ApiOperation(value="获取计划的进度详情",notes = "当前进度 已过天数/总周期,累计消耗卡路里,累计摄入卡路里")
     @RequestMapping(value = "/planSchedule/{id}",method = RequestMethod.GET)
     public HashMap planSchedule(@PathVariable("id")Integer id) throws ParseException {

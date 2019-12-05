@@ -5,11 +5,12 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ * <p>
  * </p>
  *
  * @author lhb
@@ -28,7 +29,52 @@ public class Gym extends Model<Gym> {
     private String gymPhone;
     @TableField("gym_mark")
     private String gymMark;
+    private String xCoordinate;
+    private String yCoordinate;
+    private String gym_name;
 
+    public String getGym_name() {
+        return gym_name;
+    }
+
+    public void setGym_name(String gym_name) {
+        this.gym_name = gym_name;
+    }
+
+    public String getxCoordinate() {
+        return xCoordinate;
+    }
+
+    public void setxCoordinate(String xCoordinate) {
+        this.xCoordinate = xCoordinate;
+    }
+
+    public String getyCoordinate() {
+        return yCoordinate;
+    }
+
+    public void setyCoordinate(String yCoordinate) {
+        this.yCoordinate = yCoordinate;
+    }
+
+    private String gym_url;
+    private Integer region_id;
+
+    public String getGym_url() {
+        return gym_url;
+    }
+
+    public void setGym_url(String gym_url) {
+        this.gym_url = gym_url;
+    }
+
+    public Integer getRegion_id() {
+        return region_id;
+    }
+
+    public void setRegion_id(Integer region_id) {
+        this.region_id = region_id;
+    }
 
     public Integer getId() {
         return id;
@@ -70,10 +116,10 @@ public class Gym extends Model<Gym> {
     @Override
     public String toString() {
         return "Gym{" +
-        ", id=" + id +
-        ", gymAddress=" + gymAddress +
-        ", gymPhone=" + gymPhone +
-        ", gymMark=" + gymMark +
-        "}";
+                ", id=" + id +
+                ", gymAddress=" + gymAddress +
+                ", gymPhone=" + gymPhone +
+                ", gymMark=" + gymMark +
+                "}";
     }
 }
