@@ -29,7 +29,15 @@ public class Sportsimg extends Model<Sportsimg> {
     private Integer todayburncaloriesID;
     private String burnType;
     private  String imgName;
+    private Integer productserviceID;
 
+    public Integer getProductserviceID() {
+        return productserviceID;
+    }
+
+    public void setProductserviceID(Integer productserviceID) {
+        this.productserviceID = productserviceID;
+    }
     public void setId(int id) {
         this.id = id;
     }

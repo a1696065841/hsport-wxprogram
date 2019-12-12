@@ -1,15 +1,12 @@
 package com.hsport.wxprogram.web.controller.wxduan;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.common.util.*;
 import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.IFoodimgService;
 import com.hsport.wxprogram.domain.Foodimg;
 import com.hsport.wxprogram.query.FoodimgQuery;
-import com.hsport.wxprogram.util.AjaxResult;
-import com.hsport.wxprogram.util.DateUtil;
-import com.hsport.wxprogram.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.hsport.wxprogram.util.picUtil;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +16,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/foodimg")
 @CrossOrigin
-
 public class FoodimgController {
+
     @Autowired
     public IFoodimgService foodimgService;
 
@@ -116,11 +114,12 @@ public class FoodimgController {
         String UPLOAD_FOLDER = "D:/images/food";
         Path path = Paths.get(UPLOAD_FOLDER + "/");
         //获取当前登录用户  需要修改
-        foodimg.setUserID(1);
-        foodimg.setCoachID(1);
-        foodimg.setTodayintakeplanID(1);
+        User user = UserContext.getUser();
+        foodimg.setUserID(user.getId());
+        foodimg.setCoachID(user.getCoachID());
+        foodimg.setDate(DateUtil.today());
         try {
-            String s = picUtil.singleFileUpload(multipartFile, path);
+            String s = picUtil.singleFileUpload(multipartFile,path);
             if (s.equals("文件为空，请重新上传")){
                 return AjaxResult.me().setMessage("文件为空，请重新上传！");
             }

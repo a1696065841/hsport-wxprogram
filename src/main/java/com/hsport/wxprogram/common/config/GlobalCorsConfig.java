@@ -1,4 +1,4 @@
-package com.hsport.wxprogram.config;
+package com.hsport.wxprogram.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +18,11 @@ public class GlobalCorsConfig {
         config.addAllowedOrigin("http://localhost:4396/");
         config.addAllowedOrigin("http://127.0.0.1:4396/");
         config.addAllowedOrigin("http://192.168.43.133:4396/");
+        config.addAllowedOrigin("https://127.0.0.1:8080/");
+        config.addAllowedOrigin("https://localhost:8080/");
+        config.addAllowedOrigin("https://localhost:4396/");
+        config.addAllowedOrigin("https://127.0.0.1:4396/");
+        config.addAllowedOrigin("https://192.168.43.133:4396/");
         //2) 是否发送Cookie信息
         config.setAllowCredentials(true);
         //3) 允许的请求方式

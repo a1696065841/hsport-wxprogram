@@ -23,7 +23,7 @@ public class Todaysportsplans extends Model<Todaysportsplans> {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     /**
-     * 运动名
+     * 计划名
      */
     private String planName;
     //这个完成百分比
@@ -52,6 +52,34 @@ public class Todaysportsplans extends Model<Todaysportsplans> {
     @TableField("todaySP_id")
     private Integer todayspId;
 
+    public Integer getProductServiceID() {
+        return productServiceID;
+    }
+
+    public void setProductServiceID(Integer productServiceID) {
+        this.productServiceID = productServiceID;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+    private Integer userID;
+
+    private Integer productServiceID;
+
+    private String  date;
+
+    public Integer getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Integer userID) {
+        this.userID = userID;
+    }
 
     public Integer getId() {
         return id;

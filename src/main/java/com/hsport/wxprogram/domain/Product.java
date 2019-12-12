@@ -29,9 +29,9 @@ public class Product extends Model<Product> {
      */
     @TableField("pro_desc")
     private String proDesc;
-    private Integer userID;
-    @TableField("pro_type")
-    private Integer proType;
+    private Integer sysuserID;
+    @TableField("productType")
+    private Integer productType;
 
 
     public Integer getId() {
@@ -66,20 +66,20 @@ public class Product extends Model<Product> {
         this.proDesc = proDesc;
     }
 
-    public Integer getUserID() {
-        return userID;
+    public Integer getSysuserID() {
+        return sysuserID;
     }
 
-    public void setUserID(Integer userID) {
-        this.userID = userID;
+    public void setSysuserID(Integer sysuserID) {
+        this.sysuserID = sysuserID;
     }
 
-    public Integer getProType() {
-        return proType;
+    public Integer getProductType() {
+        return productType;
     }
 
-    public void setProType(Integer proType) {
-        this.proType = proType;
+    public void setProductType(Integer proType) {
+        this.productType = proType;
     }
 
     @Override
@@ -94,8 +94,8 @@ public class Product extends Model<Product> {
         ", productName=" + productName +
         ", pirce=" + pirce +
         ", proDesc=" + proDesc +
-        ", userID=" + userID +
-        ", proType=" + proType +
+        ", sysuserID=" + sysuserID +
+        ", productType=" + productType +
         "}";
     }
 }

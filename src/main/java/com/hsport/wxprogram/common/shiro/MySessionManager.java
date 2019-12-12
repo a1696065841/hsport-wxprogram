@@ -1,41 +1,36 @@
-package com.hsport.wxprogram.util.shiro;
+package com.hsport.wxprogram.common.shiro;
 
+import org.apache.shiro.util.StringUtils;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.apache.shiro.web.util.WebUtils;
-import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 
-@Component
-public class CrmSessionManager extends DefaultWebSessionManager {
-
-    private static final String AUTHORIZATION = "X-TOKEN";
-
+public class MySessionManager extends DefaultWebSessionManager {
+ 
+    private static final String AUTHORIZATION = "Authorization";
+ 
     private static final String REFERENCED_SESSION_ID_SOURCE = "Stateless request";
-
-    public CrmSessionManager() {
-        super();
+ 
+    public MySessionManager() {
     }
-
+ 
     @Override
     protected Serializable getSessionId(ServletRequest request, ServletResponse response) {
+        //从前端ajax headers中获取这个参数用来判断授权
         String id = WebUtils.toHttp(request).getHeader(AUTHORIZATION);
-        HttpServletRequest request1 = (HttpServletRequest) request;
-        //如果请求头中有 X-TOKEN 则其值为sessionId
-        if (!StringUtils.isEmpty(id)) {
-            //System.out.println(id+"jjjjjjjjj"+request1.getRequestURI()+request1.getMethod());
+        if (StringUtils.hasLength(id)) {
             request.setAttribute(ShiroHttpServletRequest.REFERENCED_SESSION_ID_SOURCE, REFERENCED_SESSION_ID_SOURCE);
             request.setAttribute(ShiroHttpServletRequest.REFERENCED_SESSION_ID, id);
             request.setAttribute(ShiroHttpServletRequest.REFERENCED_SESSION_ID_IS_VALID, Boolean.TRUE);
             return id;
         } else {
-            //否则按默认规则从cookie取sessionId
+            //从前端的cookie中取值
             return super.getSessionId(request, response);
         }
+ 
     }
 }

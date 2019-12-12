@@ -2,10 +2,7 @@ package com.hsport.wxprogram;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.hsport.wxprogram.domain.Body;
-import com.hsport.wxprogram.domain.Sportsplan;
-import com.hsport.wxprogram.domain.Todayburncalories;
-import com.hsport.wxprogram.domain.User;
+import com.hsport.wxprogram.domain.*;
 import com.hsport.wxprogram.service.IBodyService;
 import com.hsport.wxprogram.service.ISportsplanService;
 import com.hsport.wxprogram.service.ITodayburncaloriesService;
@@ -16,6 +13,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.StringUtils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -55,14 +53,8 @@ class WxprogramApplicationTests {
 
 	@Test
 	public void test2(){
-        long startTime = System.nanoTime();
-        Wrapper<Todayburncalories> we = new EntityWrapper();
-        we.eq("sportsPlanID",1);
-        we.orderBy("date",false);
-        Todayburncalories todayburncalories = todayburncaloriesService.selectOne(we);
-        System.out.println(todayburncalories);
-        long endTime = System.nanoTime();
-        System.out.println("程序运行时间： "+(endTime-startTime)+"ns");
+        Coach coach = new Coach();
+        System.out.println(StringUtils.isEmpty(coach.getId()));
     }
-  
+
 }

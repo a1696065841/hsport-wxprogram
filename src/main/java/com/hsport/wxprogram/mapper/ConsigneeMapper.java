@@ -3,8 +3,8 @@ package com.hsport.wxprogram.mapper;
 import com.hsport.wxprogram.domain.Consignee;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.hsport.wxprogram.query.ConsigneeQuery;
-import com.hsport.wxprogram.util.AjaxResult;
-import com.hsport.wxprogram.util.PageList;
+import com.hsport.wxprogram.common.util.AjaxResult;
+import com.hsport.wxprogram.common.util.PageList;
 
 import org.springframework.web.bind.annotation.*;
 

@@ -1,13 +1,12 @@
 package com.hsport.wxprogram.web.controller.wxduan;
 
-import com.hsport.wxprogram.domain.Foodimg;
 import com.hsport.wxprogram.service.ISportsimgService;
 import com.hsport.wxprogram.domain.Sportsimg;
 import com.hsport.wxprogram.query.SportsimgQuery;
-import com.hsport.wxprogram.util.AjaxResult;
-import com.hsport.wxprogram.util.PageList;
+import com.hsport.wxprogram.common.util.AjaxResult;
+import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.hsport.wxprogram.util.picUtil;
+import com.hsport.wxprogram.common.util.picUtil;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

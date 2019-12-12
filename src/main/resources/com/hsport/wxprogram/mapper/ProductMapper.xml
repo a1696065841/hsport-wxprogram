@@ -8,8 +8,8 @@
         <result column="productName" property="productName" />
         <result column="pirce" property="pirce" />
         <result column="pro_desc" property="proDesc" />
-        <result column="userID" property="userID" />
-        <result column="pro_type" property="proType" />
+        <result column="sysuserID" property="sysuserID" />
+        <result column="productType" property="productType" />
     </resultMap>
 
 </mapper>

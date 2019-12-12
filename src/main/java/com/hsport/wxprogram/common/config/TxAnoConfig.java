@@ -1,13 +1,11 @@
-package com.hsport.wxprogram.config;
+package com.hsport.wxprogram.common.config;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource;
@@ -22,7 +20,7 @@ import org.springframework.transaction.interceptor.TransactionInterceptor;
  */
 //@Component 事务依然生效
 @Configuration
-public class TxAnoConfig {
+public class  TxAnoConfig {
 
 
   /*事务拦截类型*/

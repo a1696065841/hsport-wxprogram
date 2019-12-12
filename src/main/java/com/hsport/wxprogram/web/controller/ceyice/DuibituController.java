@@ -1,17 +1,14 @@
 package com.hsport.wxprogram.web.controller.ceyice;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.hsport.wxprogram.domain.Foodimg;
-import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.IDuibituService;
 import com.hsport.wxprogram.domain.Duibitu;
 import com.hsport.wxprogram.query.DuibituQuery;
-import com.hsport.wxprogram.util.AjaxResult;
-import com.hsport.wxprogram.util.PageList;
+import com.hsport.wxprogram.common.util.AjaxResult;
+import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.hsport.wxprogram.util.picUtil;
+import com.hsport.wxprogram.common.util.picUtil;
 import io.swagger.annotations.ApiOperation;
-import net.sf.jsqlparser.statement.select.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

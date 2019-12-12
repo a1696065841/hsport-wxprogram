@@ -5,7 +5,7 @@ import com.hsport.wxprogram.domain.Foodimg;
 import com.hsport.wxprogram.mapper.FoodimgMapper;
 import com.hsport.wxprogram.service.IFoodimgService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.hsport.wxprogram.util.DateUtil;
+import com.hsport.wxprogram.common.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

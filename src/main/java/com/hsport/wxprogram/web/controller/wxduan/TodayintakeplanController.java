@@ -6,9 +6,9 @@ import com.hsport.wxprogram.service.IFoodService;
 import com.hsport.wxprogram.service.ISportsplanService;
 import com.hsport.wxprogram.service.ITodayintakeplanService;
 import com.hsport.wxprogram.query.TodayintakeplanQuery;
-import com.hsport.wxprogram.util.AjaxResult;
-import com.hsport.wxprogram.util.DateUtil;
-import com.hsport.wxprogram.util.PageList;
+import com.hsport.wxprogram.common.util.AjaxResult;
+import com.hsport.wxprogram.common.util.DateUtil;
+import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,8 +79,8 @@ public class TodayintakeplanController {
     }
 
     @ApiOperation(value="根据user的id来获取详细信息")
-    @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
-    public List<Todayintakeplan> getByUserID(@PathVariable("id")Integer id)
+    @RequestMapping(value = "/getListByUserID/{id}",method = RequestMethod.GET)
+    public List<Todayintakeplan> getListByUserID(@PathVariable("id")Integer id)
     {
         EntityWrapper<Todayintakeplan> todayintakeplanEntityWrapper = new EntityWrapper<>();
         todayintakeplanEntityWrapper.eq("userID",id);
@@ -115,8 +115,8 @@ public class TodayintakeplanController {
     }
 
     @ApiOperation(value="来根据userID获取所有今日饮食计划的信息")
-    @RequestMapping(value = "/getByuserID/{id}",method = RequestMethod.GET)
-    public HashMap<String, Object> getByuserID(@PathVariable("id")Integer id){
+    @RequestMapping(value = "/getTodayByUserID/{id}",method = RequestMethod.GET)
+    public HashMap<String, Object> getTodayByUserID(@PathVariable("id")Integer id){
         DateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
         Todayintakeplan todayintakeplan=null;
         List<Food> todayfood=null;

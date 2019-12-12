@@ -6,7 +6,7 @@ package com.hsport.wxprogram.query;
  * @author ${author}
  * @since ${date}
  */
-import com.hsport.wxprogram.util.BaseQuery;
+import com.hsport.wxprogram.common.util.BaseQuery;
 
 public class ${table.entityName}Query extends BaseQuery{
 }

@@ -1,12 +1,10 @@
 package com.hsport.wxprogram.web.controller.wxduan;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.hsport.wxprogram.domain.Ysxg;
 import com.hsport.wxprogram.service.ITodayintakeService;
 import com.hsport.wxprogram.domain.Todayintake;
 import com.hsport.wxprogram.query.TodayintakeQuery;
-import com.hsport.wxprogram.util.AjaxResult;
-import com.hsport.wxprogram.util.PageList;
+import com.hsport.wxprogram.common.util.AjaxResult;
+import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,8 +98,7 @@ public class TodayintakeController {
     */
     @ApiOperation(value="来获取所有Todayintake详细信息并分页", notes="根据page页数和传入的query查询条件 来获取某些Todayintake详细信息")
     @RequestMapping(value = "/json",method = RequestMethod.POST)
-    public PageList<Todayintake> json(@RequestBody TodayintakeQuery query)
-    {
+    public PageList<Todayintake> json(@RequestBody TodayintakeQuery query) {
         Page<Todayintake> page = new Page<Todayintake>(query.getPage(),query.getRows());
             page = todayintakeService.selectPage(page);
             return new PageList<Todayintake>(page.getTotal(),page.getRecords());

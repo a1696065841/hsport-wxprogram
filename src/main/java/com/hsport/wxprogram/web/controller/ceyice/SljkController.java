@@ -1,12 +1,11 @@
 package com.hsport.wxprogram.web.controller.ceyice;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.hsport.wxprogram.domain.Livetype;
 import com.hsport.wxprogram.service.ISljkService;
 import com.hsport.wxprogram.domain.Sljk;
 import com.hsport.wxprogram.query.SljkQuery;
-import com.hsport.wxprogram.util.AjaxResult;
-import com.hsport.wxprogram.util.PageList;
+import com.hsport.wxprogram.common.util.AjaxResult;
+import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

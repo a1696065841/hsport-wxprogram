@@ -1,6 +1,7 @@
 package com.hsport.wxprogram.web.controller.wxduan;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.common.util.DateUtil;
 import com.hsport.wxprogram.domain.Sportsplan;
 import com.hsport.wxprogram.domain.Todaysportsplans;
 import com.hsport.wxprogram.service.ISportsplanService;
@@ -8,16 +9,14 @@ import com.hsport.wxprogram.service.ITodayspService;
 import com.hsport.wxprogram.domain.Todaysp;
 import com.hsport.wxprogram.query.TodayspQuery;
 import com.hsport.wxprogram.service.ITodaysportsplansService;
-import com.hsport.wxprogram.util.AjaxResult;
-import com.hsport.wxprogram.util.PageList;
+import com.hsport.wxprogram.common.util.AjaxResult;
+import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.parser.Entity;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -99,7 +98,7 @@ public class TodayspController {
         List<Todaysportsplans> todaysportsplans=null;
         EntityWrapper<Sportsplan> spWrapper = new EntityWrapper<>();
         spWrapper.eq("planType",1);
-        spWrapper.eq("userID",1);
+        spWrapper.eq("userID",id);
         Sportsplan sportsplan = sportsplanService.selectOne(spWrapper);
         System.out.println(sportsplan);
         //当前计划进行日期的第几天
@@ -120,10 +119,11 @@ public class TodayspController {
             //日期是今天
             todayspEntityWrapper.eq("date",simpleDateFormat.format(new Date()));
             Todaysp todaysp = todayspService.selectOne(todayspEntityWrapper);
-            System.out.println("todaySP!!!!"+todaysp);
             if(todaysp!=null){
                 EntityWrapper<Todaysportsplans> todaysportsplansEntityWrapper = new EntityWrapper<>();
-                todaysportsplansEntityWrapper.eq("todaySP_id",todaysp.getId());
+                todaysportsplansEntityWrapper.le("date", DateUtil.todaySix());
+                todaysportsplansEntityWrapper.le("userID",id);
+
                 todaysportsplans = todaysportsplansService.selectList(todaysportsplansEntityWrapper);
             }
             stringObjectHashMap.put("todaysp",todaysp);

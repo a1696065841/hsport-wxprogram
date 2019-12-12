@@ -34,6 +34,15 @@ public class Foodimg extends Model<Foodimg> {
     private Integer coachID;
     private Integer foodCalories;
     private  String imgName;
+    private Integer productserviceID;
+
+    public Integer getProductserviceID() {
+        return productserviceID;
+    }
+
+    public void setProductserviceID(Integer productserviceID) {
+        this.productserviceID = productserviceID;
+    }
 
     public Integer getFoodType() {
         return foodType;

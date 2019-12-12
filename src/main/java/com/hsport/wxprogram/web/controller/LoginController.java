@@ -4,10 +4,11 @@ package com.hsport.wxprogram.web.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.IUserService;
-import com.hsport.wxprogram.util.AjaxResult;
-import com.hsport.wxprogram.util.UserContext;
+import com.hsport.wxprogram.common.util.AjaxResult;
+import com.hsport.wxprogram.common.util.UserContext;
 
-import com.hsport.wxprogram.util.YanZhenCode;
+import com.hsport.wxprogram.common.util.YanZhenCode;
+import jdk.nashorn.internal.parser.Token;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -15,10 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,11 +38,45 @@ public class LoginController{
 		return "login";
 	}
 
+
 	@RequestMapping(value = "/login",method = RequestMethod.POST)
 	@ResponseBody
 	@CrossOrigin
-	public AjaxResult login(@RequestParam("phone") String phone,@RequestParam("code")String code){
+	public AjaxResult login(@RequestBody User user){
 		Subject currentUser = SecurityUtils.getSubject();
+		if(!currentUser.isAuthenticated()){
+			try {
+				UsernamePasswordToken token = new UsernamePasswordToken(user.getPhone(),user.getPassword());
+				currentUser.login(token);
+			} catch (UnknownAccountException e) {
+				e.printStackTrace();
+				return AjaxResult.me().setSuccess(false).setMessage("用户名不存在!");
+			} catch (IncorrectCredentialsException e){
+				e.printStackTrace();
+				return AjaxResult.me().setSuccess(false).setMessage("密码错误!");
+			} catch (AuthenticationException e){
+				e.printStackTrace();
+				return AjaxResult.me().setSuccess(false).setMessage("系统异常！");
+			}
+		}
+		Map<String,Object> result = new HashMap<>();
+		User myCurrentUser = (User) currentUser.getPrincipal();
+		myCurrentUser.setPassword(null);
+		UserContext.setUser(myCurrentUser); //设置当前登录用户到session以便其他地方通过UserContext.getUser
+		result.put("user",myCurrentUser);
+		//为了做基于token会话管理,还要把sessionId返回到前台
+		System.out.println(currentUser.getSession().getId()+"xxx");
+		result.put("token",currentUser.getSession().getId());
+		return AjaxResult.me().setResultObj(result);
+	}
+
+
+	@RequestMapping(value = "/zhuce",method = RequestMethod.POST)
+	@ResponseBody
+	@CrossOrigin
+	public AjaxResult login(@RequestParam("phone") String phone,@RequestParam("password")String code){
+		Subject currentUser = SecurityUtils.getSubject();
+		UsernamePasswordToken token = new UsernamePasswordToken(phone, code);
 		//没有登录用户就开始验证
 		if(!currentUser.isAuthenticated()){
 			//根据登录用户的手机号 寻找用户 没有就开始注册用户 注册用户的短信需要验证,而且一分钟只能发一次短信,
@@ -53,7 +85,7 @@ public class LoginController{
             User user = userService.selectOne(userEntityWrapper);
             //有就执行验证  没有先执行添加用户再验证
 			try {
-				UsernamePasswordToken token = new UsernamePasswordToken();
+				//UsernamePasswordToken token = new UsernamePasswordToken();
 				currentUser.login(token);
 			} catch (UnknownAccountException e) {
 				e.printStackTrace();
@@ -70,7 +102,7 @@ public class LoginController{
 		User user1 = (User) currentUser.getPrincipal();
 
         /*
-        currentUser.getSession().setAttribute("loginUser",employee1);
+        currentUser.getSession().setAttribute("loginUser",User1);
         //以下获取当前登录用户存在问题如下:
         //1 到处都散落获取当前登录用户代码
         //2 以后不用shiro所有的地方都要改变

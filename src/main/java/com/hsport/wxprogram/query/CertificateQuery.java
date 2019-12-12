@@ -1,7 +1,7 @@
 package com.hsport.wxprogram.query;
 
 
-import com.hsport.wxprogram.util.BaseQuery;
+import com.hsport.wxprogram.common.util.BaseQuery;
 
 /**
  *

@@ -3,7 +3,6 @@ package com.hsport.wxprogram.service;
 import com.hsport.wxprogram.domain.Sportsplan;
 import com.baomidou.mybatisplus.service.IService;
 import com.hsport.wxprogram.query.SportsplanQuery;
-import com.hsport.wxprogram.util.AjaxResult;
 
 import java.util.HashMap;
 import java.util.List;

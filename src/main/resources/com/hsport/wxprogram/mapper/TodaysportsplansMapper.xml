@@ -10,6 +10,9 @@
         <result column="plansSchedule" property="plansSchedule" />
         <result column="planPer" property="planPer"/>
         <result column="todaySP_id" property="todayspId" />
+        <result column="productServiceID" property="productServiceID" />
+        <result column="date" property="date" />
+        <result column="userID" property="userID" />
     </resultMap>
 
 </mapper>

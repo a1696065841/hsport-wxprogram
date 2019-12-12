@@ -3,8 +3,8 @@ package com.hsport.wxprogram.mapper;
 import com.hsport.wxprogram.domain.Todayburncalories;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.hsport.wxprogram.query.TodayburncaloriesQuery;
-import com.hsport.wxprogram.util.AjaxResult;
-import com.hsport.wxprogram.util.PageList;
+import com.hsport.wxprogram.common.util.AjaxResult;
+import com.hsport.wxprogram.common.util.PageList;
 
 import org.springframework.web.bind.annotation.*;
 

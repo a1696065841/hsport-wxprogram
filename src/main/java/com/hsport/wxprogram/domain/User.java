@@ -23,7 +23,7 @@ public class User extends Model<User> {
     private Integer id;
     private String name;
     private String wx;
-    private Integer phone;
+    private String phone;
     private Integer age;
     private Integer sex;
     private String position;
@@ -85,11 +85,11 @@ public class User extends Model<User> {
         this.wx = wx;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
