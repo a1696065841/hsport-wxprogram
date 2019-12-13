@@ -4,11 +4,12 @@ import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ * <p>
  * </p>
  *
  * @author lhb
@@ -42,6 +43,33 @@ public class Sportsplan extends Model<Sportsplan> {
     private Integer planType;
     private String planEndDate;
     private Integer coachID;
+    private Integer masterPlanCellulose;
+    private Integer masterPlanCarbon;
+    private Integer masterPlanPro;
+
+    public Integer getMasterPlanCellulose() {
+        return masterPlanCellulose;
+    }
+
+    public void setMasterPlanCellulose(Integer masterPlanCellulose) {
+        this.masterPlanCellulose = masterPlanCellulose;
+    }
+
+    public Integer getMasterPlanCarbon() {
+        return masterPlanCarbon;
+    }
+
+    public void setMasterPlanCarbon(Integer masterPlanCarbon) {
+        this.masterPlanCarbon = masterPlanCarbon;
+    }
+
+    public Integer getMasterPlanPro() {
+        return masterPlanPro;
+    }
+
+    public void setMasterPlanPro(Integer masterPlanPro) {
+        this.masterPlanPro = masterPlanPro;
+    }
 
     public Integer getCoachID() {
         return coachID;
@@ -131,14 +159,14 @@ public class Sportsplan extends Model<Sportsplan> {
     @Override
     public String toString() {
         return "Sportsplan{" +
-        ", id=" + id +
-        ", planObjectives=" + planObjectives +
-        ", planUseDays=" + planUseDays +
-        ", userID=" + userID +
-        ", masterPlanBurn=" + masterPlanBurn +
-        ", masterPlanIntake=" + masterPlanIntake +
-        ", planStratTime=" + planStratTime +
-        ",coachID=" + coachID +
-        "}";
+                ", id=" + id +
+                ", planObjectives=" + planObjectives +
+                ", planUseDays=" + planUseDays +
+                ", userID=" + userID +
+                ", masterPlanBurn=" + masterPlanBurn +
+                ", masterPlanIntake=" + masterPlanIntake +
+                ", planStratTime=" + planStratTime +
+                ",coachID=" + coachID +
+                "}";
     }
 }

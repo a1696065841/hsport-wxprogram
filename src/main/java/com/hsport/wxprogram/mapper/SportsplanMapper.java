@@ -50,4 +50,5 @@ public interface SportsplanMapper extends BaseMapper<Sportsplan>{
     List<Sportsplan> selectPlanByUserID(Integer id);
 
     List<HashMap> selectEverDayIntakeAndBurn (SportsplanQuery sportsplanQuery);
+    HashMap getUserIntakeEverday(Integer id);
 }

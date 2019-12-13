@@ -101,8 +101,8 @@ public class BodyController {
     }
 
     @ApiOperation(value="根据userID的bodyid来获取Body详细信息")
-    @RequestMapping(value = "/byUserID/{id}",method = RequestMethod.GET)
-    public Body bodyByUser(@PathVariable("id")Integer id) {
+    @RequestMapping(value = "/selectByUserID/{id}",method = RequestMethod.GET)
+    public Body selectByUserID(@PathVariable("id")Integer id) {
         return bodyService.selectBodyByUserID(id);
     }
 

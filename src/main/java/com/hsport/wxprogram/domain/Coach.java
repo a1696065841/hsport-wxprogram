@@ -23,6 +23,27 @@ public class Coach extends Model<Coach> {
     private Integer id;
     private String coachName;
     private Integer coachAge;
+
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    private String phone;
+
     /**
      * 从业时间
      */

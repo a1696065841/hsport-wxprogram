@@ -11,6 +11,8 @@
         <result column="CertificateID" property="CertificateID" />
         <result column="gymID" property="gymID" />
         <result column="coachPic" property="coachPic" />
+        <result column="password" property="password" />
+        <result column="phone" property="phone" />
     </resultMap>
 
 </mapper>

@@ -79,7 +79,7 @@ public class StageplanController {
         return stageplanService.selectList(null);
     }
     //获取用户
-    @ApiOperation(value="根据用户的id来获取Ceyice详细信息")
+    @ApiOperation(value="根据用户的id来获取阶段计划详细信息")
     @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
     public List<Stageplan> getByUserID(@PathVariable("id")Integer id) {
         EntityWrapper<Stageplan> ceyiceEntityWrapper = new EntityWrapper<>();

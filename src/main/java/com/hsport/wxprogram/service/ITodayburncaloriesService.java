@@ -15,4 +15,6 @@ import java.util.HashMap;
  */
 public interface ITodayburncaloriesService extends IService<Todayburncalories> {
     HashMap getAvgAndAllByUserID(Integer id);
+
+    HashMap selectSportsTimes(Integer id);
 }

@@ -97,7 +97,7 @@ public class TodayintakeplanController {
         todayintakeplanEntityWrapper.eq("date", DateUtil.today());
         Todayintakeplan todayintakeplan = todayintakeplanService.selectOne(todayintakeplanEntityWrapper);
         stringIntegerHashMap.put("zaocan",todayintakeplan.getBreakfastIntake());
-        stringIntegerHashMap.put("wucan",todayintakeplan.getLunchIntake());
+        stringIntegerHashMap.put("wucan", todayintakeplan.getLunchIntake());
         stringIntegerHashMap.put("wancan",todayintakeplan.getDinnerIntake());
         stringIntegerHashMap.put("jiacan",todayintakeplan.getMealAdditionIntake());
         return stringIntegerHashMap;

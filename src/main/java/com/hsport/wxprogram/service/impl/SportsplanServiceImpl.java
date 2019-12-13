@@ -37,4 +37,9 @@ public class SportsplanServiceImpl extends ServiceImpl<SportsplanMapper, Sportsp
     public   List<HashMap> selectEverDayIntakeAndBurn(SportsplanQuery sportsplanQuery) {
         return  sportsplanMapper.selectEverDayIntakeAndBurn(sportsplanQuery);
     }
+
+    @Override
+    public HashMap getUserIntakeEverday(Integer id) {
+        return sportsplanMapper.getUserIntakeEverday(id);
+    }
 }

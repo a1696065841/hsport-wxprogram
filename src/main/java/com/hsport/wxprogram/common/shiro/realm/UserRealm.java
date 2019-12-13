@@ -1,8 +1,10 @@
-package com.hsport.wxprogram.common.shiro;
+package com.hsport.wxprogram.common.shiro.realm;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.common.shiro.MD5Util;
 import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.IUserService;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -10,7 +12,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class MyRealm extends AuthorizingRealm {
+public class UserRealm extends AuthorizingRealm {
     @Autowired
     private IUserService userService;
 
@@ -19,6 +21,7 @@ public class MyRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+        User activeUser = (User) SecurityUtils.getSubject().getPrincipal();
         return null;
     }
 
@@ -28,7 +31,7 @@ public class MyRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-
+        System.out.println("开始认证");
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         String  name = token.getUsername();
         EntityWrapper<User> userEntityWrapper = new EntityWrapper<>();

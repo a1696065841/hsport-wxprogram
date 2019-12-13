@@ -2,7 +2,13 @@ package com.hsport.wxprogram.web.controller;
 
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.common.shiro.UserToken;
+import com.hsport.wxprogram.common.util.CoachContext;
+import com.hsport.wxprogram.domain.Coach;
+import com.hsport.wxprogram.domain.Student;
+import com.hsport.wxprogram.domain.Sysuser;
 import com.hsport.wxprogram.domain.User;
+import com.hsport.wxprogram.service.IStudentService;
 import com.hsport.wxprogram.service.IUserService;
 import com.hsport.wxprogram.common.util.AjaxResult;
 import com.hsport.wxprogram.common.util.UserContext;
@@ -17,6 +23,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,6 +38,8 @@ import java.util.Map;
 public class LoginController{
 	@Autowired
 	IUserService userService;
+	@Autowired
+	IStudentService studentService;
 	/**
 	 * 登录页面
 	 */
@@ -39,14 +49,14 @@ public class LoginController{
 	}
 
 
-	@RequestMapping(value = "/login",method = RequestMethod.POST)
+	@RequestMapping(value = "/userLogin",method = RequestMethod.POST)
 	@ResponseBody
 	@CrossOrigin
-	public AjaxResult login(@RequestBody User user){
+	public AjaxResult userLogin(@RequestBody User user){
 		Subject currentUser = SecurityUtils.getSubject();
 		if(!currentUser.isAuthenticated()){
 			try {
-				UsernamePasswordToken token = new UsernamePasswordToken(user.getPhone(),user.getPassword());
+				UserToken token = new UserToken(user.getPhone(),user.getPassword(),"User");
 				currentUser.login(token);
 			} catch (UnknownAccountException e) {
 				e.printStackTrace();
@@ -70,6 +80,67 @@ public class LoginController{
 		return AjaxResult.me().setResultObj(result);
 	}
 
+	@RequestMapping(value = "/coachLogin",method = RequestMethod.POST)
+	@ResponseBody
+	@CrossOrigin
+	public AjaxResult coachLogin(@RequestBody Coach coach){
+		Subject currentUser = SecurityUtils.getSubject();
+		if(!currentUser.isAuthenticated()){
+			try {
+				UserToken token = new UserToken(coach.getPhone(),coach.getPassword(),"Coach");
+				currentUser.login(token);
+			} catch (UnknownAccountException e) {
+				e.printStackTrace();
+				return AjaxResult.me().setSuccess(false).setMessage("用户名不存在!");
+			} catch (IncorrectCredentialsException e){
+				e.printStackTrace();
+				return AjaxResult.me().setSuccess(false).setMessage("密码错误!");
+			} catch (AuthenticationException e){
+				e.printStackTrace();
+				return AjaxResult.me().setSuccess(false).setMessage("系统异常！");
+			}
+		}
+		Map<String,Object> result = new HashMap<>();
+		Coach myCurrentUser = (Coach) currentUser.getPrincipal();
+		myCurrentUser.setPassword(null);
+		CoachContext.setUser(myCurrentUser); //设置当前登录用户到session以便其他地方通过UserContext.getUser
+		result.put("coach",myCurrentUser);
+		//为了做基于token会话管理,还要把sessionId返回到前台
+		System.out.println(currentUser.getSession().getId()+"xxx");
+		result.put("token",currentUser.getSession().getId());
+		return AjaxResult.me().setResultObj(result);
+	}
+
+	@RequestMapping(value = "/sysuserLogin",method = RequestMethod.POST)
+	@ResponseBody
+	@CrossOrigin
+	public AjaxResult sysuserLogin(@RequestBody Sysuser sysuser){
+		Subject currentUser = SecurityUtils.getSubject();
+		if(!currentUser.isAuthenticated()){
+			try {
+				UserToken token = new UserToken(sysuser.getPhone(),sysuser.getPassword(),"Sysuser");
+				currentUser.login(token);
+			} catch (UnknownAccountException e) {
+				e.printStackTrace();
+				return AjaxResult.me().setSuccess(false).setMessage("用户名不存在!");
+			} catch (IncorrectCredentialsException e){
+				e.printStackTrace();
+				return AjaxResult.me().setSuccess(false).setMessage("密码错误!");
+			} catch (AuthenticationException e){
+				e.printStackTrace();
+				return AjaxResult.me().setSuccess(false).setMessage("系统异常！");
+			}
+		}
+		Map<String,Object> result = new HashMap<>();
+		Coach myCurrentUser = (Coach) currentUser.getPrincipal();
+		myCurrentUser.setPassword(null);
+		CoachContext.setUser(myCurrentUser); //设置当前登录用户到session以便其他地方通过UserContext.getUser
+		result.put("sysuser",myCurrentUser);
+		//为了做基于token会话管理,还要把sessionId返回到前台
+		System.out.println(currentUser.getSession().getId()+"xxx");
+		result.put("token",currentUser.getSession().getId());
+		return AjaxResult.me().setResultObj(result);
+	}
 
 	@RequestMapping(value = "/zhuce",method = RequestMethod.POST)
 	@ResponseBody
@@ -156,5 +227,26 @@ public class LoginController{
 //		kaptchaExtend.captcha(request, response);
 //    }
 
+	@RequestMapping(value = "/studentLogin",method = RequestMethod.POST)
+		public Student studentLogin(@RequestParam(value = "account") String account,
+								@RequestParam(value = "password") String password,
+								HttpServletRequest request,
+								HttpServletResponse response) {
+
+		System.out.println("\n学生登陆");
+		Student student = null;
+		//设置永不过期
+		SecurityUtils.getSubject().getSession().setTimeout(-1000L);
+		Subject subject = SecurityUtils.getSubject();
+		try {
+			// 调用安全认证框架的登录方法
+			subject.login(new UserToken(account, password, "Student"));
+			student = studentService.getStudentByAccount(account);
+		} catch (AuthenticationException ex) {
+			System.out.println("登陆失败: " + ex.getMessage());
+		}
+		return student;
+
+	}
 
 }

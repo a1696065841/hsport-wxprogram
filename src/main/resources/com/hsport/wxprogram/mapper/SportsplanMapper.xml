@@ -14,6 +14,9 @@
         <result column="planEndDate" property="planEndDate"/>
         <result column="planType" property="planType"/>
         <result column="coachID" property="coachID"/>
+        <result column="masterPlanCellulose" property="masterPlanCellulose"/>
+        <result column="masterPlanCarbon" property="masterPlanCarbon"/>
+        <result column="masterPlanPro" property="masterPlanPro"/>
     </resultMap>
 
     <select id="selectAllPlanWithUser" parameterType="Integer" resultMap="BaseResultMap">
@@ -22,9 +25,19 @@
     <select id="selectPlanByUserID" parameterType="Integer" resultMap="BaseResultMap">
        SELECT s.* FROM t_sportsplan s LEFT JOIN t_user u ON s.userID=u.id WHERE s.userID=#{id}   </select>
 
-    <select id="selectEverDayIntakeAndBurn"  parameterType="com.hsport.wxprogram.query.SportsplanQuery" resultType="map">
+    <select id="selectEverDayIntakeAndBurn" parameterType="com.hsport.wxprogram.query.SportsplanQuery" resultType="map">
      SELECT b.userID,b.dayBurns,i.dayIntake,b.date FROM t_todayburncalories b,t_todayintake i
      where b.userID=#{userID} AND b.userID=i.userID AND b.date=i.date order by i.date desc
      limit #{page},#{rows}
    </select>
+
+    <select id="getUserIntakeEverday" parameterType="Integer"  resultType="map" >
+        SELECT s.id,s.userID,
+        (s.masterPlanIntake/s.planUseDays) intakeEverday,
+        (s.masterPlanCarbon/s.planUseDays) carbonEverday,
+        (s.masterPlanCellulose/s.planUseDays) celluloseEverday,
+        (s.masterPlanPro/s.planUseDays) proEverday
+        from t_sportsplan s WHERE s.userID=#{id} AND s.planEndDate is NULL AND (s.planType=1 or s.planType=3 )
+    </select>
+
 </mapper>

@@ -8,12 +8,12 @@
         <result column="intakePlan" property="intakePlan" />
         <result column="userID" property="userID" />
         <result column="date" property="date" />
-        <result column="intakeSJ" property="intakeSJ" />
         <result column="sportsPlanID" property="sportsPlanID" />
-        <result column="breakfastIntake" property="breakfastIntake" />
-        <result column="lunchIntake" property="lunchIntake" />
-        <result column="dinnerIntake" property="dinnerIntake" />
+        <result column="celluloseIntake" property="celluloseIntake" />
+        <result column="carbonIntake" property="carbonIntake" />
+        <result column="proIntake" property="proIntake" />
         <result column="mealAdditionIntake" property="mealAdditionIntake" />
+
     </resultMap>
 
 </mapper>

@@ -25,4 +25,9 @@ public class TodayburncaloriesServiceImpl extends ServiceImpl<TodayburncaloriesM
     public HashMap getAvgAndAllByUserID(Integer id) {
       return  todayburncaloriesMapper.getAvgAndAllByUserID(id);
     }
+
+    @Override
+    public HashMap selectSportsTimes(Integer id) {
+        return todayburncaloriesMapper.selectSportsTimesAvgAndAll(id);
+    }
 }

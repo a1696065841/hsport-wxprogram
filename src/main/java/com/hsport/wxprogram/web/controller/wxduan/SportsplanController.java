@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.hsport.wxprogram.domain.*;
 import com.hsport.wxprogram.service.ISportsplanService;
 import com.hsport.wxprogram.query.SportsplanQuery;
+import com.hsport.wxprogram.service.IStageplanService;
 import com.hsport.wxprogram.service.ITodayburncaloriesService;
 import com.hsport.wxprogram.service.ITodayintakeService;
 import com.hsport.wxprogram.common.util.AjaxResult;
@@ -31,6 +32,8 @@ public class SportsplanController {
     public ITodayburncaloriesService todayburncaloriesService;
     @Autowired
     public ITodayintakeService todayintakeService;
+    @Autowired
+    public IStageplanService stageplanService;
 
     /**
     * 保存和修改公用的
@@ -114,20 +117,47 @@ public class SportsplanController {
     }
 
     @ApiOperation(value="来获取用户的平均摄入消耗和总摄入消耗 已过天数等详细信息")
-    @RequestMapping(value = "/getAvgAndAllByUserID/{id}",method = RequestMethod.GET)
-    public HashMap getAvgAndAllByUserID(@PathVariable("id") Integer id){
-        HashMap<String, Map> stringMapHashMap = new HashMap<>();
+    @RequestMapping(value = "/getPlanAndObjectives/{id}",method = RequestMethod.GET)
+    public HashMap getPlanAndObjectives(@PathVariable("id") Integer id){
+        HashMap<String, Object> stringMapHashMap = new HashMap<>();
+        Sportsplan sportsplan = sportsplanService.selectById(id);
+        //用的天数
+        String planStratTime = sportsplan.getPlanStratTime();
+        DateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
+        Date stratTime = null;
+        try {
+            stratTime = simpleDateFormat.parse(String.valueOf(planStratTime));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        int days = (int) (( new Date().getTime()-stratTime.getTime() ) / (1000*3600*24));
+        //计划的第几天
+        stringMapHashMap.put("useDays",days);
+        //运动和摄入的平均值
         HashMap avgAndAllByUserID = todayburncaloriesService.getAvgAndAllByUserID(id);
         HashMap avgAndAllByUserID1 = todayintakeService.getAvgAndAllByUserID(id);
+        //摄入的总卡路里和平均
         stringMapHashMap.put("IntakeAvgAndAllByUserID",avgAndAllByUserID1);
+        //消耗的总值和平均
         stringMapHashMap.put("BurnAvgAndAllByUserID",avgAndAllByUserID);
+        //运动时长的平均与总值
+        stringMapHashMap.put("sportsTime",todayburncaloriesService.selectSportsTimes(id));
+        //用户的阶段计划
+        EntityWrapper<Stageplan> ceyiceEntityWrapper = new EntityWrapper<>();
+        ceyiceEntityWrapper.eq("userID",id);
+        List<Stageplan> stageplans = stageplanService.selectList(ceyiceEntityWrapper);
+        stringMapHashMap.put("stageplans",stageplans);
+        //计划目的与计划总长
+        stringMapHashMap.put("planUseDays",sportsplan.getPlanUseDays());
+        stringMapHashMap.put("planObjectives",sportsplan.getPlanObjectives());
+        stringMapHashMap.put("userEverDayIntake",sportsplanService.getUserIntakeEverday(id));
+
         return stringMapHashMap;
     }
 
     @ApiOperation(value="来获取用户每天的消耗摄入的值")
     @RequestMapping(value = "/selectEverDayIntakeAndBurn",method = RequestMethod.POST)
     public  List<HashMap> selectEverDayIntakeAndBurn(@RequestBody SportsplanQuery sportsplanQuery){
-        System.out.println(sportsplanQuery);
         return sportsplanService.selectEverDayIntakeAndBurn(sportsplanQuery);
     }
     @ApiOperation(value="获取计划的进度详情",notes = "当前进度 已过天数/总周期,累计消耗卡路里,累计摄入卡路里")
