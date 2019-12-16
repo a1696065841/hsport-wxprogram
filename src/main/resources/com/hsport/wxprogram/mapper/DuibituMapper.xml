@@ -11,7 +11,6 @@
         <result column="userID" property="userID" />
         <result column="imgUrl" property="imgUrl" />
         <result column="imgType" property="imgType" />
-        <result column="imgName" property="imgName"/>
     </resultMap>
 
 </mapper>

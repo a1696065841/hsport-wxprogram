@@ -8,8 +8,15 @@ public class UserToken extends UsernamePasswordToken {
 
     public UserToken() {}
 
+    @Override
+    public String toString() {
+        return "UserToken{" +
+                "loginType='" + loginType + '\'' +
+                '}';
+    }
+
     public UserToken(final String username, final String password,
-            final String loginType) {
+                     final String loginType) {
         super(username, password);
         this.loginType = loginType;
     }

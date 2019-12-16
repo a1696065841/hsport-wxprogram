@@ -33,7 +33,6 @@ public class Foodimg extends Model<Foodimg> {
     private Integer foodWeight;
     private Integer coachID;
     private Integer foodCalories;
-    private  String imgName;
     private Integer productserviceID;
 
     public Integer getProductserviceID() {
@@ -46,14 +45,6 @@ public class Foodimg extends Model<Foodimg> {
 
     public Integer getFoodType() {
         return foodType;
-    }
-
-    public String getImgName() {
-        return imgName;
-    }
-
-    public void setImgName(String imgName) {
-        this.imgName = imgName;
     }
 
     public void setFoodType(Integer foodType) {

@@ -28,7 +28,6 @@ public class Sportsimg extends Model<Sportsimg> {
     private String date;
     private Integer todayburncaloriesID;
     private String burnType;
-    private  String imgName;
     private Integer productserviceID;
 
     public Integer getProductserviceID() {
@@ -40,14 +39,6 @@ public class Sportsimg extends Model<Sportsimg> {
     }
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getImgName() {
-        return imgName;
-    }
-
-    public void setImgName(String imgName) {
-        this.imgName = imgName;
     }
 
     public String getBurnType() {

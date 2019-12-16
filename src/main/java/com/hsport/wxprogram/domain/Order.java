@@ -19,8 +19,7 @@ public class Order extends Model<Order> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    private String id;
     private Integer userID;
     /**
      * 购买时间
@@ -35,11 +34,11 @@ public class Order extends Model<Order> {
     private String endDate;
 
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

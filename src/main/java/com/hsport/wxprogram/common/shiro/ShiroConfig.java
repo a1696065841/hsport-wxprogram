@@ -35,6 +35,10 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/login/sysuserLogin", "anon");
         filterChainDefinitionMap.put("/login/coachLogin", "anon");
         filterChainDefinitionMap.put("/region/selectAreaByCityID/*", "anon");
+        filterChainDefinitionMap.put("/swagger-ui.html", "anon");
+        filterChainDefinitionMap.put("/swagger-resources/**", "anon");
+        filterChainDefinitionMap.put("/v2/**", "anon");
+        filterChainDefinitionMap.put("/webjars/**", "anon");
         //拦截其他所有接口
         filterChainDefinitionMap.put("/**", "authc");
         //配置shiro默认登录界面地址，前后端分离中登录界面跳转应由前端路由控制，后台仅返回json数据
@@ -86,12 +90,12 @@ public class ShiroConfig {
         return coachRealm;
     }
 
-    @Bean(name = "sysUserRealm")
-    public SysUserRealm sysUserRealm() {
-        System.out.println("sysUserRealm 执行");
-        SysUserRealm sysUserRealm = new SysUserRealm();
-        sysUserRealm.setCredentialsMatcher(new CustomCredentialsMatcher());
-        return sysUserRealm;
+    @Bean(name = "SystemAdminRealm")
+    public SystemAdminRealm sysUserRealm() {
+        System.out.println("SystemAdminRealm 执行");
+        SystemAdminRealm systemAdminRealm = new SystemAdminRealm();
+        systemAdminRealm.setCredentialsMatcher(new CustomCredentialsMatcher());
+        return systemAdminRealm;
     }
     @Bean(name = "studentRealm")
     public StudentRealm studentRealm(){
@@ -141,7 +145,7 @@ public class ShiroConfig {
         return authorizationAttributeSourceAdvisor;
     }
 
-    @Bean(name="simpleMappingExceptionResolver")
+ /*   @Bean(name="simpleMappingExceptionResolver")
     public SimpleMappingExceptionResolver
     createSimpleMappingExceptionResolver() {
         SimpleMappingExceptionResolver r = new SimpleMappingExceptionResolver();
@@ -153,7 +157,7 @@ public class ShiroConfig {
         r.setDefaultErrorView("error");
         r.setExceptionAttribute("ex");
         return r;
-    }
+    }*/
 
     /**
      * 系统自带的Realm管理，主要针对多realm

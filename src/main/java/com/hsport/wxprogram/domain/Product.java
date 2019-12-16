@@ -23,7 +23,7 @@ public class Product extends Model<Product> {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     private String productName;
-    private String pirce;
+    private double pirce;
     /**
      * 产品描述
      */
@@ -32,7 +32,15 @@ public class Product extends Model<Product> {
     private Integer sysuserID;
     @TableField("productType")
     private Integer productType;
+    private String imgUrl;
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 
     public Integer getId() {
         return id;
@@ -50,11 +58,11 @@ public class Product extends Model<Product> {
         this.productName = productName;
     }
 
-    public String getPirce() {
+    public double getPirce() {
         return pirce;
     }
 
-    public void setPirce(String pirce) {
+    public void setPirce(double pirce) {
         this.pirce = pirce;
     }
 

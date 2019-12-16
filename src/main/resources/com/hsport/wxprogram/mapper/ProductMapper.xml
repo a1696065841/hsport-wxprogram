@@ -10,6 +10,7 @@
         <result column="pro_desc" property="proDesc" />
         <result column="sysuserID" property="sysuserID" />
         <result column="productType" property="productType" />
+        <result column="imgUrl" property="imgUrl" />
     </resultMap>
 
 </mapper>

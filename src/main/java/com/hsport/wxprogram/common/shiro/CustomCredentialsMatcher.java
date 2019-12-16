@@ -9,7 +9,7 @@ import org.apache.shiro.crypto.hash.Sha384Hash;
 public class CustomCredentialsMatcher extends SimpleCredentialsMatcher {
 	
 	 
-	 @Override  
+	/* @Override
      public boolean doCredentialsMatch(AuthenticationToken authcToken, AuthenticationInfo info) {
          System.out.println("doCredentialsMatch  +  进来了");
          UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
@@ -20,7 +20,7 @@ public class CustomCredentialsMatcher extends SimpleCredentialsMatcher {
          Object accountCredentials = getCredentials(info);  
          //将密码加密与系统加密后的密码校验，内容一致就返回true,不一致就返回false  
          return equals(tokenCredentials, accountCredentials);  
-     }  
+     }  */
  
      /**
       * @author Adam

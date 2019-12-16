@@ -13,7 +13,6 @@
         <result column="xCoordinate" property="xCoordinate"/>
         <result column="yCoordinate" property="yCoordinate"/>
         <result column="gym_name" property="gym_name"/>
-        <result column="imgName" property="imgName" />
     </resultMap>
 
     <select id="selectGymByAreaID" parameterType="Integer" resultType="Gym">
