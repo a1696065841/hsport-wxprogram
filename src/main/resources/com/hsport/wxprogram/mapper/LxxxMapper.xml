@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hsport.wxprogram.mapper.LxxxMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Lxxx">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="telphone" property="telphone" />
+        <result column="weixinNum" property="weixinNum" />
+        <result column="age" property="age" />
+        <result column="occupation" property="occupation" />
+        <result column="nation" property="nation" />
+        <result column="atAddress" property="atAddress" />
+        <result column="postalAddress" property="postalAddress" />
+        <result column="homeAddress" property="homeAddress" />
+        <result column="homePhone" property="homePhone" />
+        <result column="ecName" property="ecName" />
+        <result column="ecPhone" property="ecPhone" />
+        <result column="userID" property="userID" />
+        <result column="specialNeeds" property="specialNeeds" />
+    </resultMap>
+
+    <select id="getByUserID" parameterType="integer"  resultType="Lxxx">
+        SELECT l.* FROM t_lxxx l  WHERE l.userID=#{id} limit 0,1
+    </select>
+
+</mapper>
