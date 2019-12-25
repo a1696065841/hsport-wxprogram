@@ -21,6 +21,8 @@ public interface SportsplanMapper extends BaseMapper<Sportsplan>{
      */
     AjaxResult save(Sportsplan sportsplan);
 
+    Integer insert(Sportsplan sportsplan);
+
     /**
      * 删除对象信息
      * @param id
@@ -51,4 +53,5 @@ public interface SportsplanMapper extends BaseMapper<Sportsplan>{
 
     List<HashMap> selectEverDayIntakeAndBurn (SportsplanQuery sportsplanQuery);
     HashMap getUserIntakeEverday(Integer id);
+    Object getMyPlan(SportsplanQuery sportsplanQuery);
 }

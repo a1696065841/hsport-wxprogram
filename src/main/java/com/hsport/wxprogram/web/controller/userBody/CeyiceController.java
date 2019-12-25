@@ -1,6 +1,7 @@
 package com.hsport.wxprogram.web.controller.userBody;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.common.util.DateUtil;
 import com.hsport.wxprogram.domain.vo.CeyiceVo;
 import com.hsport.wxprogram.service.ICeyiceService;
 import com.hsport.wxprogram.domain.Ceyice;
@@ -24,7 +25,7 @@ public class CeyiceController {
 
     /**
     * 保存和修改公用的
-    * @param ceyice  传递的实体
+    * @param
     * @return Ajaxresult转换结果
     */
     @ApiOperation(value="新增或修改Ceyice信息")
@@ -32,7 +33,7 @@ public class CeyiceController {
     public AjaxResult save(@RequestBody CeyiceVo ceyiceVo){
         /**
          *
-         userID
+         * userID
          */
         Ceyice ceyice = new Ceyice();
         //vo对象赋值
@@ -55,6 +56,7 @@ public class CeyiceController {
         ceyice.setBuweiYdSunsDX(BuweiYdSuns);
         ceyice.setYsxwxgDX(CharToString.C2S(ceyiceVo.getYsxwxgDX()));
         ceyice.setYqJianfeiJLDX(CharToString.C2S(ceyiceVo.getYqJianfeiJLDX()));
+        ceyice.setDate(DateUtil.now());
         try {
             if(ceyice.getId()!=null){
                ceyiceService.updateById(ceyice);
@@ -95,10 +97,14 @@ public class CeyiceController {
     //获取用户
     @ApiOperation(value="根据用户的id来获取Ceyice详细信息")
     @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
-    public Ceyice getByUserID(@PathVariable("id")Integer id) {
+    public List<Ceyice> getByUserID(@PathVariable("id")Integer id) {
+        Page<Ceyice> page = new Page<Ceyice>(0,1);
+
         EntityWrapper<Ceyice> ceyiceEntityWrapper = new EntityWrapper<>();
         ceyiceEntityWrapper.eq("userID",id);
-        return ceyiceService.selectOne(ceyiceEntityWrapper);
+        ceyiceEntityWrapper.orderBy("date",false);
+        page = ceyiceService.selectPage(page,ceyiceEntityWrapper);
+        return page.getRecords();
     }
 
     /**

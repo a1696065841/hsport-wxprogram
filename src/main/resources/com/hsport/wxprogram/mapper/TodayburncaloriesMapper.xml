@@ -7,7 +7,6 @@
         <id column="id" property="id" />
         <result column="burnCaloriesPer" property="burnCaloriesPer" />
         <result column="BurnCalories" property="BurnCalories" />
-        <result column="BurnType" property="BurnType" />
         <result column="sportsBpm" property="sportsBpm" />
         <result column="lifeBpm" property="lifeBpm" />
         <result column="SportsQD" property="SportsQD" />
@@ -18,7 +17,6 @@
         <result column="coachPlanPer" property="coachPlanPer" />
         <result column="coachTimes" property="coachTimes" />
         <result column="aerobicTimes" property="aerobicTimes" />
-        <result column="stepNumbers" property="stepNumbers" />
         <result column="date" property="date" />
         <result column="userID" property="userID" />
     </resultMap>
@@ -33,5 +31,9 @@
     </select>
     <select id="selectSportsTimesAvgAndAll" parameterType="Integer" resultType="map" >
           SELECT id,SUM(tb.aerobicTimes+tb.coachTimes) allSportsTimes,AVG(tb.aerobicTimes+tb.coachTimes) avgSportsTimes,userID  FROM t_todayburncalories tb where tb.userID=#{id}
+    </select>
+    <select id="getLastOne" resultType="Todayburncalories" parameterType="integer">
+        SELECT * FROM t_todayburncalories WHERE userID=#{id} order by date desc
+        limit 1
     </select>
 </mapper>

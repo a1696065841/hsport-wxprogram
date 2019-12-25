@@ -40,7 +40,17 @@
 			<artifactId>shiro-spring</artifactId>
 			<version>1.4.1</version>
 		</dependency>
-
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<!-- <version>2.9.0</version> -->
+		</dependency>
+		<!--fastJson-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.47</version>
+		</dependency>
 	<!--Json-->
 		<!-- swagger2-->
 		<dependency>
@@ -136,6 +146,11 @@
 			<groupId>net.sf.ezmorph</groupId>
 			<artifactId>ezmorph</artifactId>
 			<version>1.0.6</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jcraft</groupId>
+			<artifactId>jsch</artifactId>
+			<version>0.1.53</version>
 		</dependency>
 	</dependencies>
 

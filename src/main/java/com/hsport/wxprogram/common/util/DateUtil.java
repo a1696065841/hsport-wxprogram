@@ -3,6 +3,7 @@ package com.hsport.wxprogram.common.util;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class DateUtil {
     public static String todaySix(){
@@ -71,5 +72,13 @@ public class DateUtil {
         Calendar c=Calendar.getInstance();
         String date=simpleDateFormat.format(c.getTime());
         return date;
+    }
+    public static int DateCompare(String source, String traget, String type) throws Exception {
+        SimpleDateFormat format = new SimpleDateFormat(type);
+        Date sourcedate = format.parse(source);
+        Date tragetdate = format.parse(traget);
+        int i = sourcedate.compareTo(tragetdate);
+
+        return i;
     }
 }

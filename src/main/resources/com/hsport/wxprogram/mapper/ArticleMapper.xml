@@ -4,10 +4,13 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Article">
-        <id column="id" property="id" />
-        <result column="article" property="article" />
-        <result column="userID" property="userID" />
-        <result column="articleType" property="articleType" />
+        <id column="id" property="id"/>
+        <result column="article" property="article"/>
+        <result column="userID" property="userID"/>
+        <result column="articleType" property="articleType"/>
     </resultMap>
+    <select id="getArticleType" resultType="map">
+    SELECT articleType  FROM t_article GROUP BY articleType
+    </select>
 
 </mapper>

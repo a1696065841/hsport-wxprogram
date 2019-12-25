@@ -1,6 +1,7 @@
 package com.hsport.wxprogram.web.controller.coach;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.common.util.CoachContext;
 import com.hsport.wxprogram.domain.*;
 import com.hsport.wxprogram.domain.vo.WorkListVo;
 import com.hsport.wxprogram.service.*;
@@ -45,6 +46,8 @@ public class CoachController {
     public IProductserviceService productserviceService;
     @Autowired
     public ITodaysportsplansService todaysportsplansService;
+    @Autowired
+    public ILxxxService lxxxService;
 
     /**
      * 保存和修改公用的
@@ -59,6 +62,7 @@ public class CoachController {
             if (coach.getId() != null) {
                 coachService.updateById(coach);
             } else {
+
                 coachService.insert(coach);
             }
             return AjaxResult.me();
@@ -110,11 +114,21 @@ public class CoachController {
      * 查询教练的所有客户
      */
     @ApiOperation(value = "根据该教练的id查询教练的所有客户")
-    @RequestMapping(value = "/getUserListByCoachID/{id}", method = RequestMethod.GET)
-    public List<User> getUserListByCoachID(@PathVariable("id") Integer id) {
+    @RequestMapping(value = "/getUserListByCoachID", method = RequestMethod.GET)
+    public List getUserListByCoachID() {
+        List<Object> list = new ArrayList<>();
+        Coach coach = CoachContext.getUser();
         EntityWrapper<User> userEntityWrapper = new EntityWrapper<>();
-        userEntityWrapper.eq("userID", id);
-        return userService.selectList(userEntityWrapper);
+        userEntityWrapper.eq("coachID", coach.getId());
+        List<User> users = userService.selectList(userEntityWrapper);
+        for (User user : users) {
+            HashMap<String, Object> map = new HashMap<>();
+            Lxxx byUserID = lxxxService.getByUserID(user.getId());
+            map.put("userLxxx",byUserID);
+            map.put("userPhone",user.getPhone());
+            list.add(map);
+        }
+        return list;
     }
 
     /**
@@ -133,8 +147,8 @@ public class CoachController {
     }
 
     @ApiOperation(value = "根据教练id来获取现在的未完成工作按员工区分")
-    @RequestMapping(value = "/CoachWorkListByUser/{id}", method = RequestMethod.GET)
-    public List CoachWorkListByUser(@PathVariable("id") Integer id) {
+    @RequestMapping(value = "/CoachWorkListByUser", method = RequestMethod.GET)
+    public List CoachWorkListByUser() throws Exception {
         /** vo 类
          * 用户名
          * 用户id
@@ -156,19 +170,25 @@ public class CoachController {
          * 用户今日饮食计划
          * 用户上传的图片
          * */
+        Coach coach = CoachContext.getUser();
         List todayFoodImgList = new ArrayList<>();
         List todaySpImgList = new ArrayList<>();
         ArrayList<Object> list = new ArrayList<>();
-        List<User> users = userService.findUserByCoachID(id);
+        List<User> users = userService.findUserByCoachID(coach.getId());
         //遍历用户
         for (User user : users) {
             HashMap<String, Object> map = new HashMap<>();
             List<HashMap> workList = new ArrayList<>();
-            map.put("username", user.getName());
+            Lxxx byUserID = lxxxService.getByUserID(user.getId());
+            if (byUserID==null){
+                map.put("username","用户暂未命名");
+            }
+            map.put("username", byUserID.getName());
             map.put("userID", user.getId());
             //查到用户的未完成订单
             EntityWrapper<Order> orderEntityWrapper = new EntityWrapper<>();
-            List<Order> orders = orderService.selectList(orderEntityWrapper.eq("userID", user.getId()).andNew().eq("orderType", 0));
+            System.out.println("-----------------------------------group");
+            List<Order> orders = orderService.selectList(orderEntityWrapper.eq("userID", user.getId()).andNew().eq("orderType", 0).groupBy("productID"));
             Iterator<Order> iterator = orders.iterator();
             ArrayList<Object> serviceList = new ArrayList<>();
             //遍历订单
@@ -183,22 +203,41 @@ public class CoachController {
                 while (productserviceIterator.hasNext()) {
                     WorkListVo workListVo = new WorkListVo();
                     Productservice productservice = productserviceIterator.next();
+                    Todaysportsplans todaysportsplans=null;
+                    Todayintakeplan todayintakeplan =null;
                     //如过是长期计划类型的产品
                     if (product.getProductType() == 2) {
-                        //遍历查询有没有明天6点 到后天6点之间的对应产品服务的计划
-                        Todaysportsplans todaysportsplans = todaysportsplansService.selectOne(new EntityWrapper<Todaysportsplans>().eq("userID", user.getId())
-                                .ge("date", DateUtil.tommrowSix()).le("date", DateUtil.AfterTommrowSix()).eq("productServiceID", productservice.getId()));
+                        //遍历查询计划 如果现在是凌晨6点钱就查有没有今天的  超过了今天凌晨6点就查有没有明天的
+                        if (DateUtil.DateCompare(DateUtil.now(),DateUtil.todaySix(),"yyyy.MM.dd HH:mm")==-1){
+                             todaysportsplans = todaysportsplansService.selectOne(new EntityWrapper<Todaysportsplans>().eq("userID", user.getId())
+                                    .eq("date",DateUtil.today()).eq("productServiceID", productservice.getId()));
+                        }else if (DateUtil.DateCompare(DateUtil.now(),DateUtil.todaySix(),"yyyy.MM.dd HH:mm")==1){
+                             todaysportsplans = todaysportsplansService.selectOne(new EntityWrapper<Todaysportsplans>().eq("userID", user.getId())
+                                    .eq("date",DateUtil.tommrow()).eq("productServiceID", productservice.getId()));
+                        }
                         //如果没有这个计划的话  那就加进该服务的工作列表里
                         if (todaysportsplans == null) {
-                            workListVo.setProductName(product.getProductName());
-                            workListVo.setProductserviceName(productservice.getName());
-                            serviceList.add(workListVo);
+                            System.out.println("todaysportsplans == null");
+                            setWorkList(serviceList,workListVo,product,productservice);
                         }
-                    } else {
-                        HashMap<Object, Object> serviceMap = new HashMap<>();
-                        workListVo.setProductName(product.getProductName());
+                        //如果他有饮食计划类型的服务查该用户今天有没有饮食计划没有就加上
+                    }else if (product.getProductType()==3){
+                        if (DateUtil.DateCompare(DateUtil.now(),DateUtil.todaySix(),"yyyy.MM.dd HH:mm")==-1){
+                             todayintakeplan = todayintakeplanService.selectTheDayIntakePlanByUserID(user.getId(), DateUtil.today());
+                        }
+                        else if (DateUtil.DateCompare(DateUtil.now(),DateUtil.todaySix(),"yyyy.MM.dd HH:mm")==1){
+                             todayintakeplan = todayintakeplanService.selectTheDayIntakePlanByUserID(user.getId(), DateUtil.tommrow());
+                        }
+                        if (todayintakeplan==null){
+                            System.out.println("饮食计划 == null");
+                            setWorkList(serviceList,workListVo,product,productservice);
+                        }
+                    }
+                    else  if (product.getProductType()==1){
+                        setWorkList(serviceList,workListVo,product,productservice);
+                        /*workListVo.setProductName(product.getProductName());
                         workListVo.setProductserviceName(productservice.getName());
-                        serviceList.add(workListVo);
+                        serviceList.add(workListVo);*/
                     }
                 }
                 workList.add(workMap);
@@ -244,9 +283,13 @@ public class CoachController {
         }
         return list;
     }
+    void setWorkList(List list,WorkListVo workListVo,Product product,Productservice productservice){
+        workListVo.setProductName(product.getProductName());
+        workListVo.setProductserviceName(productservice.getName());
+        list.add(workListVo);
+    }
 
-
-    @ApiOperation(value = "根据教练id来获取现在的未完成工作按工作类型区分的")
+  /*  @ApiOperation(value = "根据教练id来获取现在的未完成工作按工作类型区分的")
     @RequestMapping(value = "/CoachWorkList/{id}", method = RequestMethod.GET)
     public Map<String, Object> CoachWorkList(@PathVariable("id") Integer id) {
         HashMap<String, Object> map = new HashMap<>();
@@ -266,8 +309,9 @@ public class CoachController {
                     sportsplan.getPlanObjectives() == null || sportsplan.getPlanObjectives().equals("")) {
                 HashMap<String, Object> sportsPlanMap = new HashMap<>();
                 Integer userID = sportsplan.getUserID();
+                Lxxx byUserID = lxxxService.getByUserID(userID);
                 User user = userService.selectById(userID);
-                sportsPlanMap.put("username", user.getName());
+                sportsPlanMap.put("username", byUserID.getName());
                 sportsPlanMap.put("userID", user.getId());
                 sportsPlanMap.put("sportsplanID", sportsplan.getId());
                 objects.add(sportsPlanMap);
@@ -319,7 +363,7 @@ public class CoachController {
             HashMap<String, Object> tommrowSpMap = new HashMap<>();
             Todaysp todaysp = todayspService.selectTodaySpByUserID(user.getId(), DateUtil.today());
             Todaysp todaysp1 = todayspService.selectTodaySpByUserID(user.getId(), DateUtil.tommrow());
-            if (todaysp == null || todaysp.getTodayBurnCalorie() == null || todaysp.getTodayBurnCaloriePlan() == null) {
+            if (todaysp == null  || todaysp.getTodayBurnCaloriePlan() == null) {
                 putInMap(todaySpMap, DateUtil.today(), ydList, user);
             }
             if (todaysp1 == null) {
@@ -328,8 +372,8 @@ public class CoachController {
             //饮食map和
             HashMap<String, Object> todayYsMap = new HashMap<>();
             HashMap<String, Object> tommrowYsMap = new HashMap<>();
-            Todayintakeplan todayintakeplan = todayintakeplanService.selectTodayIntakePlanByUserID(user.getId(), DateUtil.today());
-            Todayintakeplan tommoryPlan = todayintakeplanService.selectTodayIntakePlanByUserID(user.getId(), DateUtil.tommrow());
+            Todayintakeplan todayintakeplan = todayintakeplanService.selectTheDayIntakePlanByUserID(user.getId(), DateUtil.today());
+            Todayintakeplan tommoryPlan = todayintakeplanService.selectTheDayIntakePlanByUserID(user.getId(), DateUtil.tommrow());
             if (todayintakeplan == null) {
                 putInMap(todayYsMap, DateUtil.today(), todayYsList, user);
             }
@@ -344,22 +388,23 @@ public class CoachController {
         return map;
     }
 
-    public static void putInMap(HashMap<String, Object> map, String date, List list, User user) {
-          /*   tommrowYsMap.put("userID", user.getId());
+      void putInMap(HashMap<String, Object> map, String date, List list, User user) {
+          *//*   tommrowYsMap.put("userID", user.getId());
                 tommrowYsMap.put("username", user.getName());
                 tommrowYsMap.put("date", DateUtil.tommrow());
-                mrYSList.add(tommrowYsMap);*/
+                mrYSList.add(tommrowYsMap);*//*
+        Lxxx byUserID = lxxxService.getByUserID(user.getId());
         if (date.equals(DateUtil.today())) {
             map.put("userID", user.getId());
-            map.put("username", user.getName());
+            map.put("username", byUserID.getName());
             map.put("date", DateUtil.today());
             list.add(map);
         }
         if (date.equals(DateUtil.tommrow())) {
             map.put("userID", user.getId());
-            map.put("username", user.getName());
+            map.put("username", byUserID.getName());
             map.put("date", DateUtil.tommrow());
             list.add(map);
         }
-    }
+    }*/
 }

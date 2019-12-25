@@ -15,4 +15,6 @@ import java.util.List;
  */
 public interface IGymService extends IService<Gym> {
     List<Gym> selectGymByAreaID(Integer id);
+    List<Gym> selectGymByParentID(Integer id);
+
 }

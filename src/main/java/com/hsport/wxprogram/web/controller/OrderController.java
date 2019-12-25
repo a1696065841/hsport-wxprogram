@@ -19,7 +19,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/order")
 @CrossOrigin
-
 public class OrderController {
     @Autowired
     public IOrderService orderService;
@@ -43,7 +42,7 @@ public class OrderController {
                 Product product = productService.selectById(productID);
                 order.setTotalPrice(product.getPirce());
                 //生成id
-                order.setId(OrderCodeFactory.getOrderCode(order.getUserID()));
+                order.setId(OrderCodeFactory.getOrderCode(order.getUserID() ));
                 //设置默认订单和订单日期
                 order.setOrderType(0);
                 order.setStratDate(DateUtil.now());
@@ -79,6 +78,14 @@ public class OrderController {
     public Order get(@PathVariable("id")Integer id)
     {
         return orderService.selectById(id);
+    }
+
+
+    @ApiOperation(value="根据用户的id来获取购买的订单信息")
+    @RequestMapping(value = "/selectOrderByUserID/{id}",method = RequestMethod.GET)
+    public List<Object> selectOrderByUserID(@PathVariable("id")Integer id)
+    {
+        return orderService.selectOrderByUserID(id);
     }
 
 

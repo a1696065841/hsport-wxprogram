@@ -1,31 +1,42 @@
 package com.hsport.wxprogram.web.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.common.shiro.UserToken;
 import com.hsport.wxprogram.common.util.*;
 import com.hsport.wxprogram.domain.Coach;
-import com.hsport.wxprogram.domain.Student;
 import com.hsport.wxprogram.domain.Sysuser;
 import com.hsport.wxprogram.domain.User;
+import com.hsport.wxprogram.domain.vo.UserGenVo;
+import com.hsport.wxprogram.service.ICoachService;
 import com.hsport.wxprogram.service.IStudentService;
 import com.hsport.wxprogram.service.IUserService;
 
+import com.hsport.wxprogram.service.RedisService;
+import io.swagger.annotations.ApiOperation;
 import jdk.nashorn.internal.parser.Token;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
+import org.apache.shiro.mgt.DefaultSecurityManager;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.session.mgt.DefaultSessionManager;
 import org.apache.shiro.subject.Subject;
+import org.junit.Assert;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import redis.clients.jedis.Jedis;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.Serializable;
+import java.util.*;
 
 /**
  * 登录控制器
@@ -39,17 +50,16 @@ public class LoginController {
     @Autowired
     IUserService userService;
     @Autowired
-    IStudentService studentService;
+    ICoachService coachService;
+    @Autowired
+    private RedisService redisService;
+
 
     private final static Logger logger = LoggerFactory.getLogger(LoginController.class);
+
     /**
      * 登录页面
      */
-    @RequestMapping
-    public String login(Model model) {
-        return "login";
-    }
-
 
     @RequestMapping(value = "/userLogin", method = RequestMethod.POST)
     @ResponseBody
@@ -58,16 +68,15 @@ public class LoginController {
         Subject currentUser = SecurityUtils.getSubject();
         if (!currentUser.isAuthenticated()) {
             try {
-                logger.debug(user.getPhone()+"用户登录");
-                UserToken token = new UserToken(user.getPhone(), user.getPassword(),"User");
-                System.out.println(token);
+                logger.debug("手机号为" + user.getPhone() + "的小程序用户登录了");
+                UserToken token = new UserToken(user.getPhone(), user.getPassword(), "User");
                 currentUser.login(token);
             } catch (UnknownAccountException e) {
                 e.printStackTrace();
-                return AjaxResult.me().setSuccess(false).setMessage("用户名不存在!");
+                return AjaxResult.me().setSuccess(false).setMessage("用户名或密码错误!");
             } catch (IncorrectCredentialsException e) {
                 e.printStackTrace();
-                return AjaxResult.me().setSuccess(false).setMessage("密码错误!");
+                return AjaxResult.me().setSuccess(false).setMessage("用户名或密码错误!");
             } catch (AuthenticationException e) {
                 e.printStackTrace();
                 return AjaxResult.me().setSuccess(false).setMessage("系统异常！");
@@ -75,9 +84,15 @@ public class LoginController {
         }
         Map<String, Object> result = new HashMap<>();
         User myCurrentUser = (User) currentUser.getPrincipal();
+        //把sessionID存在Redis里
+        JSONObject loginUser = (JSONObject) JSONObject.toJSON(myCurrentUser);
+        redisService.setWithTime(currentUser.getSession().getId().toString(),loginUser.toJSONString(),60*60);
+        //查询并修改用户登录时间和次数
+        userService.updateLoginUser(myCurrentUser);
         myCurrentUser.setPassword(null);
         UserContext.setUser(myCurrentUser); //设置当前登录用户到session以便其他地方通过UserContext.getUser
         result.put("user", myCurrentUser);
+
         //为了做基于token会话管理,还要把sessionId返回到前台
         result.put("token", currentUser.getSession().getId());
         return AjaxResult.me().setResultObj(result);
@@ -94,10 +109,10 @@ public class LoginController {
                 currentUser.login(token);
             } catch (UnknownAccountException e) {
                 e.printStackTrace();
-                return AjaxResult.me().setSuccess(false).setMessage("用户名不存在!");
+                return AjaxResult.me().setSuccess(false).setMessage("用户名或密码错误!");
             } catch (IncorrectCredentialsException e) {
                 e.printStackTrace();
-                return AjaxResult.me().setSuccess(false).setMessage("密码错误!");
+                return AjaxResult.me().setSuccess(false).setMessage("用户名或密码错误!");
             } catch (AuthenticationException e) {
                 e.printStackTrace();
                 return AjaxResult.me().setSuccess(false).setMessage("系统异常！");
@@ -107,9 +122,12 @@ public class LoginController {
         Coach myCurrentUser = (Coach) currentUser.getPrincipal();
         myCurrentUser.setPassword(null);
         CoachContext.setUser(myCurrentUser);
+        //token放入缓存
+        JSONObject loginUser = (JSONObject) JSONObject.toJSON(myCurrentUser);
+        redisService.setWithTime(currentUser.getSession().getId().toString(),loginUser.toJSONString(),43967);
+        //给前台返回信息
         result.put("coach", myCurrentUser);
         //为了做基于token会话管理,还要把sessionId返回到前台
-
         result.put("token", currentUser.getSession().getId());
         return AjaxResult.me().setResultObj(result);
     }
@@ -125,10 +143,10 @@ public class LoginController {
                 currentUser.login(token);
             } catch (UnknownAccountException e) {
                 e.printStackTrace();
-                return AjaxResult.me().setSuccess(false).setMessage("用户名不存在!");
+                return AjaxResult.me().setSuccess(false).setMessage("用户名或密码错误!");
             } catch (IncorrectCredentialsException e) {
                 e.printStackTrace();
-                return AjaxResult.me().setSuccess(false).setMessage("密码错误!");
+                return AjaxResult.me().setSuccess(false).setMessage("用户名或密码错误!");
             } catch (AuthenticationException e) {
                 e.printStackTrace();
                 return AjaxResult.me().setSuccess(false).setMessage("系统异常！");
@@ -140,64 +158,15 @@ public class LoginController {
         SysuserContext.setUser(myCurrentUser);
         result.put("sysuser", myCurrentUser);
         //为了做基于token会话管理,还要把sessionId返回到前台
-
         result.put("token", currentUser.getSession().getId());
         return AjaxResult.me().setResultObj(result);
     }
 
-    @RequestMapping(value = "/zhuce", method = RequestMethod.POST)
+    @RequestMapping(value = "/getTestCode", method = RequestMethod.POST)
     @ResponseBody
     @CrossOrigin
-    public AjaxResult login(@RequestParam("phone") String phone, @RequestParam("password") String code) {
-        Subject currentUser = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(phone, code);
-        //没有登录用户就开始验证
-        if (!currentUser.isAuthenticated()) {
-            //根据登录用户的手机号 寻找用户 没有就开始注册用户 注册用户的短信需要验证,而且一分钟只能发一次短信,
-            EntityWrapper<User> userEntityWrapper = new EntityWrapper<>();
-            userEntityWrapper.eq("phone", phone);
-            User user = userService.selectOne(userEntityWrapper);
-            //有就执行验证  没有先执行添加用户再验证
-            try {
-                //UsernamePasswordToken token = new UsernamePasswordToken();
-                currentUser.login(token);
-            } catch (UnknownAccountException e) {
-                e.printStackTrace();
-                return AjaxResult.me().setSuccess(false).setMessage("手机号不存在!");
-            } catch (IncorrectCredentialsException e) {
-                e.printStackTrace();
-                return AjaxResult.me().setSuccess(false).setMessage("密码错误!");
-            } catch (AuthenticationException e) {
-                e.printStackTrace();
-                return AjaxResult.me().setSuccess(false).setMessage("系统异常！");
-            }
-        }
-        Map<String, Object> result = new HashMap<>();
-        User user1 = (User) currentUser.getPrincipal();
-
-        /*
-        currentUser.getSession().setAttribute("loginUser",User1);
-        //以下获取当前登录用户存在问题如下:
-        //1 到处都散落获取当前登录用户代码
-        //2 以后不用shiro所有的地方都要改变
-        //解决方案:封装一个方法获取当前登录用户,以后变了只需要修改这个方法就ok了
-        Subject currentUser = SecurityUtils.getSubject();
-        Object loginUser = currentUser.getSession().getAttribute("loginUser");
-        */
-        UserContext.setUser(user1); //设置当前登录用户到session以便其他地方通过UserContext.getUser
-        User user2 = UserContext.getUser();
-
-        //除了返回登录成功与否,还要把登录的用户返回前端
-        result.put("user", user2);
-        //为了做基于token会话管理,还要把sessionId返回到前台
-        System.out.println(currentUser.getSession().getId() + "xxxxxxxxxx");
-        result.put("token", currentUser.getSession().getId());
-        return AjaxResult.me().setResultObj(result);
-    }
-
-    @RequestMapping("/getTestCode")
-    @ResponseBody
     public AjaxResult sendTestCode(@RequestParam(value = "phone", defaultValue = "") String phoneNumber) {
+        RedisTemplate<String, String> rt;
         if (phoneNumber == null || phoneNumber.length() == 0) {
             return AjaxResult.me().setSuccess(false).setMessage("手机号为空!");
         }
@@ -220,31 +189,51 @@ public class LoginController {
         return AjaxResult.me().setSuccess(false).setMessage("验证码发送成功!");
     }
 
-    /**
-     * 验证码
-     */
-//    @RequestMapping("/captcha")
-//	@ResponseBody
-//    public  void captcha() throws ServletException, IOException{
-//		KaptchaExtend kaptchaExtend =  new KaptchaExtend();
-//		kaptchaExtend.captcha(request, resp onse);
-//    }
-    @RequestMapping(value = "/usertest", method = RequestMethod.GET)
+
+    @RequestMapping(value="/userGen",method= RequestMethod.POST)
+    @CrossOrigin
     @ResponseBody
-    public User studentLogin() {
-        User user = UserContext.getUser();
-        return user;
+    public AjaxResult userGen(@RequestBody UserGenVo user){
+        EntityWrapper<User> userEntityWrapper = new EntityWrapper<>();
+        userEntityWrapper.eq("phone",user.getPhone());
+        List<User> users = userService.selectList(userEntityWrapper);
+        if (users.size()>0){
+           return AjaxResult.me().setSuccess(false).setMessage("手机号已存在!");
+        }
+        User user1 = new User();
+        user1.setPhone(user.getPhone());
+        user1.setPassword(user.getPassword());
+        boolean insert = userService.insert(user1);
+        return AjaxResult.me().setSuccess(insert);
     }
-    @RequestMapping(value = "/sysusertest", method = RequestMethod.GET)
+
+    @RequestMapping(value="/coachGen",method= RequestMethod.POST)
+    @CrossOrigin
     @ResponseBody
-    public Sysuser sysuser() {
-        Sysuser user = SysuserContext.getUser();
-        return user;
+    public AjaxResult coachGen(@RequestBody UserGenVo user){
+        EntityWrapper<Coach> userEntityWrapper = new EntityWrapper<>();
+        userEntityWrapper.eq("phone",user.getPhone());
+        List<Coach> users = coachService.selectList(userEntityWrapper);
+        if (users.size()>0){
+            return AjaxResult.me().setSuccess(false).setMessage("手机号已存在!");
+        }
+        Coach coach = new Coach();
+        coach.setPhone(user.getPhone());
+        coach.setPassword(user.getPassword());
+        boolean insert = coachService.insert(coach);
+        return AjaxResult.me().setSuccess(insert);
     }
-    @RequestMapping(value = "/coachtest", method = RequestMethod.GET)
+    @RequestMapping(value="/error",method= RequestMethod.GET)
+    @CrossOrigin
     @ResponseBody
-    public Coach coach3() {
-        Coach user = CoachContext.getUser();
-        return user;
+    public AjaxResult returnError( ){
+        return AjaxResult.me().setSuccess(false).setMessage("用户未登陆或无权限");
+    }
+
+    @RequestMapping(value="/error",method= RequestMethod.POST)
+    @CrossOrigin
+    @ResponseBody
+    public AjaxResult reError( ){
+        return AjaxResult.me().setSuccess(false).setMessage("用户未登陆或无权限");
     }
 }

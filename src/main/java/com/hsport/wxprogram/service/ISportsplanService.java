@@ -19,5 +19,5 @@ public interface ISportsplanService extends IService<Sportsplan> {
     List selectPlanByUserID(Integer id);
     List<HashMap> selectEverDayIntakeAndBurn (SportsplanQuery sportsplanQuery);
     HashMap getUserIntakeEverday(Integer id);
-
+    Object getMyPlan(SportsplanQuery sportsplanQuery);
 }

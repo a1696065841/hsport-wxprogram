@@ -31,9 +31,9 @@ public class UserRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        System.out.println("开始认证");
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         String  name = token.getUsername();
+        //寻找手机对应用户
         EntityWrapper<User> userEntityWrapper = new EntityWrapper<>();
         userEntityWrapper.eq("phone",name);
         User user =  userService.selectOne(userEntityWrapper);
@@ -45,7 +45,6 @@ public class UserRealm extends AuthorizingRealm {
         ByteSource bytes = ByteSource.Util.bytes(MD5Util.SALT);
         String realmName = getName();
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(principal, password, bytes, realmName);
-        System.out.println("认证完成");
         return info;
 
     }

@@ -17,19 +17,8 @@
         <result column="thighCircum" property="thighCircum"/>
         <result column="armCircum" property="armCircum"/>
         <result column="userID" property="userID" />
+        <result column="waistHipRatio" property="waistHipRatio" />
     </resultMap>
-<!--<association column="userID" property="userID" javaType="com.hsport.wxprogram.domain.User" >
-            <id column="id" property="id"/>
-            <result column="name" property="name"/>
-            <result column="wx" property="wx"/>
-            <result column="phone" property="phone"/>
-            <result column="age" property="age"/>
-            <result column="sex" property="sex"/>
-            <result column="position" property="position"/>
-            <result column="address" property="address"/>
-            <result column="jjlxrdh" property="jjlxrdh"/>
-            <result column="jjlxrxm" property="jjlxrxm"/>
-        </association>-->
 
         <select id="selectBodyByUser" resultType="map">
             SELECT *

@@ -22,8 +22,9 @@ public class Food extends Model<Food> {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     private String foodName;
+
     /**
-     * 早中晚餐或者加餐
+     * 食物类型
      */
     private String foodType;
     /**
@@ -33,12 +34,12 @@ public class Food extends Model<Food> {
     /**
      * 碳水
      */
-    private Integer carbon;
+    private Integer carbon=0;
     /**
      * 纤维素百分比
      */
-    private Integer xianweisu;
-    private Integer todayIntakePlanID;
+    private Integer xianweisu=0;
+    private Integer intakeTypeID;
     /**
      * 食物分量_一杯_100g都可以
      */
@@ -51,7 +52,7 @@ public class Food extends Model<Food> {
      * 食物脂肪含量
      */
     private Integer foodFat;
-    private Integer userID;
+
 
 
     public Integer getId() {
@@ -102,12 +103,12 @@ public class Food extends Model<Food> {
         this.xianweisu = xianweisu;
     }
 
-    public Integer getTodayIntakePlanID() {
-        return todayIntakePlanID;
+    public Integer getIntakeTypeID() {
+        return intakeTypeID;
     }
 
-    public void setTodayIntakePlanID(Integer todayIntakePlanID) {
-        this.todayIntakePlanID = todayIntakePlanID;
+    public void setIntakeTypeID(Integer intakeTypeID) {
+        this.intakeTypeID = intakeTypeID;
     }
 
     public String getFoodWeight() {
@@ -134,13 +135,6 @@ public class Food extends Model<Food> {
         this.foodFat = foodFat;
     }
 
-    public Integer getUserID() {
-        return userID;
-    }
-
-    public void setUserID(Integer userID) {
-        this.userID = userID;
-    }
 
     @Override
     protected Serializable pkVal() {
@@ -156,11 +150,10 @@ public class Food extends Model<Food> {
         ", foodPro=" + foodPro +
         ", carbon=" + carbon +
         ", xianweisu=" + xianweisu +
-        ", todayIntakePlanID=" + todayIntakePlanID +
+        ", intakeTypeID=" + intakeTypeID +
         ", foodWeight=" + foodWeight +
         ", foodCalories=" + foodCalories +
         ", foodFat=" + foodFat +
-        ", userID=" + userID +
         "}";
     }
 }

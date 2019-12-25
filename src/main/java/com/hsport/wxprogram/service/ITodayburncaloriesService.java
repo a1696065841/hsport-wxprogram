@@ -17,4 +17,6 @@ public interface ITodayburncaloriesService extends IService<Todayburncalories> {
     HashMap getAvgAndAllByUserID(Integer id);
 
     HashMap selectSportsTimes(Integer id);
+    Todayburncalories getLastOne(Integer id);
+
 }

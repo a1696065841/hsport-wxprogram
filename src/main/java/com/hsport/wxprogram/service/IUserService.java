@@ -1,10 +1,14 @@
 package com.hsport.wxprogram.service;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.common.util.PageList;
 import com.hsport.wxprogram.domain.User;
 import com.baomidou.mybatisplus.service.IService;
+import com.hsport.wxprogram.query.UserQuery;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -16,5 +20,6 @@ import java.util.List;
  */
 public interface IUserService extends IService<User> {
     List<User> findUserByCoachID(Integer id);
-
+    List<Object> selectUserCoach(UserQuery query);
+    void  updateLoginUser(User user);
 }

@@ -39,5 +39,9 @@
         (s.masterPlanPro/s.planUseDays) proEverday
         from t_sportsplan s WHERE s.userID=#{id} AND s.planEndDate is NULL AND (s.planType=1 or s.planType=3 )
     </select>
+    
+    <select id="getMyPlan" parameterType="com.hsport.wxprogram.query.SportsplanQuery" resultType="map" >
+       SELECT tb.burnCaloriesPer,ti.dayIntake FROM  t_todayburncalories tb,t_todayintake ti WHERE tb.userID=#{userID} AND  ti.userID=#{userID} AND tb.date=#{date} AND ti.date=#{date}
+    </select>
 
 </mapper>

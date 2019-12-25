@@ -1,5 +1,6 @@
 package com.hsport.wxprogram.web.controller.userBody;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.service.IBodyService;
 import com.hsport.wxprogram.domain.Body;
 import com.hsport.wxprogram.query.BodyQuery;
@@ -103,7 +104,8 @@ public class BodyController {
     @ApiOperation(value="根据userID的bodyid来获取Body详细信息")
     @RequestMapping(value = "/selectByUserID/{id}",method = RequestMethod.GET)
     public Body selectByUserID(@PathVariable("id")Integer id) {
-        return bodyService.selectBodyByUserID(id);
+
+        return    bodyService.selectOne(new EntityWrapper<Body>().eq("userID",id));
     }
 
 

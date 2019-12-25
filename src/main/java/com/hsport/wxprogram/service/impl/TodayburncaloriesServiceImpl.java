@@ -30,4 +30,11 @@ public class TodayburncaloriesServiceImpl extends ServiceImpl<TodayburncaloriesM
     public HashMap selectSportsTimes(Integer id) {
         return todayburncaloriesMapper.selectSportsTimesAvgAndAll(id);
     }
+    /**
+    *获取这个用户上次的运动消耗
+    * */
+    @Override
+    public Todayburncalories getLastOne(Integer id) {
+        return todayburncaloriesMapper.getLastOne(id);
+    }
 }

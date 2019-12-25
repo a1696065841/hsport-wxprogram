@@ -29,7 +29,6 @@ public class Todayburncalories extends Model<Todayburncalories> {
      * 消耗卡路里量
      */
     private Integer BurnCalories;
-    private String BurnType;
     private Integer sportsBpm;
     /**
      * 日常心率
@@ -40,7 +39,7 @@ public class Todayburncalories extends Model<Todayburncalories> {
      */
     private Integer SportsQD;
     private Integer dayWeight;
-    private Integer dayMood;
+    private String dayMood;
     /**
      * 当日消耗量
      */
@@ -58,10 +57,6 @@ public class Todayburncalories extends Model<Todayburncalories> {
      * 有氧运动时间
      */
     private Integer aerobicTimes;
-    /**
-     * 运动行走步数
-     */
-    private Integer stepNumbers;
     /**
      * 当日日期
      */
@@ -91,14 +86,6 @@ public class Todayburncalories extends Model<Todayburncalories> {
 
     public void setBurnCalories(Integer BurnCalories) {
         this.BurnCalories = BurnCalories;
-    }
-
-    public String getBurnType() {
-        return BurnType;
-    }
-
-    public void setBurnType(String BurnType) {
-        this.BurnType = BurnType;
     }
 
     public Integer getSportsBpm() {
@@ -133,11 +120,11 @@ public class Todayburncalories extends Model<Todayburncalories> {
         this.dayWeight = dayWeight;
     }
 
-    public Integer getDayMood() {
+    public String getDayMood() {
         return dayMood;
     }
 
-    public void setDayMood(Integer dayMood) {
+    public void setDayMood(String dayMood) {
         this.dayMood = dayMood;
     }
 
@@ -181,14 +168,6 @@ public class Todayburncalories extends Model<Todayburncalories> {
         this.aerobicTimes = aerobicTimes;
     }
 
-    public Integer getStepNumbers() {
-        return stepNumbers;
-    }
-
-    public void setStepNumbers(Integer stepNumbers) {
-        this.stepNumbers = stepNumbers;
-    }
-
     public String getDate() {
         return date;
     }
@@ -216,7 +195,6 @@ public class Todayburncalories extends Model<Todayburncalories> {
         ", id=" + id +
         ", burnCaloriesPer=" + burnCaloriesPer +
         ", BurnCalories=" + BurnCalories +
-        ", BurnType=" + BurnType +
         ", sportsBpm=" + sportsBpm +
         ", lifeBpm=" + lifeBpm +
         ", SportsQD=" + SportsQD +
@@ -227,7 +205,6 @@ public class Todayburncalories extends Model<Todayburncalories> {
         ", coachPlanPer=" + coachPlanPer +
         ", coachTimes=" + coachTimes +
         ", aerobicTimes=" + aerobicTimes +
-        ", stepNumbers=" + stepNumbers +
         ", date=" + date +
         ", userID=" + userID +
         "}";

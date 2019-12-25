@@ -47,8 +47,8 @@ public class Coach extends Model<Coach> {
     /**
      * 从业时间
      */
-    private String EmploymentTime;
-    private Integer CertificateID;
+    private String employmentTime;
+
     /**
      * 健身房id
      */
@@ -84,20 +84,13 @@ public class Coach extends Model<Coach> {
     }
 
     public String getEmploymentTime() {
-        return EmploymentTime;
+        return employmentTime;
     }
 
-    public void setEmploymentTime(String EmploymentTime) {
-        this.EmploymentTime = EmploymentTime;
+    public void setEmploymentTime(String employmentTime) {
+        this.employmentTime = employmentTime;
     }
 
-    public Integer getCertificateID() {
-        return CertificateID;
-    }
-
-    public void setCertificateID(Integer CertificateID) {
-        this.CertificateID = CertificateID;
-    }
 
     public Integer getGymID() {
         return gymID;
@@ -126,8 +119,7 @@ public class Coach extends Model<Coach> {
         ", id=" + id +
         ", coachName=" + coachName +
         ", coachAge=" + coachAge +
-        ", EmploymentTime=" + EmploymentTime +
-        ", CertificateID=" + CertificateID +
+        ", EmploymentTime=" + employmentTime +
         ", gymID=" + gymID +
         ", coachPic=" + coachPic +
         "}";

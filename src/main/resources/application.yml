@@ -7,7 +7,7 @@ spring:
     name: hsport
   datasource:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/Hsport
+      url: jdbc:mysql://localhost:3306/hsport?characterEncoding=utf8
       username: root
       password: 123456
 mybatis-plus:
@@ -18,3 +18,13 @@ logging:
     com.hsport.*: debug
   file:
     name: wxprogram.log
+jedis:
+  host: 127.0.0.1
+  port: 6379
+  pool:
+    max-idle: 300
+    min-idle: 10
+    max-total: 600
+    max-wait: 1000
+    block-when-exhausted: true
+    

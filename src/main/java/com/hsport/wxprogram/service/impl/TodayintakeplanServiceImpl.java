@@ -24,7 +24,7 @@ public class TodayintakeplanServiceImpl extends ServiceImpl<TodayintakeplanMappe
     TodayintakeplanMapper todayintakeplanMapper;
 
     @Override
-    public Todayintakeplan selectTodayIntakePlanByUserID(Integer id,String date) {
+    public Todayintakeplan selectTheDayIntakePlanByUserID(Integer id,String date) {
         Todayintakeplan todayintakeplan = new Todayintakeplan();
         todayintakeplan.setUserID(id);
         todayintakeplan.setDate(date);

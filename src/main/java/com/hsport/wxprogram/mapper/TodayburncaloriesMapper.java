@@ -50,4 +50,5 @@ public interface TodayburncaloriesMapper extends BaseMapper<Todayburncalories>{
     HashMap getAvgAndAllByUserID(Integer id);
     //运动总时长
      HashMap selectSportsTimesAvgAndAll(Integer id);
+    Todayburncalories getLastOne(Integer id);
 }

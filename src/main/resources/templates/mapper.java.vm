@@ -20,6 +20,7 @@ public interface ${entity}Mapper extends BaseMapper<${table.entityName}>{
      */
     AjaxResult save(${entity} ${table.entityPath});
 
+    Integer insert(${entity} ${table.entityPath});
     /**
      * 删除对象信息
      * @param id

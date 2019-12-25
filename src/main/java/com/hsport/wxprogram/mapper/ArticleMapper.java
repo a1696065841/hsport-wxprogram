@@ -45,4 +45,6 @@ public interface ArticleMapper extends BaseMapper<Article>{
      * @return PageList 分页对象
      */
     PageList<Article> json(@RequestBody ArticleQuery query);
+
+    List<Object> getArticleType();
 }

@@ -24,11 +24,12 @@ public class Jibing extends Model<Jibing> {
     /**
      * 高血压
      */
-    private Integer gxy;
+    private Integer gxyLS;
+    private Integer gxyXZ;
     /**
-     * 低血压
+     * 半年内手术
      */
-    private Integer dxy;
+    private Integer banNianNeiShoushu;
     /**
      * 高血糖
      */
@@ -43,9 +44,9 @@ public class Jibing extends Model<Jibing> {
      */
     private Integer tfORnsgORjk;
     /**
-     * 甲减
+     * 甲kang
      */
-    private Integer jiajian;
+    private Integer jiaKang;
     /**
      * 肠道问题
      */
@@ -71,20 +72,20 @@ public class Jibing extends Model<Jibing> {
         this.id = id;
     }
 
-    public Integer getGxy() {
-        return gxy;
+    public Integer getGxyLS() {
+        return gxyLS;
     }
 
-    public void setGxy(Integer gxy) {
-        this.gxy = gxy;
+    public void setGxyLS(Integer gxyLS) {
+        this.gxyLS = gxyLS;
     }
 
-    public Integer getDxy() {
-        return dxy;
+    public Integer getGxyXZ() {
+        return gxyXZ;
     }
 
-    public void setDxy(Integer dxy) {
-        this.dxy = dxy;
+    public void setGxyXZ(Integer gxyXZ) {
+        this.gxyXZ = gxyXZ;
     }
 
     public Integer getGxt() {
@@ -119,12 +120,20 @@ public class Jibing extends Model<Jibing> {
         this.tfORnsgORjk = tfORnsgORjk;
     }
 
-    public Integer getJiajian() {
-        return jiajian;
+    public Integer getBanNianNeiShoushu() {
+        return banNianNeiShoushu;
     }
 
-    public void setJiajian(Integer jiajian) {
-        this.jiajian = jiajian;
+    public void setBanNianNeiShoushu(Integer banNianNeiShoushu) {
+        this.banNianNeiShoushu = banNianNeiShoushu;
+    }
+
+    public Integer getJiaKang() {
+        return jiaKang;
+    }
+
+    public void setJiaKang(Integer jiaKang) {
+        this.jiaKang = jiaKang;
     }
 
     public Integer getCangdaoWT() {
@@ -184,13 +193,12 @@ public class Jibing extends Model<Jibing> {
     public String toString() {
         return "Jibing{" +
         ", id=" + id +
-        ", gxy=" + gxy +
-        ", dxy=" + dxy +
+        ", 半年内手术=" + banNianNeiShoushu +
         ", gxt=" + gxt +
         ", dxt=" + dxt +
         ", xuezhiYC=" + xuezhiYC +
         ", tfORnsgORjk=" + tfORnsgORjk +
-        ", jiajian=" + jiajian +
+        ", jiaKang=" + jiaKang +
         ", cangdaoWT=" + cangdaoWT +
         ", danNangWT=" + danNangWT +
         ", shengzangWT=" + shengzangWT +

@@ -28,14 +28,13 @@ public class Todaysp extends Model<Todaysp> {
     /**
      * 今日实际消耗
      */
-    private Integer todayBurnCalorie;
+
     private String date;
     /**
      * 对应总计划id
      */
-    private Integer sportsPlanID;
 
-    private Integer coachID;
+
 
     private Integer userID;
 
@@ -47,13 +46,6 @@ public class Todaysp extends Model<Todaysp> {
         this.userID = userID;
     }
 
-    public Integer getCoachID() {
-        return coachID;
-    }
-
-    public void setCoachID(Integer coachID) {
-        this.coachID = coachID;
-    }
 
     public Integer getId() {
         return id;
@@ -71,13 +63,7 @@ public class Todaysp extends Model<Todaysp> {
         this.todayBurnCaloriePlan = todayBurnCaloriePlan;
     }
 
-    public Integer getTodayBurnCalorie() {
-        return todayBurnCalorie;
-    }
 
-    public void setTodayBurnCalorie(Integer todayBurnCalorie) {
-        this.todayBurnCalorie = todayBurnCalorie;
-    }
 
     public String getDate() {
         return date;
@@ -87,13 +73,6 @@ public class Todaysp extends Model<Todaysp> {
         this.date = date;
     }
 
-    public Integer getSportsPlanID() {
-        return sportsPlanID;
-    }
-
-    public void setSportsPlanID(Integer sportsPlanID) {
-        this.sportsPlanID = sportsPlanID;
-    }
 
     @Override
     protected Serializable pkVal() {
@@ -105,9 +84,7 @@ public class Todaysp extends Model<Todaysp> {
         return "Todaysp{" +
         ", id=" + id +
         ", todayBurnCaloriePlan=" + todayBurnCaloriePlan +
-        ", todayBurnCalorie=" + todayBurnCalorie +
         ", date=" + date +
-        ", sportsPlanID=" + sportsPlanID +
         "}";
     }
 }

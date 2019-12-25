@@ -1,19 +1,21 @@
 package com.hsport.wxprogram;
 
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.hsport.wxprogram.domain.*;
-import com.hsport.wxprogram.service.IBodyService;
-import com.hsport.wxprogram.service.ISportsplanService;
-import com.hsport.wxprogram.service.ITodayburncaloriesService;
-import com.hsport.wxprogram.service.IUserService;
+import com.hsport.wxprogram.service.*;
 import com.hsport.wxprogram.service.impl.UserServiceImpl;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.StringUtils;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -33,6 +35,11 @@ class WxprogramApplicationTests {
     ISportsplanService sportsplanService;
     @Autowired
     public ITodayburncaloriesService todayburncaloriesService;
+    @Autowired
+    JedisPool jedisPool;
+    @Autowired
+    private RedisService redisService;
+
 
     @Test
 	void contextLoads() throws Exception {

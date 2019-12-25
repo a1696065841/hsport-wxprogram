@@ -9,7 +9,7 @@ import java.util.Random;
  * 订单编码码生成器，生成32位数字编码，
  * @生成规则 1位单号类型+17位时间戳+14位(用户id加密&随机数)
  * Date:2017年9月8日上午10:05:19
- * @author jiwengjian
+ * @author lhb
  */
 public class OrderCodeFactory {
     /**
@@ -35,7 +35,7 @@ public class OrderCodeFactory {
     /**
      * 用户id和随机数总长度
      */
-    private static final int maxLength = 14;
+    private static final int maxLength = 2;
 
     /**
      * 更具id进行加密+加随机数组成固定长度编码
@@ -63,7 +63,7 @@ public class OrderCodeFactory {
      * @param n 长度
      */
     private static Long getRandom(Integer n) {
-        Integer min = 1, max = 9;
+        Integer min = 1, max = 4;
         for (int i = 1; i < n; i++) {
             min *= 10;
             max *= 10;

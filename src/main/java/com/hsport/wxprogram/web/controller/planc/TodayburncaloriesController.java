@@ -1,6 +1,8 @@
 package com.hsport.wxprogram.web.controller.planc;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.Sportsplan;
+import com.hsport.wxprogram.service.ISportsplanService;
 import com.hsport.wxprogram.service.ITodayburncaloriesService;
 import com.hsport.wxprogram.domain.Todayburncalories;
 import com.hsport.wxprogram.query.TodayburncaloriesQuery;
@@ -22,6 +24,8 @@ import java.util.List;
 public class TodayburncaloriesController {
     @Autowired
     public ITodayburncaloriesService todayburncaloriesService;
+    @Autowired
+    public ISportsplanService sportsplanService;
 
     /**
      * 保存和修改公用的
@@ -36,6 +40,20 @@ public class TodayburncaloriesController {
             if (todayburncalories.getId() != null) {
                 todayburncaloriesService.updateById(todayburncalories);
             } else {
+                todayburncalories.setDate(DateUtil.today());
+                Integer userID = todayburncalories.getUserID();
+                Todayburncalories lastOne = todayburncaloriesService.getLastOne(userID);
+                //看看有没有今天的表填过了
+                if (lastOne!=null&&lastOne.getDate().equals(DateUtil.today())&&lastOne.getUserID()==todayburncalories.getUserID()){
+                    return AjaxResult.me().setSuccess(false).setMessage("用户已经有今日消耗值 请勿重复添加，如有修复请前往修改页面填写 ！");
+                }                //添加总消耗值
+                if (lastOne!=null&&!lastOne.getDate().equals(DateUtil.today())){
+                        todayburncalories.setBurnCalories(todayburncalories.getDayBurns()+lastOne.getBurnCalories());
+                }
+                Sportsplan sportsplan = sportsplanService.selectOne(new EntityWrapper<Sportsplan>().eq("userID", userID).eq("planType", 1).isNull("planEndDate"));
+                if (sportsplan!=null){
+                    todayburncalories.setSportsPlanID(sportsplan.getId());
+                }
                 todayburncaloriesService.insert(todayburncalories);
             }
             return AjaxResult.me();

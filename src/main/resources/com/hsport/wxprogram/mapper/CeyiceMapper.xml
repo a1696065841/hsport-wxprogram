@@ -5,6 +5,13 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Ceyice">
         <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="sex" property="sex" />
+        <result column="age" property="age" />
+        <result column="height" property="height" />
+        <result column="weight" property="weight" />
+        <result column="yaowei" property="yaowei" />
+        <result column="tunwei" property="tunwei" />
         <result column="fmsfyrbjp" property="fmsfyrbjp" />
         <result column="tzhsmxzj" property="tzhsmxzj" />
         <result column="rcysqkDX" property="rcysqkDX" />
@@ -20,6 +27,7 @@
         <result column="yqJianfeiJLDX" property="yqJianfeiJLDX" />
         <result column="rcylfx" property="rcylfx" />
         <result column="dsjfqkFantan" property="dsjfqkFantan" />
+        <result column="date" property="date" />
         <result column="userID" property="userID" />
     </resultMap>
 

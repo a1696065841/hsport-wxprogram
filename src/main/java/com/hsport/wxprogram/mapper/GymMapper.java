@@ -47,4 +47,6 @@ public interface GymMapper extends BaseMapper<Gym>{
     PageList<Gym> json(@RequestBody GymQuery query);
 
     List<Gym> selectGymByAreaID(Integer id);
+
+    List<Gym> selectGymByParentID(Integer id);
 }

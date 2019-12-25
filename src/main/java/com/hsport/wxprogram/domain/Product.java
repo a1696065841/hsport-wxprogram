@@ -33,6 +33,15 @@ public class Product extends Model<Product> {
     @TableField("productType")
     private Integer productType;
     private String imgUrl;
+    private Integer duration;
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
 
     public String getImgUrl() {
         return imgUrl;

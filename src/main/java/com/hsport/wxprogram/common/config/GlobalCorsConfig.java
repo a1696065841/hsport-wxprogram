@@ -1,3 +1,4 @@
+/*
 package com.hsport.wxprogram.common.config;
 
 import org.springframework.context.annotation.Bean;
@@ -16,6 +17,7 @@ public class GlobalCorsConfig {
         config.addAllowedOrigin("http://localhost:4396/");
         config.addAllowedOrigin("http://127.0.0.1:4396/");
         config.addAllowedOrigin("http://192.168.43.133:4396/");
+        config.addAllowedOrigin("https://192.168.43.133:4396/");
         config.addAllowedOrigin("https://117.136.63.154:4396/");
 
         //2) 是否发送Cookie信息
@@ -37,4 +39,4 @@ public class GlobalCorsConfig {
         //3.返回新的CorsFilter.
         return new CorsFilter(configSource);
     }
-}
+}*/

@@ -10,6 +10,15 @@ import com.hsport.wxprogram.common.util.BaseQuery;
 
 public class SportsplanQuery extends BaseQuery{
    private Integer userID;
+   private String date;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public Integer getUserID() {
         return userID;

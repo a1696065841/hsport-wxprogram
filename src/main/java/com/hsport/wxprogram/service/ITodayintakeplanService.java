@@ -13,5 +13,5 @@ import com.hsport.wxprogram.domain.Todaysp;
  * @since 2019-11-28
  */
 public interface ITodayintakeplanService extends IService<Todayintakeplan> {
-    public Todayintakeplan selectTodayIntakePlanByUserID(Integer id,String date);
+    public Todayintakeplan selectTheDayIntakePlanByUserID(Integer id,String date);
 }

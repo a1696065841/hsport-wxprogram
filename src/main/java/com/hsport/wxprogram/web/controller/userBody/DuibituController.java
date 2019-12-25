@@ -114,7 +114,7 @@ public class DuibituController {
         return map;
     }
 
-    public Duibitu duibituUtil(Integer id, boolean b, int type) {
+    public Duibitu duibituUtil (Integer id, boolean b, int type) {
         EntityWrapper<Duibitu> nowDuibituEntityWrapper = new EntityWrapper<>();
         nowDuibituEntityWrapper.eq("userID", id);
         nowDuibituEntityWrapper.orderBy("date", b);

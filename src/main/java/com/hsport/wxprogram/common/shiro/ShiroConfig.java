@@ -39,10 +39,14 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/swagger-resources/**", "anon");
         filterChainDefinitionMap.put("/v2/**", "anon");
         filterChainDefinitionMap.put("/webjars/**", "anon");
+        filterChainDefinitionMap.put("/login/userGen", "anon");
+        filterChainDefinitionMap.put("/gym/selectGymByAreaID/*", "anon");
+        filterChainDefinitionMap.put("/article/getArticleType", "anon");
+        filterChainDefinitionMap.put("/article/json", "anon");
         //拦截其他所有接口
         filterChainDefinitionMap.put("/**", "authc");
         //配置shiro默认登录界面地址，前后端分离中登录界面跳转应由前端路由控制，后台仅返回json数据
-        shiroFilterFactoryBean.setLoginUrl("/user/unlogin");
+        shiroFilterFactoryBean.setLoginUrl("/login/error");
         // 登录成功后要跳转的链接 自行处理。不用shiro进行跳转
         // shiroFilterFactoryBean.setSuccessUrl("user/index");
         //未授权界面;
@@ -76,7 +80,6 @@ public class ShiroConfig {
 
     @Bean(name = "userRealm")
     public UserRealm userRealm() {
-        System.out.println("userRealm 执行");
         UserRealm userRealm = new UserRealm();
         userRealm.setCredentialsMatcher(new CustomCredentialsMatcher());
         return userRealm;
@@ -84,7 +87,6 @@ public class ShiroConfig {
 
     @Bean(name = "coachRealm")
     public CoachRealm coachRealm() {
-        System.out.println("coachRealm 执行");
         CoachRealm coachRealm = new CoachRealm();
         coachRealm.setCredentialsMatcher(new CustomCredentialsMatcher());
         return coachRealm;
@@ -92,7 +94,6 @@ public class ShiroConfig {
 
     @Bean(name = "SystemAdminRealm")
     public SystemAdminRealm sysUserRealm() {
-        System.out.println("SystemAdminRealm 执行");
         SystemAdminRealm systemAdminRealm = new SystemAdminRealm();
         systemAdminRealm.setCredentialsMatcher(new CustomCredentialsMatcher());
         return systemAdminRealm;

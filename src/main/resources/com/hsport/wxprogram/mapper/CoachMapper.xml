@@ -7,8 +7,7 @@
         <id column="id" property="id" />
         <result column="coachName" property="coachName" />
         <result column="coachAge" property="coachAge" />
-        <result column="EmploymentTime" property="EmploymentTime" />
-        <result column="CertificateID" property="CertificateID" />
+        <result column="EmploymentTime" property="employmentTime" />
         <result column="gymID" property="gymID" />
         <result column="coachPic" property="coachPic" />
         <result column="password" property="password" />

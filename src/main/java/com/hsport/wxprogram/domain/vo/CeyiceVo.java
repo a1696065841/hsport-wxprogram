@@ -9,7 +9,6 @@ import com.hsport.wxprogram.domain.Ceyice;
 import java.io.Serializable;
 
 public class CeyiceVo {
-        @TableId(value = "id", type = IdType.AUTO)
         private Integer id;
         /**
          * 父母是否有人比较胖
@@ -22,11 +21,11 @@ public class CeyiceVo {
         /**
          * 日常饮食情况多选题!!
          */
-        private char[] rcysqkDX;
+        private String[] rcysqkDX;
         /**
          * 饮食行为习惯
          */
-        private char[] ysxwxgDX;
+        private String[] ysxwxgDX;
         private Integer sfyydxg;
         /**
          * 每周参加运动频率
@@ -39,7 +38,7 @@ public class CeyiceVo {
         /**
          * 部位运动损伤多选
          */
-        private char[] buweiYdSunsDX;
+        private String[] buweiYdSunsDX;
         /**
          * 是否经常熬夜
          */
@@ -48,12 +47,12 @@ public class CeyiceVo {
          * 平均睡眠时间
          */
         private Integer pjsmsj;
-        private char[] rcsmzlDX;
-        private char[] rcpbqkDX;
+        private String[] rcsmzlDX;
+        private String[] rcpbqkDX;
         /**
          * 以前有过的减肥经历多选
          */
-        private char[] yqJianfeiJLDX;
+        private String[] yqJianfeiJLDX;
         /**
          * 日常压力分析
          */
@@ -89,19 +88,19 @@ public class CeyiceVo {
             this.tzhsmxzj = tzhsmxzj;
         }
 
-        public char[] getRcysqkDX() {
+        public String[] getRcysqkDX() {
             return rcysqkDX;
         }
 
-        public void setRcysqkDX(char[] rcysqkDX) {
+        public void setRcysqkDX(String[] rcysqkDX) {
             this.rcysqkDX = rcysqkDX;
         }
 
-        public char[] getYsxwxgDX() {
+        public String[] getYsxwxgDX() {
             return ysxwxgDX;
         }
 
-        public void setYsxwxgDX(char[] ysxwxgDX) {
+        public void setYsxwxgDX(String[] ysxwxgDX) {
             this.ysxwxgDX = ysxwxgDX;
         }
 
@@ -129,11 +128,11 @@ public class CeyiceVo {
             this.ydcxsj = ydcxsj;
         }
 
-        public char[] getBuweiYdSunsDX() {
+        public String[] getBuweiYdSunsDX() {
             return buweiYdSunsDX;
         }
 
-        public void setBuweiYdSunsDX(char[] buweiYdSunsDX) {
+        public void setBuweiYdSunsDX(String[] buweiYdSunsDX) {
             this.buweiYdSunsDX = buweiYdSunsDX;
         }
 
@@ -153,27 +152,27 @@ public class CeyiceVo {
             this.pjsmsj = pjsmsj;
         }
 
-        public char[] getrcsmzlDX() {
+        public String[] getrcsmzlDX() {
             return rcsmzlDX;
         }
 
-        public void setrcsmzlDX(char[] rcsmzlDX) {
+        public void setrcsmzlDX(String[] rcsmzlDX) {
             this.rcsmzlDX = rcsmzlDX;
         }
 
-        public char[] getRcpbqkDX() {
+        public String[] getRcpbqkDX() {
             return rcpbqkDX;
         }
 
-        public void setRcpbqkDX(char[] rcpbqkDX) {
+        public void setRcpbqkDX(String[] rcpbqkDX) {
             this.rcpbqkDX = rcpbqkDX;
         }
 
-        public char[] getYqJianfeiJLDX() {
+        public String[] getYqJianfeiJLDX() {
             return yqJianfeiJLDX;
         }
 
-        public void setYqJianfeiJLDX(char[] yqJianfeiJLDX) {
+        public void setYqJianfeiJLDX(String[] yqJianfeiJLDX) {
             this.yqJianfeiJLDX = yqJianfeiJLDX;
         }
 

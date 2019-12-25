@@ -8,6 +8,7 @@
         <result column="rcRSsj" property="rcRSsj" />
         <result column="mtSMsj" property="mtSMsj" />
         <result column="gzYL" property="gzYL" />
+        <result column="sfXiYan" property="sfXiYan"/>
         <result column="userID" property="userID" />
     </resultMap>
 

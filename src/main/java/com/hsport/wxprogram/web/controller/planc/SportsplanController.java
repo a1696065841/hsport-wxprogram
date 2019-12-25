@@ -2,6 +2,7 @@ package com.hsport.wxprogram.web.controller.planc;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.hsport.wxprogram.common.util.DateUtil;
 import com.hsport.wxprogram.domain.*;
 import com.hsport.wxprogram.service.ISportsplanService;
 import com.hsport.wxprogram.query.SportsplanQuery;
@@ -47,6 +48,8 @@ public class SportsplanController {
             if(sportsplan.getId()!=null){
                 sportsplanService.updateById(sportsplan);
             }else{
+
+                sportsplan.setPlanStratTime(DateUtil.today());
                 sportsplanService.insert(sportsplan);
             }
             return AjaxResult.me();
@@ -81,7 +84,15 @@ public class SportsplanController {
         return sportsplanService.selectById(id);
     }
 
-
+    @ApiOperation(value="根据用户ID获取 我的计划页面信息")
+    @RequestMapping(value = "/getMyPlan/{id}",method = RequestMethod.GET)
+    public Object getMyPlan(@PathVariable("id")Integer id)
+    {
+        SportsplanQuery sportsplanQuery = new SportsplanQuery();
+        sportsplanQuery.setUserID(id);
+        sportsplanQuery.setDate(DateUtil.today());
+        return sportsplanService.getMyPlan(sportsplanQuery);
+    }
     /**
     * 查看所有的员工信息
     * @return
@@ -89,7 +100,6 @@ public class SportsplanController {
     @ApiOperation(value="来获取所有Sportsplan详细信息")
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public List<Sportsplan> list(){
-
         return sportsplanService.selectList(null);
     }
 
@@ -116,7 +126,7 @@ public class SportsplanController {
         return sportsplanService.selectPlanByUserID(id);
     }
 
-    @ApiOperation(value="来获取用户的平均摄入消耗和总摄入消耗 已过天数等详细信息")
+    @ApiOperation(value="目标与计划页面  来获取用户的平均摄入消耗和总摄入消耗 已过天数等详细信息")
     @RequestMapping(value = "/getPlanAndObjectives/{id}",method = RequestMethod.GET)
     public HashMap getPlanAndObjectives(@PathVariable("id") Integer id){
         HashMap<String, Object> stringMapHashMap = new HashMap<>();
@@ -161,7 +171,7 @@ public class SportsplanController {
         return sportsplanService.selectEverDayIntakeAndBurn(sportsplanQuery);
     }
     @ApiOperation(value="获取计划的进度详情",notes = "当前进度 已过天数/总周期,累计消耗卡路里,累计摄入卡路里")
-    @RequestMapping(value = "/planSchedule/{id}",method = RequestMethod.GET)
+        @RequestMapping(value = "/planSchedule/{id}",method = RequestMethod.GET)
     public HashMap planSchedule(@PathVariable("id")Integer id) throws ParseException {
         HashMap<String, Object> hashMap = new HashMap<>();
         Integer burnCalories=null;
@@ -193,7 +203,6 @@ public class SportsplanController {
         hashMap.put("planper",planper);
         hashMap.put("intakeCalories",intakeCalories);
         hashMap.put("burnCalories",burnCalories);
-
         return hashMap;
     }
 

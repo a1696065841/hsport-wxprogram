@@ -21,6 +21,25 @@ public class Order extends Model<Order> {
 
     private String id;
     private Integer userID;
+    private Integer consigneeID;
+    private Integer regionID;
+
+    public Integer getRegionID() {
+        return regionID;
+    }
+
+    public void setRegionID(Integer regionID) {
+        this.regionID = regionID;
+    }
+
+    public Integer getConsigneeID() {
+        return consigneeID;
+    }
+
+    public void setConsigneeID(Integer consigneeID) {
+        this.consigneeID = consigneeID;
+    }
+
     /**
      * 购买时间
      */

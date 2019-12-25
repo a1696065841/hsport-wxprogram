@@ -26,7 +26,18 @@ public class Consignee extends Model<Consignee> {
      * 收货地址
      */
     private String address;
+    private String locationAddress;
+
+    public String getLocationAddress() {
+        return locationAddress;
+    }
+
+    public void setLocationAddress(String locationAddress) {
+        this.locationAddress = locationAddress;
+    }
+
     private String consigneeName;
+
     private String consigneePhone;
     private String beizhu;
 

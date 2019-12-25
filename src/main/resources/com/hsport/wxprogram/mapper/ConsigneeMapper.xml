@@ -10,6 +10,7 @@
         <result column="consigneeName" property="consigneeName" />
         <result column="consigneePhone" property="consigneePhone" />
         <result column="beizhu" property="beizhu" />
+        <result column="locationAddress" property="locationAddress" />
     </resultMap>
 
 </mapper>

@@ -48,15 +48,6 @@ public class BodyServiceImpl extends ServiceImpl<BodyMapper, Body> implements IB
         return arrayLists;
     }
 
-    //查询userID所关联的身体信息
-    @Override
-    public Body selectBodyByUserID(Integer id) {
-        User user = userMapper.selectById(id);
-        Body body = bodyMapper.selectById(user.getBodyID());
-        //查询用户对应的身体信息
-
-        return body;
-    }
 
     @Override
     public List<Object> selectBodyByUser() {

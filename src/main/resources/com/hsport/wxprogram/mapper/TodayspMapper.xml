@@ -6,10 +6,8 @@
     <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Todaysp">
         <id column="id" property="id" />
         <result column="todayBurnCaloriePlan" property="todayBurnCaloriePlan" />
-        <result column="todayBurnCalorie" property="todayBurnCalorie" />
         <result column="date" property="date" />
         <result column="sportsPlanID" property="sportsPlanID" />
-        <result column="coachID" property="coachID"/>
         <result column="userID" property="userID"/>
     </resultMap>
 

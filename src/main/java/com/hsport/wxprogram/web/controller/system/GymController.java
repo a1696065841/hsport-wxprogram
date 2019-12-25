@@ -78,11 +78,18 @@ public class GymController {
         return gymService.selectList(null);
     }
 
-    @ApiOperation(value="获取市下面的地区")
+    @ApiOperation(value="获取地区的健身房")
     @RequestMapping(value ="/selectGymByAreaID/{id}",method = RequestMethod.GET)
     public List<Gym> selectGymByAreaID(@PathVariable("id")Integer id) {
-        return gymService.selectGymByAreaID(id);
+        List<Gym> gyms = gymService.selectGymByAreaID(id);
+        if (gyms.size()>0){
+            return gymService.selectGymByAreaID(id);
+        }else {
+            return  gymService.selectGymByParentID(id);
+        }
     }
+
+
     /**
     * 分页查询数据
     *

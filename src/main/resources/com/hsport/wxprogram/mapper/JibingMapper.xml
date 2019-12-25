@@ -5,7 +5,8 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Jibing">
         <id column="id" property="id" />
-        <result column="gxy" property="gxy" />
+        <result column="gxyLS" property="gxyLS" />
+        <result column="gxyXZ" property="gxyXZ" />
         <result column="dxy" property="dxy" />
         <result column="gxt" property="gxt" />
         <result column="dxt" property="dxt" />

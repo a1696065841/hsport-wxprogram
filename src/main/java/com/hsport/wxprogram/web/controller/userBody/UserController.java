@@ -1,5 +1,8 @@
 package com.hsport.wxprogram.web.controller.userBody;
 
+import com.hsport.wxprogram.domain.Body;
+import com.hsport.wxprogram.domain.Jibing;
+import com.hsport.wxprogram.domain.vo.MyArchivesVo;
 import com.hsport.wxprogram.service.IUserService;
 import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.query.UserQuery;
@@ -10,7 +13,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -60,8 +65,7 @@ public class UserController {
     //获取用户
     @ApiOperation(value="根据url的id来获取User详细信息")
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public User get(@PathVariable("id")Integer id)
-    {
+    public User get(@PathVariable("id")Integer id) {
         return userService.selectById(id);
     }
 
@@ -73,7 +77,6 @@ public class UserController {
     @ApiOperation(value="来获取所有User详细信息")
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public List<User> list(){
-
         return userService.selectList(null);
     }
 
@@ -91,4 +94,23 @@ public class UserController {
             page = userService.selectPage(page);
             return new PageList<User>(page.getTotal(),page.getRecords());
     }
+
+
+    @ApiOperation(value="来获取所有User详细信息并分页", notes="根据page页数和传入的query查询条件 来获取某些User详细信息")
+    @RequestMapping(value = "/selectUserCoach",method = RequestMethod.POST)
+    public List<Object> selectUserCoach(@RequestBody UserQuery query) {
+        return  userService.selectUserCoach(query);
+    }
+
+    @ApiOperation(value="接收我的档案页面传送数据并分割开传入各个表")
+    @RequestMapping(value = "/insertUserBodyAndSoOn",method = RequestMethod.POST)
+    public AjaxResult insertUserBodyAndSoOn(@RequestBody MyArchivesVo myArchivesVo) {
+        System.out.println(myArchivesVo);
+        Body body = myArchivesVo.getBody();
+        Jibing jibing = myArchivesVo.getJibing();
+        System.out.println(body);
+        System.out.println(jibing.getGxyLS());
+        return AjaxResult.me();
+    }
+
 }

@@ -26,4 +26,9 @@ public class GymServiceImpl extends ServiceImpl<GymMapper, Gym> implements IGymS
     public List<Gym> selectGymByAreaID(Integer id) {
         return gymMapper.selectGymByAreaID(id);
     }
+
+    @Override
+    public List<Gym> selectGymByParentID(Integer id) {
+        return gymMapper.selectGymByParentID(id);
+    }
 }

@@ -83,7 +83,7 @@ public class ConsigneeController {
     public List<Consignee> getByUserID(@PathVariable("id")Integer id)
     {
         EntityWrapper<Consignee> certificateEntityWrapper = new EntityWrapper<>();
-        certificateEntityWrapper.eq("coachID",id);
+        certificateEntityWrapper.eq("userID",id);
         return consigneeService.selectList(certificateEntityWrapper);
     }
     /**

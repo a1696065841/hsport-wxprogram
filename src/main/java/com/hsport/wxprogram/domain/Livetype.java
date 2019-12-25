@@ -25,6 +25,16 @@ public class Livetype extends Model<Livetype> {
      * 日常入睡时间
      */
     private String rcRSsj;
+    private Integer sfXiYan;
+
+    public Integer getSfXiYan() {
+        return sfXiYan;
+    }
+
+    public void setSfXiYan(Integer sfXiYan) {
+        this.sfXiYan = sfXiYan;
+    }
+
     private Integer mtSMsj;
     /**
      * 工作压力情况(选项)

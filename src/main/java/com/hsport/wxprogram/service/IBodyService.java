@@ -16,7 +16,6 @@ import java.util.List;
 public interface IBodyService extends IService<Body> {
     List<Body>  selectBody();
     List selectWithUser();
-    Body selectBodyByUserID(Integer id);
     List<Object> selectBodyByUser();
 
 }

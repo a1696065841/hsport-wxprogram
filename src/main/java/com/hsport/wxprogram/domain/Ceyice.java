@@ -4,11 +4,12 @@ import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ * <p>
  * </p>
  *
  * @author lhb
@@ -21,6 +22,72 @@ public class Ceyice extends Model<Ceyice> {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
+    private String name;
+    private Integer sex;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
+    }
+
+    public Integer getYaowei() {
+        return yaowei;
+    }
+
+    public void setYaowei(Integer yaowei) {
+        this.yaowei = yaowei;
+    }
+
+    public Integer getTunwei() {
+        return tunwei;
+    }
+
+    public void setTunwei(Integer tunwei) {
+        this.tunwei = tunwei;
+    }
+
+    private Integer age;
+    private Integer height;
+    private Integer weight;
+    private Integer yaowei;
+    private Integer tunwei;
+
+
     /**
      * 父母是否有人比较胖
      */
@@ -72,6 +139,16 @@ public class Ceyice extends Model<Ceyice> {
      * 当时减肥效果和反弹情况
      */
     private Integer dsjfqkFantan;
+    private String date;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     private Integer userID;
 
 
@@ -219,23 +296,30 @@ public class Ceyice extends Model<Ceyice> {
     @Override
     public String toString() {
         return "Ceyice{" +
-        ", id=" + id +
-        ", fmsfyrbjp=" + fmsfyrbjp +
-        ", tzhsmxzj=" + tzhsmxzj +
-        ", rcysqkDX=" + rcysqkDX +
-        ", ysxwxgDX=" + ysxwxgDX +
-        ", sfyydxg=" + sfyydxg +
-        ", mzcjydpl=" + mzcjydpl +
-        ", ydcxsj=" + ydcxsj +
-        ", buweiYdSunsDX=" + buweiYdSunsDX +
-        ", sfjcay=" + sfjcay +
-        ", pjsmsj=" + pjsmsj +
-        ", rcsmzlDC=" + rcsmzlDX +
-        ", rcpbqkDX=" + rcpbqkDX +
-        ", yqJianfeiJLDX=" + yqJianfeiJLDX +
-        ", rcylfx=" + rcylfx +
-        ", dsjfqkFantan=" + dsjfqkFantan +
-        ", userID=" + userID +
-        "}";
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sex=" + sex +
+                ", age=" + age +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", yaowei=" + yaowei +
+                ", tunwei=" + tunwei +
+                ", fmsfyrbjp=" + fmsfyrbjp +
+                ", tzhsmxzj=" + tzhsmxzj +
+                ", rcysqkDX='" + rcysqkDX + '\'' +
+                ", ysxwxgDX='" + ysxwxgDX + '\'' +
+                ", sfyydxg=" + sfyydxg +
+                ", mzcjydpl=" + mzcjydpl +
+                ", ydcxsj=" + ydcxsj +
+                ", buweiYdSunsDX='" + buweiYdSunsDX + '\'' +
+                ", sfjcay=" + sfjcay +
+                ", pjsmsj=" + pjsmsj +
+                ", rcsmzlDX='" + rcsmzlDX + '\'' +
+                ", rcpbqkDX='" + rcpbqkDX + '\'' +
+                ", yqJianfeiJLDX='" + yqJianfeiJLDX + '\'' +
+                ", rcylfx=" + rcylfx +
+                ", dsjfqkFantan=" + dsjfqkFantan +
+                ", userID=" + userID +
+                '}';
     }
 }

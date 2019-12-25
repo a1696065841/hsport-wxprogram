@@ -11,6 +11,12 @@
         <result column="totalPrice" property="totalPrice" />
         <result column="orderType" property="orderType" />
         <result column="endDate" property="endDate" />
+        <result column="regionID" property="regionID"/>
+        <result column="consigneeID" property="consigneeID"/>
     </resultMap>
 
+    <select id="selectOrderByUserID" parameterType="integer" resultType="map">
+        SELECT o.id,o.orderType,o.totalPrice,p.productname,p.pro_desc FROM t_order o LEFT JOIN t_product p ON o.productID = p.id WHERE o.userID=#{id}
+    </select>
+    
 </mapper>

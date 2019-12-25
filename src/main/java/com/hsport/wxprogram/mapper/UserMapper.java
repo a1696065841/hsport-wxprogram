@@ -9,6 +9,7 @@ import com.hsport.wxprogram.common.util.PageList;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 @org.apache.ibatis.annotations.Mapper
@@ -45,4 +46,6 @@ public interface UserMapper extends BaseMapper<User>{
      * @return PageList 分页对象
      */
     PageList<User> json(@RequestBody UserQuery query);
+
+    List<Object> selectUserCoach( UserQuery query);
 }

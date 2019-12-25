@@ -1,13 +1,13 @@
 package com.hsport.wxprogram.common.util;
 
 public class CharToString {
-    public static String C2S(char chars[]){
+    public static String C2S(String strings[]){
         StringBuffer stringBuffer = new StringBuffer();
-        if (chars==null||chars.length==0){
+        if (strings==null||strings.length==0){
             return null;
         }else {
-            for (char c : chars) {
-                if (c!=chars[chars.length-1]){
+            for (String c : strings) {
+                if (c!=strings[strings.length-1]){
                     stringBuffer.append(c+",");
                 }else {
                     stringBuffer.append(c);

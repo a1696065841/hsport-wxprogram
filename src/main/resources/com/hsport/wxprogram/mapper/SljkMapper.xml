@@ -6,7 +6,7 @@
     <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Sljk">
         <id column="id" property="id" />
         <result column="pbSFzc" property="pbSFzc" />
-        <result column="jbLS" property="jbLS" />
+        <result column="sfYjbLS" property="sfYjbLS" />
         <result column="sfFYyaowu" property="sfFYyaowu" />
         <result column="userID" property="userID" />
     </resultMap>

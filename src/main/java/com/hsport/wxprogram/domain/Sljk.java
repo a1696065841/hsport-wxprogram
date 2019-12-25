@@ -28,7 +28,7 @@ public class Sljk extends Model<Sljk> {
     /**
      * 疾病历史
      */
-    private String jbLS;
+    private Integer sfYjbLS;
     /**
      * 是否服用药物
      */
@@ -52,12 +52,12 @@ public class Sljk extends Model<Sljk> {
         this.pbSFzc = pbSFzc;
     }
 
-    public String getJbLS() {
-        return jbLS;
+    public Integer getSfYjbLS() {
+        return sfYjbLS;
     }
 
-    public void setJbLS(String jbLS) {
-        this.jbLS = jbLS;
+    public void setSfYjbLS(Integer sfYjbLS) {
+        this.sfYjbLS = sfYjbLS;
     }
 
     public Integer getSfFYyaowu() {
@@ -86,7 +86,7 @@ public class Sljk extends Model<Sljk> {
         return "Sljk{" +
         ", id=" + id +
         ", pbSFzc=" + pbSFzc +
-        ", jbLS=" + jbLS +
+        ", jbLS=" + sfYjbLS +
         ", sfFYyaowu=" + sfFYyaowu +
         ", userID=" + userID +
         "}";

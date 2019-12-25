@@ -1,5 +1,7 @@
 package com.hsport.wxprogram.web.controller.system;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.hsport.wxprogram.service.IArticleService;
 import com.hsport.wxprogram.domain.Article;
 import com.hsport.wxprogram.query.ArticleQuery;
@@ -46,7 +48,7 @@ public class ArticleController {
     * @return
     */
     @ApiOperation(value="删除Article信息", notes="删除对象信息")
-    @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
+    @RequestMapping(value="/del/{id}",method=RequestMethod.GET)
     public AjaxResult delete(@PathVariable("id") Integer id){
         try {
             articleService.deleteById(id);
@@ -76,6 +78,11 @@ public class ArticleController {
 
         return articleService.selectList(null);
     }
+    //获取文案分类列表
+    @RequestMapping(value = "/getArticleType",method = RequestMethod.GET)
+    public List<Object> getArticleType(){
+        return articleService.getArticleType();
+    }
 
 
     /**
@@ -89,7 +96,8 @@ public class ArticleController {
     public PageList<Article> json(@RequestBody ArticleQuery query)
     {
         Page<Article> page = new Page<Article>(query.getPage(),query.getRows());
-            page = articleService.selectPage(page);
+        EntityWrapper<Article> articleEntityWrapper = new EntityWrapper<>();
+            page = articleService.selectPage(page,articleEntityWrapper.eq("articleType",query.getArticleType()));
             return new PageList<Article>(page.getTotal(),page.getRecords());
     }
 }

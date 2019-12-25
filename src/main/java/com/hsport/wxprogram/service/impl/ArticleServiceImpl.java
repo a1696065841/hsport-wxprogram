@@ -4,7 +4,10 @@ import com.hsport.wxprogram.domain.Article;
 import com.hsport.wxprogram.mapper.ArticleMapper;
 import com.hsport.wxprogram.service.IArticleService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +19,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements IArticleService {
-
+@Autowired
+ ArticleMapper articleMapper;
+    @Override
+    public List<Object> getArticleType() {
+        return articleMapper.getArticleType();
+    }
 }

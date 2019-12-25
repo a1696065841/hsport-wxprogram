@@ -27,6 +27,18 @@ public class Body extends Model<Body> {
     private Double weight;
     private Double maxWeight;
     private Double bmi;
+
+    public Double getWaistHipRatio() {
+        return waistHipRatio;
+    }
+
+    public void setWaistHipRatio(Double waistHipRatio) {
+        this.waistHipRatio = waistHipRatio;
+    }
+    /**
+     * 腰臀比
+     */
+    private Double waistHipRatio;
     /**
      * 目标体重
      */
