@@ -4,11 +4,12 @@ import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ * <p>
  * </p>
  *
  * @author lhb
@@ -19,10 +20,18 @@ public class Coach extends Model<Coach> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     private String coachName;
-    private Integer coachAge;
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    private String birthday;
 
     private String password;
 
@@ -43,6 +52,33 @@ public class Coach extends Model<Coach> {
     }
 
     private String phone;
+    private String genTime;
+    private String loginTime;
+    private Integer loginCount;
+
+    public String getGenTime() {
+        return genTime;
+    }
+
+    public void setGenTime(String genTime) {
+        this.genTime = genTime;
+    }
+
+    public String getLoginTime() {
+        return loginTime;
+    }
+
+    public void setLoginTime(String loginTime) {
+        this.loginTime = loginTime;
+    }
+
+    public Integer getLoginCount() {
+        return loginCount;
+    }
+
+    public void setLoginCount(Integer loginCount) {
+        this.loginCount = loginCount;
+    }
 
     /**
      * 从业时间
@@ -75,13 +111,6 @@ public class Coach extends Model<Coach> {
         this.coachName = coachName;
     }
 
-    public Integer getCoachAge() {
-        return coachAge;
-    }
-
-    public void setCoachAge(Integer coachAge) {
-        this.coachAge = coachAge;
-    }
 
     public String getEmploymentTime() {
         return employmentTime;
@@ -116,12 +145,12 @@ public class Coach extends Model<Coach> {
     @Override
     public String toString() {
         return "Coach{" +
-        ", id=" + id +
-        ", coachName=" + coachName +
-        ", coachAge=" + coachAge +
-        ", EmploymentTime=" + employmentTime +
-        ", gymID=" + gymID +
-        ", coachPic=" + coachPic +
-        "}";
+                ", id=" + id +
+                ", coachName=" + coachName +
+                ", birthday=" + birthday +
+                ", EmploymentTime=" + employmentTime +
+                ", gymID=" + gymID +
+                ", coachPic=" + coachPic +
+                "}";
     }
 }

@@ -11,6 +11,7 @@
         <result column="consigneePhone" property="consigneePhone" />
         <result column="beizhu" property="beizhu" />
         <result column="locationAddress" property="locationAddress" />
+        <result column="isFirst" property="isFirst" />
     </resultMap>
 
 </mapper>

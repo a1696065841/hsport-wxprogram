@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -25,7 +26,8 @@ import java.util.List;
 public class DuibituController {
     @Autowired
     public IDuibituService duibituService;
-
+    @Autowired
+    HttpServletRequest request;
     /**
      * 保存和修改公用的
      *
@@ -44,7 +46,7 @@ public class DuibituController {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！" + e.getMessage());
+            return AjaxResult.me().setMessage("保存对象失败！" + e.getMessage()).setSuccess(false);
         }
     }
 
@@ -62,7 +64,7 @@ public class DuibituController {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！" + e.getMessage());
+            return AjaxResult.me().setMessage("删除对象失败！" + e.getMessage()).setSuccess(false);
         }
     }
 

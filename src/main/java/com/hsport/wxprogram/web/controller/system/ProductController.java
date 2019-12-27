@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,8 @@ import java.util.List;
 public class ProductController {
     @Autowired
     public IProductService productService;
-
+    @Autowired
+    HttpServletRequest request;
     /**
     * 保存和修改公用的
     * @param product  传递的实体
@@ -37,7 +39,7 @@ public class ProductController {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
@@ -47,14 +49,14 @@ public class ProductController {
     * @return
     */
     @ApiOperation(value="删除Product信息", notes="删除对象信息")
-    @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
-    public AjaxResult delete(@PathVariable("id") Integer id){
+    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    public AjaxResult delete(@RequestBody Product id) {
         try {
             productService.deleteById(id);
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 

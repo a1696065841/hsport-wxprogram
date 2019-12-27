@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Component
 public class CrmSessionManager extends DefaultWebSessionManager {
 
-    private static final String AUTHORIZATION = "X-TOKEN";
+    private static final String AUTHORIZATION = "token";//X-TOKEN
 
     private static final String REFERENCED_SESSION_ID_SOURCE = "Stateless request";
 

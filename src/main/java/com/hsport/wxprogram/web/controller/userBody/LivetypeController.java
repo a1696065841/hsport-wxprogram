@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -20,7 +21,8 @@ import java.util.List;
 public class LivetypeController {
     @Autowired
     public ILivetypeService livetypeService;
-
+    @Autowired
+    HttpServletRequest request;
     /**
     * 保存和修改公用的
     * @param livetype  传递的实体
@@ -38,7 +40,7 @@ public class LivetypeController {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
@@ -55,7 +57,7 @@ public class LivetypeController {
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 

@@ -13,9 +13,11 @@ import com.hsport.wxprogram.common.util.AjaxResult;
 import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
 import io.swagger.annotations.ApiOperation;
+import org.aspectj.weaver.loadtime.Aj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,7 +37,8 @@ public class SportsplanController {
     public ITodayintakeService todayintakeService;
     @Autowired
     public IStageplanService stageplanService;
-
+    @Autowired
+    HttpServletRequest request;
     /**
     * 保存和修改公用的
     * @param sportsplan  传递的实体
@@ -44,6 +47,10 @@ public class SportsplanController {
     @ApiOperation(value="新增或修改Sportsplan信息")
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Sportsplan sportsplan){
+        AjaxResult ajaxResult = new AjaxResult();
+        if (!ajaxResult.haveCoachOrSysLogin(request)){
+            new AjaxResult("用户无权限或已过期,请重新登录");
+        }
         try {
             if(sportsplan.getId()!=null){
                 sportsplanService.updateById(sportsplan);
@@ -55,7 +62,7 @@ public class SportsplanController {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
@@ -67,70 +74,58 @@ public class SportsplanController {
     @ApiOperation(value="删除Sportsplan信息", notes="删除对象信息")
     @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
     public AjaxResult delete(@PathVariable("id") Integer id){
+        AjaxResult ajaxResult = new AjaxResult();
+        if (!ajaxResult.haveCoachOrSysLogin(request)){
+            new AjaxResult("用户无权限或已过期,请重新登录");
+        }
         try {
             sportsplanService.deleteById(id);
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
-    //获取用户
-    @ApiOperation(value="根据url的id来获取Sportsplan详细信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Sportsplan get(@PathVariable("id")Integer id)
-    {
-        return sportsplanService.selectById(id);
-    }
 
     @ApiOperation(value="根据用户ID获取 我的计划页面信息")
-    @RequestMapping(value = "/getMyPlan/{id}",method = RequestMethod.GET)
-    public Object getMyPlan(@PathVariable("id")Integer id)
-    {
+    @RequestMapping(value = "/getMyPlan",method = RequestMethod.GET)
+    public Object getMyPlan() {
+        AjaxResult ajaxResult = new AjaxResult();
+        User user = ajaxResult.isUserLogin(request);
+        Integer id = user.getId();
+        if (user==null){
+            return  new AjaxResult().setMessage("用户未登陆");
+        }
         SportsplanQuery sportsplanQuery = new SportsplanQuery();
-        sportsplanQuery.setUserID(id);
+        sportsplanQuery.setUserID(user.getId());
         sportsplanQuery.setDate(DateUtil.today());
         return sportsplanService.getMyPlan(sportsplanQuery);
     }
-    /**
-    * 查看所有的员工信息
-    * @return
-    */
-    @ApiOperation(value="来获取所有Sportsplan详细信息")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public List<Sportsplan> list(){
-        return sportsplanService.selectList(null);
-    }
 
 
-    /**
-    * 分页查询数据
-    *
-    * @param query 查询对象
-    * @return PageList 分页对象
-    */
-    @ApiOperation(value="来获取所有Sportsplan详细信息并分页", notes="根据page页数和传入的query查询条件 来获取某些Sportsplan详细信息")
-    @RequestMapping(value = "/json",method = RequestMethod.POST)
-    public PageList<Sportsplan> json(@RequestBody SportsplanQuery query)
-    {
-        Page<Sportsplan> page = new Page<Sportsplan>(query.getPage(),query.getRows());
-            page = sportsplanService.selectPage(page);
-            return new PageList<Sportsplan>(page.getTotal(),page.getRecords());
-    }
 
     @ApiOperation(value="根据用户id获取对应的运动计划详细信息")
-    @RequestMapping(value = "/byuserID/{id}",method = RequestMethod.GET)
-    public List<Sportsplan> sportsplansByUserID(@PathVariable("id") Integer id){
-
-        return sportsplanService.selectPlanByUserID(id);
+    @RequestMapping(value = "/byuserID",method = RequestMethod.POST)
+    public AjaxResult sportsplansByUserID(@RequestBody User user){
+        AjaxResult ajaxResult = new AjaxResult();
+        if (!ajaxResult.haveAnyOneLogin(request)){
+            new AjaxResult("用户无权限或已过期,请重新登录");
+        }
+        return AjaxResult.me().setResultObj(sportsplanService.selectPlanByUserID(user.getId()));
     }
 
     @ApiOperation(value="目标与计划页面  来获取用户的平均摄入消耗和总摄入消耗 已过天数等详细信息")
-    @RequestMapping(value = "/getPlanAndObjectives/{id}",method = RequestMethod.GET)
-    public HashMap getPlanAndObjectives(@PathVariable("id") Integer id){
+    @RequestMapping(value = "/getPlanAndObjectives",method = RequestMethod.GET)
+    public AjaxResult getPlanAndObjectives(){
+        AjaxResult ajaxResult = new AjaxResult();
+        User user = ajaxResult.isUserLogin(request);
+        Integer id = user.getId();
+        if (user==null){
+            return  new AjaxResult().setMessage("用户未登陆");
+        }
         HashMap<String, Object> stringMapHashMap = new HashMap<>();
-        Sportsplan sportsplan = sportsplanService.selectById(id);
+        Sportsplan sportsplan = sportsplanService.selectById(user);
         //用的天数
         String planStratTime = sportsplan.getPlanStratTime();
         DateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
@@ -162,17 +157,31 @@ public class SportsplanController {
         stringMapHashMap.put("planObjectives",sportsplan.getPlanObjectives());
         stringMapHashMap.put("userEverDayIntake",sportsplanService.getUserIntakeEverday(id));
 
-        return stringMapHashMap;
+        return AjaxResult.me().setResultObj(stringMapHashMap);
     }
 
     @ApiOperation(value="来获取用户每天的消耗摄入的值")
     @RequestMapping(value = "/selectEverDayIntakeAndBurn",method = RequestMethod.POST)
-    public  List<HashMap> selectEverDayIntakeAndBurn(@RequestBody SportsplanQuery sportsplanQuery){
-        return sportsplanService.selectEverDayIntakeAndBurn(sportsplanQuery);
+    public  AjaxResult selectEverDayIntakeAndBurn(@RequestBody SportsplanQuery sportsplanQuery){
+        AjaxResult ajaxResult = new AjaxResult();
+        User user = ajaxResult.isUserLogin(request);
+        Integer id = user.getId();
+        if (user==null){
+            return  new AjaxResult().setMessage("用户未登陆");
+        }
+        sportsplanQuery.setUserID(id);
+        return AjaxResult.me().setResultObj(sportsplanService.selectEverDayIntakeAndBurn(sportsplanQuery));
     }
+
     @ApiOperation(value="获取计划的进度详情",notes = "当前进度 已过天数/总周期,累计消耗卡路里,累计摄入卡路里")
-        @RequestMapping(value = "/planSchedule/{id}",method = RequestMethod.GET)
-    public HashMap planSchedule(@PathVariable("id")Integer id) throws ParseException {
+        @RequestMapping(value = "/planSchedule",method = RequestMethod.GET)
+    public AjaxResult planSchedule() throws ParseException {
+        AjaxResult ajaxResult = new AjaxResult();
+        User user = ajaxResult.isUserLogin(request);
+        Integer id = user.getId();
+        if (user==null){
+            return  new AjaxResult().setMessage("用户未登陆");
+        }
         HashMap<String, Object> hashMap = new HashMap<>();
         Integer burnCalories=null;
         Integer intakeCalories=null;
@@ -203,7 +212,7 @@ public class SportsplanController {
         hashMap.put("planper",planper);
         hashMap.put("intakeCalories",intakeCalories);
         hashMap.put("burnCalories",burnCalories);
-        return hashMap;
+        return AjaxResult.me().setResultObj(hashMap);
     }
 
 }

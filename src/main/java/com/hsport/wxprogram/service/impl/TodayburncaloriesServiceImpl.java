@@ -1,6 +1,7 @@
 package com.hsport.wxprogram.service.impl;
 
 import com.hsport.wxprogram.domain.Todayburncalories;
+import com.hsport.wxprogram.domain.Todayintakeplan;
 import com.hsport.wxprogram.mapper.TodayburncaloriesMapper;
 import com.hsport.wxprogram.service.ITodayburncaloriesService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
@@ -36,5 +37,13 @@ public class TodayburncaloriesServiceImpl extends ServiceImpl<TodayburncaloriesM
     @Override
     public Todayburncalories getLastOne(Integer id) {
         return todayburncaloriesMapper.getLastOne(id);
+    }
+
+    @Override
+    public Todayburncalories selectTheDayIntakePlanByUserID(Integer id, String date) {
+        Todayburncalories todayburncalories = new Todayburncalories();
+        todayburncalories.setUserID(id);
+        todayburncalories.setDate(date);
+        return  todayburncaloriesMapper.selectOne(todayburncalories);
     }
 }

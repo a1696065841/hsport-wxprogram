@@ -5,6 +5,8 @@ import com.hsport.wxprogram.domain.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
+import java.util.UUID;
+
 /**
  * 当前登录用户相关
  */
@@ -28,4 +30,23 @@ public class CoachContext {
         Subject currentUser = SecurityUtils.getSubject();
         return (Coach) currentUser.getSession().getAttribute(CURRENT_LOGIN_USER);
     }
+
+    public static Integer getUUID() {
+        String id =null;
+        UUID uuid = UUID.randomUUID();
+        id = uuid.toString();
+
+        //去掉随机ID的短横线
+        id = id.replace("-", "");
+
+        //将随机ID换成数字
+        int num = id.hashCode();
+        //去绝对值
+        num = num < 0 ? -num : num;
+
+        id = String.valueOf(num);
+
+        return num;
+    }
+
 }

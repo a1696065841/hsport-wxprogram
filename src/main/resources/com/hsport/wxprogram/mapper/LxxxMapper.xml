@@ -8,7 +8,7 @@
         <result column="name" property="name" />
         <result column="telphone" property="telphone" />
         <result column="weixinNum" property="weixinNum" />
-        <result column="age" property="age" />
+        <result column="birthday" property="birthday" />
         <result column="occupation" property="occupation" />
         <result column="nation" property="nation" />
         <result column="atAddress" property="atAddress" />

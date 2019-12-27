@@ -1,5 +1,8 @@
 package com.hsport.wxprogram.web.controller.planc;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.common.util.DateUtil;
+import com.hsport.wxprogram.domain.Foodimg;
 import com.hsport.wxprogram.service.IIntaketypeService;
 import com.hsport.wxprogram.domain.Intaketype;
 import com.hsport.wxprogram.query.IntaketypeQuery;
@@ -32,6 +35,10 @@ public class IntaketypeController {
     @ApiOperation(value="新增或修改Intaketype信息")
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Intaketype intaketype){
+        AjaxResult ajaxResult = new AjaxResult();
+        if (!ajaxResult.haveCoachOrSysLogin(request)){
+            return  new AjaxResult("用户无权限或已过期");
+        }
         request.getHeader("token");
         try {
             if(intaketype.getId()!=null){
@@ -44,7 +51,7 @@ public class IntaketypeController {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
@@ -56,33 +63,17 @@ public class IntaketypeController {
     @ApiOperation(value="删除Intaketype信息", notes="删除对象信息")
     @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
     public AjaxResult delete(@PathVariable("id") Integer id){
+        AjaxResult ajaxResult = new AjaxResult();
+        if (!ajaxResult.haveCoachOrSysLogin(request)){
+            return   new AjaxResult("用户无权限或已过期");
+        }
         try {
             intaketypeService.deleteById(id);
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage()).setSuccess(false);
         }
-    }
-
-    //获取用户
-
-    @ApiOperation(value="根据url的id来获取Intaketype详细信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Intaketype get(@PathVariable("id")Integer id, @RequestHeader HttpHeaders httpHeaders)
-    {
-        return intaketypeService.selectById(id);
-    }
-
-
-    /**
-    * 查看所有的员工信息
-    * @return
-    */
-    @ApiOperation(value="来获取所有Intaketype详细信息")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public List<Intaketype> list(){
-        return intaketypeService.selectList(null);
     }
 
 

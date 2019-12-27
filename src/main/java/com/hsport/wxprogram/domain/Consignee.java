@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 
 /**
@@ -27,6 +29,16 @@ public class Consignee extends Model<Consignee> {
      */
     private String address;
     private String locationAddress;
+    @JsonProperty("isFirst")
+    private boolean isFirst;
+
+    public boolean isFirst() {
+        return isFirst;
+    }
+
+    public void setFirst(boolean first) {
+        isFirst = first;
+    }
 
     public String getLocationAddress() {
         return locationAddress;

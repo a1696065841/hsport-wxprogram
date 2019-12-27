@@ -15,6 +15,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -38,6 +39,8 @@ public class TodayintakeplanController {
     public IFoodService foodService;
     @Autowired
     public IIntaketypeService intaketypeService;
+    @Autowired
+    HttpServletRequest request;
     /**
      * 保存和修改公用的
      *
@@ -56,52 +59,49 @@ public class TodayintakeplanController {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！" + e.getMessage());
+            return AjaxResult.me().setMessage("保存对象失败！" + e.getMessage()).setSuccess(false);
         }
     }
 
     /**
      * 删除对象信息
      *
-     * @param id
+     * @param
      * @return
      */
+
     @ApiOperation(value = "删除Todayintakeplan信息", notes = "删除对象信息")
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public AjaxResult delete(@PathVariable("id") Integer id) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    public AjaxResult delete(@RequestBody Todayintakeplan todayintakeplan) {
         try {
-            todayintakeplanService.deleteById(id);
+            todayintakeplanService.deleteById(todayintakeplan);
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！" + e.getMessage());
+            return AjaxResult.me().setMessage("删除对象失败！" + e.getMessage()).setSuccess(false);
         }
     }
 
-    //获取用户
-    @ApiOperation(value = "根据url的id来获取Todayintakeplan详细信息")
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Todayintakeplan get(@PathVariable("id") Integer id) {
-        return todayintakeplanService.selectById(id);
-    }
 
     /**
      * 改！！！！！
      */
     @ApiOperation(value = "根据user的id来获取详细信息")
-    @RequestMapping(value = "/getListByUserID/{id}", method = RequestMethod.GET)
-    public List<Todayintakeplan> getListByUserID(@PathVariable("id") Integer id) {
+    @RequestMapping(value = "/getListByUserID", method = RequestMethod.POST)
+    public AjaxResult getListByUserID(@RequestBody User user) {
+        Integer id = user.getId();
         EntityWrapper<Todayintakeplan> todayintakeplanEntityWrapper = new EntityWrapper<>();
         todayintakeplanEntityWrapper.eq("userID", id);
-        return todayintakeplanService.selectList(todayintakeplanEntityWrapper);
+        return AjaxResult.me().setResultObj(todayintakeplanService.selectList(todayintakeplanEntityWrapper));
     }
 
     /**
      * 改！！！！！
      */
     @ApiOperation(value = "根据user的id来获取详细信息")
-    @RequestMapping(value = "/getSanCanByUserID/{id}", method = RequestMethod.GET)
-    public HashMap getSanCanByUserID(@PathVariable("id") Integer id) {
+    @RequestMapping(value = "/getSanCanByUserID", method = RequestMethod.POST)
+    public AjaxResult getSanCanByUserID(@RequestBody User user) {
+        Integer id = user.getId();
         HashMap<String, Object> stringIntegerHashMap = new HashMap<>();
         Todayintakeplan todayintakeplan = todayintakeplanService.selectTheDayIntakePlanByUserID(id, DateUtil.today());
         if (todayintakeplan != null) {
@@ -112,24 +112,13 @@ public class TodayintakeplanController {
             stringIntegerHashMap.put("wancan", "暂无");
             stringIntegerHashMap.put("jiacan", "暂无");
         }
-        return stringIntegerHashMap;
-    }
-
-    /**
-     * 查看所有的员工信息
-     *
-     * @return
-     */
-    @ApiOperation(value = "来获取所有Todayintakeplan详细信息")
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public List<Todayintakeplan> list() {
-
-        return todayintakeplanService.selectList(null);
+        return  AjaxResult.me().setResultObj(stringIntegerHashMap);
     }
 
     @ApiOperation(value = "来根据userID获取所有今日饮食计划的信息")
-    @RequestMapping(value = "/getTodayByUserID/{id}", method = RequestMethod.GET)
-    public HashMap<String, Object> getTodayByUserID(@PathVariable("id") Integer id) {
+    @RequestMapping(value = "/getTodayByUserID", method = RequestMethod.POST)
+    public AjaxResult getTodayByUserID(@RequestBody User user) {
+        Integer id = user.getId();
         DateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
         Todayintakeplan todayintakeplan = null;
         HashMap<String, Object> stringObjectHashMap = new HashMap<>();
@@ -151,7 +140,7 @@ public class TodayintakeplanController {
             foodlist.add(map);
         }
         stringObjectHashMap.put("todayFood", foodlist);
-        return stringObjectHashMap;
+        return AjaxResult.me().setResultObj(stringObjectHashMap);
     }
 
     /**

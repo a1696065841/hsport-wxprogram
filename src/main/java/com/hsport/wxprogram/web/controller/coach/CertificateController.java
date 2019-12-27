@@ -1,16 +1,20 @@
 package com.hsport.wxprogram.web.controller.coach;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.Coach;
+import com.hsport.wxprogram.domain.Sysuser;
 import com.hsport.wxprogram.service.ICertificateService;
 import com.hsport.wxprogram.domain.Certificate;
 import com.hsport.wxprogram.query.CertificateQuery;
 import com.hsport.wxprogram.common.util.AjaxResult;
 import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.hsport.wxprogram.service.RedisService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -19,7 +23,10 @@ import java.util.List;
 public class CertificateController {
     @Autowired
     public ICertificateService certificateService;
-
+    @Autowired
+    HttpServletRequest request;
+    @Autowired
+    RedisService redisService;
     /**
     * 保存和修改公用的
     * @param certificate  传递的实体
@@ -28,6 +35,12 @@ public class CertificateController {
     @ApiOperation(value="新建一个教练证书并绑定该教练")
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Certificate certificate){
+        AjaxResult ajaxResult = new AjaxResult();
+        Coach coachLogin = ajaxResult.isCoachLogin(request);
+        Sysuser sysUserLogin = ajaxResult.isSysUserLogin(request);
+        if (coachLogin==null||sysUserLogin==null){
+            return new AjaxResult("用户已过期，请重新登录");
+        }
         try {
             if(certificate.getId()!=null){
                 certificateService.updateById(certificate);
@@ -37,19 +50,25 @@ public class CertificateController {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
     /**
     * 删除对象信息
-    * @param id
+    * @param
     * @return
     */
-    @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
-    public AjaxResult delete(@PathVariable("id") Integer id){
+    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    public AjaxResult delete() {
+        AjaxResult ajaxResult = new AjaxResult();
+        Coach coachLogin = ajaxResult.isCoachLogin(request);
+        Sysuser sysUserLogin = ajaxResult.isSysUserLogin(request);
+        if (coachLogin==null&&sysUserLogin==null){
+            return new AjaxResult("用户已过期，请重新登录");
+        }
         try {
-            certificateService.deleteById(id);
+            certificateService.deleteById(coachLogin);
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
@@ -66,14 +85,19 @@ public class CertificateController {
 
     @ApiOperation(value="根据教练的ID来获取教练所拥有的证书详细信息")
     @RequestMapping(value = "/getByCoachID/{id}",method = RequestMethod.GET)
-    public List<Certificate> getByCoachID(@PathVariable("id")Integer id)
+    public AjaxResult getByCoachID(@PathVariable("id")Integer id)
     {
+        AjaxResult ajaxResult = new AjaxResult();
+        Coach coach = ajaxResult.isCoachLogin(request);
+        if (coach==null){
+            return new AjaxResult("用户已过期，请重新登录");
+        }
         EntityWrapper<Certificate> certificateEntityWrapper = new EntityWrapper<>();
-        certificateEntityWrapper.eq("coachID",id);
-        return certificateService.selectList(certificateEntityWrapper);
+        certificateEntityWrapper.eq("coachID",coach.getId());
+        return AjaxResult.me().setResultObj(certificateService.selectList(certificateEntityWrapper));
     }
     /**
-    * 查看所有的员工信息
+    * 查看所有的zhengshu信息
     * @return
     */
     @RequestMapping(value = "/list",method = RequestMethod.GET)

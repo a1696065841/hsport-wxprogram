@@ -1,5 +1,8 @@
 package com.hsport.wxprogram.web.controller.planc;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.Todayintakeplan;
+import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.ITodaysportsplansService;
 import com.hsport.wxprogram.domain.Todaysportsplans;
 import com.hsport.wxprogram.query.TodaysportsplansQuery;
@@ -10,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -19,6 +23,8 @@ import java.util.List;
 public class TodaysportsplansController {
     @Autowired
     public ITodaysportsplansService todaysportsplansService;
+    @Autowired
+    HttpServletRequest request;
 
     /**
     * 保存和修改公用的
@@ -37,7 +43,7 @@ public class TodaysportsplansController {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
@@ -54,27 +60,16 @@ public class TodaysportsplansController {
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
-
-    //获取用户
-    @ApiOperation(value="根据url的id来获取Todaysportsplans详细信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Todaysportsplans get(@PathVariable("id")Integer id)
-    {
-        return todaysportsplansService.selectById(id);
-    }
-
-
-    /**
-    * 查看所有的员工信息
-    * @return
-    */
-    @ApiOperation(value="来获取所有Todaysportsplans详细信息")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public List<Todaysportsplans> list(){
-        return todaysportsplansService.selectList(null);
+    @ApiOperation(value = "根据user的id来获取详细信息")
+    @RequestMapping(value = "/getListByUserID", method = RequestMethod.POST)
+    public AjaxResult getListByUserID(@RequestBody User user) {
+        Integer id = user.getId();
+        EntityWrapper<Todaysportsplans> todayintakeplanEntityWrapper = new EntityWrapper<>();
+        todayintakeplanEntityWrapper.eq("userID", id);
+        return AjaxResult.me().setResultObj(todaysportsplansService.selectList(todayintakeplanEntityWrapper));
     }
 
 

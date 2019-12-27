@@ -15,4 +15,5 @@ import java.util.HashMap;
  */
 public interface ITodayintakeService extends IService<Todayintake> {
     HashMap getAvgAndAllByUserID(Integer id);
+    public Todayintake selectTheDayIntakePlanByUserID(Integer id,String date);
 }

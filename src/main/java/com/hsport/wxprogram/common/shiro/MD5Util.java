@@ -9,7 +9,13 @@ public class MD5Util {
         SimpleHash hash = new SimpleHash("MD5", pwd, SALT, HASHITERATIONS);
         return hash.toHex();
     }
+
+    public static String loginMd5pwd(String pwd){
+        SimpleHash hash = new SimpleHash("MD5", pwd, SALT, HASHITERATIONS);
+        return   hash.getAlgorithmName();
+
+    }
     public static void main(String[] args){
-        System.out.println(creaMd5pwd("123"));
+        System.out.println(creaMd5pwd("123456"));
     }
 }

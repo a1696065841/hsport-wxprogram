@@ -4,11 +4,12 @@ import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ * <p>
  * </p>
  *
  * @author lhb
@@ -24,7 +25,7 @@ public class Lxxx extends Model<Lxxx> {
     private String name;
     private String telphone;
     private String weixinNum;
-    private Integer age;
+    private String birthday;
     private String occupation;
     private String nation;
     /**
@@ -78,12 +79,12 @@ public class Lxxx extends Model<Lxxx> {
         this.weixinNum = weixinNum;
     }
 
-    public Integer getAge() {
-        return age;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
     public String getOccupation() {
@@ -174,21 +175,21 @@ public class Lxxx extends Model<Lxxx> {
     @Override
     public String toString() {
         return "Lxxx{" +
-        ", id=" + id +
-        ", name=" + name +
-        ", telphone=" + telphone +
-        ", weixinNum=" + weixinNum +
-        ", age=" + age +
-        ", occupation=" + occupation +
-        ", nation=" + nation +
-        ", atAddress=" + atAddress +
-        ", postalAddress=" + postalAddress +
-        ", homeAddress=" + homeAddress +
-        ", homePhone=" + homePhone +
-        ", ecName=" + ecName +
-        ", ecPhone=" + ecPhone +
-        ", userID=" + userID +
-        ", specialNeeds=" + specialNeeds +
-        "}";
+                ", id=" + id +
+                ", name=" + name +
+                ", telphone=" + telphone +
+                ", weixinNum=" + weixinNum +
+                ", birthday=" + birthday +
+                ", occupation=" + occupation +
+                ", nation=" + nation +
+                ", atAddress=" + atAddress +
+                ", postalAddress=" + postalAddress +
+                ", homeAddress=" + homeAddress +
+                ", homePhone=" + homePhone +
+                ", ecName=" + ecName +
+                ", ecPhone=" + ecPhone +
+                ", userID=" + userID +
+                ", specialNeeds=" + specialNeeds +
+                "}";
     }
 }

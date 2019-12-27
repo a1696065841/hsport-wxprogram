@@ -1,5 +1,6 @@
 package com.hsport.wxprogram.web.controller.planc;
 
+import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.ITodayintakeService;
 import com.hsport.wxprogram.domain.Todayintake;
 import com.hsport.wxprogram.query.TodayintakeQuery;
@@ -10,6 +11,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 
@@ -24,7 +26,8 @@ import java.util.List;
 public class TodayintakeController {
     @Autowired
     public ITodayintakeService todayintakeService;
-
+    @Autowired
+    HttpServletRequest request;
     /**
     * 保存和修改公用的
     * @param todayintake  传递的实体
@@ -42,7 +45,7 @@ public class TodayintakeController {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
@@ -59,18 +62,9 @@ public class TodayintakeController {
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
-
-    //获取用户
-    @ApiOperation(value="根据url的id来获取Todayintake详细信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Todayintake get(@PathVariable("id")Integer id)
-    {
-        return todayintakeService.selectById(id);
-    }
-
 
 
     /**
@@ -84,9 +78,9 @@ public class TodayintakeController {
         return todayintakeService.selectList(null);
     }
     @ApiOperation(value="来获取用户的平均摄入和总摄入 已过天数等详细信息")
-    @RequestMapping(value = "/getAvgAndAllByUserID/{id}",method = RequestMethod.GET)
-    public HashMap getAvgAndAllByUserID(@PathVariable("id") Integer id){
-        return todayintakeService.getAvgAndAllByUserID(id);
+    @RequestMapping(value = "/getAvgAndAllByUserID",method = RequestMethod.GET)
+    public HashMap getAvgAndAllByUserID(@RequestBody User user){
+        return todayintakeService.getAvgAndAllByUserID(user.getId());
     }
 
 

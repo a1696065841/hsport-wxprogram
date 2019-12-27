@@ -17,7 +17,7 @@ public class RedisConfig {
                                            @Value("${jedis.pool.max-wait}") int maxWaitMillis, //
                                            @Value("${jedis.pool.block-when-exhausted}") boolean blockWhenExhausted, //
                                            @Value("${jedis.pool.max-total}") int maxTotal) {
-//　appendfsync no #从不同步。高效但是数据不会被持久化。
+        //　appendfsync no #从不同步。高效但是数据不会被持久化。
         JedisPoolConfig config = new JedisPoolConfig();
         config.setMinIdle(minIdle);
         config.setMaxIdle(maxIdle);

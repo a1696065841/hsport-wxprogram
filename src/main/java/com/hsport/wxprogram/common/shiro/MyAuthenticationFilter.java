@@ -1,3 +1,4 @@
+/*
 package com.hsport.wxprogram.common.shiro;
 
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
@@ -20,3 +21,4 @@ public class MyAuthenticationFilter extends FormAuthenticationFilter {
         return super.isAccessAllowed(request, response, mappedValue);
     }
 }
+*/

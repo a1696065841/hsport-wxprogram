@@ -36,7 +36,7 @@ public class ${entity}Controller {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
@@ -46,14 +46,14 @@ public class ${entity}Controller {
     * @return
     */
     @ApiOperation(value="删除${entity}信息", notes="删除对象信息")
-    @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
-    public AjaxResult delete(@PathVariable("id") Integer id){
+    @RequestMapping(value="/re",method=RequestMethod.POST)
+    public AjaxResult delete(@RequestBody ${entity} ${table.entityPath}){
         try {
-            ${table.entityPath}Service.deleteById(id);
+            ${table.entityPath}Service.deleteById(${table.entityPath});
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
+            return AjaxResult.me().setSuccess(false).setMessage("删除对象失败！"+e.getMessage());
         }
     }
 

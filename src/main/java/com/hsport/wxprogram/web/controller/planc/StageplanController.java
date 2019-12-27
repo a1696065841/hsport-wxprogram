@@ -2,6 +2,7 @@ package com.hsport.wxprogram.web.controller.planc;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.domain.Ceyice;
+import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.IStageplanService;
 import com.hsport.wxprogram.domain.Stageplan;
 import com.hsport.wxprogram.query.StageplanQuery;
@@ -12,15 +13,17 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/stageplan")
+    @RequestMapping("/stageplan")
 public class StageplanController {
     @Autowired
     public IStageplanService stageplanService;
-
+    @Autowired
+    HttpServletRequest request;
     /**
     * 保存和修改公用的
     * @param stageplan  传递的实体
@@ -29,6 +32,10 @@ public class StageplanController {
     @ApiOperation(value="新增或修改Stageplan信息")
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Stageplan stageplan){
+        AjaxResult ajaxResult = new AjaxResult();
+        if (!ajaxResult.haveCoachOrSysLogin(request)){
+            return  new AjaxResult("用户无权限或已过期,请重新登录");
+        }
         try {
             if(stageplan.getId()!=null){
                 stageplanService.updateById(stageplan);
@@ -38,7 +45,7 @@ public class StageplanController {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
@@ -50,41 +57,31 @@ public class StageplanController {
     @ApiOperation(value="删除Stageplan信息", notes="删除对象信息")
     @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
     public AjaxResult delete(@PathVariable("id") Integer id){
+        AjaxResult ajaxResult = new AjaxResult();
+        if (!ajaxResult.haveCoachOrSysLogin(request)){
+          return   new AjaxResult("用户无权限或已过期,请重新登录");
+        }
         try {
             stageplanService.deleteById(id);
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
-    //获取用户
-    @ApiOperation(value="根据url的id来获取Stageplan详细信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Stageplan get(@PathVariable("id")Integer id)
-    {
-        return stageplanService.selectById(id);
-    }
 
-
-    /**
-    * 查看所有的员工信息
-    * @return
-    */
-    @ApiOperation(value="来获取所有Stageplan详细信息")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public List<Stageplan> list(){
-
-        return stageplanService.selectList(null);
-    }
     //获取用户
     @ApiOperation(value="根据用户的id来获取阶段计划详细信息")
-    @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
-    public List<Stageplan> getByUserID(@PathVariable("id")Integer id) {
+    @RequestMapping(value = "/getByUserID",method = RequestMethod.POST)
+    public AjaxResult getByUserID(@RequestBody User user) {
+        AjaxResult ajaxResult = new AjaxResult();
+        if (!ajaxResult.haveAnyOneLogin(request)){
+           return new AjaxResult("用户无权限或已过期,请重新登录");
+        }
         EntityWrapper<Stageplan> ceyiceEntityWrapper = new EntityWrapper<>();
-        ceyiceEntityWrapper.eq("userID",id);
-        return stageplanService.selectList(ceyiceEntityWrapper);
+        ceyiceEntityWrapper.eq("userID",user.getId());
+        return AjaxResult.me().setResultObj(stageplanService.selectList(ceyiceEntityWrapper)) ;
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.hsport.wxprogram.web.controller.system;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.service.IGymService;
 import com.hsport.wxprogram.domain.Gym;
 import com.hsport.wxprogram.query.GymQuery;
@@ -10,6 +11,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -19,7 +21,8 @@ import java.util.List;
 public class GymController {
     @Autowired
     public IGymService gymService;
-
+    @Autowired
+    HttpServletRequest request;
     /**
     * 保存和修改公用的
     * @param gym  传递的实体
@@ -37,7 +40,7 @@ public class GymController {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
@@ -47,14 +50,14 @@ public class GymController {
     * @return
     */
     @ApiOperation(value="删除Gym信息", notes="删除对象信息")
-    @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
-    public AjaxResult delete(@PathVariable("id") Integer id){
+    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    public AjaxResult delete(@RequestBody Gym id) {
         try {
             gymService.deleteById(id);
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
@@ -103,5 +106,12 @@ public class GymController {
         Page<Gym> page = new Page<Gym>(query.getPage(),query.getRows());
             page = gymService.selectPage(page);
             return new PageList<Gym>(page.getTotal(),page.getRecords());
+    }
+    @ApiOperation(value="来获取所有Gym详细信息并分页", notes="根据page页数和传入的query查询条件 来获取某些Gym详细信息")
+    @RequestMapping(value = "/selectByName",method = RequestMethod.POST)
+    public List<Gym> selectByName(@RequestBody Gym gym)
+    {
+        String gym_name = gym.getGym_name();
+        return gymService.selectList(new EntityWrapper<Gym>().like("gym_name",gym_name));
     }
 }

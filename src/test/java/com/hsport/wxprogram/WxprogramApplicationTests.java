@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.hsport.wxprogram.common.util.YanZhenCode;
 import com.hsport.wxprogram.domain.*;
 import com.hsport.wxprogram.service.*;
 import com.hsport.wxprogram.service.impl.UserServiceImpl;
@@ -61,7 +62,7 @@ class WxprogramApplicationTests {
 	@Test
 	public void test2(){
         Coach coach = new Coach();
-        System.out.println(StringUtils.isEmpty(coach.getId()));
+        System.out.println(YanZhenCode.isMobileNO("18821231235"));
     }
 
 }

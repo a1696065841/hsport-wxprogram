@@ -6,12 +6,15 @@
     <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Coach">
         <id column="id" property="id" />
         <result column="coachName" property="coachName" />
-        <result column="coachAge" property="coachAge" />
+        <result column="birthday" property="birthday" />
         <result column="EmploymentTime" property="employmentTime" />
         <result column="gymID" property="gymID" />
         <result column="coachPic" property="coachPic" />
         <result column="password" property="password" />
         <result column="phone" property="phone" />
+        <result column="genTime" property="genTime" />
+        <result column="loginTime" property="loginTime" />
+        <result column="loginCount" property="loginCount" />
     </resultMap>
 
 </mapper>

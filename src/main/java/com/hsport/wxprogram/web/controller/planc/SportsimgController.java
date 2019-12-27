@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -23,15 +24,14 @@ import java.util.List;
 public class SportsimgController {
     @Autowired
     public ISportsimgService sportsimgService;
-
-    /**
-    * 保存和修改公用的
-    * @param sportsimg  传递的实体
-    * @return Ajaxresult转换结果
-    */
-    @ApiOperation(value="新增或修改Sportsimg信息")
+    @Autowired
+    HttpServletRequest request;    @ApiOperation(value="新增或修改Sportsimg信息")
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Sportsimg sportsimg){
+        AjaxResult ajaxResult = new AjaxResult();
+        if (!ajaxResult.haveAnyOneLogin(request)){
+            return  new AjaxResult("用户无权限或已过期,请重新登录");
+        }
         try {
             if(sportsimg.getId()!=null){
                 sportsimgService.updateById(sportsimg);
@@ -41,7 +41,7 @@ public class SportsimgController {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
@@ -53,12 +53,16 @@ public class SportsimgController {
     @ApiOperation(value="删除Sportsimg信息", notes="删除对象信息")
     @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
     public AjaxResult delete(@PathVariable("id") Integer id){
+        AjaxResult ajaxResult = new AjaxResult();
+        if (!ajaxResult.haveSysUserLogin(request)){
+            return new AjaxResult("用户无权限或已过期,请重新登录");
+        }
         try {
             sportsimgService.deleteById(id);
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
@@ -95,27 +99,5 @@ public class SportsimgController {
             page = sportsimgService.selectPage(page);
             return new PageList<Sportsimg>(page.getTotal(),page.getRecords());
     }
-    @ApiOperation(value="用户上传图片")
-    @RequestMapping(value = "/chuanTu",method = RequestMethod.POST)
-    public AjaxResult chuanTu(@RequestParam("multipartFile") MultipartFile multipartFile){
-        Sportsimg sportsimg = new Sportsimg();
-        String UPLOAD_FOLDER = "D:/images/sports";
-        Path path = Paths.get(UPLOAD_FOLDER + "/");
-        //获取当前登录用户  需要修改
-        sportsimg.setUserID(1);
-        sportsimg.setTodayspID(1);
-        try {
-            String s = picUtil.singleFileUpload(multipartFile, path);
-            if (s.equals("文件为空，请重新上传")){
-                return AjaxResult.me().setMessage("文件为空，请重新上传！");
-            }
-            sportsimg.setSportsImgUrl(s);
-            sportsimg.setSportsImgUrl(s);
-            sportsimgService.insert(sportsimg);
-            return AjaxResult.me();
-        }catch (Exception e){
-            e.printStackTrace();
-            return AjaxResult.me().setMessage("上传图片失败！"+e.getMessage());
-        }
-    }
+
 }

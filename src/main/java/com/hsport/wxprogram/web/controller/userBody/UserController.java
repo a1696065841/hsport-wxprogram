@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,8 @@ import java.util.Map;
 public class UserController {
     @Autowired
     public IUserService userService;
-
+    @Autowired
+    HttpServletRequest request;
     /**
     * 保存和修改公用的
     * @param user  传递的实体
@@ -41,7 +43,7 @@ public class UserController {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
@@ -50,7 +52,7 @@ public class UserController {
     * @param id
     * @return
     */
-    @ApiOperation(value="删除User信息", notes="删除对象信息")
+ /*   @ApiOperation(value="删除User信息", notes="删除对象信息")
     @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
     public AjaxResult delete(@PathVariable("id") Integer id){
         try {
@@ -60,7 +62,7 @@ public class UserController {
         e.printStackTrace();
             return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
         }
-    }
+    }*/
 
     //获取用户
     @ApiOperation(value="根据url的id来获取User详细信息")
@@ -105,11 +107,8 @@ public class UserController {
     @ApiOperation(value="接收我的档案页面传送数据并分割开传入各个表")
     @RequestMapping(value = "/insertUserBodyAndSoOn",method = RequestMethod.POST)
     public AjaxResult insertUserBodyAndSoOn(@RequestBody MyArchivesVo myArchivesVo) {
-        System.out.println(myArchivesVo);
         Body body = myArchivesVo.getBody();
         Jibing jibing = myArchivesVo.getJibing();
-        System.out.println(body);
-        System.out.println(jibing.getGxyLS());
         return AjaxResult.me();
     }
 

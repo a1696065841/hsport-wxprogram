@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.common.util.DateUtil;
 import com.hsport.wxprogram.domain.Sportsplan;
 import com.hsport.wxprogram.domain.Todaysportsplans;
+import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.ISportsplanService;
 import com.hsport.wxprogram.service.ITodayspService;
 import com.hsport.wxprogram.domain.Todaysp;
@@ -13,9 +14,11 @@ import com.hsport.wxprogram.common.util.AjaxResult;
 import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
 import io.swagger.annotations.ApiOperation;
+import org.aspectj.weaver.loadtime.Aj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,6 +36,8 @@ public class TodayspController {
     public ISportsplanService sportsplanService;
     @Autowired
     public ITodaysportsplansService todaysportsplansService;
+    @Autowired
+    HttpServletRequest request;
     /**
     * 保存和修改公用的
     * @param todaysp  传递的实体
@@ -50,7 +55,7 @@ public class TodayspController {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
@@ -67,32 +72,15 @@ public class TodayspController {
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 
-    //获取用户
-    @ApiOperation(value="根据url的id来获取Todaysp详细信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Todaysp get(@PathVariable("id")Integer id)
-    {
-        return todayspService.selectById(id);
-    }
-
-
-    /**
-    * 查看所有的员工信息
-    * @return
-    */
-    @ApiOperation(value="来获取所有Todaysp详细信息")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public List<Todaysp> list(){
-        return todayspService.selectList(null);
-    }
 
     @ApiOperation(value="来根据userID获取所有今日运动计划的信息")
-    @RequestMapping(value = "/getByuserID/{id}",method = RequestMethod.GET)
-    public HashMap<String, Object> getByuserID(@PathVariable("id")Integer id){
+    @RequestMapping(value = "/getByuserID",method = RequestMethod.POST)
+    public AjaxResult getByuserID(@RequestBody User user){
+        Integer id = user.getId();
         int usedays=0;
         HashMap<String, Object> stringObjectHashMap = new HashMap<>();
         List<Todaysportsplans> todaysportsplans=null;
@@ -130,7 +118,7 @@ public class TodayspController {
             //今日运动建议
             stringObjectHashMap.put("todaysportsplans",todaysportsplans);
         }
-        return stringObjectHashMap;
+        return AjaxResult.me().setResultObj(stringObjectHashMap);
     }
 
 

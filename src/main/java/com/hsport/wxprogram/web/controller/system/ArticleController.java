@@ -2,6 +2,7 @@ package com.hsport.wxprogram.web.controller.system;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.hsport.wxprogram.domain.Coach;
 import com.hsport.wxprogram.service.IArticleService;
 import com.hsport.wxprogram.domain.Article;
 import com.hsport.wxprogram.query.ArticleQuery;
@@ -12,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -20,7 +22,8 @@ import java.util.List;
 public class ArticleController {
     @Autowired
     public IArticleService articleService;
-
+    @Autowired
+    HttpServletRequest request;
     /**
     * 保存和修改公用的
     * @param article  传递的实体
@@ -48,14 +51,14 @@ public class ArticleController {
     * @return
     */
     @ApiOperation(value="删除Article信息", notes="删除对象信息")
-    @RequestMapping(value="/del/{id}",method=RequestMethod.GET)
-    public AjaxResult delete(@PathVariable("id") Integer id){
+    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    public AjaxResult delete(@RequestBody Article id) {
         try {
             articleService.deleteById(id);
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
 

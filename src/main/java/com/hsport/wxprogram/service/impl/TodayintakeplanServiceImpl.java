@@ -28,7 +28,6 @@ public class TodayintakeplanServiceImpl extends ServiceImpl<TodayintakeplanMappe
         Todayintakeplan todayintakeplan = new Todayintakeplan();
         todayintakeplan.setUserID(id);
         todayintakeplan.setDate(date);
-       todayintakeplanMapper.selectOne(todayintakeplan);
-        return null;
+        return  todayintakeplanMapper.selectOne(todayintakeplan);
     }
 }

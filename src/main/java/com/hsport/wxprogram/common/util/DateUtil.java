@@ -81,4 +81,8 @@ public class DateUtil {
 
         return i;
     }
+    public static boolean isTodayPlanTime() throws Exception {
+        return DateUtil.DateCompare(DateUtil.now(),DateUtil.todaySix(),"yyyy.MM.dd HH:mm")==-1;
+    }
+
 }

@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -33,6 +34,10 @@ public class CoachController {
     @Autowired
     public ITodayspService todayspService;
     @Autowired
+    public ITodayintakeService todayintakeService;
+    @Autowired
+    public ITodayburncaloriesService todayburncaloriesService;
+    @Autowired
     public ITodayintakeplanService todayintakeplanService;
     @Autowired
     public ISportsimgService sportsimgService;
@@ -48,7 +53,10 @@ public class CoachController {
     public ITodaysportsplansService todaysportsplansService;
     @Autowired
     public ILxxxService lxxxService;
-
+    @Autowired
+    public RedisService redisService;
+    @Autowired
+    HttpServletRequest request;
     /**
      * 保存和修改公用的
      *
@@ -62,13 +70,12 @@ public class CoachController {
             if (coach.getId() != null) {
                 coachService.updateById(coach);
             } else {
-
                 coachService.insert(coach);
             }
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！" + e.getMessage());
+            return AjaxResult.me().setMessage("保存对象失败！" + e.getMessage()).setSuccess(false);
         }
     }
 
@@ -79,22 +86,32 @@ public class CoachController {
      * @return
      */
     @ApiOperation(value = "删除Coach信息", notes = "删除对象信息")
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public AjaxResult delete(@PathVariable("id") Integer id) {
+    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    public AjaxResult delete(@RequestBody Coach id) {
+        AjaxResult ajaxResult = new AjaxResult();
+        Sysuser sysUserLogin = ajaxResult.isSysUserLogin(request);
+        if (sysUserLogin==null){
+            return new AjaxResult("用户已过期，请重新登录");
+        }
         try {
             coachService.deleteById(id);
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！" + e.getMessage());
+            return AjaxResult.me().setMessage("删除对象失败！" + e.getMessage()).setSuccess(false);
         }
     }
 
     //获取用户
     @ApiOperation(value = "根据url的id来获取Coach详细信息")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Coach get(@PathVariable("id") Integer id) {
-        return coachService.selectById(id);
+    public AjaxResult get(@PathVariable("id") Integer id) {
+        AjaxResult ajaxResult = new AjaxResult();
+        Sysuser sysUserLogin = ajaxResult.isSysUserLogin(request);
+        if (sysUserLogin==null){
+            return new AjaxResult("用户已过期，请重新登录");
+        }
+        return AjaxResult.me().setResultObj(coachService.selectById(id));
     }
 
 
@@ -105,9 +122,13 @@ public class CoachController {
      */
     @ApiOperation(value = "来获取所有Coach详细信息")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public List<Coach> list() {
-
-        return coachService.selectList(null);
+    public AjaxResult list() {
+        AjaxResult ajaxResult = new AjaxResult();
+        Sysuser sysUserLogin = ajaxResult.isSysUserLogin(request);
+        if (sysUserLogin==null){
+            return new AjaxResult("用户已过期，请重新登录");
+        }
+        return AjaxResult.me().setResultObj(coachService.selectList(null));
     }
 
     /**
@@ -115,20 +136,32 @@ public class CoachController {
      */
     @ApiOperation(value = "根据该教练的id查询教练的所有客户")
     @RequestMapping(value = "/getUserListByCoachID", method = RequestMethod.GET)
-    public List getUserListByCoachID() {
+    public AjaxResult getUserListByCoachID() {
+        AjaxResult ajaxResult = new AjaxResult();
+        Coach coach = ajaxResult.isCoachLogin(request);
+        Sysuser sysUserLogin = ajaxResult.isSysUserLogin(request);
+        if (coach==null&&sysUserLogin==null){
+            return new AjaxResult("用户已过期，请重新登录");
+        }
         List<Object> list = new ArrayList<>();
-        Coach coach = CoachContext.getUser();
         EntityWrapper<User> userEntityWrapper = new EntityWrapper<>();
         userEntityWrapper.eq("coachID", coach.getId());
         List<User> users = userService.selectList(userEntityWrapper);
-        for (User user : users) {
-            HashMap<String, Object> map = new HashMap<>();
-            Lxxx byUserID = lxxxService.getByUserID(user.getId());
-            map.put("userLxxx",byUserID);
-            map.put("userPhone",user.getPhone());
-            list.add(map);
+        if (users.size()>0){
+            for (User user : users) {
+                HashMap<String, Object> map = new HashMap<>();
+                Lxxx byUserID = lxxxService.getByUserID(user.getId());
+                if (byUserID!=null){
+                    map.put("userLxxx",byUserID);
+                    map.put("userPhone",user.getPhone());
+                }else {
+                    map.put("userLxxx","未填写");
+                    map.put("userPhone","未填写");
+                }
+                list.add(map);
+            }
         }
-        return list;
+        return AjaxResult.me().setResultObj(list);
     }
 
     /**
@@ -148,29 +181,13 @@ public class CoachController {
 
     @ApiOperation(value = "根据教练id来获取现在的未完成工作按员工区分")
     @RequestMapping(value = "/CoachWorkListByUser", method = RequestMethod.GET)
-    public List CoachWorkListByUser() throws Exception {
-        /** vo 类
-         * 用户名
-         * 用户id
-         * 教练未完成工作（用户未完成订单）：{
-         *       work1：{
-         *           Oder对应的产品和规格
-         *       }
-         *       work2：{
-         *           Oder对应的产品和规格以及产品的类型
-         *
-         *       }
-         * }
-         * //判断有没有产品类型为2的服务类型   2类型才会有计划这种概念
-         * 用户总计划：{
-         *
-         * }
-         * 订单对应未填写的大计划 没写就给教练未完成工作里面加就好
-         * 订单大计划对应的今日计划
-         * 用户今日饮食计划
-         * 用户上传的图片
-         * */
-        Coach coach = CoachContext.getUser();
+    public AjaxResult CoachWorkListByUser() throws Exception {
+        AjaxResult ajaxResult = new AjaxResult();
+        Coach coach = ajaxResult.isCoachLogin(request);
+        if (coach==null){
+            return new AjaxResult("用户已过期，请重新登录");
+        }
+        System.out.println(request.getHeader("token"));
         List todayFoodImgList = new ArrayList<>();
         List todaySpImgList = new ArrayList<>();
         ArrayList<Object> list = new ArrayList<>();
@@ -205,13 +222,15 @@ public class CoachController {
                     Productservice productservice = productserviceIterator.next();
                     Todaysportsplans todaysportsplans=null;
                     Todayintakeplan todayintakeplan =null;
+                    Todayintake todayintake=null;
+                    Todayburncalories todayburncalories=null;
                     //如过是长期计划类型的产品
-                    if (product.getProductType() == 2) {
+                    if (productservice.getServiceType() == 2) {
                         //遍历查询计划 如果现在是凌晨6点钱就查有没有今天的  超过了今天凌晨6点就查有没有明天的
-                        if (DateUtil.DateCompare(DateUtil.now(),DateUtil.todaySix(),"yyyy.MM.dd HH:mm")==-1){
+                        if (DateUtil.isTodayPlanTime()){
                              todaysportsplans = todaysportsplansService.selectOne(new EntityWrapper<Todaysportsplans>().eq("userID", user.getId())
                                     .eq("date",DateUtil.today()).eq("productServiceID", productservice.getId()));
-                        }else if (DateUtil.DateCompare(DateUtil.now(),DateUtil.todaySix(),"yyyy.MM.dd HH:mm")==1){
+                        }else if (!DateUtil.isTodayPlanTime()){
                              todaysportsplans = todaysportsplansService.selectOne(new EntityWrapper<Todaysportsplans>().eq("userID", user.getId())
                                     .eq("date",DateUtil.tommrow()).eq("productServiceID", productservice.getId()));
                         }
@@ -221,19 +240,20 @@ public class CoachController {
                             setWorkList(serviceList,workListVo,product,productservice);
                         }
                         //如果他有饮食计划类型的服务查该用户今天有没有饮食计划没有就加上
-                    }else if (product.getProductType()==3){
+                    }else if (productservice.getServiceType()==3){
                         if (DateUtil.DateCompare(DateUtil.now(),DateUtil.todaySix(),"yyyy.MM.dd HH:mm")==-1){
                              todayintakeplan = todayintakeplanService.selectTheDayIntakePlanByUserID(user.getId(), DateUtil.today());
+                             todayintake = todayintakeService.selectTheDayIntakePlanByUserID(user.getId(), DateUtil.today());
+                             todayburncalories = todayburncaloriesService.selectTheDayIntakePlanByUserID(user.getId(), DateUtil.today());
                         }
                         else if (DateUtil.DateCompare(DateUtil.now(),DateUtil.todaySix(),"yyyy.MM.dd HH:mm")==1){
                              todayintakeplan = todayintakeplanService.selectTheDayIntakePlanByUserID(user.getId(), DateUtil.tommrow());
                         }
-                        if (todayintakeplan==null){
-                            System.out.println("饮食计划 == null");
-                            setWorkList(serviceList,workListVo,product,productservice);
-                        }
+                        ifNullPutInWorkList(todayintakeplan,serviceList,workListVo,product,productservice);
+                        ifNullPutInWorkList(todayintake,serviceList,workListVo,product,productservice);
+                        ifNullPutInWorkList(todayburncalories,serviceList,workListVo,product,productservice);
                     }
-                    else  if (product.getProductType()==1){
+                    else  if (productservice.getServiceType()==1){
                         setWorkList(serviceList,workListVo,product,productservice);
                         /*workListVo.setProductName(product.getProductName());
                         workListVo.setProductserviceName(productservice.getName());
@@ -281,14 +301,20 @@ public class CoachController {
             map.put("todayFoodImgList", todayFoodImgList);
             list.add(map);
         }
-        return list;
+        return AjaxResult.me().setResultObj(list);
     }
     void setWorkList(List list,WorkListVo workListVo,Product product,Productservice productservice){
+        System.out.println(product.getProductName()+"---------------------------"+productservice.getName());
         workListVo.setProductName(product.getProductName());
         workListVo.setProductserviceName(productservice.getName());
         list.add(workListVo);
     }
-
+    void ifNullPutInWorkList(Object obj,List list,WorkListVo workListVo,Product product,Productservice productservice){
+        if (obj==null){
+            System.out.println("饮食计划 == null");
+            setWorkList(list,workListVo,product,productservice);
+        }
+    }
   /*  @ApiOperation(value = "根据教练id来获取现在的未完成工作按工作类型区分的")
     @RequestMapping(value = "/CoachWorkList/{id}", method = RequestMethod.GET)
     public Map<String, Object> CoachWorkList(@PathVariable("id") Integer id) {

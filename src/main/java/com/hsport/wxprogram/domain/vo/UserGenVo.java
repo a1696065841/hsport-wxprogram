@@ -28,4 +28,5 @@ public class UserGenVo {
     public void setTestcode(String testcode) {
         this.testcode = testcode;
     }
+
 }
