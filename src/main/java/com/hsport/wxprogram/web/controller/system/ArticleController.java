@@ -62,29 +62,20 @@ public class ArticleController {
         }
     }
 
-    //获取用户
-    @ApiOperation(value="根据url的id来获取Article详细信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Article get(@PathVariable("id")Integer id)
-    {
-        return articleService.selectById(id);
-    }
-
 
     /**
     * 查看所有的员工信息
     * @return
     */
     @ApiOperation(value="来获取所有Article详细信息")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public List<Article> list(){
-
-        return articleService.selectList(null);
+    @RequestMapping(value = "/list",method = RequestMethod.POST)
+    public AjaxResult list(){
+        return AjaxResult.me().setResultObj(articleService.selectList(null));
     }
     //获取文案分类列表
-    @RequestMapping(value = "/getArticleType",method = RequestMethod.GET)
-    public List<Object> getArticleType(){
-        return articleService.getArticleType();
+    @RequestMapping(value = "/getArticleType",method = RequestMethod.POST)
+    public AjaxResult getArticleType(){
+        return AjaxResult.me().setResultObj(articleService.getArticleType());
     }
 
 

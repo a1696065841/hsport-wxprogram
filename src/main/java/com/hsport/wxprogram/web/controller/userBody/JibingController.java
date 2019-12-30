@@ -1,5 +1,6 @@
 package com.hsport.wxprogram.web.controller.userBody;
 
+import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.IJibingService;
 import com.hsport.wxprogram.domain.Jibing;
 import com.hsport.wxprogram.query.JibingQuery;
@@ -70,9 +71,10 @@ public class JibingController {
 
 
     @ApiOperation(value="根据user的id来获取Jibing详细信息")
-    @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
-    public Jibing getByUserID(@PathVariable("id")Integer id){
-        return jibingService.getByUserID(id);
+    @RequestMapping(value = "/getByUserID",method = RequestMethod.POST)
+    public AjaxResult getByUserID(@RequestBody User user) {
+        Long id = user.getId();
+        return AjaxResult.me().setResultObj(jibingService.getByUserID(id));
     }
     
     /**

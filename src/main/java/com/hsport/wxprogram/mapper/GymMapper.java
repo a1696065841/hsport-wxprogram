@@ -49,4 +49,6 @@ public interface GymMapper extends BaseMapper<Gym>{
     List<Gym> selectGymByAreaID(Integer id);
 
     List<Gym> selectGymByParentID(Integer id);
+
+    List<Object> selectGymWithRegion(GymQuery gymQuery);
 }

@@ -1,6 +1,7 @@
 package com.hsport.wxprogram.web.controller.system;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.common.util.DateUtil;
 import com.hsport.wxprogram.service.IGymService;
 import com.hsport.wxprogram.domain.Gym;
 import com.hsport.wxprogram.query.GymQuery;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -35,6 +37,7 @@ public class GymController {
             if(gym.getId()!=null){
                 gymService.updateById(gym);
             }else{
+                gym.setGymDate(DateUtil.today());
                 gymService.insert(gym);
             }
             return AjaxResult.me();
@@ -61,13 +64,6 @@ public class GymController {
         }
     }
 
-    //获取用户
-    @ApiOperation(value="根据url的id来获取Gym详细信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Gym get(@PathVariable("id")Integer id)
-    {
-        return gymService.selectById(id);
-    }
 
 
     /**
@@ -75,20 +71,20 @@ public class GymController {
     * @return
     */
     @ApiOperation(value="来获取所有Gym详细信息")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public List<Gym> list(){
-
-        return gymService.selectList(null);
+    @RequestMapping(value = "/list",method = RequestMethod.POST)
+    public AjaxResult list(){
+        return AjaxResult.me().setResultObj(gymService.selectList(null));
     }
 
     @ApiOperation(value="获取地区的健身房")
-    @RequestMapping(value ="/selectGymByAreaID/{id}",method = RequestMethod.GET)
-    public List<Gym> selectGymByAreaID(@PathVariable("id")Integer id) {
+    @RequestMapping(value ="/selectGymByAreaID",method = RequestMethod.POST)
+    public AjaxResult selectGymByAreaID(@RequestBody  Gym gym) {
+        Integer id = gym.getId();
         List<Gym> gyms = gymService.selectGymByAreaID(id);
         if (gyms.size()>0){
-            return gymService.selectGymByAreaID(id);
+            return AjaxResult.me().setResultObj(gymService.selectGymByAreaID(id));
         }else {
-            return  gymService.selectGymByParentID(id);
+            return  AjaxResult.me().setResultObj(gymService.selectGymByParentID(id));
         }
     }
 
@@ -101,17 +97,19 @@ public class GymController {
     */
     @ApiOperation(value="来获取所有Gym详细信息并分页", notes="根据page页数和传入的query查询条件 来获取某些Gym详细信息")
     @RequestMapping(value = "/json",method = RequestMethod.POST)
-    public PageList<Gym> json(@RequestBody GymQuery query)
+    public AjaxResult json(@RequestBody GymQuery query)
     {
-        Page<Gym> page = new Page<Gym>(query.getPage(),query.getRows());
-            page = gymService.selectPage(page);
-            return new PageList<Gym>(page.getTotal(),page.getRecords());
+        HashMap<String, Object> map = new HashMap<>();
+        List<Object> objects = gymService.selectGymWithRegion(query);
+        map.put("gym",objects);
+        map.put("rows",objects.size());
+        return AjaxResult.me().setResultObj(map);
     }
     @ApiOperation(value="来获取所有Gym详细信息并分页", notes="根据page页数和传入的query查询条件 来获取某些Gym详细信息")
     @RequestMapping(value = "/selectByName",method = RequestMethod.POST)
-    public List<Gym> selectByName(@RequestBody Gym gym)
+    public AjaxResult selectByName(@RequestBody Gym gym)
     {
         String gym_name = gym.getGym_name();
-        return gymService.selectList(new EntityWrapper<Gym>().like("gym_name",gym_name));
+        return AjaxResult.me().setResultObj(gymService.selectList(new EntityWrapper<Gym>().like("gym_name",gym_name)));
     }
 }

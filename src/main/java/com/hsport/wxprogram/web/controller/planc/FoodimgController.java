@@ -35,10 +35,6 @@ public class FoodimgController {
     @ApiOperation(value="新增或修改Foodimg信息")
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Foodimg foodimg){
-        AjaxResult ajaxResult = new AjaxResult();
-        if (!ajaxResult.haveAnyOneLogin(request)){
-            return  new AjaxResult("用户无权限或已过期");
-        }
         try {
             if(foodimg.getId()!=null){
                 foodimgService.updateById(foodimg);
@@ -60,10 +56,7 @@ public class FoodimgController {
     @ApiOperation(value="删除Foodimg信息", notes="删除对象信息")
     @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
     public AjaxResult delete(@PathVariable("id") Integer id){
-        AjaxResult ajaxResult = new AjaxResult();
-        if (!ajaxResult.haveSysUserLogin(request)){
-            return  new AjaxResult("用户无权限或已过期");
-        }
+
         try {
             foodimgService.deleteById(id);
             return AjaxResult.me();
@@ -73,21 +66,12 @@ public class FoodimgController {
         }
     }
 
-    //获取用户
-    @ApiOperation(value="根据url的id来获取Foodimg详细信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public AjaxResult get(@PathVariable("id")Integer id)
-    {
-        return AjaxResult.me().setResultObj(foodimgService.selectById(id));
-    }
+
 
     @ApiOperation(value = "根据该用户的id查询今天上传的食物图片")
-    @RequestMapping(value = "/getFoodListByUserID/{id}", method = RequestMethod.GET)
-    public AjaxResult getFoodListByUserID(@PathVariable("id")Integer id) {
-        AjaxResult ajaxResult = new AjaxResult();
-        if (!ajaxResult.haveAnyOneLogin(request)){
-            return new AjaxResult("用户无权限或已过期");
-        }
+    @RequestMapping(value = "/getFoodListByUserID", method = RequestMethod.POST)
+    public AjaxResult getFoodListByUserID(@RequestBody User user) {
+        Long id = user.getId();
         EntityWrapper<Foodimg> userEntityWrapper = new EntityWrapper<>();
         userEntityWrapper.eq("date", DateUtil.today());
         userEntityWrapper.eq("userID", id);
@@ -103,10 +87,6 @@ public class FoodimgController {
     @RequestMapping(value = "/json",method = RequestMethod.POST)
     public AjaxResult json(@RequestBody FoodimgQuery query)
     {
-        AjaxResult ajaxResult = new AjaxResult();
-        if (!ajaxResult.haveAnyOneLogin(request)){
-            return new AjaxResult("用户无权限或已过期");
-        }
         Page<Foodimg> page = new Page<Foodimg>(query.getPage(),query.getRows());
             page = foodimgService.selectPage(page);
             return AjaxResult.me().setResultObj(new PageList<Foodimg>(page.getTotal(),page.getRecords()));

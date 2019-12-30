@@ -47,5 +47,7 @@ public interface TodayintakeMapper extends BaseMapper<Todayintake>{
      */
     PageList<Todayintake> json(@RequestBody TodayintakeQuery query);
 
-    HashMap getAvgAndAllByUserID(Integer id);
+    HashMap getAvgAndAllByUserID(Long id);
+
+    Todayintake getLastOne(Long userID);
 }

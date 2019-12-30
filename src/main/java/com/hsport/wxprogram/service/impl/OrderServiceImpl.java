@@ -23,7 +23,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     OrderMapper orderMapper;
 
     @Override
-    public List<Object> selectOrderByUserID(Integer id) {
+    public List<Object> selectOrderByUserID(Long id) {
         return orderMapper.selectOrderByUserID(id);
     }
 }

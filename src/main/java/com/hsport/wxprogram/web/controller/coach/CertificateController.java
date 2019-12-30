@@ -36,8 +36,8 @@ public class CertificateController {
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Certificate certificate){
         AjaxResult ajaxResult = new AjaxResult();
-        Coach coachLogin = ajaxResult.isCoachLogin(request);
-        Sysuser sysUserLogin = ajaxResult.isSysUserLogin(request);
+        Coach coachLogin = ajaxResult.isCoachLogin(request,redisService);
+        Sysuser sysUserLogin = ajaxResult.isSysUserLogin(request,redisService);
         if (coachLogin==null||sysUserLogin==null){
             return new AjaxResult("用户已过期，请重新登录");
         }
@@ -60,15 +60,9 @@ public class CertificateController {
     * @return
     */
     @RequestMapping(value = "/remove", method = RequestMethod.POST)
-    public AjaxResult delete() {
-        AjaxResult ajaxResult = new AjaxResult();
-        Coach coachLogin = ajaxResult.isCoachLogin(request);
-        Sysuser sysUserLogin = ajaxResult.isSysUserLogin(request);
-        if (coachLogin==null&&sysUserLogin==null){
-            return new AjaxResult("用户已过期，请重新登录");
-        }
+    public AjaxResult delete(@RequestBody Coach coach) {
         try {
-            certificateService.deleteById(coachLogin);
+            certificateService.deleteById(coach);
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
@@ -84,11 +78,9 @@ public class CertificateController {
     }
 
     @ApiOperation(value="根据教练的ID来获取教练所拥有的证书详细信息")
-    @RequestMapping(value = "/getByCoachID/{id}",method = RequestMethod.GET)
-    public AjaxResult getByCoachID(@PathVariable("id")Integer id)
+    @RequestMapping(value = "/getByCoachID",method = RequestMethod.POST)
+    public AjaxResult getByCoachID(@RequestBody Coach coach)
     {
-        AjaxResult ajaxResult = new AjaxResult();
-        Coach coach = ajaxResult.isCoachLogin(request);
         if (coach==null){
             return new AjaxResult("用户已过期，请重新登录");
         }

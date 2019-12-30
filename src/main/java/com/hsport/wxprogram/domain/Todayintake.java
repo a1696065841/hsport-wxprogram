@@ -47,7 +47,7 @@ public class Todayintake extends Model<Todayintake> {
      * 总运动计划ID
      */
     private Integer sportsPlanID;
-    private Integer userID;
+    private Long userID;
 
 
     public Integer getId() {
@@ -122,11 +122,11 @@ public class Todayintake extends Model<Todayintake> {
         this.sportsPlanID = sportsPlanID;
     }
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

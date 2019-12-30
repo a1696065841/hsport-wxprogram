@@ -57,13 +57,6 @@ public class ${entity}Controller {
         }
     }
 
-    //获取用户
-    @ApiOperation(value="根据url的id来获取${entity}详细信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public ${entity} get(@PathVariable("id")Integer id)
-    {
-        return ${table.entityPath}Service.selectById(id);
-    }
 
 
     /**
@@ -71,10 +64,9 @@ public class ${entity}Controller {
     * @return
     */
     @ApiOperation(value="来获取所有${entity}详细信息")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public List<${entity}> list(){
-
-        return ${table.entityPath}Service.selectList(null);
+    @RequestMapping(value = "/list",method = RequestMethod.POST)
+    public AjaxResult list(){
+        return AjaxResult.me().setResultObj(${table.entityPath}Service.selectList(null));
     }
 
 
@@ -86,10 +78,10 @@ public class ${entity}Controller {
     */
     @ApiOperation(value="来获取所有${entity}详细信息并分页", notes="根据page页数和传入的query查询条件 来获取某些${entity}详细信息")
     @RequestMapping(value = "/json",method = RequestMethod.POST)
-    public PageList<${entity}> json(@RequestBody ${entity}Query query)
+    public AjaxResult json(@RequestBody ${entity}Query query)
     {
         Page<${entity}> page = new Page<${entity}>(query.getPage(),query.getRows());
             page = ${table.entityPath}Service.selectPage(page);
-            return new PageList<${entity}>(page.getTotal(),page.getRecords());
+            return AjaxResult.me().setResultObj(new PageList<${entity}>(page.getTotal(),page.getRecords()));
     }
 }

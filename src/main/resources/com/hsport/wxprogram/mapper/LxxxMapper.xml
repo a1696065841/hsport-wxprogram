@@ -21,7 +21,7 @@
         <result column="specialNeeds" property="specialNeeds" />
     </resultMap>
 
-    <select id="getByUserID" parameterType="integer"  resultType="Lxxx">
+    <select id="getByUserID" parameterType="Long"  resultType="Lxxx">
         SELECT l.* FROM t_lxxx l  WHERE l.userID=#{id} limit 0,1
     </select>
 

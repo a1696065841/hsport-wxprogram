@@ -1,6 +1,7 @@
 package com.hsport.wxprogram.web.controller.userBody;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.ILivetypeService;
 import com.hsport.wxprogram.domain.Livetype;
 import com.hsport.wxprogram.query.LivetypeQuery;
@@ -70,12 +71,12 @@ public class LivetypeController {
     }
 
     @ApiOperation(value="根据user的id来获取详细信息")
-    @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
-    public Livetype getByUserID(@PathVariable("id")Integer id)
-    {
+    @RequestMapping(value = "/getByUserID",method = RequestMethod.POST)
+    public AjaxResult getByUserID(@RequestBody User user) {
+        Long id = user.getId();
         EntityWrapper<Livetype> livetypeEntityWrapper = new EntityWrapper<>();
         livetypeEntityWrapper.eq("userID",id);
-        return livetypeService.selectOne(livetypeEntityWrapper);
+        return AjaxResult.me().setResultObj(livetypeService.selectOne(livetypeEntityWrapper));
     }
     /**
     * 查看所有的员工信息

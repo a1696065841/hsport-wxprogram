@@ -24,16 +24,21 @@ public class TodayintakeServiceImpl extends ServiceImpl<TodayintakeMapper, Today
     TodayintakeMapper todayintakeMapper;
 
     @Override
-    public HashMap getAvgAndAllByUserID(Integer id) {
+    public HashMap getAvgAndAllByUserID(Long id) {
         return todayintakeMapper.getAvgAndAllByUserID(id);
     }
 
     @Override
-    public Todayintake selectTheDayIntakePlanByUserID(Integer id, String date) {
+    public Todayintake selectTheDayIntakePlanByUserID(Long id, String date) {
         Todayintake todayintake = new Todayintake();
         todayintake.setUserID(id);
         todayintake.setDate(date);
         return  todayintakeMapper.selectOne(todayintake);
 
+    }
+
+    @Override
+    public Todayintake getLastOne(Long userID) {
+        return todayintakeMapper.getLastOne(userID);
     }
 }

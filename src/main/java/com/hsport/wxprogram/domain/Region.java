@@ -21,7 +21,7 @@ public class Region extends Model<Region> {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
-    private String regionName;
+    private String title;
     private Integer parentID;
     /**
      * 地区的级别 1级就是市,2市里的区
@@ -37,12 +37,12 @@ public class Region extends Model<Region> {
         this.id = id;
     }
 
-    public String getRegionName() {
-        return regionName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setRegionName(String regionName) {
-        this.regionName = regionName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Integer getParentID() {
@@ -70,7 +70,7 @@ public class Region extends Model<Region> {
     public String toString() {
         return "Region{" +
         ", id=" + id +
-        ", regionName=" + regionName +
+        ", title=" + title +
         ", parentID=" + parentID +
         ", regionLev=" + regionLev +
         "}";

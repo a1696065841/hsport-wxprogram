@@ -21,7 +21,7 @@ public class LivetypeServiceImpl extends ServiceImpl<LivetypeMapper, Livetype> i
     @Autowired
     LivetypeMapper livetypeMapper;
     @Override
-    public Livetype getByUserID(Integer id) {
+    public Livetype getByUserID(Long id) {
         Livetype livetype = new Livetype();
         livetype.setUserID(id);
         return livetypeMapper.selectOne(livetype);

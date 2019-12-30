@@ -1,5 +1,6 @@
 package com.hsport.wxprogram.web.controller.system;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.service.IRegionService;
 import com.hsport.wxprogram.domain.Region;
 import com.hsport.wxprogram.query.RegionQuery;
@@ -7,10 +8,13 @@ import com.hsport.wxprogram.common.util.AjaxResult;
 import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
 import io.swagger.annotations.ApiOperation;
+import org.aspectj.weaver.loadtime.Aj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -59,35 +63,38 @@ public class RegionController {
         }
     }
 
-    //获取用户
-    @ApiOperation(value="根据url的id来获取Region详细信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Region get(@PathVariable("id")Integer id)
-    {
-        return regionService.selectById(id);
-    }
+
 
     @ApiOperation(value="获取所有的市")
-    @RequestMapping(value ="/selectCity",method = RequestMethod.GET)
-    public List<Region> selectCity() {
-        return regionService.selectCity();
+    @RequestMapping(value ="/selectCity",method = RequestMethod.POST)
+    public AjaxResult selectCity() {
+        return AjaxResult.me().setResultObj(regionService.selectCity());
     }
 
 
     @ApiOperation(value="获取市下面的地区")
-    @RequestMapping(value ="/selectAreaByCityID/{id}",method = RequestMethod.GET)
-    public List<Region> selectAreaByCityID(@PathVariable("id")Integer id) {
-        return regionService.selectAreaByCityID(id);
+    @RequestMapping(value ="/selectAreaByCityID",method = RequestMethod.POST)
+    public AjaxResult selectAreaByCityID(@RequestBody Region region) {
+
+        return AjaxResult.me().setResultObj(regionService.selectAreaByCityID(region.getId()));
     }
 
-    /**
-    * 查看所有的员工信息
-    * @return
-    */
+
     @ApiOperation(value="来获取所有Region详细信息")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public List<Region> list(){
-        return regionService.selectList(null);
+    @RequestMapping(value = "/list",method = RequestMethod.POST)
+    public AjaxResult list(){
+        ArrayList<Object> list = new ArrayList<>();
+        List<Region> regions = regionService.selectList(null);
+        for (Region region : regions) {
+            HashMap<String, Object> map = new HashMap<>();
+            if (region.getRegionLev()==1){
+                map.put("City",region);
+                List<Region> children = regionService.selectList(new EntityWrapper<Region>().eq("parentID", region.getId()));
+                map.put("children",children);
+                list.add(map);
+            }
+        }
+        return AjaxResult.me().setResultObj(list);
     }
 
 

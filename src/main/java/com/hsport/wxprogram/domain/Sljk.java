@@ -33,7 +33,7 @@ public class Sljk extends Model<Sljk> {
      * 是否服用药物
      */
     private Integer sfFYyaowu;
-    private Integer userID;
+    private Long userID;
 
 
     public Integer getId() {
@@ -68,11 +68,11 @@ public class Sljk extends Model<Sljk> {
         this.sfFYyaowu = sfFYyaowu;
     }
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

@@ -21,7 +21,7 @@ public class LxxxServiceImpl extends ServiceImpl<LxxxMapper, Lxxx> implements IL
     LxxxMapper lxxxMapper;
 
     @Override
-    public Lxxx getByUserID(Integer id) {
+    public Lxxx getByUserID(Long id) {
         return lxxxMapper.getByUserID(id);
     }
 }

@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @since 2019-11-26
  */
 public interface ILivetypeService extends IService<Livetype> {
-    public Livetype getByUserID(Integer id);
+    public Livetype getByUserID(Long id);
 
 }

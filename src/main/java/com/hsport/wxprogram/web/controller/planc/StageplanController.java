@@ -32,10 +32,10 @@ public class StageplanController {
     @ApiOperation(value="新增或修改Stageplan信息")
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Stageplan stageplan){
-        AjaxResult ajaxResult = new AjaxResult();
+      /*  AjaxResult ajaxResult = new AjaxResult();
         if (!ajaxResult.haveCoachOrSysLogin(request)){
             return  new AjaxResult("用户无权限或已过期,请重新登录");
-        }
+        }*/
         try {
             if(stageplan.getId()!=null){
                 stageplanService.updateById(stageplan);
@@ -57,10 +57,10 @@ public class StageplanController {
     @ApiOperation(value="删除Stageplan信息", notes="删除对象信息")
     @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
     public AjaxResult delete(@PathVariable("id") Integer id){
-        AjaxResult ajaxResult = new AjaxResult();
+      /*  AjaxResult ajaxResult = new AjaxResult();
         if (!ajaxResult.haveCoachOrSysLogin(request)){
           return   new AjaxResult("用户无权限或已过期,请重新登录");
-        }
+        }*/
         try {
             stageplanService.deleteById(id);
             return AjaxResult.me();
@@ -75,10 +75,6 @@ public class StageplanController {
     @ApiOperation(value="根据用户的id来获取阶段计划详细信息")
     @RequestMapping(value = "/getByUserID",method = RequestMethod.POST)
     public AjaxResult getByUserID(@RequestBody User user) {
-        AjaxResult ajaxResult = new AjaxResult();
-        if (!ajaxResult.haveAnyOneLogin(request)){
-           return new AjaxResult("用户无权限或已过期,请重新登录");
-        }
         EntityWrapper<Stageplan> ceyiceEntityWrapper = new EntityWrapper<>();
         ceyiceEntityWrapper.eq("userID",user.getId());
         return AjaxResult.me().setResultObj(stageplanService.selectList(ceyiceEntityWrapper)) ;

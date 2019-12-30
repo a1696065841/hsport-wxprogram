@@ -23,7 +23,7 @@ public class DuibituServiceImpl extends ServiceImpl<DuibituMapper, Duibitu> impl
     @Autowired
     DuibituMapper duibituMapper;
     @Override
-    public List<Duibitu> getListByUserID(Integer id) {
+    public List<Duibitu> getListByUserID(Long id) {
         EntityWrapper<Duibitu> userEntityWrapper = new EntityWrapper<>();
         userEntityWrapper.eq("userID", id);
         return duibituMapper.selectList(userEntityWrapper);

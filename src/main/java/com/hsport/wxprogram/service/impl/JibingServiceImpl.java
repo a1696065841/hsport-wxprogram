@@ -21,7 +21,7 @@ public class JibingServiceImpl extends ServiceImpl<JibingMapper, Jibing> impleme
     @Autowired
     JibingMapper jibingMapper;
     @Override
-    public Jibing getByUserID(Integer id) {
+    public Jibing getByUserID(Long id) {
         Jibing jibingEntityWrapper = new Jibing();
         jibingEntityWrapper.setUserID(id);
         return jibingMapper.selectOne(jibingEntityWrapper);

@@ -80,7 +80,7 @@ public class TodayspController {
     @ApiOperation(value="来根据userID获取所有今日运动计划的信息")
     @RequestMapping(value = "/getByuserID",method = RequestMethod.POST)
     public AjaxResult getByuserID(@RequestBody User user){
-        Integer id = user.getId();
+        Long id = user.getId();
         int usedays=0;
         HashMap<String, Object> stringObjectHashMap = new HashMap<>();
         List<Todaysportsplans> todaysportsplans=null;

@@ -31,7 +31,7 @@ public class CoachContext {
         return (Coach) currentUser.getSession().getAttribute(CURRENT_LOGIN_USER);
     }
 
-    public static Integer getUUID() {
+    public static Long getUUID() {
         String id =null;
         UUID uuid = UUID.randomUUID();
         id = uuid.toString();
@@ -40,7 +40,7 @@ public class CoachContext {
         id = id.replace("-", "");
 
         //将随机ID换成数字
-        int num = id.hashCode();
+        Long num =(long) id.hashCode();
         //去绝对值
         num = num < 0 ? -num : num;
 

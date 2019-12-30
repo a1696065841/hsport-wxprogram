@@ -1,8 +1,10 @@
 package com.hsport.wxprogram.web.controller;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.common.util.DateUtil;
 import com.hsport.wxprogram.common.util.OrderCodeFactory;
 import com.hsport.wxprogram.domain.Product;
+import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.IOrderService;
 import com.hsport.wxprogram.domain.Order;
 import com.hsport.wxprogram.query.OrderQuery;
@@ -10,7 +12,9 @@ import com.hsport.wxprogram.common.util.AjaxResult;
 import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.hsport.wxprogram.service.IProductService;
+import com.hsport.wxprogram.service.IUserService;
 import io.swagger.annotations.ApiOperation;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +31,8 @@ public class OrderController {
     HttpServletRequest request;
     @Autowired
     public IProductService productService;
+    @Autowired
+    public IUserService userService;
     /**
     * 保存和修改公用的
     * @param order  传递的实体
@@ -76,18 +82,18 @@ public class OrderController {
 
     //获取用户
     @ApiOperation(value="根据url的id来获取Order详细信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Order get(@PathVariable("id")Integer id)
+    @RequestMapping(value = "/getByorderID",method = RequestMethod.POST)
+    public AjaxResult get(@RequestBody Order order)
     {
-        return orderService.selectById(id);
+        return AjaxResult.me().setResultObj(orderService.selectById(order));
     }
 
 
     @ApiOperation(value="根据用户的id来获取购买的订单信息")
-    @RequestMapping(value = "/selectOrderByUserID/{id}",method = RequestMethod.GET)
-    public List<Object> selectOrderByUserID(@PathVariable("id")Integer id)
-    {
-        return orderService.selectOrderByUserID(id);
+    @RequestMapping(value = "/selectOrderByUser",method = RequestMethod.POST)
+    public AjaxResult selectOrderByUserID(@RequestBody User user) {
+        Long id = user.getId();
+        return AjaxResult.me().setResultObj(orderService.selectOrderByUserID(id));
     }
 
 
@@ -114,7 +120,11 @@ public class OrderController {
     public PageList<Order> json(@RequestBody OrderQuery  query)
     {
         Page<Order> page = new Page<Order>(query.getPage(),query.getRows());
-            page = orderService.selectPage(page);
+            if (query.getKeyword()==null){
+                page = orderService.selectPage(page);
+            }else {
+                page = orderService.selectPage(page,new EntityWrapper<Order>().like("stratDate",query.getKeyword()));
+            }
             return new PageList<Order>(page.getTotal(),page.getRecords());
     }
 }

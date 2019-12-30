@@ -1,6 +1,11 @@
 package com.hsport.wxprogram.web.controller.planc;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.common.util.DateUtil;
+import com.hsport.wxprogram.domain.Sportsplan;
+import com.hsport.wxprogram.domain.Todayburncalories;
 import com.hsport.wxprogram.domain.User;
+import com.hsport.wxprogram.service.ISportsplanService;
 import com.hsport.wxprogram.service.ITodayintakeService;
 import com.hsport.wxprogram.domain.Todayintake;
 import com.hsport.wxprogram.query.TodayintakeQuery;
@@ -28,6 +33,8 @@ public class TodayintakeController {
     public ITodayintakeService todayintakeService;
     @Autowired
     HttpServletRequest request;
+    @Autowired
+    ISportsplanService sportsplanService;
     /**
     * 保存和修改公用的
     * @param todayintake  传递的实体
@@ -40,6 +47,22 @@ public class TodayintakeController {
             if(todayintake.getId()!=null){
                 todayintakeService.updateById(todayintake);
             }else{
+                todayintake.setDate(DateUtil.today());
+                Long userID = todayintake.getUserID();
+                Todayintake lastOne = todayintakeService.getLastOne(userID);
+
+                if (lastOne!=null&&lastOne.getDate().equals(DateUtil.today())&&lastOne.getUserID()==todayintake.getUserID()){
+                    return AjaxResult.me().setSuccess(false).setMessage("用户已经有今日饮食记录 请勿重复添加，如有修复请前往修改页面填写！");
+                }
+                if (lastOne!=null&&!lastOne.getDate().equals(DateUtil.today())){
+                    todayintake.setIntakeCalories(todayintake.getDayIntake()+lastOne.getIntakeCalories());
+                }
+                Sportsplan sportsplan = sportsplanService.selectOne(new EntityWrapper<Sportsplan>().eq("userID", userID).eq("planType", 1).isNull("planEndDate"));
+                if (sportsplan!=null){
+                    todayintake.setSportsPlanID(sportsplan.getId());
+                }else {
+                    return new AjaxResult("请先填写该用户总计划");
+                }
                 todayintakeService.insert(todayintake);
             }
             return AjaxResult.me();
@@ -67,34 +90,12 @@ public class TodayintakeController {
     }
 
 
-    /**
-    * 查看所有的员工信息
-    * @return
-    */
-    @ApiOperation(value="来获取所有Todayintake详细信息")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public List<Todayintake> list(){
 
-        return todayintakeService.selectList(null);
-    }
     @ApiOperation(value="来获取用户的平均摄入和总摄入 已过天数等详细信息")
-    @RequestMapping(value = "/getAvgAndAllByUserID",method = RequestMethod.GET)
-    public HashMap getAvgAndAllByUserID(@RequestBody User user){
-        return todayintakeService.getAvgAndAllByUserID(user.getId());
+    @RequestMapping(value = "/getAvgAndAllByUserID",method = RequestMethod.POST)
+    public AjaxResult getAvgAndAllByUserID(@RequestBody User user){
+        return AjaxResult.me().setResultObj(todayintakeService.getAvgAndAllByUserID(user.getId()));
     }
 
 
-    /**
-    * 分页查询数据
-    *
-    * @param query 查询对象
-    * @return PageList 分页对象
-    */
-    @ApiOperation(value="来获取所有Todayintake详细信息并分页", notes="根据page页数和传入的query查询条件 来获取某些Todayintake详细信息")
-    @RequestMapping(value = "/json",method = RequestMethod.POST)
-    public PageList<Todayintake> json(@RequestBody TodayintakeQuery query) {
-        Page<Todayintake> page = new Page<Todayintake>(query.getPage(),query.getRows());
-            page = todayintakeService.selectPage(page);
-            return new PageList<Todayintake>(page.getTotal(),page.getRecords());
-    }
 }

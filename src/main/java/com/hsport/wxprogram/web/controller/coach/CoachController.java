@@ -89,7 +89,7 @@ public class CoachController {
     @RequestMapping(value = "/remove", method = RequestMethod.POST)
     public AjaxResult delete(@RequestBody Coach id) {
         AjaxResult ajaxResult = new AjaxResult();
-        Sysuser sysUserLogin = ajaxResult.isSysUserLogin(request);
+        Sysuser sysUserLogin = ajaxResult.isSysUserLogin(request,redisService);
         if (sysUserLogin==null){
             return new AjaxResult("用户已过期，请重新登录");
         }
@@ -107,7 +107,7 @@ public class CoachController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public AjaxResult get(@PathVariable("id") Integer id) {
         AjaxResult ajaxResult = new AjaxResult();
-        Sysuser sysUserLogin = ajaxResult.isSysUserLogin(request);
+        Sysuser sysUserLogin = ajaxResult.isSysUserLogin(request,redisService);
         if (sysUserLogin==null){
             return new AjaxResult("用户已过期，请重新登录");
         }
@@ -124,7 +124,7 @@ public class CoachController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public AjaxResult list() {
         AjaxResult ajaxResult = new AjaxResult();
-        Sysuser sysUserLogin = ajaxResult.isSysUserLogin(request);
+        Sysuser sysUserLogin = ajaxResult.isSysUserLogin(request,redisService);
         if (sysUserLogin==null){
             return new AjaxResult("用户已过期，请重新登录");
         }
@@ -135,14 +135,8 @@ public class CoachController {
      * 查询教练的所有客户
      */
     @ApiOperation(value = "根据该教练的id查询教练的所有客户")
-    @RequestMapping(value = "/getUserListByCoachID", method = RequestMethod.GET)
-    public AjaxResult getUserListByCoachID() {
-        AjaxResult ajaxResult = new AjaxResult();
-        Coach coach = ajaxResult.isCoachLogin(request);
-        Sysuser sysUserLogin = ajaxResult.isSysUserLogin(request);
-        if (coach==null&&sysUserLogin==null){
-            return new AjaxResult("用户已过期，请重新登录");
-        }
+    @RequestMapping(value = "/getUserListByCoachID", method = RequestMethod.POST)
+    public AjaxResult getUserListByCoachID(@RequestBody Coach coach) {
         List<Object> list = new ArrayList<>();
         EntityWrapper<User> userEntityWrapper = new EntityWrapper<>();
         userEntityWrapper.eq("coachID", coach.getId());
@@ -172,18 +166,18 @@ public class CoachController {
      */
     @ApiOperation(value = "来获取所有Coach详细信息并分页", notes = "根据page页数和传入的query查询条件 来获取某些Coach详细信息")
     @RequestMapping(value = "/json", method = RequestMethod.POST)
-    public PageList<Coach> json(@RequestBody CoachQuery query) {
+    public AjaxResult json(@RequestBody CoachQuery query) {
 
         Page<Coach> page = new Page<Coach>(query.getPage(), query.getRows());
-        page = coachService.selectPage(page);
-        return new PageList<Coach>(page.getTotal(), page.getRecords());
+        page = coachService.selectPage(page,new EntityWrapper<Coach>().like("coachName",query.getKeyword()));
+        return AjaxResult.me().setResultObj(new PageList<Coach>(page.getTotal(), page.getRecords()));
     }
 
     @ApiOperation(value = "根据教练id来获取现在的未完成工作按员工区分")
-    @RequestMapping(value = "/CoachWorkListByUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/CoachWorkListByUser", method = RequestMethod.POST)
     public AjaxResult CoachWorkListByUser() throws Exception {
         AjaxResult ajaxResult = new AjaxResult();
-        Coach coach = ajaxResult.isCoachLogin(request);
+        Coach coach = ajaxResult.isCoachLogin(request,redisService);
         if (coach==null){
             return new AjaxResult("用户已过期，请重新登录");
         }
@@ -204,7 +198,6 @@ public class CoachController {
             map.put("userID", user.getId());
             //查到用户的未完成订单
             EntityWrapper<Order> orderEntityWrapper = new EntityWrapper<>();
-            System.out.println("-----------------------------------group");
             List<Order> orders = orderService.selectList(orderEntityWrapper.eq("userID", user.getId()).andNew().eq("orderType", 0).groupBy("productID"));
             Iterator<Order> iterator = orders.iterator();
             ArrayList<Object> serviceList = new ArrayList<>();
@@ -240,6 +233,9 @@ public class CoachController {
                             setWorkList(serviceList,workListVo,product,productservice);
                         }
                         //如果他有饮食计划类型的服务查该用户今天有没有饮食计划没有就加上
+                        /**
+                         * 改成判断产品有没有3类型的服务就好 一个个遍历会多传几次名字
+                         * */
                     }else if (productservice.getServiceType()==3){
                         if (DateUtil.DateCompare(DateUtil.now(),DateUtil.todaySix(),"yyyy.MM.dd HH:mm")==-1){
                              todayintakeplan = todayintakeplanService.selectTheDayIntakePlanByUserID(user.getId(), DateUtil.today());
@@ -315,122 +311,5 @@ public class CoachController {
             setWorkList(list,workListVo,product,productservice);
         }
     }
-  /*  @ApiOperation(value = "根据教练id来获取现在的未完成工作按工作类型区分的")
-    @RequestMapping(value = "/CoachWorkList/{id}", method = RequestMethod.GET)
-    public Map<String, Object> CoachWorkList(@PathVariable("id") Integer id) {
-        HashMap<String, Object> map = new HashMap<>();
-        EntityWrapper<Sportsplan> sportsplanEntityWrapper = new EntityWrapper<>();
-        DateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
-        sportsplanEntityWrapper.eq("coachID", id);
-        ArrayList<Object> objects = new ArrayList<>();
-        //图片部分 根据userID把今天的图片查出来
-        List todayFoodImgList = new ArrayList<>();
-        List todaySpImgList = new ArrayList<>();
-        //查询到所有该教练负责的计划
-        List<Sportsplan> sportsplans = sportsplanService.selectList(sportsplanEntityWrapper);
-        //总计划
-        for (Sportsplan sportsplan : sportsplans) {
-            if (sportsplan.getMasterPlanBurn() == null || sportsplan.getMasterPlanBurn().equals("") ||
-                    sportsplan.getMasterPlanIntake() == null || sportsplan.getMasterPlanIntake().equals("") ||
-                    sportsplan.getPlanObjectives() == null || sportsplan.getPlanObjectives().equals("")) {
-                HashMap<String, Object> sportsPlanMap = new HashMap<>();
-                Integer userID = sportsplan.getUserID();
-                Lxxx byUserID = lxxxService.getByUserID(userID);
-                User user = userService.selectById(userID);
-                sportsPlanMap.put("username", byUserID.getName());
-                sportsPlanMap.put("userID", user.getId());
-                sportsPlanMap.put("sportsplanID", sportsplan.getId());
-                objects.add(sportsPlanMap);
-            }
-        }
-        map.put("MasterPlan", objects);
-        //每日运动计划 查询该教练的所有用户 查询所有用户有没有今天的计划 如果没有就加入map
-        ArrayList<Object> ydList = new ArrayList<>();
-        List<User> users = userService.findUserByCoachID(id);
-        ArrayList<Object> mrYDList = new ArrayList<>();
-        map.put("todaySP", ydList);
-        map.put("tommrowSp", mrYDList);
-        //每日饮食计划
-        ArrayList<Object> todayYsList = new ArrayList<>();
-        ArrayList<Object> mrYSList = new ArrayList<>();
-        for (User user : users) {
-            //map存放
-            EntityWrapper<Foodimg> foodimgEntityWrapper = new EntityWrapper<>();
-            foodimgEntityWrapper.eq("date", DateUtil.today());
-            foodimgEntityWrapper.eq("userID", user.getId());
-            List<Foodimg> foodimgs = foodimgService.selectList(foodimgEntityWrapper);
-            for (Foodimg foodimg : foodimgs) {
-                HashMap<String, Object> todayFoodImgMap = new HashMap<>();
-                if (foodimg != null && (StringUtils.isEmpty(foodimg.getTodayintakeplanID())
-                        || StringUtils.isEmpty(foodimg.getFoodCalories())
-                        || StringUtils.isEmpty(foodimg.getFoodCarbon())
-                        || StringUtils.isEmpty(foodimg.getFoodPro())
-                        || StringUtils.isEmpty(foodimg.getFoodCalories()))) {
-                    System.out.println(foodimg);
-                    todayFoodImgMap.put("userID", user.getId());
-                    todayFoodImgMap.put("foodImg", foodimg);
-                    todayFoodImgList.add(todayFoodImgMap);
-                }
-            }
-            EntityWrapper<Sportsimg> sportsimgEntityWrapper = new EntityWrapper<>();
-            sportsimgEntityWrapper.eq("date", DateUtil.today());
-            sportsimgEntityWrapper.eq("userID", user.getId());
-            List<Sportsimg> sportsimgs = sportsimgService.selectList(sportsimgEntityWrapper);
-            for (Sportsimg sportsimg : sportsimgs) {
-                HashMap<String, Object> todaySportImgMap = new HashMap<>();
-                if (sportsimg != null && (sportsimg.getTodayburncaloriesID() == null || sportsimg.getTodayburncaloriesID().equals("")
-                        || sportsimg.getBurnCalories() == null || sportsimg.getBurnCalories().equals(""))) {
-                    todaySportImgMap.put("sportsImg", sportsimg);
-                    todaySportImgMap.put("userID", user.getId());
-                    todaySpImgList.add(todaySportImgMap);
-                }
-            }
-            HashMap<String, Object> todaySpMap = new HashMap<>();
-            HashMap<String, Object> tommrowSpMap = new HashMap<>();
-            Todaysp todaysp = todayspService.selectTodaySpByUserID(user.getId(), DateUtil.today());
-            Todaysp todaysp1 = todayspService.selectTodaySpByUserID(user.getId(), DateUtil.tommrow());
-            if (todaysp == null  || todaysp.getTodayBurnCaloriePlan() == null) {
-                putInMap(todaySpMap, DateUtil.today(), ydList, user);
-            }
-            if (todaysp1 == null) {
-                putInMap(tommrowSpMap, DateUtil.tommrow(), mrYDList, user);
-            }
-            //饮食map和
-            HashMap<String, Object> todayYsMap = new HashMap<>();
-            HashMap<String, Object> tommrowYsMap = new HashMap<>();
-            Todayintakeplan todayintakeplan = todayintakeplanService.selectTheDayIntakePlanByUserID(user.getId(), DateUtil.today());
-            Todayintakeplan tommoryPlan = todayintakeplanService.selectTheDayIntakePlanByUserID(user.getId(), DateUtil.tommrow());
-            if (todayintakeplan == null) {
-                putInMap(todayYsMap, DateUtil.today(), todayYsList, user);
-            }
-            if (tommoryPlan == null) {
-                putInMap(tommrowYsMap, DateUtil.today(), mrYSList, user);
-            }
-        }
-        map.put("todaySpImgList", todaySpImgList);
-        map.put("todayFoodImgList", todayFoodImgList);
-        map.put("todayIntakePlan", todayYsList);
-        map.put("tommrowYsMap", mrYSList);
-        return map;
-    }
 
-      void putInMap(HashMap<String, Object> map, String date, List list, User user) {
-          *//*   tommrowYsMap.put("userID", user.getId());
-                tommrowYsMap.put("username", user.getName());
-                tommrowYsMap.put("date", DateUtil.tommrow());
-                mrYSList.add(tommrowYsMap);*//*
-        Lxxx byUserID = lxxxService.getByUserID(user.getId());
-        if (date.equals(DateUtil.today())) {
-            map.put("userID", user.getId());
-            map.put("username", byUserID.getName());
-            map.put("date", DateUtil.today());
-            list.add(map);
-        }
-        if (date.equals(DateUtil.tommrow())) {
-            map.put("userID", user.getId());
-            map.put("username", byUserID.getName());
-            map.put("date", DateUtil.tommrow());
-            list.add(map);
-        }
-    }*/
 }

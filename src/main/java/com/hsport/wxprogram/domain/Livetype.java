@@ -40,7 +40,7 @@ public class Livetype extends Model<Livetype> {
      * 工作压力情况(选项)
      */
     private Integer gzYL;
-    private Integer userID;
+    private Long userID;
 
 
     public Integer getId() {
@@ -75,11 +75,11 @@ public class Livetype extends Model<Livetype> {
         this.gzYL = gzYL;
     }
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

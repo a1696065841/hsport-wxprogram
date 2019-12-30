@@ -85,15 +85,15 @@ public class Body extends Model<Body> {
 //
 //    private User userID;
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 
-    private Integer userID;
+    private Long userID;
 
 
     public Integer getId() {

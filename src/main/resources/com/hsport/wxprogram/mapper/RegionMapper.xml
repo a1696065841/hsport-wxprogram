@@ -5,17 +5,17 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Region">
         <id column="id" property="id" />
-        <result column="regionName" property="regionName" />
+        <result column="title" property="title" />
         <result column="parentID" property="parentID" />
         <result column="regionLev" property="regionLev" />
     </resultMap>
 
     <select id="selectCity" resultMap="BaseResultMap" >
-        SELECT id,regionName FROM t_region WHERE regionLev =1
+        SELECT id,title FROM t_region WHERE regionLev =1
     </select>
 
     <select id="selectAreaByCityID" resultMap="BaseResultMap" parameterType="Integer">
-        SELECT id,regionName FROM t_region WHERE regionLev =2 AND parentID=#{id}
+        SELECT id,title FROM t_region WHERE regionLev =2 AND parentID=#{id}
     </select>
 
 </mapper>

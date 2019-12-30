@@ -29,7 +29,7 @@ public class Product extends Model<Product> {
      */
     @TableField("pro_desc")
     private String proDesc;
-    private Integer sysuserID;
+    private Long sysuserID;
     @TableField("productType")
     private Integer productType;
     private String imgUrl;
@@ -83,11 +83,11 @@ public class Product extends Model<Product> {
         this.proDesc = proDesc;
     }
 
-    public Integer getSysuserID() {
+    public Long getSysuserID() {
         return sysuserID;
     }
 
-    public void setSysuserID(Integer sysuserID) {
+    public void setSysuserID(Long sysuserID) {
         this.sysuserID = sysuserID;
     }
 

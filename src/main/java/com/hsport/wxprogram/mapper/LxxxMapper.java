@@ -46,5 +46,5 @@ public interface LxxxMapper extends BaseMapper<Lxxx>{
      */
     PageList<Lxxx> json(@RequestBody LxxxQuery query);
 
-    Lxxx getByUserID(Integer id);
+    Lxxx getByUserID(Long id);
 }

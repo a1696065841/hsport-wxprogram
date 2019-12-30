@@ -43,7 +43,7 @@ public class Lxxx extends Model<Lxxx> {
      * 紧急联系人电话
      */
     private String ecPhone;
-    private Integer userID;
+    private Long userID;
     private String specialNeeds;
 
 
@@ -151,11 +151,11 @@ public class Lxxx extends Model<Lxxx> {
         this.ecPhone = ecPhone;
     }
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

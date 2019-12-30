@@ -107,12 +107,6 @@ public class ShiroConfig {
         systemAdminRealm.setCredentialsMatcher(new CustomCredentialsMatcher());
         return systemAdminRealm;
     }
-    @Bean(name = "studentRealm")
-    public StudentRealm studentRealm(){
-        StudentRealm studentRealm = new StudentRealm();
-        studentRealm.setCredentialsMatcher(new CustomCredentialsMatcher());
-        return studentRealm;
-    }
 
 
     /**

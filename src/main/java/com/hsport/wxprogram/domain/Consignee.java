@@ -23,7 +23,7 @@ public class Consignee extends Model<Consignee> {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
-    private Integer userID;
+    private Long userID;
     /**
      * 收货地址
      */
@@ -62,11 +62,11 @@ public class Consignee extends Model<Consignee> {
         this.id = id;
     }
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

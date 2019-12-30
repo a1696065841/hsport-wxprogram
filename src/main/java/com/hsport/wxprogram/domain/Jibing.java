@@ -61,7 +61,7 @@ public class Jibing extends Model<Jibing> {
     private Integer shengzangWT;
     private Integer guanjieWT;
     private String qitaWT;
-    private Integer userID;
+    private Long userID;
 
 
     public Integer getId() {
@@ -176,11 +176,11 @@ public class Jibing extends Model<Jibing> {
         this.qitaWT = qitaWT;
     }
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

@@ -19,7 +19,7 @@ import java.util.Map;
  * @since 2019-11-29
  */
 public interface IUserService extends IService<User> {
-    List<User> findUserByCoachID(Integer id);
+    List<User> findUserByCoachID(Long id);
     List<Object> selectUserCoach(UserQuery query);
     void  updateLoginUser(User user);
 }

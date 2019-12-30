@@ -25,7 +25,7 @@ public class FoodimgServiceImpl extends ServiceImpl<FoodimgMapper, Foodimg> impl
     FoodimgMapper foodimgMapper;
 
     @Override
-    public List<Foodimg> getFoodListByUserID(Integer id) {
+    public List<Foodimg> getFoodListByUserID(Long id) {
         EntityWrapper<Foodimg> userEntityWrapper = new EntityWrapper<>();
         userEntityWrapper.eq("date", DateUtil.today());
         userEntityWrapper.eq("userID", id);

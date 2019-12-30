@@ -15,5 +15,5 @@ import java.util.List;
  */
 public interface IOrderService extends IService<Order> {
 
-    List<Object> selectOrderByUserID(Integer id);
+    List<Object> selectOrderByUserID(Long id);
 }

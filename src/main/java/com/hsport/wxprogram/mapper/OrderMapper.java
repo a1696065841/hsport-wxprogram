@@ -46,5 +46,5 @@ public interface OrderMapper extends BaseMapper<Order>{
      */
     PageList<Order> json(@RequestBody OrderQuery query);
 
-    List<Object> selectOrderByUserID(Integer id) ;
+    List<Object> selectOrderByUserID(Long id) ;
 }

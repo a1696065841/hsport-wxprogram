@@ -4,11 +4,8 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.hsport.wxprogram.common.util.DateUtil;
 import com.hsport.wxprogram.domain.*;
-import com.hsport.wxprogram.service.ISportsplanService;
+import com.hsport.wxprogram.service.*;
 import com.hsport.wxprogram.query.SportsplanQuery;
-import com.hsport.wxprogram.service.IStageplanService;
-import com.hsport.wxprogram.service.ITodayburncaloriesService;
-import com.hsport.wxprogram.service.ITodayintakeService;
 import com.hsport.wxprogram.common.util.AjaxResult;
 import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
@@ -39,6 +36,8 @@ public class SportsplanController {
     public IStageplanService stageplanService;
     @Autowired
     HttpServletRequest request;
+    @Autowired
+    RedisService redisService;
     /**
     * 保存和修改公用的
     * @param sportsplan  传递的实体
@@ -48,9 +47,9 @@ public class SportsplanController {
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Sportsplan sportsplan){
         AjaxResult ajaxResult = new AjaxResult();
-        if (!ajaxResult.haveCoachOrSysLogin(request)){
+      /*  if (!ajaxResult.haveCoachOrSysLogin(request)){
             new AjaxResult("用户无权限或已过期,请重新登录");
-        }
+        }*/
         try {
             if(sportsplan.getId()!=null){
                 sportsplanService.updateById(sportsplan);
@@ -75,9 +74,9 @@ public class SportsplanController {
     @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
     public AjaxResult delete(@PathVariable("id") Integer id){
         AjaxResult ajaxResult = new AjaxResult();
-        if (!ajaxResult.haveCoachOrSysLogin(request)){
+        /*if (!ajaxResult.haveCoachOrSysLogin(request)){
             new AjaxResult("用户无权限或已过期,请重新登录");
-        }
+        }*/
         try {
             sportsplanService.deleteById(id);
             return AjaxResult.me();
@@ -89,11 +88,11 @@ public class SportsplanController {
 
 
     @ApiOperation(value="根据用户ID获取 我的计划页面信息")
-    @RequestMapping(value = "/getMyPlan",method = RequestMethod.GET)
+    @RequestMapping(value = "/getMyPlan",method = RequestMethod.POST)
     public Object getMyPlan() {
         AjaxResult ajaxResult = new AjaxResult();
-        User user = ajaxResult.isUserLogin(request);
-        Integer id = user.getId();
+        User user = ajaxResult.isUserLogin(request,redisService);
+        Long id = user.getId();
         if (user==null){
             return  new AjaxResult().setMessage("用户未登陆");
         }
@@ -108,19 +107,15 @@ public class SportsplanController {
     @ApiOperation(value="根据用户id获取对应的运动计划详细信息")
     @RequestMapping(value = "/byuserID",method = RequestMethod.POST)
     public AjaxResult sportsplansByUserID(@RequestBody User user){
-        AjaxResult ajaxResult = new AjaxResult();
-        if (!ajaxResult.haveAnyOneLogin(request)){
-            new AjaxResult("用户无权限或已过期,请重新登录");
-        }
         return AjaxResult.me().setResultObj(sportsplanService.selectPlanByUserID(user.getId()));
     }
 
     @ApiOperation(value="目标与计划页面  来获取用户的平均摄入消耗和总摄入消耗 已过天数等详细信息")
-    @RequestMapping(value = "/getPlanAndObjectives",method = RequestMethod.GET)
+    @RequestMapping(value = "/getPlanAndObjectives",method = RequestMethod.POST)
     public AjaxResult getPlanAndObjectives(){
         AjaxResult ajaxResult = new AjaxResult();
-        User user = ajaxResult.isUserLogin(request);
-        Integer id = user.getId();
+        User user = ajaxResult.isUserLogin(request,redisService);
+        Long id = user.getId();
         if (user==null){
             return  new AjaxResult().setMessage("用户未登陆");
         }
@@ -164,8 +159,8 @@ public class SportsplanController {
     @RequestMapping(value = "/selectEverDayIntakeAndBurn",method = RequestMethod.POST)
     public  AjaxResult selectEverDayIntakeAndBurn(@RequestBody SportsplanQuery sportsplanQuery){
         AjaxResult ajaxResult = new AjaxResult();
-        User user = ajaxResult.isUserLogin(request);
-        Integer id = user.getId();
+        User user = ajaxResult.isUserLogin(request,redisService);
+        Long id = user.getId();
         if (user==null){
             return  new AjaxResult().setMessage("用户未登陆");
         }
@@ -174,11 +169,11 @@ public class SportsplanController {
     }
 
     @ApiOperation(value="获取计划的进度详情",notes = "当前进度 已过天数/总周期,累计消耗卡路里,累计摄入卡路里")
-        @RequestMapping(value = "/planSchedule",method = RequestMethod.GET)
+        @RequestMapping(value = "/planSchedule",method = RequestMethod.POST)
     public AjaxResult planSchedule() throws ParseException {
         AjaxResult ajaxResult = new AjaxResult();
-        User user = ajaxResult.isUserLogin(request);
-        Integer id = user.getId();
+        User user = ajaxResult.isUserLogin(request,redisService);
+        Long id = user.getId();
         if (user==null){
             return  new AjaxResult().setMessage("用户未登陆");
         }

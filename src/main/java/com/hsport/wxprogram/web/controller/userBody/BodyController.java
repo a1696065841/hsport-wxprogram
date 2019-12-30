@@ -1,6 +1,7 @@
 package com.hsport.wxprogram.web.controller.userBody;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.IBodyService;
 import com.hsport.wxprogram.domain.Body;
 import com.hsport.wxprogram.query.BodyQuery;
@@ -43,43 +44,6 @@ public class BodyController {
         }
     }
 
-    /**
-    * 删除对象信息
-    * @param id
-    * @return
-    */
-    @ApiOperation(value="删除Body信息", notes="删除对象信息")
-    @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
-    public AjaxResult delete(@PathVariable("id") Integer id){
-        try {
-            bodyService.deleteById(id);
-            return AjaxResult.me();
-        } catch (Exception e) {
-        e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage()).setSuccess(false);
-        }
-    }
-
-    //获取用户
-    @ApiOperation(value="根据url的id来获取Body详细信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Body get(@PathVariable("id")Integer id)
-    {
-        return bodyService.selectById(id);
-    }
-
-
-    /**
-    * 查看所有的员工信息
-    * @return
-    */
-    @ApiOperation(value="来获取所有Body详细信息")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public List<Body> list(){
-
-        return bodyService.selectList(null);
-    }
-
 
     /**
     * 分页查询数据
@@ -104,9 +68,9 @@ public class BodyController {
     }
 
     @ApiOperation(value="根据userID的bodyid来获取Body详细信息")
-    @RequestMapping(value = "/selectByUserID/{id}",method = RequestMethod.GET)
-    public Body selectByUserID(@PathVariable("id")Integer id) {
-
+    @RequestMapping(value = "/selectByUserID",method = RequestMethod.POST)
+    public Body selectByUserID(@RequestBody User user) {
+        Long id = user.getId();
         return    bodyService.selectOne(new EntityWrapper<Body>().eq("userID",id));
     }
 

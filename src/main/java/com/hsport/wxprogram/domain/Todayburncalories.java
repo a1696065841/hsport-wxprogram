@@ -61,7 +61,7 @@ public class Todayburncalories extends Model<Todayburncalories> {
      * 当日日期
      */
     private String date;
-    private Integer userID;
+    private Long userID;
 
 
     public Integer getId() {
@@ -176,11 +176,11 @@ public class Todayburncalories extends Model<Todayburncalories> {
         this.date = date;
     }
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

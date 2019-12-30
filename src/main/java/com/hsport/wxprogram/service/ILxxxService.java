@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.service.IService;
  * @since 2019-12-22
  */
 public interface ILxxxService extends IService<Lxxx> {
-    Lxxx getByUserID(Integer id);
+    Lxxx getByUserID(Long id);
 }

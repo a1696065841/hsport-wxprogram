@@ -25,13 +25,15 @@ public class SportsimgController {
     @Autowired
     public ISportsimgService sportsimgService;
     @Autowired
-    HttpServletRequest request;    @ApiOperation(value="新增或修改Sportsimg信息")
+    HttpServletRequest request;
+
+    @ApiOperation(value="新增或修改Sportsimg信息")
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Sportsimg sportsimg){
         AjaxResult ajaxResult = new AjaxResult();
-        if (!ajaxResult.haveAnyOneLogin(request)){
+    /*    if (!ajaxResult.haveAnyOneLogin(request)){
             return  new AjaxResult("用户无权限或已过期,请重新登录");
-        }
+        }*/
         try {
             if(sportsimg.getId()!=null){
                 sportsimgService.updateById(sportsimg);
@@ -54,9 +56,9 @@ public class SportsimgController {
     @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
     public AjaxResult delete(@PathVariable("id") Integer id){
         AjaxResult ajaxResult = new AjaxResult();
-        if (!ajaxResult.haveSysUserLogin(request)){
+      /*  if (!ajaxResult.haveSysUserLogin(request)){
             return new AjaxResult("用户无权限或已过期,请重新登录");
-        }
+        }*/
         try {
             sportsimgService.deleteById(id);
             return AjaxResult.me();
@@ -64,25 +66,6 @@ public class SportsimgController {
         e.printStackTrace();
             return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage()).setSuccess(false);
         }
-    }
-
-    //获取用户
-    @ApiOperation(value="根据url的id来获取Sportsimg详细信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Sportsimg get(@PathVariable("id")Integer id)
-    {
-        return sportsimgService.selectById(id);
-    }
-
-
-    /**
-    * 查看所有的员工信息
-    * @return
-    */
-    @ApiOperation(value="来获取所有Sportsimg详细信息")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public List<Sportsimg> list(){
-        return sportsimgService.selectList(null);
     }
 
 

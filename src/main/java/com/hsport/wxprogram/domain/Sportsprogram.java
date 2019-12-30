@@ -25,7 +25,7 @@ public class Sportsprogram extends Model<Sportsprogram> {
     private String avgOfWeekExercise;
     private String sportsHobby;
     private String sportsHurt;
-    private Integer userID;
+    private Long userID;
 
 
     public Integer getId() {
@@ -68,11 +68,11 @@ public class Sportsprogram extends Model<Sportsprogram> {
         this.sportsHurt = sportsHurt;
     }
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

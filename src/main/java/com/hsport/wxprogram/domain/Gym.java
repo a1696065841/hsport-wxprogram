@@ -32,6 +32,15 @@ public class Gym extends Model<Gym> {
     private String xCoordinate;
     private String yCoordinate;
     private String gym_name;
+    private String gymDate;
+
+    public String getGymDate() {
+        return gymDate;
+    }
+
+    public void setGymDate(String gymDate) {
+        this.gymDate = gymDate;
+    }
 
     public String getGym_name() {
         return gym_name;

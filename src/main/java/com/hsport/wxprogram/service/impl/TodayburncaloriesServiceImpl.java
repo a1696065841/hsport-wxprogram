@@ -23,24 +23,24 @@ public class TodayburncaloriesServiceImpl extends ServiceImpl<TodayburncaloriesM
     @Autowired
     TodayburncaloriesMapper todayburncaloriesMapper;
     @Override
-    public HashMap getAvgAndAllByUserID(Integer id) {
+    public HashMap getAvgAndAllByUserID(Long id) {
       return  todayburncaloriesMapper.getAvgAndAllByUserID(id);
     }
 
     @Override
-    public HashMap selectSportsTimes(Integer id) {
+    public HashMap selectSportsTimes(Long id) {
         return todayburncaloriesMapper.selectSportsTimesAvgAndAll(id);
     }
     /**
     *获取这个用户上次的运动消耗
     * */
     @Override
-    public Todayburncalories getLastOne(Integer id) {
+    public Todayburncalories getLastOne(Long id) {
         return todayburncaloriesMapper.getLastOne(id);
     }
 
     @Override
-    public Todayburncalories selectTheDayIntakePlanByUserID(Integer id, String date) {
+    public Todayburncalories selectTheDayIntakePlanByUserID(Long id, String date) {
         Todayburncalories todayburncalories = new Todayburncalories();
         todayburncalories.setUserID(id);
         todayburncalories.setDate(date);

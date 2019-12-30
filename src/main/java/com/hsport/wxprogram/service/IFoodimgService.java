@@ -14,5 +14,5 @@ import java.util.List;
  * @since 2019-11-28
  */
 public interface IFoodimgService extends IService<Foodimg> {
-    List<Foodimg> getFoodListByUserID(Integer id);
+    List<Foodimg> getFoodListByUserID(Long id);
 }

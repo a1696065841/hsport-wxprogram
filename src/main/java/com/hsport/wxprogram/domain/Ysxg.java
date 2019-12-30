@@ -65,7 +65,7 @@ public class Ysxg extends Model<Ysxg> {
      * 平时是否饮酒
      */
     private Integer psSFyj;
-    private Integer userID;
+    private Long userID;
 
 
     public Integer getId() {
@@ -164,11 +164,11 @@ public class Ysxg extends Model<Ysxg> {
         this.psSFyj = psSFyj;
     }
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

@@ -1,5 +1,6 @@
 package com.hsport.wxprogram.web.controller.userBody;
 
+import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.ILxxxService;
 import com.hsport.wxprogram.domain.Lxxx;
 import com.hsport.wxprogram.query.LxxxQuery;
@@ -81,10 +82,10 @@ public class LxxxController {
 
 
     @ApiOperation(value="根据用户的id来获取他的联系信息和基础信息")
-    @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
-    public Lxxx getByUserID(@PathVariable("id")Integer id)
-    {
-        return lxxxService.getByUserID(id);
+    @RequestMapping(value = "/getByUserID",method = RequestMethod.POST)
+    public AjaxResult getByUserID(@RequestBody User user) {
+        Long id = user.getId();
+        return AjaxResult.me().setResultObj(lxxxService.getByUserID(id));
     }
 
     /**

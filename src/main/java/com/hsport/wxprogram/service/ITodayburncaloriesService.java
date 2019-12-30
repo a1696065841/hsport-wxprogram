@@ -15,9 +15,9 @@ import java.util.HashMap;
  * @since 2019-11-27
  */
 public interface ITodayburncaloriesService extends IService<Todayburncalories> {
-    HashMap getAvgAndAllByUserID(Integer id);
+    HashMap getAvgAndAllByUserID(Long id);
 
-    HashMap selectSportsTimes(Integer id);
-    Todayburncalories getLastOne(Integer id);
-    public Todayburncalories selectTheDayIntakePlanByUserID(Integer id, String date);
+    HashMap selectSportsTimes(Long id);
+    Todayburncalories getLastOne(Long id);
+    public Todayburncalories selectTheDayIntakePlanByUserID(Long id, String date);
 }

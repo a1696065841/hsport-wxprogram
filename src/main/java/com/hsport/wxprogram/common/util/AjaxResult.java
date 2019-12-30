@@ -7,15 +7,16 @@ import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.RedisService;
 import com.hsport.wxprogram.service.impl.RedisServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 
 //Ajax请求响应对象的类
+@Component
 public class AjaxResult {
     private boolean success = true;
     private String message = "操作成功!";
-    @Autowired
-    RedisService redisService;
+
     //返回到前台对象
     private Object resultObj;
 
@@ -64,8 +65,9 @@ public class AjaxResult {
         this.message = message;
     }
 
-    public  User isUserLogin(HttpServletRequest request) {
+    public  User isUserLogin(HttpServletRequest request,RedisService redisService) {
         String token = request.getHeader("token");
+        System.out.println(redisService);
         User o = null;
         if (token != null) {
             String s = redisService.get(token);
@@ -81,7 +83,7 @@ public class AjaxResult {
         return o;
     }
 
-    public Coach isCoachLogin(HttpServletRequest request) {
+    public Coach isCoachLogin(HttpServletRequest request,RedisService redisService) {
         String token = request.getHeader("token");
         Coach o = null;
         if (token != null) {
@@ -98,7 +100,7 @@ public class AjaxResult {
         return o;
     }
 
-    public  Sysuser isSysUserLogin(HttpServletRequest request) {
+    public  Sysuser isSysUserLogin(HttpServletRequest request,RedisService redisService) {
         String token = request.getHeader("token");
         Sysuser o = null;
         if (token != null) {
@@ -114,7 +116,8 @@ public class AjaxResult {
         }
         return o;
     }
-    public   boolean  haveCoachOrSysLogin(HttpServletRequest request){
+
+/*    public   boolean  haveCoachOrSysLogin(HttpServletRequest request,RedisService redisService){
         Sysuser sysUserLogin =isSysUserLogin(request);
         Coach coachLogin = isCoachLogin(request);
         if (sysUserLogin==null&&coachLogin==null){
@@ -122,15 +125,15 @@ public class AjaxResult {
         }
         return true;
     }
-    public boolean  haveCoachLogin(HttpServletRequest request){
+    public boolean  haveCoachLogin(HttpServletRequest request,RedisService redisService){
         Coach coachLogin = isCoachLogin(request);
         if (coachLogin==null){
             return false;
         }
         return true;
-    }
+    }*/
 
-    public  boolean  haveUserLogin(HttpServletRequest request){
+ /*   public  boolean  haveUserLogin(HttpServletRequest request,RedisService redisService){
         User user = isUserLogin(request);
         if (user==null){
             return false;
@@ -138,7 +141,7 @@ public class AjaxResult {
         return true;
     }
 
-    public   boolean  haveSysUserLogin(HttpServletRequest request){
+    public   boolean  haveSysUserLogin(HttpServletRequest request,RedisService redisService){
         Sysuser sysuser = isSysUserLogin(request);
         if (sysuser==null){
             return false;
@@ -146,7 +149,7 @@ public class AjaxResult {
         return true;
     }
 
-    public boolean  haveUserOrSysLogin(HttpServletRequest request){
+    public boolean  haveUserOrSysLogin(HttpServletRequest request,RedisService redisService){
         Sysuser sysUserLogin =isSysUserLogin(request);
         User user = isUserLogin(request);
         if (sysUserLogin==null&&user==null){
@@ -155,21 +158,13 @@ public class AjaxResult {
         return true;
     }
 
-    public boolean  haveUserOrCoachLogin(HttpServletRequest request){
+    public boolean  haveUserOrCoachLogin(HttpServletRequest request,RedisService redisService){
         Coach coachLogin = isCoachLogin(request);
         User user = isUserLogin(request);
         if (coachLogin==null&&user==null){
             return false;
         }
         return true;
-    }
-    public boolean  haveAnyOneLogin(HttpServletRequest request){
-        Coach coachLogin = isCoachLogin(request);
-        Sysuser sysuser = isSysUserLogin(request);
-        User user = isUserLogin(request);
-        if (coachLogin==null&&user==null&&sysuser==null){
-            return false;
-        }
-        return true;
-    }
+    }*/
+
 }

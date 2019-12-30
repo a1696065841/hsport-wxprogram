@@ -29,7 +29,7 @@ public class SportsplanServiceImpl extends ServiceImpl<SportsplanMapper, Sportsp
     SportsplanMapper sportsplanMapper;
 
     @Override
-    public List selectPlanByUserID(Integer id) {
+    public List selectPlanByUserID(Long id) {
         return sportsplanMapper.selectPlanByUserID(id);
     }
 
@@ -39,7 +39,7 @@ public class SportsplanServiceImpl extends ServiceImpl<SportsplanMapper, Sportsp
     }
 
     @Override
-    public HashMap getUserIntakeEverday(Integer id) {
+    public HashMap getUserIntakeEverday(Long id) {
         return sportsplanMapper.getUserIntakeEverday(id);
     }
 

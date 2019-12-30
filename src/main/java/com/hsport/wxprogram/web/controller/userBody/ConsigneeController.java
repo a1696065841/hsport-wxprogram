@@ -1,13 +1,16 @@
 package com.hsport.wxprogram.web.controller.userBody;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.IConsigneeService;
 import com.hsport.wxprogram.domain.Consignee;
 import com.hsport.wxprogram.query.ConsigneeQuery;
 import com.hsport.wxprogram.common.util.AjaxResult;
 import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.hsport.wxprogram.service.RedisService;
 import io.swagger.annotations.ApiOperation;
+import org.aspectj.weaver.loadtime.Aj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +25,11 @@ public class ConsigneeController {
     public IConsigneeService consigneeService;
     @Autowired
     HttpServletRequest request;
+    @Autowired
+    RedisService redisService;
+
     /**
+     *
     * 保存和修改公用的
     * @param consignee  传递的实体
     * @return Ajaxresult转换结果
@@ -30,6 +37,14 @@ public class ConsigneeController {
     @ApiOperation(value="新增或修改Consignee信息")
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Consignee consignee){
+        AjaxResult ajaxResult = new AjaxResult();
+        System.out.println(redisService);
+        User userLogin = ajaxResult.isUserLogin(request,redisService);
+        if (userLogin==null){
+            return  new AjaxResult("用户令牌失效，重新登录");
+        }
+        Long userid = userLogin.getId();
+        consignee.setUserID(userid);
         try {
             if(consignee.getId()!=null){
                 consignee.isFirst();
@@ -70,24 +85,13 @@ public class ConsigneeController {
     }
 
 
-    /**
-    * 查看所有的员工信息
-    * @return
-    */
-    @ApiOperation(value="来获取所有Consignee详细信息")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public List<Consignee> list(){
-
-        return consigneeService.selectList(null);
-    }
-
     @ApiOperation(value="根据用户的ID来获取用户的收件地址等信息")
-    @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
-    public List<Consignee> getByUserID(@PathVariable("id")Integer id)
-    {
+    @RequestMapping(value = "/getByUserID",method = RequestMethod.POST)
+    public AjaxResult getByUserID(@RequestBody User user) {
+        Long id = user.getId();
         EntityWrapper<Consignee> certificateEntityWrapper = new EntityWrapper<>();
         certificateEntityWrapper.eq("userID",id);
-        return consigneeService.selectList(certificateEntityWrapper);
+        return AjaxResult.me().setResultObj(consigneeService.selectList(certificateEntityWrapper));
     }
     /**
     * 分页查询数据

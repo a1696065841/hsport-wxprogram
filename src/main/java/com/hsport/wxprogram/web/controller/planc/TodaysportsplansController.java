@@ -66,7 +66,7 @@ public class TodaysportsplansController {
     @ApiOperation(value = "根据user的id来获取详细信息")
     @RequestMapping(value = "/getListByUserID", method = RequestMethod.POST)
     public AjaxResult getListByUserID(@RequestBody User user) {
-        Integer id = user.getId();
+        Long id = user.getId();
         EntityWrapper<Todaysportsplans> todayintakeplanEntityWrapper = new EntityWrapper<>();
         todayintakeplanEntityWrapper.eq("userID", id);
         return AjaxResult.me().setResultObj(todaysportsplansService.selectList(todayintakeplanEntityWrapper));

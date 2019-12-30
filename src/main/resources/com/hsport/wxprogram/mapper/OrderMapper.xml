@@ -15,7 +15,7 @@
         <result column="consigneeID" property="consigneeID"/>
     </resultMap>
 
-    <select id="selectOrderByUserID" parameterType="integer" resultType="map">
+    <select id="selectOrderByUserID" parameterType="Long" resultType="map">
         SELECT o.id,o.orderType,o.totalPrice,p.productname,p.pro_desc FROM t_order o LEFT JOIN t_product p ON o.productID = p.id WHERE o.userID=#{id}
     </select>
     

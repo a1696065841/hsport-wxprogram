@@ -9,7 +9,7 @@ package com.hsport.wxprogram.query;
 import com.hsport.wxprogram.common.util.BaseQuery;
 
 public class SportsplanQuery extends BaseQuery{
-   private Integer userID;
+   private Long userID;
    private String date;
 
     public String getDate() {
@@ -20,11 +20,11 @@ public class SportsplanQuery extends BaseQuery{
         this.date = date;
     }
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

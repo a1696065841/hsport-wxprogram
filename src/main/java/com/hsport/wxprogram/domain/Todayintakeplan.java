@@ -28,7 +28,7 @@ public class Todayintakeplan extends Model<Todayintakeplan> {
      */
     private Integer intakePlan;
 
-    private Integer userID;
+    private Long userID;
     private String date;
 
 
@@ -48,11 +48,11 @@ public class Todayintakeplan extends Model<Todayintakeplan> {
         this.intakePlan = intakePlan;
     }
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

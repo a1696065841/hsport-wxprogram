@@ -36,9 +36,6 @@ public class IntaketypeController {
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Intaketype intaketype){
         AjaxResult ajaxResult = new AjaxResult();
-        if (!ajaxResult.haveCoachOrSysLogin(request)){
-            return  new AjaxResult("用户无权限或已过期");
-        }
         request.getHeader("token");
         try {
             if(intaketype.getId()!=null){
@@ -64,9 +61,6 @@ public class IntaketypeController {
     @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
     public AjaxResult delete(@PathVariable("id") Integer id){
         AjaxResult ajaxResult = new AjaxResult();
-        if (!ajaxResult.haveCoachOrSysLogin(request)){
-            return   new AjaxResult("用户无权限或已过期");
-        }
         try {
             intaketypeService.deleteById(id);
             return AjaxResult.me();

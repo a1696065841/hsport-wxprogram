@@ -1,5 +1,8 @@
 package com.hsport.wxprogram.web.controller.system;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.Product;
+import com.hsport.wxprogram.service.IProductService;
 import com.hsport.wxprogram.service.IProductserviceService;
 import com.hsport.wxprogram.domain.Productservice;
 import com.hsport.wxprogram.query.ProductserviceQuery;
@@ -19,6 +22,9 @@ import java.util.List;
 public class ProductserviceController {
     @Autowired
     public IProductserviceService productserviceService;
+    @Autowired
+    public IProductService productService;
+
     @Autowired
     HttpServletRequest request;
     /**
@@ -59,13 +65,12 @@ public class ProductserviceController {
         }
     }
 
-    //获取用户
-    @ApiOperation(value="根据url的id来获取Productservice详细信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Productservice get(@PathVariable("id")Integer id)
-    {
-        return productserviceService.selectById(id);
+    @ApiOperation(value="获取产品下面的服务")
+    @RequestMapping(value ="/selectServiceByProductID",method = RequestMethod.POST)
+    public AjaxResult selectAreaByCityID(@RequestBody Product product) {
+        return AjaxResult.me().setResultObj(productserviceService.selectList(new EntityWrapper<Productservice>().eq("productID",product.getId())));
     }
+
 
 
     /**
@@ -73,7 +78,7 @@ public class ProductserviceController {
     * @return
     */
     @ApiOperation(value="来获取所有Productservice详细信息")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    @RequestMapping(value = "/list",method = RequestMethod.POST)
     public List<Productservice> list(){
 
         return productserviceService.selectList(null);

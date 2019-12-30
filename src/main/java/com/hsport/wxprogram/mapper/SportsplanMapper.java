@@ -49,9 +49,9 @@ public interface SportsplanMapper extends BaseMapper<Sportsplan>{
      */
     PageList<Sportsplan> json(@RequestBody SportsplanQuery query);
 
-    List<Sportsplan> selectPlanByUserID(Integer id);
+    List<Sportsplan> selectPlanByUserID(Long id);
 
     List<HashMap> selectEverDayIntakeAndBurn (SportsplanQuery sportsplanQuery);
-    HashMap getUserIntakeEverday(Integer id);
+    HashMap getUserIntakeEverday(Long id);
     Object getMyPlan(SportsplanQuery sportsplanQuery);
 }

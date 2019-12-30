@@ -47,8 +47,8 @@ public interface TodayburncaloriesMapper extends BaseMapper<Todayburncalories>{
      */
     PageList<Todayburncalories> json(@RequestBody TodayburncaloriesQuery query);
     //获取平均总值和已过天数
-    HashMap getAvgAndAllByUserID(Integer id);
+    HashMap getAvgAndAllByUserID(Long id);
     //运动总时长
-     HashMap selectSportsTimesAvgAndAll(Integer id);
-    Todayburncalories getLastOne(Integer id);
+     HashMap selectSportsTimesAvgAndAll(Long id);
+    Todayburncalories getLastOne(Long id);
 }

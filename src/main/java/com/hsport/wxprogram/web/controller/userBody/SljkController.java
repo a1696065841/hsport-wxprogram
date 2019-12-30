@@ -1,6 +1,7 @@
 package com.hsport.wxprogram.web.controller.userBody;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.ISljkService;
 import com.hsport.wxprogram.domain.Sljk;
 import com.hsport.wxprogram.query.SljkQuery;
@@ -70,12 +71,12 @@ public class SljkController {
     }
 
     @ApiOperation(value="根据user的id来获取详细信息")
-    @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
-    public Sljk getByUserID(@PathVariable("id")Integer id)
-    {
+    @RequestMapping(value = "/getByUserID",method = RequestMethod.POST)
+    public AjaxResult getByUserID(@RequestBody User user) {
+        Long id = user.getId();
         EntityWrapper<Sljk> sljkEntityWrapper = new EntityWrapper<>();
         sljkEntityWrapper.eq("userID",id);
-        return sljkService.selectOne(sljkEntityWrapper);
+        return AjaxResult.me().setResultObj(sljkService.selectOne(sljkEntityWrapper));
     }
     /**
     * 查看所有的员工信息

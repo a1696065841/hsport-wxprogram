@@ -39,16 +39,16 @@ public class TodayburncaloriesController {
     @ApiOperation(value = "新增或修改Todayburncalories信息")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public AjaxResult save(@RequestBody Todayburncalories todayburncalories) {
-        AjaxResult ajaxResult = new AjaxResult();
+       /* AjaxResult ajaxResult = new AjaxResult();
         if (!ajaxResult.haveCoachOrSysLogin(request)){
             return new AjaxResult("用户无权限或已过期,请重新登录");
-        }
+        }*/
         try {
             if (todayburncalories.getId() != null) {
                 todayburncaloriesService.updateById(todayburncalories);
             } else {
                 todayburncalories.setDate(DateUtil.today());
-                Integer userID = todayburncalories.getUserID();
+                Long userID = todayburncalories.getUserID();
                 Todayburncalories lastOne = todayburncaloriesService.getLastOne(userID);
                 //看看有没有今天的表填过了
                 if (lastOne!=null&&lastOne.getDate().equals(DateUtil.today())&&lastOne.getUserID()==todayburncalories.getUserID()){
@@ -79,10 +79,10 @@ public class TodayburncaloriesController {
     @ApiOperation(value = "删除Todayburncalories信息", notes = "删除对象信息")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public AjaxResult delete(@PathVariable("id") Integer id) {
-        AjaxResult ajaxResult = new AjaxResult();
+     /*   AjaxResult ajaxResult = new AjaxResult();
         if (!ajaxResult.haveCoachOrSysLogin(request)){
             return new AjaxResult("用户无权限或已过期,请重新登录");
-        }
+        }*/
         try {
             todayburncaloriesService.deleteById(id);
             return AjaxResult.me();
@@ -96,21 +96,15 @@ public class TodayburncaloriesController {
     @ApiOperation(value="来获取用户的平均摄消耗和总消耗 已过天数等详细信息")
     @RequestMapping(value = "/getAvgAndAllByUserID",method = RequestMethod.POST)
     public AjaxResult getAvgAndAllByUserID(@RequestBody User user){
-        AjaxResult ajaxResult = new AjaxResult();
-        if (!ajaxResult.haveAnyOneLogin(request)){
-            return new AjaxResult("用户无权限或已过期,请重新登录");
-        }
+
         return  AjaxResult.me().setResultObj(todayburncaloriesService.getAvgAndAllByUserID(user.getId()));
     }
 
     @ApiOperation(value = "根据url用户的id来获取今天Todayburncalories详细信息")
     @RequestMapping(value = "/getByUser", method = RequestMethod.POST)
     public AjaxResult getByUser(@RequestBody User user) {
-        Integer id = user.getId();
-        AjaxResult ajaxResult = new AjaxResult();
-        if (!ajaxResult.haveAnyOneLogin(request)){
-            return new AjaxResult("用户无权限或已过期,请重新登录");
-        }
+        Long id = user.getId();
+
         EntityWrapper<Todayburncalories> todayburncaloriesEntityWrapper = new EntityWrapper<>();
         todayburncaloriesEntityWrapper.eq("userID", id);
         todayburncaloriesEntityWrapper.eq("date", DateUtil.today());
@@ -120,7 +114,7 @@ public class TodayburncaloriesController {
     @ApiOperation(value = "根据url用户的id来获取所有每日消耗的详细信息")
     @RequestMapping(value = "/getListByUser", method = RequestMethod.POST)
     public AjaxResult getListByUser(@RequestBody User user) {
-        Integer id = user.getId();
+        Long id = user.getId();
         EntityWrapper<Todayburncalories> todayburncaloriesEntityWrapper = new EntityWrapper<>();
         todayburncaloriesEntityWrapper.eq("userID", id);
         return AjaxResult.me().setResultObj(todayburncaloriesService.selectList(todayburncaloriesEntityWrapper));

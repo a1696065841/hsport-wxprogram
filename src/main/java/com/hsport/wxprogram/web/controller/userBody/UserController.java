@@ -1,10 +1,8 @@
 package com.hsport.wxprogram.web.controller.userBody;
 
-import com.hsport.wxprogram.domain.Body;
-import com.hsport.wxprogram.domain.Jibing;
+import com.hsport.wxprogram.domain.*;
 import com.hsport.wxprogram.domain.vo.MyArchivesVo;
-import com.hsport.wxprogram.service.IUserService;
-import com.hsport.wxprogram.domain.User;
+import com.hsport.wxprogram.service.*;
 import com.hsport.wxprogram.query.UserQuery;
 import com.hsport.wxprogram.common.util.AjaxResult;
 import com.hsport.wxprogram.common.util.PageList;
@@ -26,6 +24,22 @@ public class UserController {
     public IUserService userService;
     @Autowired
     HttpServletRequest request;
+    @Autowired
+    public  IBodyService bodyService;
+    @Autowired
+    public  IJibingService jibingService;
+    @Autowired
+    public    ILivetypeService livetypeService;
+    @Autowired
+    public ISportsprogramService sportsprogramService;
+    @Autowired
+    public ILxxxService lxxxService;
+    @Autowired
+    public ISljkService sljkService;
+    @Autowired
+    public IYsxgService ysxgService;
+    @Autowired
+    public RedisService redisService;
     /**
     * 保存和修改公用的
     * @param user  传递的实体
@@ -52,17 +66,7 @@ public class UserController {
     * @param id
     * @return
     */
- /*   @ApiOperation(value="删除User信息", notes="删除对象信息")
-    @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
-    public AjaxResult delete(@PathVariable("id") Integer id){
-        try {
-            userService.deleteById(id);
-            return AjaxResult.me();
-        } catch (Exception e) {
-        e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
-        }
-    }*/
+
 
     //获取用户
     @ApiOperation(value="根据url的id来获取User详细信息")
@@ -107,8 +111,36 @@ public class UserController {
     @ApiOperation(value="接收我的档案页面传送数据并分割开传入各个表")
     @RequestMapping(value = "/insertUserBodyAndSoOn",method = RequestMethod.POST)
     public AjaxResult insertUserBodyAndSoOn(@RequestBody MyArchivesVo myArchivesVo) {
-        Body body = myArchivesVo.getBody();
-        Jibing jibing = myArchivesVo.getJibing();
+        User userLogin = new AjaxResult().isUserLogin(request,redisService);
+        if (userLogin==null){
+            new AjaxResult("请登陆后操作！");
+        }
+        Long id = userLogin.getId();
+        try {
+            Body body = myArchivesVo.getBody();
+            body.setUserID(id);
+            bodyService.insert(body);
+            Jibing jibing = myArchivesVo.getJibing();
+            jibing.setUserID(id);
+            jibingService.insert(jibing);
+            Livetype livetype = myArchivesVo.getLivetype();
+            livetype.setUserID(id);
+            livetypeService.insert(livetype);
+            Lxxx lxxx = myArchivesVo.getLxxx();
+            lxxx.setUserID(id);
+            lxxxService.insert(lxxx);
+            Sportsprogram sportsprogram = myArchivesVo.getSportsprogram();
+            sportsprogram.setUserID(id);
+            sportsprogramService.insert(sportsprogram);
+            Ysxg ysxg = myArchivesVo.getYsxg();
+            ysxg.setUserID(id);
+            ysxgService.insert(ysxg);
+            Sljk sljk = myArchivesVo.getSljk();
+            sljk.setUserID(id);
+            sljkService.insert(sljk);
+        } catch (Exception e) {
+            return  new AjaxResult("保存失败,服务器异常！"+e.getMessage());
+        }
         return AjaxResult.me();
     }
 

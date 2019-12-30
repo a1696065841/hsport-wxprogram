@@ -2,6 +2,7 @@ package com.hsport.wxprogram.service.impl;
 
 import com.hsport.wxprogram.domain.Gym;
 import com.hsport.wxprogram.mapper.GymMapper;
+import com.hsport.wxprogram.query.GymQuery;
 import com.hsport.wxprogram.service.IGymService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,4 +32,11 @@ public class GymServiceImpl extends ServiceImpl<GymMapper, Gym> implements IGymS
     public List<Gym> selectGymByParentID(Integer id) {
         return gymMapper.selectGymByParentID(id);
     }
+
+    @Override
+    public List<Object> selectGymWithRegion(GymQuery gymQuery) {
+        return gymMapper.selectGymWithRegion(gymQuery);
+    }
+
+
 }

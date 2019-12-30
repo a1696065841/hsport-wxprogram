@@ -30,10 +30,6 @@ public class FoodController {
     @ApiOperation(value="新增或修改Food信息")
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Food food){
-        AjaxResult ajaxResult = new AjaxResult();
-        if (!ajaxResult.haveAnyOneLogin(request)){
-            return new AjaxResult("用户无权限或已过期");
-        }
         try {
             if(food.getId()!=null){
                 foodService.updateById(food);
@@ -55,10 +51,7 @@ public class FoodController {
     @ApiOperation(value="删除Food信息", notes="删除对象信息")
     @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
     public AjaxResult delete(@PathVariable("id") Integer id){
-        AjaxResult ajaxResult = new AjaxResult();
-        if (!ajaxResult.haveAnyOneLogin(request)){
-            return new AjaxResult("用户无权限或已过期");
-        }
+
         try {
             foodService.deleteById(id);
             return AjaxResult.me();

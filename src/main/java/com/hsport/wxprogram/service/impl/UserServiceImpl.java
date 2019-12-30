@@ -29,7 +29,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     UserMapper userMapper;
 
     @Override
-    public List<User> findUserByCoachID(Integer id) {
+    public List<User> findUserByCoachID(Long id) {
         EntityWrapper<User> userEntityWrapper = new EntityWrapper<>();
         userEntityWrapper.eq("coachID",id);
         List<User> users = userMapper.selectList(userEntityWrapper);

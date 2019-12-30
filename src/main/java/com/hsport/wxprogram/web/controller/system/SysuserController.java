@@ -61,21 +61,12 @@ public class SysuserController {
         }
     }
 
-    //获取用户
-    @ApiOperation(value="根据url的id来获取Sysuser详细信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Sysuser get(@PathVariable("id")Integer id)
-    {
-        return sysuserService.selectById(id);
-    }
-
-
     /**
     * 查看所有的员工信息
     * @return
     */
     @ApiOperation(value="来获取所有Sysuser详细信息")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    @RequestMapping(value = "/list",method = RequestMethod.POST)
     public List<Sysuser> list(){
 
         return sysuserService.selectList(null);

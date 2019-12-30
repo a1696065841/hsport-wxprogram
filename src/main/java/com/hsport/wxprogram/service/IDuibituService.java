@@ -18,5 +18,5 @@ import java.util.List;
  */
 public interface IDuibituService extends IService<Duibitu> {
 
-    List<Duibitu> getListByUserID(Integer id);
+    List<Duibitu> getListByUserID(Long id);
 }

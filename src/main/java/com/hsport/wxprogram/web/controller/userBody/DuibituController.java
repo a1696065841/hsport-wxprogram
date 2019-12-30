@@ -1,6 +1,7 @@
 package com.hsport.wxprogram.web.controller.userBody;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.IDuibituService;
 import com.hsport.wxprogram.domain.Duibitu;
 import com.hsport.wxprogram.query.DuibituQuery;
@@ -88,14 +89,16 @@ public class DuibituController {
     }
 
     @ApiOperation(value = "根据该用户的id查询对比图")
-    @RequestMapping(value = "/getListByUserID/{id}", method = RequestMethod.GET)
-    public List<Duibitu> getListByUserID(@PathVariable("id") Integer id) {
-        return duibituService.getListByUserID(id);
+    @RequestMapping(value = "/getListByUserID", method = RequestMethod.POST)
+    public AjaxResult getListByUserID(@RequestBody User user) {
+        Long id = user.getId();
+        return AjaxResult.me().setResultObj(duibituService.getListByUserID(id));
     }
 
     @ApiOperation(value = "根据该用户的id查之前和最近的对比图")
-    @RequestMapping(value = "/getImgByUserID/{id}", method = RequestMethod.GET)
-    public HashMap getImgByUserID(@PathVariable("id") Integer id) {
+    @RequestMapping(value = "/getImgByUserID", method = RequestMethod.POST)
+    public AjaxResult getImgByUserID(@RequestBody User user) {
+        Long id = user.getId();
         HashMap<String, Object> map = new HashMap<>();
         //最近的正面对比图
         /*EntityWrapper<Duibitu> nowDuibituEntityWrapper = new EntityWrapper<>();
@@ -113,10 +116,10 @@ public class DuibituController {
         //以前的侧面
         Duibitu agoCeDuibitus = duibituUtil(id, true, 2);
         map.put("agoCeDuibitus", agoCeDuibitus);
-        return map;
+        return AjaxResult.me().setResultObj(map);
     }
 
-    public Duibitu duibituUtil (Integer id, boolean b, int type) {
+    public Duibitu duibituUtil (Long id, boolean b, int type) {
         EntityWrapper<Duibitu> nowDuibituEntityWrapper = new EntityWrapper<>();
         nowDuibituEntityWrapper.eq("userID", id);
         nowDuibituEntityWrapper.orderBy("date", b);
@@ -139,49 +142,5 @@ public class DuibituController {
         return new PageList<Duibitu>(page.getTotal(), page.getRecords());
     }
 
-    @ApiOperation(value = "用户上传图片")
-    @RequestMapping(value = "/ZhengTu", method = RequestMethod.POST)
-    public AjaxResult chuanTu(@RequestParam("multipartFile") MultipartFile multipartFile) {
-        Duibitu duibitu = new Duibitu();
-        String UPLOAD_FOLDER = "D:/images/userDuibi";
-        Path path = Paths.get(UPLOAD_FOLDER + "/");
-        //获取当前登录用户  需要修改
-        try {
-            String s = picUtil.singleFileUpload(multipartFile, path);
-            if (s.equals("文件为空，请重新上传")) {
-                return AjaxResult.me().setMessage("文件为空，请重新上传！");
-            }
-            duibitu.setUserID(1);
-            duibitu.setImgType("1");
-            duibitu.setImgUrl(s);
-            duibituService.insert(duibitu);
-            return AjaxResult.me();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return AjaxResult.me().setMessage("上传图片失败！" + e.getMessage());
-        }
-    }
 
-    @ApiOperation(value = "用户上传图片")
-    @RequestMapping(value = "/CeTu", method = RequestMethod.POST)
-    public AjaxResult chuanCeTu(@RequestParam("multipartFile") MultipartFile multipartFile) {
-        Duibitu duibitu = new Duibitu();
-        String UPLOAD_FOLDER = "D:/images/userDuibi";
-        Path path = Paths.get(UPLOAD_FOLDER + "/");
-        //获取当前登录用户  需要修改
-        try {
-            String s = picUtil.singleFileUpload(multipartFile, path);
-            if (s.equals("文件为空，请重新上传")) {
-                return AjaxResult.me().setMessage("文件为空，请重新上传！");
-            }
-            duibitu.setUserID(1);
-            duibitu.setImgType("2");
-            duibitu.setImgUrl(s);
-            duibituService.insert(duibitu);
-            return AjaxResult.me();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return AjaxResult.me().setMessage("上传图片失败！" + e.getMessage());
-        }
-    }
 }

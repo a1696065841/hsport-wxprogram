@@ -16,8 +16,8 @@ import java.util.List;
  * @since 2019-11-27
  */
 public interface ISportsplanService extends IService<Sportsplan> {
-    List selectPlanByUserID(Integer id);
+    List selectPlanByUserID(Long id);
     List<HashMap> selectEverDayIntakeAndBurn (SportsplanQuery sportsplanQuery);
-    HashMap getUserIntakeEverday(Integer id);
+    HashMap getUserIntakeEverday(Long id);
     Object getMyPlan(SportsplanQuery sportsplanQuery);
 }

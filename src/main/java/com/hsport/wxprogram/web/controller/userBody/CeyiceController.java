@@ -2,6 +2,7 @@ package com.hsport.wxprogram.web.controller.userBody;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.common.util.DateUtil;
+import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.domain.vo.CeyiceVo;
 import com.hsport.wxprogram.service.ICeyiceService;
 import com.hsport.wxprogram.domain.Ceyice;
@@ -90,23 +91,16 @@ public class CeyiceController {
     }
 
     //获取用户
-    @ApiOperation(value="根据url的id来获取Ceyice详细信息")
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Ceyice get(@PathVariable("id")Integer id) {
-        return ceyiceService.selectById(id);
-    }
-
-    //获取用户
     @ApiOperation(value="根据用户的id来获取Ceyice详细信息")
-    @RequestMapping(value = "/getByUserID/{id}",method = RequestMethod.GET)
-    public List<Ceyice> getByUserID(@PathVariable("id")Integer id) {
+    @RequestMapping(value = "/getByUserID",method = RequestMethod.POST)
+    public AjaxResult getByUserID(@RequestBody User user) {
+        Long id = user.getId();
         Page<Ceyice> page = new Page<Ceyice>(0,1);
-
         EntityWrapper<Ceyice> ceyiceEntityWrapper = new EntityWrapper<>();
         ceyiceEntityWrapper.eq("userID",id);
         ceyiceEntityWrapper.orderBy("date",false);
         page = ceyiceService.selectPage(page,ceyiceEntityWrapper);
-        return page.getRecords();
+        return AjaxResult.me().setResultObj(page.getRecords());
     }
 
     /**
@@ -114,7 +108,7 @@ public class CeyiceController {
     * @return
     */
     @ApiOperation(value="来获取所有Ceyice详细信息")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    @RequestMapping(value = "/list",method = RequestMethod.POST)
     public List<Ceyice> list(){
 
         return ceyiceService.selectList(null);
