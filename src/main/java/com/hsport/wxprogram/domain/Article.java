@@ -4,11 +4,12 @@ import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ * <p>
  * </p>
  *
  * @author lhb
@@ -22,12 +23,42 @@ public class Article extends Model<Article> {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     private String article;
-    private Integer userID;
+    private Long userID;
     /**
      * 文章设计用户的类型()
      */
     private String articleType;
+    private String imgUrl;
+    private String articleTitle;
+    private Long productID;
 
+    public void setUserID(Long userID) {
+        this.userID = userID;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public String getArticleTitle() {
+        return articleTitle;
+    }
+
+    public void setArticleTitle(String articleTitle) {
+        this.articleTitle = articleTitle;
+    }
+
+    public Long getProductID() {
+        return productID;
+    }
+
+    public void setProductID(Long productID) {
+        this.productID = productID;
+    }
 
     public Integer getId() {
         return id;
@@ -45,13 +76,6 @@ public class Article extends Model<Article> {
         this.article = article;
     }
 
-    public Integer getUserID() {
-        return userID;
-    }
-
-    public void setUserID(Integer userID) {
-        this.userID = userID;
-    }
 
     public String getArticleType() {
         return articleType;
@@ -69,10 +93,10 @@ public class Article extends Model<Article> {
     @Override
     public String toString() {
         return "Article{" +
-        ", id=" + id +
-        ", article=" + article +
-        ", userID=" + userID +
-        ", articleType=" + articleType +
-        "}";
+                ", id=" + id +
+                ", article=" + article +
+                ", userID=" + userID +
+                ", articleType=" + articleType +
+                "}";
     }
 }

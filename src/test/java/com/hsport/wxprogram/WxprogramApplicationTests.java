@@ -20,6 +20,7 @@ import org.springframework.util.StringUtils;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,7 +31,20 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 class WxprogramApplicationTests {
-
+    @Autowired
+    public IProductService productService;
+    @Autowired
+    public RedisService redisService;
+    @Autowired
+    public  IProductserviceService productserviceService;
+    @Autowired
+    public HttpServletRequest request;
+    @Autowired
+    public  IProductGymService productGymService;
+    @Autowired
+    public IDetailsService detailsService;
+    @Autowired
+    public IGymService gymService;
     @Autowired
     IBodyService bodyService;
     @Autowired
@@ -42,12 +56,8 @@ class WxprogramApplicationTests {
     @Autowired
     JedisPool jedisPool;
     @Autowired
-    private RedisService redisService;
-    @Autowired
     IRegionService regionService;
     @Autowired
-    IGymService gymService;
-@Autowired
     IOrderService orderService;
     @Test
     void contextLoads() throws Exception {
@@ -68,8 +78,24 @@ class WxprogramApplicationTests {
 
     @Test
     public void test2() {
-        Page<Order> page = new Page<Order>(0,3);
-        orderService.selectPage(page,new EntityWrapper<Order>());
+        Product product = new Product();
+        product.setId(1);
+        HashMap<String, Object> map = new HashMap<>();
+        Product product1 = productService.selectById(product);
+        map.put("product",product);
+        Integer id = product1.getId();
+        List<Details> details = detailsService.selectList(new EntityWrapper<Details>().eq("productID", id));
+        map.put("details",details);
+        List<Productservice> productservices = productserviceService.selectList(new EntityWrapper<Productservice>().eq("productID", id));
+        map.put("productservices",productservices);
+        List<ProductGym> productGyms = productGymService.selectList(new EntityWrapper<ProductGym>().eq("productID", id));
+        List<Gym> gyms=new ArrayList<>();
+        for (ProductGym productGym : productGyms) {
+            Gym gym = gymService.selectById(productGym.getGymID());
+            gyms.add(gym);
+        }
+        map.put("gyms",gyms);
+        System.out.println(map);
     }
 
 }

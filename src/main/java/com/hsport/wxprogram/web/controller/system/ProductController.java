@@ -1,20 +1,20 @@
 package com.hsport.wxprogram.web.controller.system;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.domain.*;
 import com.hsport.wxprogram.domain.vo.ProductVo;
-import com.hsport.wxprogram.service.IProductGymService;
-import com.hsport.wxprogram.service.IProductService;
+import com.hsport.wxprogram.service.*;
 import com.hsport.wxprogram.query.ProductQuery;
 import com.hsport.wxprogram.common.util.AjaxResult;
 import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.hsport.wxprogram.service.IProductserviceService;
-import com.hsport.wxprogram.service.RedisService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -27,11 +27,15 @@ public class ProductController {
     @Autowired
     public RedisService redisService;
     @Autowired
-    IProductserviceService productserviceService;
+    public  IProductserviceService productserviceService;
     @Autowired
-    HttpServletRequest request;
+    public HttpServletRequest request;
     @Autowired
-    IProductGymService productGymService;
+    public  IProductGymService productGymService;
+    @Autowired
+    public IDetailsService detailsService;
+    @Autowired
+    public IGymService gymService;
     /**
      * 保存和修改公用的
      *
@@ -41,10 +45,14 @@ public class ProductController {
     @ApiOperation(value = "新增或修改Product信息")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public AjaxResult save(@RequestBody ProductVo productVo) {
-        List<Gym> gyms = productVo.getGyms();
+        List<Details> details = productVo.getDetails();
+        List<Integer> gyms = productVo.getGyms();
         Product product = productVo.getProduct();
-        Sysuser sysUserLogin = new AjaxResult().isSysUserLogin(request, redisService);
-        product.setSysuserID(sysUserLogin.getId());
+       /* Sysuser sysUserLogin = new AjaxResult().isSysUserLogin(request, redisService);
+        if(sysUserLogin==null){
+            return new AjaxResult("无权限或未登录！");
+        }
+        product.setSysuserID(sysUserLogin.getId());*/
         List<Productservice> productservices = productVo.getProductservices();
         try {
             if (product.getId() != null) {
@@ -62,10 +70,15 @@ public class ProductController {
                     productserviceService.insert(productservice);
                 }
                 //添加支持该服务的健身房
-                for (Gym gym : gyms) {
+                for (Integer gymID : gyms) {
                     ProductGym productGym = new ProductGym();
                     productGym.setProductID(product.getId());
-                    productGym.setGymID(gym.getId());
+                    productGym.setGymID(gymID);
+                    productGymService.insert(productGym);
+                }
+                for (Details detail : details) {
+                    detail.setProductID(productId);
+                    detailsService.insert(detail);
                 }
             }
             return AjaxResult.me();
@@ -101,8 +114,8 @@ public class ProductController {
      */
     @ApiOperation(value = "来获取所有Product详细信息")
     @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public List<Product> list() {
-        return productService.selectList(null);
+    public AjaxResult list() {
+        return AjaxResult.me().setResultObj(productService.selectList(null));
     }
 
 
@@ -118,5 +131,32 @@ public class ProductController {
         Page<Product> page = new Page<Product>(query.getPage(), query.getRows());
         page = productService.selectPage(page);
         return AjaxResult.me().setResultObj(new PageList<Product>(page.getTotal(), page.getRecords()));
+    }
+
+    @ApiOperation(value = "来获取所有Product详细信息并分页", notes = "根据page页数和传入的query查询条件 来获取某些Product详细信息")
+    @RequestMapping(value = "/map", method = RequestMethod.POST)
+    public AjaxResult map(@RequestBody ProductQuery query) {
+        return AjaxResult.me().setResultObj(productService.selectMap(query));
+    }
+
+    @ApiOperation(value = "来获取所有Product详细信息并分页", notes = "根据page页数和传入的query查询条件 来获取某些Product详细信息")
+    @RequestMapping(value = "/productAll", method = RequestMethod.POST)
+    public AjaxResult productAll(@RequestBody Product product) {
+        HashMap<String, Object> map = new HashMap<>();
+        Product product1 = productService.selectById(product);
+        map.put("product",product);
+        Integer id = product1.getId();
+        List<Details> details = detailsService.selectList(new EntityWrapper<Details>().eq("productID", id));
+        map.put("details",details);
+        List<Productservice> productservices = productserviceService.selectList(new EntityWrapper<Productservice>().eq("productID", id));
+        map.put("productservices",productservices);
+        List<ProductGym> productGyms = productGymService.selectList(new EntityWrapper<ProductGym>().eq("productID", id));
+        List<Gym> gyms=new ArrayList<>();
+        for (ProductGym productGym : productGyms) {
+            Gym gym = gymService.selectById(productGym.getGymID());
+            gyms.add(gym);
+        }
+        map.put("gyms",gyms);
+        return AjaxResult.me().setResultObj(map);
     }
 }

@@ -2,6 +2,9 @@ package com.hsport.wxprogram.service;
 
 import com.hsport.wxprogram.domain.Product;
 import com.baomidou.mybatisplus.service.IService;
+import com.hsport.wxprogram.query.ProductQuery;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +15,4 @@ import com.baomidou.mybatisplus.service.IService;
  * @since 2019-11-26
  */
 public interface IProductService extends IService<Product> {
-
-}
+    List<Object> selectMap(ProductQuery query);}

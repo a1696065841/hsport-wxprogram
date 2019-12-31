@@ -91,7 +91,7 @@ public class ArticleController {
     {
         Page<Article> page = new Page<Article>(query.getPage(),query.getRows());
         EntityWrapper<Article> articleEntityWrapper = new EntityWrapper<>();
-            page = articleService.selectPage(page,articleEntityWrapper.eq("articleType",query.getArticleType()));
+            page = articleService.selectPage(page,articleEntityWrapper.like("articleType",query.getArticleType()).like("articleTitle",query.getKeyword()));
             return new PageList<Article>(page.getTotal(),page.getRecords());
     }
 }

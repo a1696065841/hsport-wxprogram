@@ -106,10 +106,10 @@ public class RegionController {
     */
     @ApiOperation(value="来获取所有Region详细信息并分页", notes="根据page页数和传入的query查询条件 来获取某些Region详细信息")
     @RequestMapping(value = "/json",method = RequestMethod.POST)
-    public PageList<Region> json(@RequestBody RegionQuery query)
+    public AjaxResult json(@RequestBody RegionQuery query)
     {
         Page<Region> page = new Page<Region>(query.getPage(),query.getRows());
             page = regionService.selectPage(page);
-            return new PageList<Region>(page.getTotal(),page.getRecords());
+            return AjaxResult.me().setResultObj(new PageList<Region>(page.getTotal(),page.getRecords()));
     }
 }

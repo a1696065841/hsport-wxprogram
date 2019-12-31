@@ -13,4 +13,19 @@
         <result column="imgUrl" property="imgUrl" />
     </resultMap>
 
+    <sql id="whereSql">
+        <where>
+            <if test="keyword!=null and keyword!=''">
+                and p.productName like concat('%',#{keyword},'%')
+            </if>
+        </where>
+    </sql>
+
+    <select id="selectMap" resultType="map" parameterType="ProductQuery">
+  SELECT p.*,d.detailsID detailsID,d.detailsName,d.detailsDesc,ps.id productServiceID,ps.message,ps.`name`,ps.serviceType
+  FROM t_product p LEFT JOIN t_details d ON d.productID=p.id LEFT JOIN  t_productservice ps  ON ps.productID=p.id
+        <include refid="whereSql"/>
+        limit #{page},#{rows}
+    </select>
+
 </mapper>
