@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hsport.wxprogram.mapper.ProductGymMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.ProductGym">
+        <id column="id" property="id"/>
+        <result column="gymID" property="gymID"/>
+        <result column="productID" property="productID"/>
+    </resultMap>
+
+
+
+    <sql id="whereSql">
+        <where>
+            <if test="keyword!=null and keyword!=''">
+                and p.productName like concat('%',#{keyword},'%')
+            </if>
+            <if test="productID!=null and productID!=''">
+                and p.id like concat('%',#{productID},'%')
+            </if>
+            <if test="gymID!=null and gymID!=''">
+                and gymID  like concat('%',#{gymID},'%')
+            </if>
+        </where>
+    </sql>
+
+
+    <select id="selectWithAll" resultType="map" parameterType="ProductGymQuery">
+        SELECT g.id gymID,g.gym_name,g.gym_phone,g.gym_address,r.title,g.gym_url,g.xCoordinate,g.yCoordinate,
+        p.id productID,p.productName,p.pirce,p.imgUrl,
+        p.productType,p.pro_desc
+        FROM t_product_gym pg LEFT JOIN t_product p ON p.id=pg.productID LEFT  JOIN  t_gym  g ON g.id=pg.gymID LEFT JOIN t_region r ON r.id=g.region_id
+        <include refid="whereSql"/>
+        limit #{page},#{rows}
+    </select>
+
+
+</mapper>
