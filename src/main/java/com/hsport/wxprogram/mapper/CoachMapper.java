@@ -45,4 +45,7 @@ public interface CoachMapper extends BaseMapper<Coach>{
      * @return PageList 分页对象
      */
     PageList<Coach> json(@RequestBody CoachQuery query);
+    List<Object> selectWithGym(@RequestBody CoachQuery query);
+
+    Integer selectWithGymTotal(CoachQuery query);
 }

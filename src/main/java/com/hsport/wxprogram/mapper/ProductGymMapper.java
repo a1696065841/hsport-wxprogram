@@ -48,5 +48,5 @@ public interface ProductGymMapper extends BaseMapper<ProductGym>{
     PageList<ProductGym> json(@RequestBody ProductGymQuery query);
     //级联查询
     List<Object> selectWithAll(ProductGymQuery query);
-
+   Integer selectWithAllTotal(ProductGymQuery query);
 }

@@ -4,13 +4,12 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Product">
-        <id column="id" property="id" />
-        <result column="productName" property="productName" />
-        <result column="pirce" property="pirce" />
-        <result column="pro_desc" property="proDesc" />
-        <result column="sysuserID" property="sysuserID" />
-        <result column="productType" property="productType" />
-        <result column="imgUrl" property="imgUrl" />
+        <id column="id" property="id"/>
+        <result column="productName" property="productName"/>
+        <result column="pro_desc" property="proDesc"/>
+        <result column="sysuserID" property="sysuserID"/>
+        <result column="productType" property="productType"/>
+        <result column="imgUrl" property="imgUrl"/>
     </resultMap>
 
     <sql id="whereSql">
@@ -22,10 +21,15 @@
     </sql>
 
     <select id="selectMap" resultType="map" parameterType="ProductQuery">
-  SELECT p.*,d.detailsID detailsID,d.detailsName,d.detailsDesc,ps.id productServiceID,ps.message,ps.`name`,ps.serviceType
-  FROM t_product p LEFT JOIN t_details d ON d.productID=p.id LEFT JOIN  t_productservice ps  ON ps.productID=p.id
+        SELECT p.*,d.detailsID detailsID,d.detailsName,d.detailsDesc,ps.id
+        productServiceID,ps.message,ps.`name`,ps.serviceType
+        FROM t_product p LEFT JOIN t_details d ON d.productID=p.id LEFT JOIN t_productservice ps ON ps.productID=p.id
         <include refid="whereSql"/>
         limit #{page},#{rows}
     </select>
 
+    <select id="selectMapTotal" resultType="integer" parameterType="ProductQuery">
+    SELECT COUNT(*)
+    FROM t_product p LEFT JOIN t_details d ON d.productID=p.id LEFT JOIN  t_productservice ps  ON ps.productID=p.id
+    </select>
 </mapper>

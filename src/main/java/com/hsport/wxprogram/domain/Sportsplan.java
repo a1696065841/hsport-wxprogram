@@ -22,6 +22,16 @@ public class Sportsplan extends Model<Sportsplan> {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
+
+    public Integer getAvgPlanFat() {
+        return avgPlanFat;
+    }
+
+    public void setAvgPlanFat(Integer avgPlanFat) {
+        this.avgPlanFat = avgPlanFat;
+    }
+
+    private Integer avgPlanFat;
     /**
      * 计划目标
      */
@@ -30,7 +40,7 @@ public class Sportsplan extends Model<Sportsplan> {
      * 计划完成天数
      */
     private Integer planUseDays;
-    private Integer userID;
+    private Long userID;
     /**
      * 运动计划总消耗
      */
@@ -43,32 +53,41 @@ public class Sportsplan extends Model<Sportsplan> {
     private Integer planType;
     private String planEndDate;
     private Integer coachID;
-    private Integer masterPlanCellulose;
-    private Integer masterPlanCarbon;
-    private Integer masterPlanPro;
+    private Integer avgPlanCellulose;
+    private Integer avgPlanCarbon;
+    private Integer avgPlanPro;
+    private Integer avgPlanIntake;
 
-    public Integer getMasterPlanCellulose() {
-        return masterPlanCellulose;
+    public Integer getAvgPlanIntake() {
+        return avgPlanIntake;
     }
 
-    public void setMasterPlanCellulose(Integer masterPlanCellulose) {
-        this.masterPlanCellulose = masterPlanCellulose;
+    public void setAvgPlanIntake(Integer avgPlanIntake) {
+        this.avgPlanIntake = avgPlanIntake;
     }
 
-    public Integer getMasterPlanCarbon() {
-        return masterPlanCarbon;
+    public Integer getAvgPlanCellulose() {
+        return avgPlanCellulose;
     }
 
-    public void setMasterPlanCarbon(Integer masterPlanCarbon) {
-        this.masterPlanCarbon = masterPlanCarbon;
+    public void setAvgPlanCellulose(Integer avgPlanCellulose) {
+        this.avgPlanCellulose = avgPlanCellulose;
     }
 
-    public Integer getMasterPlanPro() {
-        return masterPlanPro;
+    public Integer getAvgPlanCarbon() {
+        return avgPlanCarbon;
     }
 
-    public void setMasterPlanPro(Integer masterPlanPro) {
-        this.masterPlanPro = masterPlanPro;
+    public void setAvgPlanCarbon(Integer avgPlanCarbon) {
+        this.avgPlanCarbon = avgPlanCarbon;
+    }
+
+    public Integer getAvgPlanPro() {
+        return avgPlanPro;
+    }
+
+    public void setAvgPlanPro(Integer avgPlanPro) {
+        this.avgPlanPro = avgPlanPro;
     }
 
     public Integer getCoachID() {
@@ -119,11 +138,11 @@ public class Sportsplan extends Model<Sportsplan> {
         this.planUseDays = planUseDays;
     }
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

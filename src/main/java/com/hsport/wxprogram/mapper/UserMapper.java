@@ -48,4 +48,5 @@ public interface UserMapper extends BaseMapper<User>{
     PageList<User> json(@RequestBody UserQuery query);
 
     List<Object> selectUserCoach( UserQuery query);
+   Integer selectUserCoachTotal(UserQuery query);
 }

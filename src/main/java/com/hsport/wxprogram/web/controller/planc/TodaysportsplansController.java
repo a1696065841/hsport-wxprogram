@@ -1,8 +1,12 @@
 package com.hsport.wxprogram.web.controller.planc;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.common.util.DateUtil;
+import com.hsport.wxprogram.domain.Sportsimg;
 import com.hsport.wxprogram.domain.Todayintakeplan;
 import com.hsport.wxprogram.domain.User;
+import com.hsport.wxprogram.domain.vo.TodaysportsplansVo;
+import com.hsport.wxprogram.service.ISportsimgService;
 import com.hsport.wxprogram.service.ITodaysportsplansService;
 import com.hsport.wxprogram.domain.Todaysportsplans;
 import com.hsport.wxprogram.query.TodaysportsplansQuery;
@@ -14,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -25,6 +30,8 @@ public class TodaysportsplansController {
     public ITodaysportsplansService todaysportsplansService;
     @Autowired
     HttpServletRequest request;
+    @Autowired
+    public ISportsimgService sportsimgService;
 
     /**
     * 保存和修改公用的
@@ -47,6 +54,17 @@ public class TodaysportsplansController {
         }
     }
 
+
+    @ApiOperation(value="新增或修改Todaysportsplans信息")
+    @RequestMapping(value="/updateSportPlans",method= RequestMethod.POST)
+    public AjaxResult updateSportPlans(@RequestBody TodaysportsplansVo todaysportsplansVo){
+        try {
+             return    todaysportsplansService.updateSportPlans(todaysportsplansVo);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage()).setSuccess(false);
+        }
+    }
     /**
     * 删除对象信息
     * @param id
@@ -66,10 +84,18 @@ public class TodaysportsplansController {
     @ApiOperation(value = "根据user的id来获取详细信息")
     @RequestMapping(value = "/getListByUserID", method = RequestMethod.POST)
     public AjaxResult getListByUserID(@RequestBody User user) {
+        HashMap<String, Object> map = new HashMap<>();
+        EntityWrapper<Sportsimg> sportsimgEntityWrapper = new EntityWrapper<>();
+        sportsimgEntityWrapper.eq("date", DateUtil.today());
+        sportsimgEntityWrapper.eq("userID", user.getId());
+        sportsimgEntityWrapper.eq("isUsed",0);
+        List<Sportsimg> sportsimgs = sportsimgService.selectList(sportsimgEntityWrapper);
         Long id = user.getId();
         EntityWrapper<Todaysportsplans> todayintakeplanEntityWrapper = new EntityWrapper<>();
         todayintakeplanEntityWrapper.eq("userID", id);
-        return AjaxResult.me().setResultObj(todaysportsplansService.selectList(todayintakeplanEntityWrapper));
+        map.put("imgs",sportsimgs);
+        map.put("todaySportPlans",todaysportsplansService.selectList(todayintakeplanEntityWrapper));
+        return AjaxResult.me().setResultObj(map);
     }
 
 

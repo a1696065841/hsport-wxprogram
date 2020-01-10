@@ -67,7 +67,6 @@ public class AjaxResult {
 
     public  User isUserLogin(HttpServletRequest request,RedisService redisService) {
         String token = request.getHeader("token");
-        System.out.println(redisService);
         User o = null;
         if (token != null) {
             String s = redisService.get(token);

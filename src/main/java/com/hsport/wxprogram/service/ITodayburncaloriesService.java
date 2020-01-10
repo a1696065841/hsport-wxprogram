@@ -3,6 +3,7 @@ package com.hsport.wxprogram.service;
 import com.hsport.wxprogram.domain.Todayburncalories;
 import com.baomidou.mybatisplus.service.IService;
 import com.hsport.wxprogram.domain.Todayintakeplan;
+import com.hsport.wxprogram.domain.Todaysportsplans;
 
 import java.util.HashMap;
 
@@ -20,4 +21,5 @@ public interface ITodayburncaloriesService extends IService<Todayburncalories> {
     HashMap selectSportsTimes(Long id);
     Todayburncalories getLastOne(Long id);
     public Todayburncalories selectTheDayIntakePlanByUserID(Long id, String date);
+    void saveTodayburns(Todaysportsplans todaysportsplans);
 }

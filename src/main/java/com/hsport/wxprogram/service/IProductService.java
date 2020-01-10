@@ -15,4 +15,5 @@ import java.util.List;
  * @since 2019-11-26
  */
 public interface IProductService extends IService<Product> {
-    List<Object> selectMap(ProductQuery query);}
+    List<Object> selectMap(ProductQuery query);
+    Integer selectMapTotal(ProductQuery query);}

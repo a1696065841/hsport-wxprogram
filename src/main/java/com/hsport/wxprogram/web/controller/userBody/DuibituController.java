@@ -1,6 +1,7 @@
 package com.hsport.wxprogram.web.controller.userBody;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.common.util.DateUtil;
 import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.IDuibituService;
 import com.hsport.wxprogram.domain.Duibitu;
@@ -34,6 +35,7 @@ public class DuibituController {
      *
      * @param duibitu 传递的实体
      * @return Ajaxresult转换结果
+     *
      */
     @ApiOperation(value = "新增或修改Duibitu信息")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -42,6 +44,7 @@ public class DuibituController {
             if (duibitu.getId() != null) {
                 duibituService.updateById(duibitu);
             } else {
+                duibitu.setDate(DateUtil.today());
                 duibituService.insert(duibitu);
             }
             return AjaxResult.me();

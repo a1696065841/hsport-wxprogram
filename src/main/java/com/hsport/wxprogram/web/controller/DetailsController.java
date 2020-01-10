@@ -1,6 +1,7 @@
 package com.hsport.wxprogram.web.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.Article;
 import com.hsport.wxprogram.service.IDetailsService;
 import com.hsport.wxprogram.domain.Details;
 import com.hsport.wxprogram.query.DetailsQuery;
@@ -40,7 +41,11 @@ public class DetailsController {
             return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
-
+    @ApiOperation(value = "来获取所有Product详细信息")
+    @RequestMapping(value = "/getByID", method = RequestMethod.POST)
+    public AjaxResult getByID(@RequestBody Details details) {
+        return AjaxResult.me().setResultObj(detailsService.selectById(details));
+    }
     /**
     * 删除对象信息
     * @param details

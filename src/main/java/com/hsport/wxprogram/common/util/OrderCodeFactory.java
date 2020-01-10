@@ -40,7 +40,7 @@ public class OrderCodeFactory {
     /**
      * 更具id进行加密+加随机数组成固定长度编码
      */
-    private static String toCode(Integer id) {
+    private static String toCode(Long id) {
         String idStr = id.toString();
         StringBuilder idsbs = new StringBuilder();
         for (int i = idStr.length() - 1; i >= 0; i--) {
@@ -77,7 +77,7 @@ public class OrderCodeFactory {
      *
      * @param userId
      */
-    private static synchronized String getCode(Integer userId) {
+    private static synchronized String getCode(Long userId) {
         userId = userId == null ? 10000 : userId;
         return getDateTime() + toCode(userId);
     }
@@ -87,7 +87,7 @@ public class OrderCodeFactory {
      *
      * @param userId
      */
-    public static String getOrderCode(Integer userId) {
+    public static String getOrderCode(Long userId) {
         return ORDER_CODE + getCode(userId);
     }
 
@@ -96,7 +96,7 @@ public class OrderCodeFactory {
      *
      * @param userId
      */
-    public static String getReturnCode(Integer userId) {
+    public static String getReturnCode(Long userId) {
         return RETURN_ORDER + getCode(userId);
     }
 
@@ -105,7 +105,7 @@ public class OrderCodeFactory {
      *
      * @param userId
      */
-    public static String getRefundCode(Integer userId) {
+    public static String getRefundCode(Long userId) {
         return REFUND_ORDER + getCode(userId);
     }
 
@@ -114,7 +114,7 @@ public class OrderCodeFactory {
      *
      * @param userId
      */
-    public static String getAgainCode(Integer userId) {
+    public static String getAgainCode(Long userId) {
         return AGAIN_ORDER + getCode(userId);
     }
 }

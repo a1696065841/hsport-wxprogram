@@ -11,12 +11,19 @@
         <result column="loginTime" property="loginTime" />
         <result column="loginCount" property="loginCount" />
         <result column="userType" property="userType" />
-        <result column="bodyID" property="bodyID" />
+        <result column="openID" property="openID" />
         <result column="password" property="password"/>
     </resultMap>
 
     <select id="selectUserCoach" resultType="map" parameterType="userQuery" >
-        SELECT  u.id,u.userType,l.*,c.coachName coachName
+        SELECT  u.id,u.userType,u.genTime,u.phone loginPhone,l.*,c.coachName coachName,SUM(o.totalPrice) as sumPrice
+        FROM t_user u LEFT JOIN t_coach c ON u.coachID = c.id LEFT JOIN t_lxxx l ON u.id=l.userID LEFT JOIN t_order o ON u.id=o.userID GROUP BY u.id
+        limit #{page},#{rows}
+    </select>
+
+
+    <select id="selectUserCoachTotal" resultType="integer" parameterType="userQuery" >
+        SELECT COUNT(*)
         FROM t_user u LEFT JOIN t_coach c ON u.coachID = c.id LEFT JOIN t_lxxx l ON u.id=l.userID
         limit #{page},#{rows}
     </select>

@@ -49,20 +49,12 @@ public class Ceyice extends Model<Ceyice> {
         this.age = age;
     }
 
-    public Integer getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public void setHeight(Integer height) {
-        this.height = height;
-    }
-
-    public Integer getWeight() {
+    public double getWeight() {
         return weight;
-    }
-
-    public void setWeight(Integer weight) {
-        this.weight = weight;
     }
 
     public Integer getYaowei() {
@@ -82,8 +74,17 @@ public class Ceyice extends Model<Ceyice> {
     }
 
     private Integer age;
-    private Integer height;
-    private Integer weight;
+    private double height;
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    private double weight;
     private Integer yaowei;
     private Integer tunwei;
 
@@ -149,7 +150,7 @@ public class Ceyice extends Model<Ceyice> {
         this.date = date;
     }
 
-    private Integer userID;
+    private Long userID;
 
 
     public Integer getId() {
@@ -280,11 +281,11 @@ public class Ceyice extends Model<Ceyice> {
         this.dsjfqkFantan = dsjfqkFantan;
     }
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

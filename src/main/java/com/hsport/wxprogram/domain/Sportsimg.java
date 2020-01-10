@@ -21,15 +21,22 @@ public class Sportsimg extends Model<Sportsimg> {
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
-    private int id;
+    private Integer id;
     private String sportsImgUrl;
-    private Integer userID;
-    private Integer todayspID;
+    private Long userID;
     private String date;
-    private Integer todayburncaloriesID;
     private String burnType;
     private Integer productserviceID;
+    private Integer burnCalories;
+    private boolean isUsed;
 
+    public boolean isUsed() {
+        return isUsed;
+    }
+
+    public void setUsed(boolean used) {
+        isUsed = used;
+    }
     public Integer getProductserviceID() {
         return productserviceID;
     }
@@ -37,7 +44,7 @@ public class Sportsimg extends Model<Sportsimg> {
     public void setProductserviceID(Integer productserviceID) {
         this.productserviceID = productserviceID;
     }
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -57,14 +64,6 @@ public class Sportsimg extends Model<Sportsimg> {
         this.date = date;
     }
 
-    public Integer getTodayburncaloriesID() {
-        return todayburncaloriesID;
-    }
-
-    public void setTodayburncaloriesID(Integer todayburncaloriesID) {
-        this.todayburncaloriesID = todayburncaloriesID;
-    }
-
     public Integer getBurnCalories() {
         return burnCalories;
     }
@@ -73,15 +72,9 @@ public class Sportsimg extends Model<Sportsimg> {
         this.burnCalories = burnCalories;
     }
 
-    private Integer burnCalories;
-
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getSportsImgUrl() {
@@ -92,21 +85,14 @@ public class Sportsimg extends Model<Sportsimg> {
         this.sportsImgUrl = sportsImgUrl;
     }
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 
-    public Integer getTodayspID() {
-        return todayspID;
-    }
-
-    public void setTodayspID(Integer todayspID) {
-        this.todayspID = todayspID;
-    }
 
     @Override
     protected Serializable pkVal() {
@@ -119,7 +105,6 @@ public class Sportsimg extends Model<Sportsimg> {
                 ", id=" + id +
                 ", sportsImgUrl=" + sportsImgUrl +
                 ", userID=" + userID +
-                ", todayspID=" + todayspID +
                 "}";
     }
 }

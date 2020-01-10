@@ -22,18 +22,37 @@ public class Stageplan extends Model<Stageplan> {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     /**
-     * 计划的第几个周期
+     * 计划周期名字
      */
-    private Integer stageOfCycle;
+    private String stageOfCycle;
+
+    public Integer getStageTimeStart() {
+        return stageTimeStart;
+    }
+
+    public void setStageTimeStart(Integer stageTimeStart) {
+        this.stageTimeStart = stageTimeStart;
+    }
+
+    public Integer getStageTimeEnd() {
+        return stageTimeEnd;
+    }
+
+    public void setStageTimeEnd(Integer stageTimeEnd) {
+        this.stageTimeEnd = stageTimeEnd;
+    }
+
     /**
      * 阶段时间
      */
-    private String stageTime;
+    private Integer stageTimeStart;
+    private Integer stageTimeEnd;
+
     /**
      * 阶段目标
      */
     private String stageTarget;
-    private Integer userID;
+    private Integer sportsplanID;
     /**
      * 锻炼时长
      */
@@ -48,20 +67,12 @@ public class Stageplan extends Model<Stageplan> {
         this.id = id;
     }
 
-    public Integer getStageOfCycle() {
+    public String getStageOfCycle() {
         return stageOfCycle;
     }
 
-    public void setStageOfCycle(Integer stageOfCycle) {
+    public void setStageOfCycle(String stageOfCycle) {
         this.stageOfCycle = stageOfCycle;
-    }
-
-    public String getStageTime() {
-        return stageTime;
-    }
-
-    public void setStageTime(String stageTime) {
-        this.stageTime = stageTime;
     }
 
     public String getStageTarget() {
@@ -72,12 +83,12 @@ public class Stageplan extends Model<Stageplan> {
         this.stageTarget = stageTarget;
     }
 
-    public Integer getUserID() {
-        return userID;
+    public Integer getSportsplanID() {
+        return sportsplanID;
     }
 
-    public void setUserID(Integer userID) {
-        this.userID = userID;
+    public void setSportsplanID(Integer sportsplanID) {
+        this.sportsplanID = sportsplanID;
     }
 
     public Integer getDurationOfExercise() {
@@ -98,9 +109,9 @@ public class Stageplan extends Model<Stageplan> {
         return "Stageplan{" +
         ", id=" + id +
         ", stageOfCycle=" + stageOfCycle +
-        ", stageTime=" + stageTime +
+        ", stageTime=" + stageTimeStart +
         ", stageTarget=" + stageTarget +
-        ", userID=" + userID +
+        ", sportsplanID=" + sportsplanID +
         ", durationOfExercise=" + durationOfExercise +
         "}";
     }

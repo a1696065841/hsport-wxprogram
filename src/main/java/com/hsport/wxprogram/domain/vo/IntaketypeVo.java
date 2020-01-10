@@ -6,8 +6,26 @@ import com.hsport.wxprogram.domain.Intaketype;
 import java.util.List;
 
 public class IntaketypeVo {
-    private  Intaketype intaketype;
+
     private List<Food> foodList;
+    private String intaketypeName;
+    private Integer intaketypeID;
+
+    public Integer getIntaketypeID() {
+        return intaketypeID;
+    }
+
+    public void setIntaketypeID(Integer intaketypeID) {
+        this.intaketypeID = intaketypeID;
+    }
+
+    public String getIntaketypeName() {
+        return intaketypeName;
+    }
+
+    public void setIntaketypeName(String intaketypeName) {
+        this.intaketypeName = intaketypeName;
+    }
 
     public List<Food> getFoodList() {
         return foodList;
@@ -17,12 +35,5 @@ public class IntaketypeVo {
         this.foodList = foodList;
     }
 
-    public Intaketype getIntaketype() {
 
-        return intaketype;
-    }
-
-    public void setIntaketype(Intaketype intaketype) {
-        this.intaketype = intaketype;
-    }
 }

@@ -45,6 +45,6 @@ public interface ProductMapper extends BaseMapper<Product>{
      * @return PageList 分页对象
      */
     PageList<Product> json(@RequestBody ProductQuery query);
-
+    Integer selectMapTotal(ProductQuery query);
     List<Object> selectMap(ProductQuery query);
 }

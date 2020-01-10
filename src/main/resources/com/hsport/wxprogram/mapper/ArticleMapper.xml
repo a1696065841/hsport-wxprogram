@@ -8,7 +8,11 @@
         <result column="article" property="article"/>
         <result column="userID" property="userID"/>
         <result column="articleType" property="articleType"/>
+        <result column="imgUrl" property="imgUrl"/>
+        <result column="articleTitle" property="articleTitle"/>
+        <result column="articleType" property="articleType"/>
     </resultMap>
+
     <select id="getArticleType" resultType="map">
     SELECT articleType  FROM t_article GROUP BY articleType
     </select>

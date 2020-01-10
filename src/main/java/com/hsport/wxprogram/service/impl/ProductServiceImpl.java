@@ -26,4 +26,9 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     public List<Object> selectMap(ProductQuery query) {
         return productMapper.selectMap(query);
     }
+
+    @Override
+    public Integer selectMapTotal(ProductQuery query) {
+        return productMapper.selectMapTotal(query);
+    }
 }

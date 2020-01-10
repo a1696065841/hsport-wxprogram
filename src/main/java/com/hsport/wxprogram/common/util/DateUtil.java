@@ -78,7 +78,6 @@ public class DateUtil {
         Date sourcedate = format.parse(source);
         Date tragetdate = format.parse(traget);
         int i = sourcedate.compareTo(tragetdate);
-
         return i;
     }
     public static boolean isTodayPlanTime() throws Exception {

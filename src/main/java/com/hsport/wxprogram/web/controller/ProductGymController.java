@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -57,8 +58,6 @@ public class ProductGymController {
         }
     }
 
-
-
     /**
     * 分页查询数据
     *
@@ -68,7 +67,10 @@ public class ProductGymController {
     @ApiOperation(value="来获取所有ProductGym详细信息并分页", notes="根据page页数和传入的query查询条件 来获取某些ProductGym详细信息")
     @RequestMapping(value = "/json",method = RequestMethod.POST)
     public AjaxResult json(@RequestBody ProductGymQuery query){
-            return AjaxResult.me().setResultObj(productGymService.selectWithAll(query));
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("rows",productGymService.selectWithAll(query));
+        map.put("total",productGymService.selectWithAllTotal(query));
+        return AjaxResult.me().setResultObj(map);
     }
 
 }

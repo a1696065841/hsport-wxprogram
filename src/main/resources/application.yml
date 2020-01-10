@@ -13,6 +13,8 @@ spring:
 mybatis-plus:
   mapper-locations: classpath:com/hsport/wxprogram/mapper/*Mapper.xml
   type-aliases-package: com.hsport.wxprogram.domain,com.hsport.wxprogram.query
+  configuration:
+    call-setters-on-nulls: true
 logging:
   level:
     com.hsport.*: debug

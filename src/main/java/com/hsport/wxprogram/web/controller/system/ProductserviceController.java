@@ -1,6 +1,7 @@
 package com.hsport.wxprogram.web.controller.system;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.Gym;
 import com.hsport.wxprogram.domain.Product;
 import com.hsport.wxprogram.service.IProductService;
 import com.hsport.wxprogram.service.IProductserviceService;
@@ -47,7 +48,11 @@ public class ProductserviceController {
             return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage()).setSuccess(false);
         }
     }
-
+    @ApiOperation(value = "来获取这个对象的详细信息")
+    @RequestMapping(value = "/getByID", method = RequestMethod.POST)
+    public AjaxResult getByID(@RequestBody Productservice productservice) {
+        return AjaxResult.me().setResultObj(productserviceService.selectById(productservice));
+    }
     /**
     * 删除对象信息
     * @param id

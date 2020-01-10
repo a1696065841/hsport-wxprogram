@@ -8,9 +8,9 @@
         <result column="sportsImgUrl" property="sportsImgUrl" />
         <result column="userID" property="userID" />
         <result column="date" property="date" />
-        <result column="todayburncaloriesID" property="todayburncaloriesID" />
         <result column="burnCalories" property="burnCalories" />
         <result column="burnType" property="burnType" />
+        <result column="isUsed" property="isUsed" />
     </resultMap>
 
 </mapper>

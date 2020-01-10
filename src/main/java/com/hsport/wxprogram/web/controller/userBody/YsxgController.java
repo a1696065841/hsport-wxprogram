@@ -69,6 +69,7 @@ public class YsxgController {
         return ysxgService.selectById(id);
     }
 
+
     @ApiOperation(value="根据user的id来获取详细信息")
     @RequestMapping(value = "/getByUserID",method = RequestMethod.POST)
     public AjaxResult getByUserID(@RequestBody User user) {

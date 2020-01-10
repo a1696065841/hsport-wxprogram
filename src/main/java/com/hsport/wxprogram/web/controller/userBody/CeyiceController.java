@@ -1,5 +1,7 @@
 package com.hsport.wxprogram.web.controller.userBody;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.common.util.DateUtil;
 import com.hsport.wxprogram.domain.User;
@@ -16,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -40,6 +43,8 @@ public class CeyiceController {
          */
         Ceyice ceyice = new Ceyice();
         //vo对象赋值
+        ceyice.setName(ceyiceVo.getName());
+        ceyice.setSex(ceyiceVo.getSex());
         ceyice.setDsjfqkFantan(ceyiceVo.getDsjfqkFantan());
         ceyice.setFmsfyrbjp(ceyiceVo.getFmsfyrbjp());
         ceyice.setMzcjydpl(ceyiceVo.getMzcjydpl());
@@ -51,14 +56,24 @@ public class CeyiceController {
         ceyice.setTzhsmxzj(ceyiceVo.getTzhsmxzj());
         ceyice.setYdcxsj(ceyiceVo.getYdcxsj());
         ceyice.setUserID(ceyiceVo.getUserID());
+        ceyice.setYaowei(ceyiceVo.getYaowei());
         //多选 赋值
-        ceyice.setRcpbqkDX(CharToString.C2S(ceyiceVo.getRcpbqkDX()));
-        ceyice.setRcsmzlDX(CharToString.C2S(ceyiceVo.getrcsmzlDX()));
-        ceyice.setRcysqkDX(CharToString.C2S(ceyiceVo.getRcysqkDX()));
-        String BuweiYdSuns = CharToString.C2S(ceyiceVo.getBuweiYdSunsDX());
-        ceyice.setBuweiYdSunsDX(BuweiYdSuns);
-        ceyice.setYsxwxgDX(CharToString.C2S(ceyiceVo.getYsxwxgDX()));
-        ceyice.setYqJianfeiJLDX(CharToString.C2S(ceyiceVo.getYqJianfeiJLDX()));
+
+        JSONObject getRcpbqkDX = new JSONObject(ceyiceVo.getRcpbqkDX());
+       ceyice.setRcpbqkDX(getRcpbqkDX.toJSONString());
+
+        JSONObject getRcsmzlDX = new JSONObject(ceyiceVo.getRcsmzlDX());
+        ceyice.setRcsmzlDX(getRcsmzlDX.toJSONString());
+
+        JSONObject getRcysqkDX = new JSONObject(ceyiceVo.getRcysqkDX());
+        ceyice.setRcysqkDX(getRcysqkDX.toJSONString());
+
+        JSONObject getBuweiYdSunsDX = new JSONObject(ceyiceVo.getBuweiYdSunsDX());
+        ceyice.setBuweiYdSunsDX(getBuweiYdSunsDX.toJSONString());
+        JSONObject getYsxwxgDX = new JSONObject(ceyiceVo.getYsxwxgDX());
+        ceyice.setYsxwxgDX(getYsxwxgDX.toJSONString());
+        JSONObject getYqJianfeiJLDX = new JSONObject(ceyiceVo.getYqJianfeiJLDX());
+        ceyice.setYqJianfeiJLDX(getYqJianfeiJLDX.toJSONString());
         ceyice.setDate(DateUtil.now());
         try {
             if(ceyice.getId()!=null){
@@ -94,15 +109,80 @@ public class CeyiceController {
     @ApiOperation(value="根据用户的id来获取Ceyice详细信息")
     @RequestMapping(value = "/getByUserID",method = RequestMethod.POST)
     public AjaxResult getByUserID(@RequestBody User user) {
+        HashMap<String, Object> map = new HashMap<>();
         Long id = user.getId();
-        Page<Ceyice> page = new Page<Ceyice>(0,1);
+        Page<Ceyice> page = new Page<Ceyice>(0, 1);
         EntityWrapper<Ceyice> ceyiceEntityWrapper = new EntityWrapper<>();
         ceyiceEntityWrapper.eq("userID",id);
         ceyiceEntityWrapper.orderBy("date",false);
-        page = ceyiceService.selectPage(page,ceyiceEntityWrapper);
-        return AjaxResult.me().setResultObj(page.getRecords());
-    }
+        page = ceyiceService.selectPage(page, ceyiceEntityWrapper);
+        List<Ceyice> records = page.getRecords();
+        Ceyice ceyice = null;
+        try {
+            if (records.size() > 0) {
+                ceyice = records.get(0);
+                map.put("name", ceyice.getName());
+                map.put("sex",ceyice.getSex());
+                map.put("age",ceyice.getAge());
+                map.put("height",ceyice.getHeight());
+                map.put("weight",ceyice.getWeight());
+                map.put("yaowei",ceyice.getYaowei());
+                map.put("tunwei",ceyice.getTunwei());
+                //bmi
+                double bmi = ceyice.getWeight() / (Math.pow(ceyice.getHeight() / 100, 2));
+                System.out.println(bmi + "-----bmi");
+                map.put("bmi", bmi);
+                //体脂率
+                double bfr = 0;
+                double a = ceyice.getYaowei() * 0.74;
+                if (ceyice.getSex() == 0) {
+                    double b = ceyice.getWeight() * 0.082 + 34.89;
+                    double zfzl = a - b;
+                    bfr = zfzl / ceyice.getWeight();
+                } else if (ceyice.getSex() == 1) {
+                    double b = ceyice.getWeight() * 0.082 + 44.74;
+                    double zfzl = a - b;
+                    bfr = zfzl / ceyice.getWeight();
+                }
+                map.put("tizhi", bfr);
+                //腰臀比
+                map.put("yaoTunBi", ceyice.getYaowei() / ceyice.getTunwei());
+                String[] strings = new String[]{};
 
+                HashMap ysxg = JSON.parseObject(ceyice.getYsxwxgDX(), HashMap.class);
+                map.put("ysxg",ysxg);
+                HashMap hashMap = JSON.parseObject(ceyice.getRcysqkDX(), HashMap.class);
+                map.put("RcysqkDX",hashMap);
+                Integer mzcjydpl = ceyice.getMzcjydpl();
+                if (mzcjydpl==1){
+                    map.put("ydxg","雷打不动,稳如泰山!");
+                }else if (mzcjydpl==2){
+                    map.put("ydxg","坚持运动,健康又放松!");
+                }else {
+                    map.put("ydxg","运动达人,666");
+                }
+                map.put("aoye",ceyice.getSfjcay());
+                map.put("sleepTime",ceyice.getPjsmsj());
+                HashMap rcsmzl = JSON.parseObject(ceyice.getRcsmzlDX(), HashMap.class);
+                if (rcsmzl.get("isno").equals("0")){
+                    map.put("smzl","睡眠质量差");
+                }else {
+                    map.put("smzl","睡眠质量优");
+                }
+                map.put("yali",ceyice.getRcylfx());
+                HashMap pbqk = JSON.parseObject(ceyice.getRcpbqkDX(), HashMap.class);
+                if (pbqk.size()>4){
+                    map.put("changDao",4);
+                }else {
+                    map.put("changDao",pbqk.size());
+                }
+                map.put("riskOFobesity",strings);
+            }
+            return AjaxResult.me().setResultObj(map);
+        } catch (Exception e) {
+            return new AjaxResult("程序异常 请联系客服");
+        }
+    }
     /**
     * 查看所有的员工信息
     * @return
@@ -110,7 +190,6 @@ public class CeyiceController {
     @ApiOperation(value="来获取所有Ceyice详细信息")
     @RequestMapping(value = "/list",method = RequestMethod.POST)
     public List<Ceyice> list(){
-
         return ceyiceService.selectList(null);
     }
 

@@ -4,10 +4,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.domain.*;
 import com.hsport.wxprogram.domain.vo.IntaketypeVo;
 import com.hsport.wxprogram.domain.vo.TodayIntakePlanVo;
-import com.hsport.wxprogram.service.IFoodService;
-import com.hsport.wxprogram.service.IIntaketypeService;
-import com.hsport.wxprogram.service.ISportsplanService;
-import com.hsport.wxprogram.service.ITodayintakeplanService;
+import com.hsport.wxprogram.service.*;
 import com.hsport.wxprogram.query.TodayintakeplanQuery;
 import com.hsport.wxprogram.common.util.AjaxResult;
 import com.hsport.wxprogram.common.util.DateUtil;
@@ -43,6 +40,8 @@ public class TodayintakeplanController {
     public IIntaketypeService intaketypeService;
     @Autowired
     HttpServletRequest request;
+    @Autowired
+    public ITodayintakeService todayintakeService;
     /**
      * 保存和修改公用的
      *
@@ -69,25 +68,14 @@ public class TodayintakeplanController {
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public AjaxResult insert(@RequestBody TodayIntakePlanVo todayIntakePlanVo) {
         try {
-            Todayintakeplan todayintakeplan = todayIntakePlanVo.getTodayintakeplan();
-            todayintakeplanService.insert(todayintakeplan);
-            List<IntaketypeVo> intaketypeVoList = todayIntakePlanVo.getIntaketypeVoList();
-            for (IntaketypeVo intaketypeVo : intaketypeVoList) {
-                Intaketype intaketype = intaketypeVo.getIntaketype();
-                intaketypeService.insert(intaketype);
-                List<Food> foodList = intaketypeVo.getFoodList();
-                Integer id = intaketype.getId();
-                for (Food food : foodList) {
-                    food.setIntakeTypeID(id);
-                    foodService.insert(food);
-                }
-            }
+            todayintakeplanService.saveTodayIntakePlanAll(todayIntakePlanVo);
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
             return AjaxResult.me().setMessage("保存对象失败！" + e.getMessage()).setSuccess(false);
         }
     }
+
 
     /**
      * 删除对象信息
@@ -110,7 +98,7 @@ public class TodayintakeplanController {
 
 
     /**
-     * 改！！！！！
+     * 暂时用不上
      */
     @ApiOperation(value = "根据user的id来获取详细信息")
     @RequestMapping(value = "/getListByUserID", method = RequestMethod.POST)
@@ -121,40 +109,18 @@ public class TodayintakeplanController {
         return AjaxResult.me().setResultObj(todayintakeplanService.selectList(todayintakeplanEntityWrapper));
     }
 
-    /**
-     * 改！！！！！
-     */
-    @ApiOperation(value = "根据user的id来获取详细信息")
-    @RequestMapping(value = "/getSanCanByUserID", method = RequestMethod.POST)
-    public AjaxResult getSanCanByUserID(@RequestBody User user) {
-        Long id = user.getId();
-        HashMap<String, Object> stringIntegerHashMap = new HashMap<>();
-        Todayintakeplan todayintakeplan = todayintakeplanService.selectTheDayIntakePlanByUserID(id, DateUtil.today());
-        if (todayintakeplan != null) {
-
-        } else {
-            stringIntegerHashMap.put("zaocan", "暂无");
-            stringIntegerHashMap.put("wucan", "暂无");
-            stringIntegerHashMap.put("wancan", "暂无");
-            stringIntegerHashMap.put("jiacan", "暂无");
-        }
-        return  AjaxResult.me().setResultObj(stringIntegerHashMap);
-    }
-
     @ApiOperation(value = "来根据userID获取所有今日饮食计划的信息")
     @RequestMapping(value = "/getTodayByUserID", method = RequestMethod.POST)
     public AjaxResult getTodayByUserID(@RequestBody User user) {
         Long id = user.getId();
-        DateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
         Todayintakeplan todayintakeplan = null;
         HashMap<String, Object> stringObjectHashMap = new HashMap<>();
         List<Object> foodlist = new ArrayList<>();
         //用户的今日计划 根据对应总计划查询
-       /* EntityWrapper<Todayintakeplan> todayintakeplanEntityWrapper = new EntityWrapper<>();
-        todayintakeplanEntityWrapper.eq("userID", id);
-        todayintakeplanEntityWrapper.eq("date", DateUtil.today());*/
         todayintakeplan = todayintakeplanService.selectTheDayIntakePlanByUserID(id,DateUtil.today());
-
+        if(todayintakeplan==null){
+            return new AjaxResult("用户暂无今日饮食计划!");
+        }
         stringObjectHashMap.put("todayintakeplan", todayintakeplan);
         List<Intaketype> intaketypes = intaketypeService.selectList(new EntityWrapper<Intaketype>().eq("userID", id).eq("date", DateUtil.today()));
         for (Intaketype intaketype : intaketypes) {
@@ -166,6 +132,12 @@ public class TodayintakeplanController {
             foodlist.add(map);
         }
         stringObjectHashMap.put("todayFood", foodlist);
+        Todayintake todayintake = todayintakeService.selectTheDayIntakePlanByUserID(id, DateUtil.today());
+        if (todayintake!=null){
+            stringObjectHashMap.put("todayIntake",todayintake.getDayIntake());
+        }else {
+            stringObjectHashMap.put("todayIntake",0);
+        }
         return AjaxResult.me().setResultObj(stringObjectHashMap);
     }
 

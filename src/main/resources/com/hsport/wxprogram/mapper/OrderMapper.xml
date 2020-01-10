@@ -6,17 +6,50 @@
     <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Order">
         <id column="id" property="id" />
         <result column="userID" property="userID" />
-        <result column="stratDate" property="stratDate" />
+        <result column="starDate" property="starDate" />
         <result column="productID" property="productID" />
         <result column="totalPrice" property="totalPrice" />
         <result column="orderType" property="orderType" />
         <result column="endDate" property="endDate" />
         <result column="regionID" property="regionID"/>
         <result column="consigneeID" property="consigneeID"/>
+        <result column="isDistribution" property="isDistribution"/>
+        <result column="specificationID" property="specificationID"/>
+        <result column="couponID" property="couponID" />
     </resultMap>
 
-    <select id="selectOrderByUserID" parameterType="Long" resultType="map">
-        SELECT o.id,o.orderType,o.totalPrice,p.productname,p.pro_desc FROM t_order o LEFT JOIN t_product p ON o.productID = p.id WHERE o.userID=#{id}
+    <select id="selectOrderByUserIDTotal" parameterType="OrderQuery" resultType="integer">
+        SELECT  COUNT(*) FROM t_order o LEFT JOIN t_product p ON o.productID = p.id WHERE o.userID=#{keyword}
     </select>
-    
+
+    <select id="selectOrderByUserID" parameterType="OrderQuery" resultType="map">
+        SELECT o.id,o.orderType,o.totalPrice,p.productname,p.pro_desc FROM t_order o LEFT JOIN t_product p ON o.productID = p.id WHERE o.userID=#{keyword}
+        limit #{page},#{rows}
+    </select>
+
+    <sql id="whereSql">
+        <where>
+            <if test="keyword!=null and keyword!=''">
+                and l.name like concat('%',#{keyword},'%')
+            </if>
+        </where>
+    </sql>
+
+    <select id="selectOrderMap" parameterType="OrderQuery" resultType="map">
+        SELECT o.id,o.orderType,o.totalPrice,o.endDate,o.isDistribution,o.startDate,o.userID,
+        s.specificationName,s.specificationPrice,p.productname,
+        l.name,l.telphone,l.weixinNum,l.sex,u.phone loginPhone
+        FROM t_order o
+        LEFT JOIN t_product p ON o.productID = p.id LEFT JOIN t_user u ON u.id=o.userID
+        LEFT JOIN t_specification s ON s.id=o.specificationID LEFT JOIN t_lxxx l ON  l.userID= u.id ORDER BY o.startDate DESC
+        <include refid="whereSql"/>
+        limit #{page},#{rows}
+    </select>
+
+    <select id="selectOrderMapTotal" parameterType="OrderQuery" resultType="integer">
+        SELECT COUNT(*)
+        FROM t_order o
+        LEFT JOIN t_product p ON o.productID = p.id LEFT JOIN t_user u ON u.id=o.userID
+        LEFT JOIN t_specification s ON s.id=o.specificationID LEFT JOIN t_lxxx l ON  l.userID= u.id
+    </select>
 </mapper>

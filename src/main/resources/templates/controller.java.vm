@@ -40,9 +40,14 @@ public class ${entity}Controller {
         }
     }
 
+    @ApiOperation(value = "来获取这个id的${entity}详细信息")
+    @RequestMapping(value = "/getByID", method = RequestMethod.POST)
+    public AjaxResult getByID(@RequestBody ${entity} ${table.entityPath}) {
+        return AjaxResult.me().setResultObj(${table.entityPath}Service.selectById(${table.entityPath}));
+    }
     /**
     * 删除对象信息
-    * @param id
+    * @param ${table.entityPath}
     * @return
     */
     @ApiOperation(value="删除${entity}信息", notes="删除对象信息")

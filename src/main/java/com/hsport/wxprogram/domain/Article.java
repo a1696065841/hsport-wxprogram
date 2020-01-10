@@ -30,7 +30,7 @@ public class Article extends Model<Article> {
     private String articleType;
     private String imgUrl;
     private String articleTitle;
-    private Long productID;
+
 
     public void setUserID(Long userID) {
         this.userID = userID;
@@ -52,13 +52,6 @@ public class Article extends Model<Article> {
         this.articleTitle = articleTitle;
     }
 
-    public Long getProductID() {
-        return productID;
-    }
-
-    public void setProductID(Long productID) {
-        this.productID = productID;
-    }
 
     public Integer getId() {
         return id;

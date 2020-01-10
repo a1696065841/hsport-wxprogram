@@ -52,13 +52,6 @@ public class Todaysportsplans extends Model<Todaysportsplans> {
     @TableField("todaySP_id")
     private Integer todayspId;
 
-    public Integer getProductServiceID() {
-        return productServiceID;
-    }
-
-    public void setProductServiceID(Integer productServiceID) {
-        this.productServiceID = productServiceID;
-    }
 
     public String getDate() {
         return date;
@@ -67,17 +60,25 @@ public class Todaysportsplans extends Model<Todaysportsplans> {
     public void setDate(String date) {
         this.date = date;
     }
-    private Integer userID;
+    private Long userID;
 
-    private Integer productServiceID;
+    public Integer getTodayBurn() {
+        return todayBurn;
+    }
+
+    public void setTodayBurn(Integer todayBurn) {
+        this.todayBurn = todayBurn;
+    }
+
+    private Integer todayBurn;
 
     private String  date;
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

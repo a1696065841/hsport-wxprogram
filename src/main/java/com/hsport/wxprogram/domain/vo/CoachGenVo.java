@@ -4,16 +4,16 @@ public class CoachGenVo {
     private String phone;
     private String password;
     private String testcode;
-    private String employmentTime;
+    private Double employmentTime;
     private String coachName;
     private Integer gymID;
     private String birthday;
 
-    public String getEmploymentTime() {
+    public Double getEmploymentTime() {
         return employmentTime;
     }
 
-    public void setEmploymentTime(String employmentTime) {
+    public void setEmploymentTime(Double employmentTime) {
         this.employmentTime = employmentTime;
     }
 

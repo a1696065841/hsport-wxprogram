@@ -1,6 +1,7 @@
 package com.hsport.wxprogram.web.controller.system;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.domain.Productservice;
 import com.hsport.wxprogram.service.IRegionService;
 import com.hsport.wxprogram.domain.Region;
 import com.hsport.wxprogram.query.RegionQuery;
@@ -97,7 +98,11 @@ public class RegionController {
         return AjaxResult.me().setResultObj(list);
     }
 
-
+    @ApiOperation(value = "来获取这个对象的详细信息")
+    @RequestMapping(value = "/getByID", method = RequestMethod.POST)
+    public AjaxResult getByID(@RequestBody Region region) {
+        return AjaxResult.me().setResultObj(regionService.selectById(region));
+    }
     /**
     * 分页查询数据
     *

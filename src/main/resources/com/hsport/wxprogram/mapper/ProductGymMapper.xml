@@ -34,6 +34,9 @@
         <include refid="whereSql"/>
         limit #{page},#{rows}
     </select>
-
+    <select id="selectWithAllTotal" resultType="integer" parameterType="ProductGymQuery">
+        SELECT COUNT(*)
+        FROM t_product_gym pg LEFT JOIN t_product p ON p.id=pg.productID LEFT  JOIN  t_gym  g ON g.id=pg.gymID LEFT JOIN t_region r ON r.id=g.region_id
+    </select>
 
 </mapper>

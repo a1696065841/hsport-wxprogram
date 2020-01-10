@@ -36,13 +36,13 @@ public class Todaysp extends Model<Todaysp> {
 
 
 
-    private Integer userID;
+    private Long userID;
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

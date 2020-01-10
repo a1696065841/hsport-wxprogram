@@ -7,10 +7,42 @@ import com.baomidou.mybatisplus.enums.IdType;
 import com.hsport.wxprogram.domain.Ceyice;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 public class CeyiceVo {
-        private Integer id;
-        /**
+
+    private String name;
+    private Integer sex;
+
+    private Integer id;
+
+    public Integer getYaowei() {
+        return yaowei;
+    }
+
+    public void setYaowei(Integer yaowei) {
+        this.yaowei = yaowei;
+    }
+
+    public Integer yaowei;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
+
+    /**
          * 父母是否有人比较胖
          */
         private Integer fmsfyrbjp;
@@ -21,11 +53,11 @@ public class CeyiceVo {
         /**
          * 日常饮食情况多选题!!
          */
-        private String[] rcysqkDX;
+        private HashMap rcysqkDX;
         /**
          * 饮食行为习惯
          */
-        private String[] ysxwxgDX;
+        private HashMap ysxwxgDX;
         private Integer sfyydxg;
         /**
          * 每周参加运动频率
@@ -38,7 +70,7 @@ public class CeyiceVo {
         /**
          * 部位运动损伤多选
          */
-        private String[] buweiYdSunsDX;
+        private HashMap buweiYdSunsDX;
         /**
          * 是否经常熬夜
          */
@@ -47,12 +79,12 @@ public class CeyiceVo {
          * 平均睡眠时间
          */
         private Integer pjsmsj;
-        private String[] rcsmzlDX;
-        private String[] rcpbqkDX;
+        private HashMap rcsmzlDX;
+        private HashMap rcpbqkDX;
         /**
          * 以前有过的减肥经历多选
          */
-        private String[] yqJianfeiJLDX;
+        private HashMap yqJianfeiJLDX;
         /**
          * 日常压力分析
          */
@@ -61,7 +93,7 @@ public class CeyiceVo {
          * 当时减肥效果和反弹情况
          */
         private Integer dsjfqkFantan;
-        private Integer userID;
+        private Long userID;
 
 
         public Integer getId() {
@@ -88,23 +120,27 @@ public class CeyiceVo {
             this.tzhsmxzj = tzhsmxzj;
         }
 
-        public String[] getRcysqkDX() {
-            return rcysqkDX;
-        }
+    public HashMap getRcysqkDX() {
+        return rcysqkDX;
+    }
 
-        public void setRcysqkDX(String[] rcysqkDX) {
-            this.rcysqkDX = rcysqkDX;
-        }
+    public void setRcysqkDX(HashMap rcysqkDX) {
+        this.rcysqkDX = rcysqkDX;
+    }
 
-        public String[] getYsxwxgDX() {
-            return ysxwxgDX;
-        }
+    public HashMap getYsxwxgDX() {
+        return ysxwxgDX;
+    }
 
-        public void setYsxwxgDX(String[] ysxwxgDX) {
-            this.ysxwxgDX = ysxwxgDX;
-        }
+    public void setYsxwxgDX(HashMap ysxwxgDX) {
+        this.ysxwxgDX = ysxwxgDX;
+    }
 
-        public Integer getSfyydxg() {
+    public void setBuweiYdSunsDX(HashMap buweiYdSunsDX) {
+        this.buweiYdSunsDX = buweiYdSunsDX;
+    }
+
+    public Integer getSfyydxg() {
             return sfyydxg;
         }
 
@@ -128,15 +164,11 @@ public class CeyiceVo {
             this.ydcxsj = ydcxsj;
         }
 
-        public String[] getBuweiYdSunsDX() {
-            return buweiYdSunsDX;
-        }
+    public HashMap getBuweiYdSunsDX() {
+        return buweiYdSunsDX;
+    }
 
-        public void setBuweiYdSunsDX(String[] buweiYdSunsDX) {
-            this.buweiYdSunsDX = buweiYdSunsDX;
-        }
-
-        public Integer getSfjcay() {
+    public Integer getSfjcay() {
             return sfjcay;
         }
 
@@ -152,31 +184,31 @@ public class CeyiceVo {
             this.pjsmsj = pjsmsj;
         }
 
-        public String[] getrcsmzlDX() {
-            return rcsmzlDX;
-        }
+    public HashMap getRcsmzlDX() {
+        return rcsmzlDX;
+    }
 
-        public void setrcsmzlDX(String[] rcsmzlDX) {
-            this.rcsmzlDX = rcsmzlDX;
-        }
+    public void setRcsmzlDX(HashMap rcsmzlDX) {
+        this.rcsmzlDX = rcsmzlDX;
+    }
 
-        public String[] getRcpbqkDX() {
-            return rcpbqkDX;
-        }
+    public HashMap getRcpbqkDX() {
+        return rcpbqkDX;
+    }
 
-        public void setRcpbqkDX(String[] rcpbqkDX) {
-            this.rcpbqkDX = rcpbqkDX;
-        }
+    public void setRcpbqkDX(HashMap rcpbqkDX) {
+        this.rcpbqkDX = rcpbqkDX;
+    }
 
-        public String[] getYqJianfeiJLDX() {
-            return yqJianfeiJLDX;
-        }
+    public HashMap getYqJianfeiJLDX() {
+        return yqJianfeiJLDX;
+    }
 
-        public void setYqJianfeiJLDX(String[] yqJianfeiJLDX) {
-            this.yqJianfeiJLDX = yqJianfeiJLDX;
-        }
+    public void setYqJianfeiJLDX(HashMap yqJianfeiJLDX) {
+        this.yqJianfeiJLDX = yqJianfeiJLDX;
+    }
 
-        public Integer getRcylfx() {
+    public Integer getRcylfx() {
             return rcylfx;
         }
 
@@ -192,11 +224,11 @@ public class CeyiceVo {
             this.dsjfqkFantan = dsjfqkFantan;
         }
 
-        public Integer getUserID() {
+        public Long getUserID() {
             return userID;
         }
 
-        public void setUserID(Integer userID) {
+        public void setUserID(Long userID) {
             this.userID = userID;
         }
 

@@ -22,7 +22,7 @@ public class User extends Model<User> {
 
     private Long id;
     private String phone;
-    private Integer coachID;
+    private Long coachID;
     private String password;
 
     /**
@@ -42,7 +42,16 @@ public class User extends Model<User> {
      * userType
      */
     private Integer userType;
-    private Integer bodyID;
+
+    public String getOpenID() {
+        return openID;
+    }
+
+    public void setOpenID(String openID) {
+        this.openID = openID;
+    }
+
+    private String openID;
     /**
      * 所在地
      */
@@ -81,11 +90,11 @@ public class User extends Model<User> {
     }
 
 
-    public Integer getCoachID() {
+    public Long getCoachID() {
         return coachID;
     }
 
-    public void setCoachID(Integer coachID) {
+    public void setCoachID(Long coachID) {
         this.coachID = coachID;
     }
 
@@ -122,14 +131,6 @@ public class User extends Model<User> {
         this.userType = userType;
     }
 
-    public Integer getBodyID() {
-        return bodyID;
-    }
-
-    public void setBodyID(Integer bodyID) {
-        this.bodyID = bodyID;
-    }
-
     @Override
     protected Serializable pkVal() {
         return this.id;
@@ -145,7 +146,7 @@ public class User extends Model<User> {
                 ", loginTime=" + loginTime +
                 ", loginCount=" + loginCount +
                 ", userType=" + userType +
-                ", bodyID=" + bodyID +
+                ", openID=" + openID +
                 "}";
     }
 }

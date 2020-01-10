@@ -42,7 +42,7 @@ public class ArticleProductController {
 
     /**
     * 删除对象信息
-    * @param id
+    * @param articleProduct
     * @return
     */
     @ApiOperation(value="删除ArticleProduct信息", notes="删除对象信息")
@@ -79,7 +79,7 @@ public class ArticleProductController {
     @ApiOperation(value="来获取所有ArticleProduct详细信息并分页", notes="根据page页数和传入的query查询条件 来获取某些ArticleProduct详细信息")
     @RequestMapping(value = "/json",method = RequestMethod.POST)
     public AjaxResult json(@RequestBody ArticleProductQuery query)
-    {
+        {
         Page<ArticleProduct> page = new Page<ArticleProduct>(query.getPage(),query.getRows());
             page = articleProductService.selectPage(page);
             return AjaxResult.me().setResultObj(new PageList<ArticleProduct>(page.getTotal(),page.getRecords()));

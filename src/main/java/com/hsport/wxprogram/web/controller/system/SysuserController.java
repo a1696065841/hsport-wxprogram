@@ -1,6 +1,7 @@
 package com.hsport.wxprogram.web.controller.system;
 
 
+import com.hsport.wxprogram.domain.Region;
 import com.hsport.wxprogram.domain.Sysuser;
 import com.hsport.wxprogram.service.ISysuserService;
 
@@ -42,6 +43,11 @@ public class SysuserController {
             e.printStackTrace();
             return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage()).setSuccess(false);
         }
+    }
+    @ApiOperation(value = "来获取这个对象的详细信息")
+    @RequestMapping(value = "/getByID", method = RequestMethod.POST)
+    public AjaxResult getByID(@RequestBody Sysuser sysuser) {
+        return AjaxResult.me().setResultObj(sysuserService.selectById(sysuser));
     }
 
     /**

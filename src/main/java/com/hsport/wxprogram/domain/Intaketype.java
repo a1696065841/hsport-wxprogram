@@ -24,7 +24,7 @@ public class Intaketype extends Model<Intaketype> {
     private Integer id;
     private String intakePlanName;
 
-    private Integer userID;
+    private Long userID;
     private String date;
 
 
@@ -46,11 +46,11 @@ public class Intaketype extends Model<Intaketype> {
 
 
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

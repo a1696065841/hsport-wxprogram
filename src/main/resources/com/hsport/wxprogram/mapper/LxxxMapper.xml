@@ -19,6 +19,8 @@
         <result column="ecPhone" property="ecPhone" />
         <result column="userID" property="userID" />
         <result column="specialNeeds" property="specialNeeds" />
+        <result column="sex" property="sex" />
+        <result column="age" property="age" />
     </resultMap>
 
     <select id="getByUserID" parameterType="Long"  resultType="Lxxx">

@@ -15,6 +15,25 @@
         <result column="genTime" property="genTime" />
         <result column="loginTime" property="loginTime" />
         <result column="loginCount" property="loginCount" />
+        <result column="sex" property="sex"/>
     </resultMap>
+
+    <sql id="whereSql">
+        <where>
+            <if test="keyword!=null and keyword!=''">
+                and c.coachName like concat('%',#{keyword},'%')
+            </if>
+        </where>
+    </sql>
+
+    <select id="selectWithGym"  resultType="Map" parameterType="CoachQuery">
+        SELECT c.*,g.id gymID,g.gym_name FROM t_coach c LEFT JOIN t_gym g ON g.id=c.gymID
+        <include refid="whereSql"/>
+        limit #{page},#{rows}
+    </select>
+
+    <select id="selectWithGymTotal"  resultType="Integer" parameterType="CoachQuery">
+        SELECT COUNT(*) FROM t_coach c LEFT JOIN t_gym g ON g.id=c.gymID
+    </select>
 
 </mapper>

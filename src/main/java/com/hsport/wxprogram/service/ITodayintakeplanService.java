@@ -1,8 +1,10 @@
 package com.hsport.wxprogram.service;
 
+import com.hsport.wxprogram.common.util.AjaxResult;
 import com.hsport.wxprogram.domain.Todayintakeplan;
 import com.baomidou.mybatisplus.service.IService;
 import com.hsport.wxprogram.domain.Todaysp;
+import com.hsport.wxprogram.domain.vo.TodayIntakePlanVo;
 
 /**
  * <p>
@@ -13,5 +15,7 @@ import com.hsport.wxprogram.domain.Todaysp;
  * @since 2019-11-28
  */
 public interface ITodayintakeplanService extends IService<Todayintakeplan> {
-    public Todayintakeplan selectTheDayIntakePlanByUserID(Long id,String date);
+     Todayintakeplan selectTheDayIntakePlanByUserID(Long id,String date);
+     AjaxResult saveTodayIntakePlanAll(TodayIntakePlanVo todayIntakePlanVo) throws Exception;
+
 }

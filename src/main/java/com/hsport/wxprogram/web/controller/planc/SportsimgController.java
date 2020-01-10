@@ -1,5 +1,10 @@
 package com.hsport.wxprogram.web.controller.planc;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.common.util.DateUtil;
+import com.hsport.wxprogram.domain.Foodimg;
+import com.hsport.wxprogram.domain.Sportsplan;
+import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.ISportsimgService;
 import com.hsport.wxprogram.domain.Sportsimg;
 import com.hsport.wxprogram.query.SportsimgQuery;
@@ -7,6 +12,7 @@ import com.hsport.wxprogram.common.util.AjaxResult;
 import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.hsport.wxprogram.common.util.picUtil;
+import com.hsport.wxprogram.service.ISportsplanService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,19 +32,30 @@ public class SportsimgController {
     public ISportsimgService sportsimgService;
     @Autowired
     HttpServletRequest request;
+    @Autowired
+    public ISportsplanService sportsplanService;
 
     @ApiOperation(value="新增或修改Sportsimg信息")
     @RequestMapping(value="/save",method= RequestMethod.POST)
-    public AjaxResult save(@RequestBody Sportsimg sportsimg){
+    public AjaxResult save(@RequestBody List<Sportsimg> sportsimgs){
         AjaxResult ajaxResult = new AjaxResult();
     /*    if (!ajaxResult.haveAnyOneLogin(request)){
             return  new AjaxResult("用户无权限或已过期,请重新登录");
         }*/
+        if (sportsimgs.size()>0){
+            List<Sportsplan> sportsplans = sportsplanService.selectMyplanOnDo(sportsimgs.get(0).getUserID());
+            if (sportsplans.size()==0){
+                return new AjaxResult("用户暂无计划,不能执行此操作!");
+            }
+        }
         try {
-            if(sportsimg.getId()!=null){
-                sportsimgService.updateById(sportsimg);
-            }else{
-                sportsimgService.insert(sportsimg);
+            for (Sportsimg sportsimg : sportsimgs) {
+                if(sportsimg.getId()!=null){
+                    sportsimgService.updateById(sportsimg);
+                }else{
+                    sportsimg.setDate(DateUtil.today());
+                    sportsimgService.insert(sportsimg);
+                }
             }
             return AjaxResult.me();
         } catch (Exception e) {
@@ -83,4 +100,13 @@ public class SportsimgController {
             return new PageList<Sportsimg>(page.getTotal(),page.getRecords());
     }
 
+    @ApiOperation(value = "根据该用户的id查询今天上传的运动图片")
+    @RequestMapping(value = "/getSportsImgListByUserID", method = RequestMethod.POST)
+    public AjaxResult getSportsImgListByUserID(@RequestBody User user) {
+        Long id = user.getId();
+        EntityWrapper<Sportsimg> userEntityWrapper = new EntityWrapper<>();
+        userEntityWrapper.eq("date", DateUtil.today());
+        userEntityWrapper.eq("userID", id);
+        return AjaxResult.me().setResultObj(sportsimgService.selectList(userEntityWrapper));
+    }
 }

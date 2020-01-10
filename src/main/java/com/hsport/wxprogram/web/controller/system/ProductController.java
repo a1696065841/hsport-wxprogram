@@ -36,6 +36,9 @@ public class ProductController {
     public IDetailsService detailsService;
     @Autowired
     public IGymService gymService;
+    @Autowired
+    public ISpecificationService specificationService;
+
     /**
      * 保存和修改公用的
      *
@@ -118,7 +121,11 @@ public class ProductController {
         return AjaxResult.me().setResultObj(productService.selectList(null));
     }
 
-
+    @ApiOperation(value = "来获取所有Product详细信息")
+    @RequestMapping(value = "/getByID", method = RequestMethod.POST)
+    public AjaxResult getByID(@RequestBody Product product) {
+        return AjaxResult.me().setResultObj(productService.selectById(product));
+    }
     /**
      * 分页查询数据
      *
@@ -136,7 +143,13 @@ public class ProductController {
     @ApiOperation(value = "来获取所有Product详细信息并分页", notes = "根据page页数和传入的query查询条件 来获取某些Product详细信息")
     @RequestMapping(value = "/map", method = RequestMethod.POST)
     public AjaxResult map(@RequestBody ProductQuery query) {
-        return AjaxResult.me().setResultObj(productService.selectMap(query));
+        Integer page = (query.getPage()-1)*query.getRows();
+        query.setPage(page);
+        HashMap<String, Object> map = new HashMap<>();
+        List<Object> objects = productService.selectMap(query);
+        map.put("total",productService.selectMapTotal(query));
+        map.put("rows",objects);
+        return AjaxResult.me().setResultObj(map);
     }
 
     @ApiOperation(value = "来获取所有Product详细信息并分页", notes = "根据page页数和传入的query查询条件 来获取某些Product详细信息")
@@ -144,7 +157,7 @@ public class ProductController {
     public AjaxResult productAll(@RequestBody Product product) {
         HashMap<String, Object> map = new HashMap<>();
         Product product1 = productService.selectById(product);
-        map.put("product",product);
+        map.put("product",product1);
         Integer id = product1.getId();
         List<Details> details = detailsService.selectList(new EntityWrapper<Details>().eq("productID", id));
         map.put("details",details);
@@ -157,6 +170,8 @@ public class ProductController {
             gyms.add(gym);
         }
         map.put("gyms",gyms);
+        List<Specification> specifications = specificationService.selectList(new EntityWrapper<Specification>().eq("productID", id));
+        map.put("Specification",specifications);
         return AjaxResult.me().setResultObj(map);
     }
 }

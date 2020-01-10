@@ -93,7 +93,7 @@ public class LoginController {
         User myCurrentUser = (User) currentUser.getPrincipal();
         //把sessionID存在Redis里
         JSONObject loginUser = (JSONObject) JSONObject.toJSON(myCurrentUser);
-        redisService.setWithTime(currentUser.getSession().getId().toString(),loginUser.toJSONString(),60*60);
+        redisService.setWithTime(currentUser.getSession().getId().toString(),loginUser.toJSONString(),60*60*24*7);
         //查询并修改用户登录时间和次数
         userService.updateLoginUser(myCurrentUser);
         myCurrentUser.setPassword(null);
@@ -132,7 +132,7 @@ public class LoginController {
         CoachContext.setUser(myCurrentUser);
         //token放入缓存
         JSONObject loginUser = (JSONObject) JSONObject.toJSON(myCurrentUser);
-        redisService.setWithTime(currentUser.getSession().getId().toString(),loginUser.toJSONString(),43967);
+        redisService.setWithTime(currentUser.getSession().getId().toString(),loginUser.toJSONString(),60*60*24*7);
         //给前台返回信息
         result.put("coach", myCurrentUser);
         //为了做基于token会话管理,还要把sessionId返回到前台
@@ -264,7 +264,7 @@ public class LoginController {
     }
 
 
-    @RequestMapping(value="/outLogin",method= RequestMethod.GET)
+    @RequestMapping(value="/outLogin",method= RequestMethod.POST)
     @CrossOrigin
     @ResponseBody
     public AjaxResult outLogin(ServletRequest request, ServletResponse response ){

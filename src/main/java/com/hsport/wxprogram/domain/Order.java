@@ -20,9 +20,47 @@ public class Order extends Model<Order> {
     private static final long serialVersionUID = 1L;
 
     private String id;
-    private Integer userID;
+    private Long userID;
     private Integer consigneeID;
     private Integer regionID;
+    private Integer isDistribution;
+    private Integer specificationID;
+    private Integer couponID;
+    /**
+     * 购买时间
+     */
+    private String startDate;
+    private Integer productID;
+    private Double totalPrice;
+    private Integer orderType;
+    /**
+     * 订单完成时间
+     */
+    private String endDate;
+
+    public Integer getCouponID() {
+        return couponID;
+    }
+
+    public void setCouponID(Integer couponID) {
+        this.couponID = couponID;
+    }
+
+    public Integer getSpecificationID() {
+        return specificationID;
+    }
+
+    public void setSpecificationID(Integer specificationID) {
+        this.specificationID = specificationID;
+    }
+
+    public Integer getIsDistribution() {
+        return isDistribution;
+    }
+
+    public void setIsDistribution(Integer isDistribution) {
+        this.isDistribution = isDistribution;
+    }
 
     public Integer getRegionID() {
         return regionID;
@@ -40,19 +78,6 @@ public class Order extends Model<Order> {
         this.consigneeID = consigneeID;
     }
 
-    /**
-     * 购买时间
-     */
-    private String stratDate;
-    private Integer productID;
-    private Double totalPrice;
-    private Integer orderType;
-    /**
-     * 订单完成时间
-     */
-    private String endDate;
-
-
     public String getId() {
         return id;
     }
@@ -61,20 +86,20 @@ public class Order extends Model<Order> {
         this.id = id;
     }
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 
-    public String getStratDate() {
-        return stratDate;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setStratDate(String stratDate) {
-        this.stratDate = stratDate;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
     public Integer getProductID() {
@@ -119,7 +144,7 @@ public class Order extends Model<Order> {
         return "Order{" +
         ", id=" + id +
         ", userID=" + userID +
-        ", stratDate=" + stratDate +
+        ", stratDate=" + startDate +
         ", productID=" + productID +
         ", totalPrice=" + totalPrice +
         ", orderType=" + orderType +

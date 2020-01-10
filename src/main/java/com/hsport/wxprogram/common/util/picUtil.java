@@ -45,11 +45,12 @@ public class picUtil {
             //所以我们可以去掉去掉"-"符号
             String picname = str.substring(0, 8) + str.substring(9, 13) + str.substring(14, 18) + str.substring(19, 23) + str.substring(24);
             String relativeAddr = picname + extension;  //唯一的名字接上后缀
+
             //图片压缩
             Thumbnails.of(pc1.getInputStream()).size(200, 200)    //写入
                     .outputQuality(0.8f).toFile(path + "/" + relativeAddr);
             logger.debug("文件写入成功...");
-            return Paths.get(path + "/" + relativeAddr).toString();
+            return relativeAddr;
         } catch (IOException e) {
             e.printStackTrace();
             return "服务器异常...";

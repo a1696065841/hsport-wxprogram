@@ -6,10 +6,11 @@
     <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Stageplan">
         <id column="id" property="id" />
         <result column="stageOfCycle" property="stageOfCycle" />
-        <result column="stageTime" property="stageTime" />
+        <result column="stageTimeStart" property="stageTimeStart" />
         <result column="stageTarget" property="stageTarget" />
-        <result column="userID" property="userID" />
+        <result column="sportsplanID" property="sportsplanID" />
         <result column="durationOfExercise" property="durationOfExercise" />
+        <result column="stageTimeEnd" property="stageTimeEnd"/>
     </resultMap>
 
 </mapper>

@@ -23,31 +23,30 @@ public class Foodimg extends Model<Foodimg> {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     private String foodImgUrl;
-    private Integer userID;
-    private Integer todayintakeplanID;
+    private Long userID;
     private String date;
-    private Integer foodType;
+    private String  foodType;
     private Integer foodPro;
     private Integer foodCarbon;
     private String foodName;
     private Integer foodWeight;
-    private Integer coachID;
     private Integer foodCalories;
-    private Integer productserviceID;
+    private Integer foodCellulose;
+    private boolean isUsed;
 
-    public Integer getProductserviceID() {
-        return productserviceID;
+    public boolean isUsed() {
+        return isUsed;
     }
 
-    public void setProductserviceID(Integer productserviceID) {
-        this.productserviceID = productserviceID;
+    public void setUsed(boolean used) {
+        isUsed = used;
     }
 
-    public Integer getFoodType() {
+    public String getFoodType() {
         return foodType;
     }
 
-    public void setFoodType(Integer foodType) {
+    public void setFoodType(String foodType) {
         this.foodType = foodType;
     }
 
@@ -83,13 +82,7 @@ public class Foodimg extends Model<Foodimg> {
         this.foodWeight = foodWeight;
     }
 
-    public Integer getCoachID() {
-        return coachID;
-    }
 
-    public void setCoachID(Integer coachID) {
-        this.coachID = coachID;
-    }
 
     public Integer getFoodCalories() {
         return foodCalories;
@@ -107,8 +100,6 @@ public class Foodimg extends Model<Foodimg> {
         this.foodCellulose = foodCellulose;
     }
 
-    private Integer foodCellulose;
-
     public Integer getId() {
         return id;
     }
@@ -125,20 +116,12 @@ public class Foodimg extends Model<Foodimg> {
         this.foodImgUrl = foodImgUrl;
     }
 
-    public Integer getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
-    }
-
-    public Integer getTodayintakeplanID() {
-        return todayintakeplanID;
-    }
-
-    public void setTodayintakeplanID(Integer todayintakeplanID) {
-        this.todayintakeplanID = todayintakeplanID;
     }
 
     public String getDate() {
@@ -157,10 +140,17 @@ public class Foodimg extends Model<Foodimg> {
     @Override
     public String toString() {
         return "Foodimg{" +
-                ", id=" + id +
-                ", foodImgUrl=" + foodImgUrl +
+                "id=" + id +
+                ", foodImgUrl='" + foodImgUrl + '\'' +
                 ", userID=" + userID +
-                ", todayintakeplanID=" + todayintakeplanID +
-                "}";
+                ", date='" + date + '\'' +
+                ", foodType=" + foodType +
+                ", foodPro=" + foodPro +
+                ", foodCarbon=" + foodCarbon +
+                ", foodName='" + foodName + '\'' +
+                ", foodWeight=" + foodWeight +
+                ", foodCalories=" + foodCalories +
+                ", foodCellulose=" + foodCellulose +
+                '}';
     }
 }

@@ -27,5 +27,10 @@ public class ProductGymServiceImpl extends ServiceImpl<ProductGymMapper, Product
         return productGymMapper.selectWithAll(query);
     }
 
+    @Override
+    public Integer selectWithAllTotal(ProductGymQuery query) {
+        return productGymMapper.selectWithAllTotal(query);
+    }
+
 
 }

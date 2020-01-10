@@ -55,6 +55,15 @@ public class Coach extends Model<Coach> {
     private String genTime;
     private String loginTime;
     private Integer loginCount;
+    private Integer sex;
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
 
     public String getGenTime() {
         return genTime;
@@ -83,7 +92,7 @@ public class Coach extends Model<Coach> {
     /**
      * 从业时间
      */
-    private String employmentTime;
+    private Double employmentTime;
 
     /**
      * 健身房id
@@ -112,11 +121,11 @@ public class Coach extends Model<Coach> {
     }
 
 
-    public String getEmploymentTime() {
+    public Double getEmploymentTime() {
         return employmentTime;
     }
 
-    public void setEmploymentTime(String employmentTime) {
+    public void setEmploymentTime(Double employmentTime) {
         this.employmentTime = employmentTime;
     }
 

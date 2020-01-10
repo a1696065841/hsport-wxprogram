@@ -16,6 +16,6 @@ import java.util.List;
  */
 public interface IProductGymService extends IService<ProductGym> {
     List<Object> selectWithAll(ProductGymQuery query);
-
+    Integer selectWithAllTotal(ProductGymQuery query);
 
 }

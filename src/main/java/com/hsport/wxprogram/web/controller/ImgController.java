@@ -33,7 +33,7 @@ public class ImgController {
             if (s.equals("文件为空，请重新上传")){
                 return AjaxResult.me().setMessage("文件为空，请重新上传！");
             }
-            return AjaxResult.me().setSuccess(true).setResultObj(s);
+            return AjaxResult.me().setSuccess(true).setResultObj("http://test.qinglizi.vip/imgggbond/"+s);
         }catch (Exception e){
             e.printStackTrace();
             return AjaxResult.me().setMessage("上传图片失败！"+e.getMessage()).setSuccess(false);

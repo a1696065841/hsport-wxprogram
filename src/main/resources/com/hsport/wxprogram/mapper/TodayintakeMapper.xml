@@ -14,10 +14,11 @@
         <result column="date" property="date"/>
         <result column="sportsPlanID" property="sportsPlanID"/>
         <result column="userID" property="userID"/>
+        <result column="fatIntake" property="fatIntake" />
     </resultMap>
 
     <select id="getAvgAndAllByUserID" parameterType="Long" resultType="map">
-  SELECT SUM(dayIntake) sumDayIntake,AVG(dayIntake) avgIntake,DATEDIFF(DATE_SUB(curdate(),INTERVAL 0 DAY),str_to_date(s.planStratTime,'%Y.%m.%d')) usedays
+  SELECT SUM(dayIntake) sumDayIntake,AVG(dayIntake) avgIntake
   FROM t_todayintake i LEFT JOIN t_sportsplan s ON i.sportsPlanID=s.id
    WHERE i.userID=#{id}
     </select>

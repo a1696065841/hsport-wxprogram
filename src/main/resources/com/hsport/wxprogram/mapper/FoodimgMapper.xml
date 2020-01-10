@@ -7,15 +7,15 @@
         <id column="id" property="id"/>
         <result column="foodImgUrl" property="foodImgUrl"/>
         <result column="userID" property="userID"/>
-        <result column="todayintakeplanID" property="todayintakeplanID"/>
         <result column="date" property="date"/>
         <result column="foodType" property="foodType"/>
         <result column="foodPro" property="foodPro"/>
         <result column="foodCarbon" property="foodCarbon"/>
         <result column="foodName" property="foodName"/>
         <result column="foodWeight" property="foodWeight"/>
-        <result column="coachID" property="coachID"/>
         <result column="foodCalories" property="foodCalories"/>
+        <result column="foodCellulose" property="foodCellulose"/>
+        <result column="isUsed" property="isUsed" />
     </resultMap>
 
 </mapper>

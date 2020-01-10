@@ -18,11 +18,11 @@ import java.util.List;
 @RequestMapping("/jibing")
 @CrossOrigin
 
-public class JibingController {
+public class  JibingController {
     @Autowired
     public IJibingService jibingService;
     @Autowired
-    HttpServletRequest request;
+    public HttpServletRequest request;
     /**
     * 保存和修改公用的
     * @param jibing  传递的实体
@@ -64,8 +64,7 @@ public class JibingController {
     //获取用户
     @ApiOperation(value="根据url的id来获取Jibing详细信息")
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Jibing get(@PathVariable("id")Integer id)
-    {
+    public Jibing get(@PathVariable("id")Integer id) {
         return jibingService.selectById(id);
     }
 
@@ -97,8 +96,7 @@ public class JibingController {
     */
     @ApiOperation(value="来获取所有Jibing详细信息并分页", notes="根据page页数和传入的query查询条件 来获取某些Jibing详细信息")
     @RequestMapping(value = "/json",method = RequestMethod.POST)
-    public PageList<Jibing> json(@RequestBody JibingQuery query)
-    {
+    public PageList<Jibing> json(@RequestBody JibingQuery query) {
         Page<Jibing> page = new Page<Jibing>(query.getPage(),query.getRows());
             page = jibingService.selectPage(page);
             return new PageList<Jibing>(page.getTotal(),page.getRecords());

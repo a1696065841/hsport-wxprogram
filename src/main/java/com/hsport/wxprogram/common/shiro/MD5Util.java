@@ -16,6 +16,6 @@ public class MD5Util {
 
     }
     public static void main(String[] args){
-        System.out.println(creaMd5pwd("123456"));
+        System.out.println(creaMd5pwd("123123"));
     }
 }

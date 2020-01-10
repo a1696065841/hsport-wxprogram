@@ -14,9 +14,11 @@
         <result column="planEndDate" property="planEndDate"/>
         <result column="planType" property="planType"/>
         <result column="coachID" property="coachID"/>
-        <result column="masterPlanCellulose" property="masterPlanCellulose"/>
-        <result column="masterPlanCarbon" property="masterPlanCarbon"/>
-        <result column="masterPlanPro" property="masterPlanPro"/>
+        <result column="avgPlanCellulose" property="avgPlanCellulose"/>
+        <result column="avgPlanCarbon" property="avgPlanCarbon"/>
+        <result column="avgPlanPro" property="avgPlanPro"/>
+        <result column="avgPlanIntake" property="avgPlanIntake" />
+        <result column="avgPlanFat" property="avgPlanFat" />
     </resultMap>
 
     <select id="selectAllPlanWithUser" parameterType="Long" resultMap="BaseResultMap">
@@ -31,17 +33,9 @@
      limit #{page},#{rows}
    </select>
 
-    <select id="getUserIntakeEverday" parameterType="Long"  resultType="map" >
-        SELECT s.id,s.userID,
-        (s.masterPlanIntake/s.planUseDays) intakeEverday,
-        (s.masterPlanCarbon/s.planUseDays) carbonEverday,
-        (s.masterPlanCellulose/s.planUseDays) celluloseEverday,
-        (s.masterPlanPro/s.planUseDays) proEverday
-        from t_sportsplan s WHERE s.userID=#{id} AND s.planEndDate is NULL AND (s.planType=1 or s.planType=3 )
-    </select>
-    
+
     <select id="getMyPlan" parameterType="com.hsport.wxprogram.query.SportsplanQuery" resultType="map" >
-       SELECT tb.burnCaloriesPer,ti.dayIntake FROM  t_todayburncalories tb,t_todayintake ti WHERE tb.userID=#{userID} AND  ti.userID=#{userID} AND tb.date=#{date} AND ti.date=#{date}
+       SELECT tb.burnCaloriesPer,ti.dayIntake FROM  t_todayburncalories tb,t_todayintake ti WHERE tb.userID=#{userID} AND  ti.userID=#{userID} AND tb.date=#{date} AND ti.date=#{date} limit 0,1
     </select>
 
 </mapper>

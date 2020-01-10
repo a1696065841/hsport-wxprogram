@@ -23,6 +23,16 @@ public class Todayintake extends Model<Todayintake> {
     private Integer id;
     private Integer intakeCalories;
     private Integer dayIntake;
+    private Integer  fatIntake;
+
+    public Integer getFatIntake() {
+        return fatIntake;
+    }
+
+    public void setFatIntake(Integer fatIntake) {
+        this.fatIntake = fatIntake;
+    }
+
     /**
      * 蛋白质百分比
      */

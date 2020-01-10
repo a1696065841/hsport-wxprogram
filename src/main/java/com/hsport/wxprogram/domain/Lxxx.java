@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.io.Serializable;
 
@@ -15,6 +16,7 @@ import java.io.Serializable;
  * @author lhb
  * @since 2019-12-22
  */
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 @TableName("t_lxxx")
 public class Lxxx extends Model<Lxxx> {
 
@@ -22,6 +24,16 @@ public class Lxxx extends Model<Lxxx> {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
+    private Integer age;
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
     private String name;
     private String telphone;
     private String weixinNum;
@@ -45,7 +57,15 @@ public class Lxxx extends Model<Lxxx> {
     private String ecPhone;
     private Long userID;
     private String specialNeeds;
+    private Integer sex;
 
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
 
     public Integer getId() {
         return id;
