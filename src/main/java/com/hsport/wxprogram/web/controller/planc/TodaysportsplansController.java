@@ -93,6 +93,7 @@ public class TodaysportsplansController {
         Long id = user.getId();
         EntityWrapper<Todaysportsplans> todayintakeplanEntityWrapper = new EntityWrapper<>();
         todayintakeplanEntityWrapper.eq("userID", id);
+        todayintakeplanEntityWrapper.eq("date",DateUtil.today());
         map.put("imgs",sportsimgs);
         map.put("todaySportPlans",todaysportsplansService.selectList(todayintakeplanEntityWrapper));
         return AjaxResult.me().setResultObj(map);

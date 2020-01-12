@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -147,37 +148,45 @@ public class CeyiceController {
                 map.put("tizhi", bfr);
                 //腰臀比
                 map.put("yaoTunBi", ceyice.getYaowei() / ceyice.getTunwei());
-                String[] strings = new String[]{};
+                ArrayList<String> strings = new ArrayList<>();
 
                 HashMap ysxg = JSON.parseObject(ceyice.getYsxwxgDX(), HashMap.class);
                 map.put("ysxg",ysxg);
                 HashMap hashMap = JSON.parseObject(ceyice.getRcysqkDX(), HashMap.class);
                 map.put("RcysqkDX",hashMap);
+                if (hashMap.size()>2){
+                    strings.add("饮食习惯差!");
+                }
                 Integer mzcjydpl = ceyice.getMzcjydpl();
                 if (mzcjydpl==1){
                     map.put("ydxg","雷打不动,稳如泰山!");
+                    strings.add("运动次数过少!");
                 }else if (mzcjydpl==2){
                     map.put("ydxg","坚持运动,健康又放松!");
                 }else {
-                    map.put("ydxg","运动达人,666");
+                    map.put("ydxg","运动达人666,但也要有适当休整才行哦!");
                 }
                 map.put("aoye",ceyice.getSfjcay());
                 map.put("sleepTime",ceyice.getPjsmsj());
                 HashMap rcsmzl = JSON.parseObject(ceyice.getRcsmzlDX(), HashMap.class);
                 if (rcsmzl.get("isno").equals("0")){
                     map.put("smzl","睡眠质量差");
+                    strings.add("睡眠质量差!");
                 }else {
                     map.put("smzl","睡眠质量优");
                 }
                 map.put("yali",ceyice.getRcylfx());
+                if (ceyice.getRcylfx()==4){
+                    strings.add("压力高");
+                }
                 HashMap pbqk = JSON.parseObject(ceyice.getRcpbqkDX(), HashMap.class);
                 if (pbqk.size()>4){
                     map.put("changDao",4);
                 }else {
                     map.put("changDao",pbqk.size());
+                    strings.add("肠道疾病及消化问题");
                 }
-                map.put("riskOFobesity",strings);
-            }
+                map.put("feipangyuanyin",strings);            }
             return AjaxResult.me().setResultObj(map);
         } catch (Exception e) {
             return new AjaxResult("程序异常 请联系客服");

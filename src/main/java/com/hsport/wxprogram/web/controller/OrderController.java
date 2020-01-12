@@ -1,6 +1,8 @@
 package com.hsport.wxprogram.web.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.toolkit.StringUtils;
 import com.hsport.wxprogram.common.util.DateUtil;
 import com.hsport.wxprogram.common.util.OrderCodeFactory;
 import com.hsport.wxprogram.domain.*;
@@ -11,13 +13,18 @@ import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
 import io.swagger.annotations.ApiOperation;
 import org.aspectj.weaver.ast.Or;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/order")
@@ -39,6 +46,7 @@ public class OrderController {
     public IDetailsService detailsService;
     @Autowired
     public IGymService gymService;
+    private static Logger logger = LoggerFactory.getLogger(OrderController.class);
     /**
      * 保存和修改公用的
      *
@@ -57,10 +65,6 @@ public class OrderController {
                 Specification specification = specificationService.selectById(order.getSpecificationID());
                 if (specification == null) {
                     return new AjaxResult("产品异常,请联系客服!");
-                }
-                Lxxx lxxx = lxxxService.selectOne(new EntityWrapper<Lxxx>().eq("userID", order.getUserID()));
-                if (lxxx==null){
-                    return new AjaxResult("请先填写个人信息后,再进行购买!");
                 }
                 order.setTotalPrice(specification.getSpecificationPrice());
                 //生成id
@@ -89,6 +93,7 @@ public class OrderController {
         }
         return  ajaxResult;
     }
+
     /**
      *憨憨
      *
@@ -147,7 +152,7 @@ public class OrderController {
 
 
     @ApiOperation(value = "根据用户的id来获取购买的订单信息")
-    @RequestMapping(value = "/selectOrderByUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/selectOrderByUserID", method = RequestMethod.POST)
     public AjaxResult selectOrderByUserID(@RequestBody OrderQuery query) {
         Integer page = (query.getPage()-1)*query.getRows();
         query.setPage(page);
@@ -163,15 +168,15 @@ public class OrderController {
         return AjaxResult.me().setResultObj(orderService.selectById(order));
     }
 
+
     /**
      * 查看所有的员工信息
      *
-     * @return
+     * @RETURN
      */
     @ApiOperation(value = "来获取所有Order详细信息")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public AjaxResult list() {
-
         return AjaxResult.me().setResultObj(orderService.selectList(null));
     }
 

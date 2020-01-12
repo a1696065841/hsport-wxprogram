@@ -1,4 +1,4 @@
-package com.hsport.wxprogram.web.controller;
+package com.hsport.wxprogram.web.controller.system;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.domain.Article;

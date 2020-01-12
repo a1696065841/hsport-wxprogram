@@ -1,4 +1,4 @@
-package com.hsport.wxprogram.web.controller;
+package com.hsport.wxprogram.web.controller.system;
 
 import com.hsport.wxprogram.service.IArticleProductService;
 import com.hsport.wxprogram.domain.ArticleProduct;

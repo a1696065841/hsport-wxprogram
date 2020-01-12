@@ -24,6 +24,15 @@ public class User extends Model<User> {
     private String phone;
     private Long coachID;
     private String password;
+    private String imgUrl;
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 
     /**
      * 创建时间

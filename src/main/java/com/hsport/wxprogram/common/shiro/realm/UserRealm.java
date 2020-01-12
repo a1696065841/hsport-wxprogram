@@ -2,6 +2,7 @@ package com.hsport.wxprogram.common.shiro.realm;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.common.shiro.MD5Util;
+import com.hsport.wxprogram.common.util.DateUtil;
 import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.service.IUserService;
 import org.apache.shiro.SecurityUtils;
@@ -38,14 +39,18 @@ public class UserRealm extends AuthorizingRealm {
         userEntityWrapper.eq("phone",name);
         User user =  userService.selectOne(userEntityWrapper);
         if (user==null){
-            throw new UnknownAccountException(name);
+            User user1 = new User();
+            user1.setGenTime(DateUtil.now());
+            user1.setPhone(name);
+            user1.setLoginCount(0);
+            boolean insert = userService.insert(user1);
+            Object principal = user1;
         }
         Object principal = user;
         String password = user.getPassword();
         ByteSource bytes = ByteSource.Util.bytes(MD5Util.SALT);
         String realmName = getName();
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(principal, password, bytes, realmName);
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(principal, password,null, realmName);
         return info;
-
     }
 }

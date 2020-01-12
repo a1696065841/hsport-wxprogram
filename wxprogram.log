@@ -1,651 +1,229 @@
-2020-01-10 10:48:11.828  INFO 11860 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Starting WxprogramApplication on DESKTOP-7KELHOS with PID 11860 (D:\opensource\workSpaceIDEA\wxprogram\target\classes started by 16960 in D:\opensource\workSpaceIDEA\wxprogram)
-2020-01-10 10:48:11.831 DEBUG 11860 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
-2020-01-10 10:48:11.831  INFO 11860 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : No active profile set, falling back to default profiles: default
-2020-01-10 10:48:11.868  INFO 11860 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2020-01-10 10:48:11.868  INFO 11860 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2020-01-10 10:48:12.765  INFO 11860 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2020-01-10 10:48:12.767  INFO 11860 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-01-10 10:48:12.808  INFO 11860 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29ms. Found 0 repository interfaces.
-2020-01-10 10:48:13.050  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:13.070  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.hsport.wxprogram.common.shiro.ShiroConfig$$EnhancerBySpringCGLIB$$be08f090] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:13.412  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'modularRealmAuthenticator' of type [com.hsport.wxprogram.common.shiro.realm.UserModularRealmAuthenticator] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:13.493  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusProperties' of type [com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:13.496  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'mybatisPlusConfig' of type [com.hsport.wxprogram.common.config.MybatisPlusConfig$$EnhancerBySpringCGLIB$$f5258fc3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:13.498  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'paginationInterceptor' of type [com.baomidou.mybatisplus.plugins.PaginationInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:13.501  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$ebad6d75] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:13.503  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:13.509  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:13.526  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.zaxxer.hikari.HikariDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:13.532  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:13.564  INFO 11860 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-01-10 10:48:13.890  INFO 11860 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-01-10 10:48:14.619  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.621  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.622  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.624  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy89] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.627  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'orderMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.628  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'orderMapper' of type [com.sun.proxy.$Proxy90] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.628  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.hsport.wxprogram.service.impl.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.645  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'userRealm' of type [com.hsport.wxprogram.common.shiro.realm.UserRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.650  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'sysuserMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.651  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'sysuserMapper' of type [com.sun.proxy.$Proxy91] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.651  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'sysuserServiceImpl' of type [com.hsport.wxprogram.service.impl.SysuserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.655  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'SystemAdminRealm' of type [com.hsport.wxprogram.common.shiro.realm.SystemAdminRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.660  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'coachMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.661  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'coachMapper' of type [com.sun.proxy.$Proxy92] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.662  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'coachServiceImpl' of type [com.hsport.wxprogram.service.impl.CoachServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.666  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'coachRealm' of type [com.hsport.wxprogram.common.shiro.realm.CoachRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.670  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'SecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.680  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.681  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.hsport.wxprogram.common.config.TxAnoConfig$$EnhancerBySpringCGLIB$$c3bd2c14] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.683  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.685  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.688  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.690  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.693  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.697  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txSource' of type [org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.698  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'txInterceptor' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:14.699  INFO 11860 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'pointcutAdvisor' of type [org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 10:48:15.188  INFO 11860 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 4396 (http)
-2020-01-10 10:48:15.196  INFO 11860 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-01-10 10:48:15.196  INFO 11860 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
-2020-01-10 10:48:15.278  INFO 11860 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-01-10 10:48:15.278  INFO 11860 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3410 ms
-2020-01-10 10:48:16.181  INFO 11860 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2020-01-10 10:48:16.330  INFO 11860 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-01-10 10:48:16.358  INFO 11860 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2020-01-10 10:48:16.822  INFO 11860 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2020-01-10 10:48:16.835  INFO 11860 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2020-01-10 10:48:16.870  INFO 11860 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2020-01-10 10:48:16.974  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_1
-2020-01-10 10:48:16.976  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_1
-2020-01-10 10:48:16.977  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_1
-2020-01-10 10:48:16.979  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_1
-2020-01-10 10:48:16.988  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_2
-2020-01-10 10:48:16.992  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_2
-2020-01-10 10:48:17.000  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_2
-2020-01-10 10:48:17.007  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_3
-2020-01-10 10:48:17.010  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_3
-2020-01-10 10:48:17.021  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_4
-2020-01-10 10:48:17.023  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_2
-2020-01-10 10:48:17.028  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_4
-2020-01-10 10:48:17.032  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_3
-2020-01-10 10:48:17.037  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_5
-2020-01-10 10:48:17.038  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_1
-2020-01-10 10:48:17.039  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_5
-2020-01-10 10:48:17.045  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_4
-2020-01-10 10:48:17.048  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
-2020-01-10 10:48:17.050  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_1
-2020-01-10 10:48:17.053  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_6
-2020-01-10 10:48:17.055  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_6
-2020-01-10 10:48:17.058  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_5
-2020-01-10 10:48:17.060  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_1
-2020-01-10 10:48:17.062  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_7
-2020-01-10 10:48:17.063  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_3
-2020-01-10 10:48:17.064  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_7
-2020-01-10 10:48:17.066  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
-2020-01-10 10:48:17.070  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
-2020-01-10 10:48:17.075  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_8
-2020-01-10 10:48:17.077  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_2
-2020-01-10 10:48:17.079  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_8
-2020-01-10 10:48:17.081  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
-2020-01-10 10:48:17.084  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_3
-2020-01-10 10:48:17.087  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_9
-2020-01-10 10:48:17.088  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_3
-2020-01-10 10:48:17.091  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_9
-2020-01-10 10:48:17.093  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
-2020-01-10 10:48:17.097  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_10
-2020-01-10 10:48:17.100  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_10
-2020-01-10 10:48:17.103  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
-2020-01-10 10:48:17.105  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_11
-2020-01-10 10:48:17.109  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_11
-2020-01-10 10:48:17.114  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_6
-2020-01-10 10:48:17.114  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_2
-2020-01-10 10:48:17.116  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_12
-2020-01-10 10:48:17.117  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_4
-2020-01-10 10:48:17.118  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_12
-2020-01-10 10:48:17.124  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
-2020-01-10 10:48:17.128  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_13
-2020-01-10 10:48:17.130  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_13
-2020-01-10 10:48:17.132  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
-2020-01-10 10:48:17.135  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_4
-2020-01-10 10:48:17.137  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_2
-2020-01-10 10:48:17.139  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_14
-2020-01-10 10:48:17.140  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_4
-2020-01-10 10:48:17.144  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_14
-2020-01-10 10:48:17.145  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_7
-2020-01-10 10:48:17.148  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_5
-2020-01-10 10:48:17.149  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_3
-2020-01-10 10:48:17.151  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_15
-2020-01-10 10:48:17.153  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_5
-2020-01-10 10:48:17.155  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_15
-2020-01-10 10:48:17.179  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_8
-2020-01-10 10:48:17.183  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_6
-2020-01-10 10:48:17.184  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_4
-2020-01-10 10:48:17.186  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_16
-2020-01-10 10:48:17.187  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_6
-2020-01-10 10:48:17.191  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_16
-2020-01-10 10:48:17.196  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_9
-2020-01-10 10:48:17.199  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingPOST_1
-2020-01-10 10:48:17.200  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_3
-2020-01-10 10:48:17.202  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_17
-2020-01-10 10:48:17.203  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_7
-2020-01-10 10:48:17.204  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_17
-2020-01-10 10:48:17.208  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_7
-2020-01-10 10:48:17.209  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_4
-2020-01-10 10:48:17.211  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_18
-2020-01-10 10:48:17.212  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_5
-2020-01-10 10:48:17.217  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_18
-2020-01-10 10:48:17.219  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_8
-2020-01-10 10:48:17.220  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_19
-2020-01-10 10:48:17.222  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_19
-2020-01-10 10:48:17.223  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_9
-2020-01-10 10:48:17.224  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_5
-2020-01-10 10:48:17.227  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_20
-2020-01-10 10:48:17.228  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_6
-2020-01-10 10:48:17.229  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_20
-2020-01-10 10:48:17.233  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_10
-2020-01-10 10:48:17.235  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_6
-2020-01-10 10:48:17.237  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_21
-2020-01-10 10:48:17.238  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_7
-2020-01-10 10:48:17.239  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_21
-2020-01-10 10:48:17.241  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectAreaByCityIDUsingPOST_1
-2020-01-10 10:48:17.244  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_10
-2020-01-10 10:48:17.246  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_7
-2020-01-10 10:48:17.247  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_5
-2020-01-10 10:48:17.249  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_22
-2020-01-10 10:48:17.251  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_8
-2020-01-10 10:48:17.253  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_22
-2020-01-10 10:48:17.256  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_11
-2020-01-10 10:48:17.258  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_7
-2020-01-10 10:48:17.260  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_23
-2020-01-10 10:48:17.261  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_8
-2020-01-10 10:48:17.262  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_23
-2020-01-10 10:48:17.265  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_11
-2020-01-10 10:48:17.270  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_24
-2020-01-10 10:48:17.273  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_24
-2020-01-10 10:48:17.274  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_12
-2020-01-10 10:48:17.282  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_25
-2020-01-10 10:48:17.286  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_13
-2020-01-10 10:48:17.289  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_8
-2020-01-10 10:48:17.290  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_6
-2020-01-10 10:48:17.292  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_25
-2020-01-10 10:48:17.294  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_9
-2020-01-10 10:48:17.295  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_26
-2020-01-10 10:48:17.297  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_14
-2020-01-10 10:48:17.298  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_7
-2020-01-10 10:48:17.301  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_26
-2020-01-10 10:48:17.302  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_27
-2020-01-10 10:48:17.304  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_12
-2020-01-10 10:48:17.305  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_8
-2020-01-10 10:48:17.308  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_27
-2020-01-10 10:48:17.309  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_9
-2020-01-10 10:48:17.310  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_28
-2020-01-10 10:48:17.312  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_15
-2020-01-10 10:48:17.319  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_28
-2020-01-10 10:48:17.322  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_29
-2020-01-10 10:48:17.323  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_16
-2020-01-10 10:48:17.324  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAvgAndAllByUserIDUsingPOST_1
-2020-01-10 10:48:17.327  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_30
-2020-01-10 10:48:17.330  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_13
-2020-01-10 10:48:17.331  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_9
-2020-01-10 10:48:17.332  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_8
-2020-01-10 10:48:17.334  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_29
-2020-01-10 10:48:17.335  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_10
-2020-01-10 10:48:17.337  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_31
-2020-01-10 10:48:17.340  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_14
-2020-01-10 10:48:17.341  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getListByUserIDUsingPOST_1
-2020-01-10 10:48:17.346  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_30
-2020-01-10 10:48:17.347  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_32
-2020-01-10 10:48:17.349  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_17
-2020-01-10 10:48:17.353  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: insertUsingPOST_1
-2020-01-10 10:48:17.356  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_31
-2020-01-10 10:48:17.357  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_33
-2020-01-10 10:48:17.358  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_18
-2020-01-10 10:48:17.359  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getListByUserIDUsingPOST_2
-2020-01-10 10:48:17.362  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_32
-2020-01-10 10:48:17.363  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_34
-2020-01-10 10:48:17.367  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingPOST_2
-2020-01-10 10:48:17.373  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_33
-2020-01-10 10:48:17.374  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_10
-2020-01-10 10:48:17.375  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_35
-2020-01-10 10:48:17.377  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_19
-2020-01-10 10:48:17.380  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_9
-2020-01-10 10:48:17.381  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_9
-2020-01-10 10:48:17.383  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_34
-2020-01-10 10:48:17.384  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_11
-2020-01-10 10:48:17.385  INFO 11860 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_36
-2020-01-10 10:48:17.416  INFO 11860 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 4396 (http) with context path ''
-2020-01-10 10:48:17.418  INFO 11860 --- [restartedMain] c.hsport.wxprogram.WxprogramApplication  : Started WxprogramApplication in 6.1 seconds (JVM running for 7.26)
-2020-01-10 11:25:21.701  INFO 8716 --- [main] c.h.wxprogram.WxprogramApplicationTests  : Starting WxprogramApplicationTests on DESKTOP-7KELHOS with PID 8716 (started by 16960 in D:\opensource\workSpaceIDEA\wxprogram)
-2020-01-10 11:25:21.701 DEBUG 8716 --- [main] c.h.wxprogram.WxprogramApplicationTests  : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
-2020-01-10 11:25:21.702  INFO 8716 --- [main] c.h.wxprogram.WxprogramApplicationTests  : No active profile set, falling back to default profiles: default
-2020-01-10 11:25:22.592  INFO 8716 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2020-01-10 11:25:22.593  INFO 8716 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-01-10 11:25:22.629  INFO 8716 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25ms. Found 0 repository interfaces.
-2020-01-10 11:25:23.028  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:23.142  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.hsport.wxprogram.common.shiro.ShiroConfig$$EnhancerBySpringCGLIB$$2bd4e021] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:23.452  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'modularRealmAuthenticator' of type [com.hsport.wxprogram.common.shiro.realm.UserModularRealmAuthenticator] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:23.553  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusProperties' of type [com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:23.560  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatisPlusConfig' of type [com.hsport.wxprogram.common.config.MybatisPlusConfig$$EnhancerBySpringCGLIB$$62f17f54] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:23.568  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'paginationInterceptor' of type [com.baomidou.mybatisplus.plugins.PaginationInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:23.575  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$59795d06] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:23.576  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:23.587  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:23.607  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.zaxxer.hikari.HikariDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:23.617  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:23.660  INFO 8716 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-01-10 11:25:24.020  INFO 8716 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-01-10 11:25:24.813  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.821  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.822  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.825  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy95] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.830  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'orderMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.832  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'orderMapper' of type [com.sun.proxy.$Proxy96] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.832  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.hsport.wxprogram.service.impl.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.851  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRealm' of type [com.hsport.wxprogram.common.shiro.realm.UserRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.867  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sysuserMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.869  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sysuserMapper' of type [com.sun.proxy.$Proxy97] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.869  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sysuserServiceImpl' of type [com.hsport.wxprogram.service.impl.SysuserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.875  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'SystemAdminRealm' of type [com.hsport.wxprogram.common.shiro.realm.SystemAdminRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.890  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'coachMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.891  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'coachMapper' of type [com.sun.proxy.$Proxy98] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.893  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'coachServiceImpl' of type [com.hsport.wxprogram.service.impl.CoachServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.898  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'coachRealm' of type [com.hsport.wxprogram.common.shiro.realm.CoachRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.908  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'SecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.924  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.926  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.hsport.wxprogram.common.config.TxAnoConfig$$EnhancerBySpringCGLIB$$31891ba5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.930  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.933  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.939  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.941  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.949  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.956  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txSource' of type [org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.957  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txInterceptor' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:24.963  INFO 8716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'pointcutAdvisor' of type [org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 11:25:26.371  INFO 8716 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2020-01-10 11:25:26.742  INFO 8716 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-01-10 11:25:27.540  INFO 8716 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2020-01-10 11:25:27.559  INFO 8716 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2020-01-10 11:25:27.594  INFO 8716 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2020-01-10 11:25:27.710  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_1
-2020-01-10 11:25:27.712  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_1
-2020-01-10 11:25:27.714  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_1
-2020-01-10 11:25:27.716  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_1
-2020-01-10 11:25:27.726  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_2
-2020-01-10 11:25:27.731  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_2
-2020-01-10 11:25:27.741  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_2
-2020-01-10 11:25:27.749  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_3
-2020-01-10 11:25:27.756  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_3
-2020-01-10 11:25:27.771  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_4
-2020-01-10 11:25:27.773  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_2
-2020-01-10 11:25:27.779  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_4
-2020-01-10 11:25:27.783  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_3
-2020-01-10 11:25:27.789  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_5
-2020-01-10 11:25:27.791  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_1
-2020-01-10 11:25:27.793  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_5
-2020-01-10 11:25:27.800  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_4
-2020-01-10 11:25:27.803  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
-2020-01-10 11:25:27.806  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_1
-2020-01-10 11:25:27.809  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_6
-2020-01-10 11:25:27.811  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_6
-2020-01-10 11:25:27.815  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_5
-2020-01-10 11:25:27.817  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_1
-2020-01-10 11:25:27.819  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_7
-2020-01-10 11:25:27.821  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_3
-2020-01-10 11:25:27.823  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_7
-2020-01-10 11:25:27.825  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
-2020-01-10 11:25:27.829  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
-2020-01-10 11:25:27.835  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_8
-2020-01-10 11:25:27.837  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_2
-2020-01-10 11:25:27.840  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_8
-2020-01-10 11:25:27.842  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
-2020-01-10 11:25:27.846  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_3
-2020-01-10 11:25:27.850  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_9
-2020-01-10 11:25:27.851  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_3
-2020-01-10 11:25:27.855  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_9
-2020-01-10 11:25:27.857  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
-2020-01-10 11:25:27.861  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_10
-2020-01-10 11:25:27.865  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_10
-2020-01-10 11:25:27.867  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
-2020-01-10 11:25:27.870  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_11
-2020-01-10 11:25:27.874  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_11
-2020-01-10 11:25:27.880  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_6
-2020-01-10 11:25:27.882  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_2
-2020-01-10 11:25:27.884  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_12
-2020-01-10 11:25:27.885  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_4
-2020-01-10 11:25:27.887  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_12
-2020-01-10 11:25:27.893  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
-2020-01-10 11:25:27.897  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_13
-2020-01-10 11:25:27.899  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_13
-2020-01-10 11:25:27.900  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
-2020-01-10 11:25:27.904  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_4
-2020-01-10 11:25:27.905  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_2
-2020-01-10 11:25:27.908  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_14
-2020-01-10 11:25:27.909  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_4
-2020-01-10 11:25:27.913  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_14
-2020-01-10 11:25:27.915  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_7
-2020-01-10 11:25:27.918  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_5
-2020-01-10 11:25:27.919  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_3
-2020-01-10 11:25:27.921  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_15
-2020-01-10 11:25:27.923  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_5
-2020-01-10 11:25:27.926  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_15
-2020-01-10 11:25:27.949  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_8
-2020-01-10 11:25:27.954  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_6
-2020-01-10 11:25:27.956  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_4
-2020-01-10 11:25:27.959  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_16
-2020-01-10 11:25:27.961  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_6
-2020-01-10 11:25:27.966  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_16
-2020-01-10 11:25:27.973  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_9
-2020-01-10 11:25:27.976  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingPOST_1
-2020-01-10 11:25:27.978  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_3
-2020-01-10 11:25:27.980  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_17
-2020-01-10 11:25:27.981  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_7
-2020-01-10 11:25:27.983  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_17
-2020-01-10 11:25:27.987  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_7
-2020-01-10 11:25:27.989  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_4
-2020-01-10 11:25:27.992  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_18
-2020-01-10 11:25:27.993  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_5
-2020-01-10 11:25:27.999  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_18
-2020-01-10 11:25:28.003  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_8
-2020-01-10 11:25:28.005  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_19
-2020-01-10 11:25:28.006  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_19
-2020-01-10 11:25:28.009  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_9
-2020-01-10 11:25:28.010  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_5
-2020-01-10 11:25:28.014  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_20
-2020-01-10 11:25:28.016  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_6
-2020-01-10 11:25:28.017  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_20
-2020-01-10 11:25:28.021  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_10
-2020-01-10 11:25:28.023  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_6
-2020-01-10 11:25:28.025  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_21
-2020-01-10 11:25:28.026  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_7
-2020-01-10 11:25:28.027  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_21
-2020-01-10 11:25:28.029  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectAreaByCityIDUsingPOST_1
-2020-01-10 11:25:28.032  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_10
-2020-01-10 11:25:28.035  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_7
-2020-01-10 11:25:28.037  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_5
-2020-01-10 11:25:28.039  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_22
-2020-01-10 11:25:28.041  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_8
-2020-01-10 11:25:28.043  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_22
-2020-01-10 11:25:28.047  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_11
-2020-01-10 11:25:28.049  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_7
-2020-01-10 11:25:28.053  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_23
-2020-01-10 11:25:28.054  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_8
-2020-01-10 11:25:28.056  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_23
-2020-01-10 11:25:28.058  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_11
-2020-01-10 11:25:28.063  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_24
-2020-01-10 11:25:28.065  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_24
-2020-01-10 11:25:28.067  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_12
-2020-01-10 11:25:28.076  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_25
-2020-01-10 11:25:28.081  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_13
-2020-01-10 11:25:28.083  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_8
-2020-01-10 11:25:28.084  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_6
-2020-01-10 11:25:28.087  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_25
-2020-01-10 11:25:28.088  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_9
-2020-01-10 11:25:28.091  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_26
-2020-01-10 11:25:28.093  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_14
-2020-01-10 11:25:28.094  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_7
-2020-01-10 11:25:28.097  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_26
-2020-01-10 11:25:28.099  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_27
-2020-01-10 11:25:28.101  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_12
-2020-01-10 11:25:28.102  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_8
-2020-01-10 11:25:28.105  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_27
-2020-01-10 11:25:28.106  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_9
-2020-01-10 11:25:28.108  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_28
-2020-01-10 11:25:28.110  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_15
-2020-01-10 11:25:28.117  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_28
-2020-01-10 11:25:28.120  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_29
-2020-01-10 11:25:28.122  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_16
-2020-01-10 11:25:28.123  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAvgAndAllByUserIDUsingPOST_1
-2020-01-10 11:25:28.126  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_30
-2020-01-10 11:25:28.130  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_13
-2020-01-10 11:25:28.131  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_9
-2020-01-10 11:25:28.132  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_8
-2020-01-10 11:25:28.134  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_29
-2020-01-10 11:25:28.135  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_10
-2020-01-10 11:25:28.138  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_31
-2020-01-10 11:25:28.141  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_14
-2020-01-10 11:25:28.142  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getListByUserIDUsingPOST_1
-2020-01-10 11:25:28.149  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_30
-2020-01-10 11:25:28.150  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_32
-2020-01-10 11:25:28.152  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_17
-2020-01-10 11:25:28.157  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: insertUsingPOST_1
-2020-01-10 11:25:28.160  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_31
-2020-01-10 11:25:28.162  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_33
-2020-01-10 11:25:28.164  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_18
-2020-01-10 11:25:28.166  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getListByUserIDUsingPOST_2
-2020-01-10 11:25:28.171  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_32
-2020-01-10 11:25:28.172  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_34
-2020-01-10 11:25:28.177  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingPOST_2
-2020-01-10 11:25:28.185  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_33
-2020-01-10 11:25:28.186  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_10
-2020-01-10 11:25:28.188  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_35
-2020-01-10 11:25:28.191  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_19
-2020-01-10 11:25:28.194  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_9
-2020-01-10 11:25:28.196  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_9
-2020-01-10 11:25:28.198  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_34
-2020-01-10 11:25:28.200  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_11
-2020-01-10 11:25:28.201  INFO 8716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_36
-2020-01-10 11:25:28.218  INFO 8716 --- [main] c.h.wxprogram.WxprogramApplicationTests  : Started WxprogramApplicationTests in 6.805 seconds (JVM running for 7.653)
-2020-01-10 11:25:28.465 DEBUG 8716 --- [main] c.h.w.mapper.SportsimgMapper.selectList  : ==>  Preparing: SELECT id AS id,sportsImgUrl,userID,`date`,burnType,productserviceID,burnCalories,isUsed FROM t_sportsimg WHERE (date = ? AND userID = ?) 
-2020-01-10 11:25:28.483 DEBUG 8716 --- [main] c.h.w.mapper.SportsimgMapper.selectList  : ==> Parameters: 2020.01.10(String), 1398908905(Integer)
-2020-01-10 11:25:28.499 DEBUG 8716 --- [main] c.h.w.mapper.SportsimgMapper.selectList  : <==      Total: 0
-2020-01-10 11:25:28.526  INFO 8716 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2020-01-10 11:25:28.531  INFO 8716 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2020-01-10 11:25:28.534  INFO 8716 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2020-01-10 13:07:33.978  INFO 17384 --- [main] c.h.wxprogram.WxprogramApplicationTests  : Starting WxprogramApplicationTests on DESKTOP-7KELHOS with PID 17384 (started by 16960 in D:\opensource\workSpaceIDEA\wxprogram)
-2020-01-10 13:07:33.979 DEBUG 17384 --- [main] c.h.wxprogram.WxprogramApplicationTests  : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
-2020-01-10 13:07:33.980  INFO 17384 --- [main] c.h.wxprogram.WxprogramApplicationTests  : No active profile set, falling back to default profiles: default
-2020-01-10 13:07:34.901  INFO 17384 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2020-01-10 13:07:34.903  INFO 17384 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-01-10 13:07:34.947  INFO 17384 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32ms. Found 0 repository interfaces.
-2020-01-10 13:07:35.385  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:35.493  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.hsport.wxprogram.common.shiro.ShiroConfig$$EnhancerBySpringCGLIB$$90f3a72b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:35.801  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'modularRealmAuthenticator' of type [com.hsport.wxprogram.common.shiro.realm.UserModularRealmAuthenticator] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:35.897  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusProperties' of type [com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:35.905  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatisPlusConfig' of type [com.hsport.wxprogram.common.config.MybatisPlusConfig$$EnhancerBySpringCGLIB$$c810465e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:35.913  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'paginationInterceptor' of type [com.baomidou.mybatisplus.plugins.PaginationInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:35.920  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$be982410] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:35.924  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:35.934  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:35.955  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.zaxxer.hikari.HikariDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:35.965  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:36.010  INFO 17384 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-01-10 13:07:36.371  INFO 17384 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-01-10 13:07:37.185  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.192  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.193  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.196  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy95] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.201  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'orderMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.203  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'orderMapper' of type [com.sun.proxy.$Proxy96] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.204  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.hsport.wxprogram.service.impl.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.224  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRealm' of type [com.hsport.wxprogram.common.shiro.realm.UserRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.243  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sysuserMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.244  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sysuserMapper' of type [com.sun.proxy.$Proxy97] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.245  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sysuserServiceImpl' of type [com.hsport.wxprogram.service.impl.SysuserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.251  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'SystemAdminRealm' of type [com.hsport.wxprogram.common.shiro.realm.SystemAdminRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.268  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'coachMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.270  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'coachMapper' of type [com.sun.proxy.$Proxy98] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.272  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'coachServiceImpl' of type [com.hsport.wxprogram.service.impl.CoachServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.277  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'coachRealm' of type [com.hsport.wxprogram.common.shiro.realm.CoachRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.288  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'SecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.304  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.307  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.hsport.wxprogram.common.config.TxAnoConfig$$EnhancerBySpringCGLIB$$96a7e2af] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.311  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.315  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.321  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.323  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.332  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.339  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txSource' of type [org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.340  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txInterceptor' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:37.346  INFO 17384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'pointcutAdvisor' of type [org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-10 13:07:38.853  INFO 17384 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2020-01-10 13:07:39.213  INFO 17384 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-01-10 13:07:40.057  INFO 17384 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2020-01-10 13:07:40.079  INFO 17384 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2020-01-10 13:07:40.114  INFO 17384 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2020-01-10 13:07:40.230  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_1
-2020-01-10 13:07:40.232  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_1
-2020-01-10 13:07:40.234  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_1
-2020-01-10 13:07:40.236  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_1
-2020-01-10 13:07:40.246  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_2
-2020-01-10 13:07:40.251  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_2
-2020-01-10 13:07:40.260  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_2
-2020-01-10 13:07:40.267  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_3
-2020-01-10 13:07:40.273  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_3
-2020-01-10 13:07:40.296  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_4
-2020-01-10 13:07:40.299  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_2
-2020-01-10 13:07:40.306  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_4
-2020-01-10 13:07:40.310  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_3
-2020-01-10 13:07:40.316  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_5
-2020-01-10 13:07:40.317  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_1
-2020-01-10 13:07:40.319  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_5
-2020-01-10 13:07:40.326  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_4
-2020-01-10 13:07:40.330  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
-2020-01-10 13:07:40.332  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_1
-2020-01-10 13:07:40.336  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_6
-2020-01-10 13:07:40.338  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_6
-2020-01-10 13:07:40.342  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_5
-2020-01-10 13:07:40.344  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_1
-2020-01-10 13:07:40.346  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_7
-2020-01-10 13:07:40.348  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_3
-2020-01-10 13:07:40.350  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_7
-2020-01-10 13:07:40.352  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
-2020-01-10 13:07:40.355  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
-2020-01-10 13:07:40.361  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_8
-2020-01-10 13:07:40.363  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_2
-2020-01-10 13:07:40.367  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_8
-2020-01-10 13:07:40.369  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
-2020-01-10 13:07:40.372  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_3
-2020-01-10 13:07:40.375  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_9
-2020-01-10 13:07:40.377  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_3
-2020-01-10 13:07:40.380  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_9
-2020-01-10 13:07:40.382  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
-2020-01-10 13:07:40.387  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_10
-2020-01-10 13:07:40.390  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_10
-2020-01-10 13:07:40.393  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
-2020-01-10 13:07:40.396  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_11
-2020-01-10 13:07:40.400  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_11
-2020-01-10 13:07:40.405  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_6
-2020-01-10 13:07:40.407  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_2
-2020-01-10 13:07:40.409  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_12
-2020-01-10 13:07:40.410  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_4
-2020-01-10 13:07:40.411  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_12
-2020-01-10 13:07:40.418  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
-2020-01-10 13:07:40.421  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_13
-2020-01-10 13:07:40.424  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_13
-2020-01-10 13:07:40.426  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
-2020-01-10 13:07:40.429  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_4
-2020-01-10 13:07:40.431  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_2
-2020-01-10 13:07:40.433  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_14
-2020-01-10 13:07:40.435  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_4
-2020-01-10 13:07:40.438  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_14
-2020-01-10 13:07:40.440  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_7
-2020-01-10 13:07:40.443  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_5
-2020-01-10 13:07:40.444  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_3
-2020-01-10 13:07:40.446  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_15
-2020-01-10 13:07:40.448  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_5
-2020-01-10 13:07:40.450  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_15
-2020-01-10 13:07:40.473  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_8
-2020-01-10 13:07:40.478  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_6
-2020-01-10 13:07:40.479  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_4
-2020-01-10 13:07:40.481  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_16
-2020-01-10 13:07:40.483  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_6
-2020-01-10 13:07:40.487  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_16
-2020-01-10 13:07:40.493  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_9
-2020-01-10 13:07:40.496  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingPOST_1
-2020-01-10 13:07:40.497  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_3
-2020-01-10 13:07:40.499  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_17
-2020-01-10 13:07:40.501  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_7
-2020-01-10 13:07:40.502  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_17
-2020-01-10 13:07:40.507  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_7
-2020-01-10 13:07:40.509  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_4
-2020-01-10 13:07:40.511  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_18
-2020-01-10 13:07:40.512  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_5
-2020-01-10 13:07:40.518  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_18
-2020-01-10 13:07:40.522  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_8
-2020-01-10 13:07:40.524  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_19
-2020-01-10 13:07:40.525  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_19
-2020-01-10 13:07:40.528  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_9
-2020-01-10 13:07:40.529  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_5
-2020-01-10 13:07:40.532  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_20
-2020-01-10 13:07:40.534  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_6
-2020-01-10 13:07:40.536  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_20
-2020-01-10 13:07:40.541  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_10
-2020-01-10 13:07:40.542  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_6
-2020-01-10 13:07:40.544  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_21
-2020-01-10 13:07:40.545  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_7
-2020-01-10 13:07:40.547  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_21
-2020-01-10 13:07:40.549  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectAreaByCityIDUsingPOST_1
-2020-01-10 13:07:40.551  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_10
-2020-01-10 13:07:40.554  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_7
-2020-01-10 13:07:40.555  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_5
-2020-01-10 13:07:40.558  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_22
-2020-01-10 13:07:40.560  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_8
-2020-01-10 13:07:40.562  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_22
-2020-01-10 13:07:40.566  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_11
-2020-01-10 13:07:40.567  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_7
-2020-01-10 13:07:40.571  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_23
-2020-01-10 13:07:40.572  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_8
-2020-01-10 13:07:40.574  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_23
-2020-01-10 13:07:40.576  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_11
-2020-01-10 13:07:40.581  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_24
-2020-01-10 13:07:40.584  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_24
-2020-01-10 13:07:40.586  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_12
-2020-01-10 13:07:40.594  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_25
-2020-01-10 13:07:40.600  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_13
-2020-01-10 13:07:40.602  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_8
-2020-01-10 13:07:40.604  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_6
-2020-01-10 13:07:40.607  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_25
-2020-01-10 13:07:40.609  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_9
-2020-01-10 13:07:40.612  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_26
-2020-01-10 13:07:40.614  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_14
-2020-01-10 13:07:40.616  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_7
-2020-01-10 13:07:40.620  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_26
-2020-01-10 13:07:40.621  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_27
-2020-01-10 13:07:40.624  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_12
-2020-01-10 13:07:40.625  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_8
-2020-01-10 13:07:40.628  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_27
-2020-01-10 13:07:40.630  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_9
-2020-01-10 13:07:40.631  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_28
-2020-01-10 13:07:40.633  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_15
-2020-01-10 13:07:40.641  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_28
-2020-01-10 13:07:40.645  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_29
-2020-01-10 13:07:40.647  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_16
-2020-01-10 13:07:40.648  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAvgAndAllByUserIDUsingPOST_1
-2020-01-10 13:07:40.650  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_30
-2020-01-10 13:07:40.654  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_13
-2020-01-10 13:07:40.655  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_9
-2020-01-10 13:07:40.657  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_8
-2020-01-10 13:07:40.659  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_29
-2020-01-10 13:07:40.660  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_10
-2020-01-10 13:07:40.663  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_31
-2020-01-10 13:07:40.666  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_14
-2020-01-10 13:07:40.668  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getListByUserIDUsingPOST_1
-2020-01-10 13:07:40.675  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_30
-2020-01-10 13:07:40.676  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_32
-2020-01-10 13:07:40.678  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_17
-2020-01-10 13:07:40.684  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: insertUsingPOST_1
-2020-01-10 13:07:40.687  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_31
-2020-01-10 13:07:40.688  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_33
-2020-01-10 13:07:40.690  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_18
-2020-01-10 13:07:40.692  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getListByUserIDUsingPOST_2
-2020-01-10 13:07:40.695  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_32
-2020-01-10 13:07:40.697  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_34
-2020-01-10 13:07:40.702  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingPOST_2
-2020-01-10 13:07:40.710  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_33
-2020-01-10 13:07:40.712  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_10
-2020-01-10 13:07:40.714  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_35
-2020-01-10 13:07:40.717  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_19
-2020-01-10 13:07:40.720  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_9
-2020-01-10 13:07:40.722  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_9
-2020-01-10 13:07:40.724  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_34
-2020-01-10 13:07:40.726  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_11
-2020-01-10 13:07:40.727  INFO 17384 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_36
-2020-01-10 13:07:40.743  INFO 17384 --- [main] c.h.wxprogram.WxprogramApplicationTests  : Started WxprogramApplicationTests in 7.103 seconds (JVM running for 8.288)
-2020-01-10 13:07:40.953 DEBUG 17384 --- [main] c.h.w.mapper.SportsimgMapper.selectList  : ==>  Preparing: SELECT id AS id,sportsImgUrl,userID,`date`,burnType,productserviceID,burnCalories,isUsed FROM t_sportsimg WHERE (date = ? AND userID = ?) 
-2020-01-10 13:07:40.968 DEBUG 17384 --- [main] c.h.w.mapper.SportsimgMapper.selectList  : ==> Parameters: 2020.01.10(String), 1398908905(Integer)
-2020-01-10 13:07:40.978 DEBUG 17384 --- [main] c.h.w.mapper.SportsimgMapper.selectList  : <==      Total: 0
-2020-01-10 13:07:41.001  INFO 17384 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2020-01-10 13:07:41.006  INFO 17384 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2020-01-10 13:07:41.008  INFO 17384 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-01-12 15:00:33.870  INFO 3440 --- [main] c.h.wxprogram.WxprogramApplicationTests  : Starting WxprogramApplicationTests on DESKTOP-7KELHOS with PID 3440 (started by 16960 in D:\opensource\workSpaceIDEA\wxprogram)
+2020-01-12 15:00:33.872 DEBUG 3440 --- [main] c.h.wxprogram.WxprogramApplicationTests  : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+2020-01-12 15:00:33.873  INFO 3440 --- [main] c.h.wxprogram.WxprogramApplicationTests  : No active profile set, falling back to default profiles: default
+2020-01-12 15:00:34.890  INFO 3440 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-12 15:00:34.893  INFO 3440 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-01-12 15:00:34.933  INFO 3440 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27ms. Found 0 repository interfaces.
+2020-01-12 15:00:35.498  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:35.627  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.hsport.wxprogram.common.shiro.ShiroConfig$$EnhancerBySpringCGLIB$$7be91e13] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:35.914  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'modularRealmAuthenticator' of type [com.hsport.wxprogram.common.shiro.realm.UserModularRealmAuthenticator] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:36.027  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusProperties' of type [com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:36.035  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatisPlusConfig' of type [com.hsport.wxprogram.common.config.MybatisPlusConfig$$EnhancerBySpringCGLIB$$b305bd46] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:36.044  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'paginationInterceptor' of type [com.baomidou.mybatisplus.plugins.PaginationInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:36.051  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$a98d9af8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:36.054  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:36.064  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:36.087  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.zaxxer.hikari.HikariDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:36.098  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:36.148  INFO 3440 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-01-12 15:00:36.367  INFO 3440 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-01-12 15:00:37.243  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.249  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.251  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.253  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy96] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.258  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'orderMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.260  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'orderMapper' of type [com.sun.proxy.$Proxy97] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.260  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.hsport.wxprogram.service.impl.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.281  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRealm' of type [com.hsport.wxprogram.common.shiro.realm.UserRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.298  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sysuserMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.299  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sysuserMapper' of type [com.sun.proxy.$Proxy98] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.300  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sysuserServiceImpl' of type [com.hsport.wxprogram.service.impl.SysuserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.306  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'SystemAdminRealm' of type [com.hsport.wxprogram.common.shiro.realm.SystemAdminRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.322  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'coachMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.324  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'coachMapper' of type [com.sun.proxy.$Proxy99] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.325  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'coachServiceImpl' of type [com.hsport.wxprogram.service.impl.CoachServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.331  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'coachRealm' of type [com.hsport.wxprogram.common.shiro.realm.CoachRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.341  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'SecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.359  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.361  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.hsport.wxprogram.common.config.TxAnoConfig$$EnhancerBySpringCGLIB$$819d5997] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.365  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.369  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.375  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.378  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.386  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'transactionManager' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.392  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txSource' of type [org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.393  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txInterceptor' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.400  INFO 3440 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'pointcutAdvisor' of type [org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-12 15:00:37.945  INFO 3440 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: public static java.lang.String com.hsport.wxprogram.service.impl.PayService.projectName
+2020-01-12 15:00:37.946  INFO 3440 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: public static java.lang.String com.hsport.wxprogram.service.impl.PayService.projectName
+2020-01-12 15:00:38.967  INFO 3440 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-01-12 15:00:39.334  INFO 3440 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-12 15:00:40.172  INFO 3440 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-01-12 15:00:40.192  INFO 3440 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-01-12 15:00:40.227  INFO 3440 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-01-12 15:00:40.341  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_1
+2020-01-12 15:00:40.343  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_1
+2020-01-12 15:00:40.345  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_1
+2020-01-12 15:00:40.347  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_1
+2020-01-12 15:00:40.356  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_2
+2020-01-12 15:00:40.361  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_2
+2020-01-12 15:00:40.370  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_2
+2020-01-12 15:00:40.378  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_3
+2020-01-12 15:00:40.384  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_3
+2020-01-12 15:00:40.396  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_4
+2020-01-12 15:00:40.400  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_2
+2020-01-12 15:00:40.406  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_4
+2020-01-12 15:00:40.411  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_3
+2020-01-12 15:00:40.417  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_5
+2020-01-12 15:00:40.418  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_1
+2020-01-12 15:00:40.420  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_5
+2020-01-12 15:00:40.429  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_4
+2020-01-12 15:00:40.432  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2020-01-12 15:00:40.436  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_1
+2020-01-12 15:00:40.440  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_6
+2020-01-12 15:00:40.442  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_6
+2020-01-12 15:00:40.447  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_5
+2020-01-12 15:00:40.449  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_1
+2020-01-12 15:00:40.452  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_7
+2020-01-12 15:00:40.454  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_3
+2020-01-12 15:00:40.455  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_7
+2020-01-12 15:00:40.459  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_6
+2020-01-12 15:00:40.462  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_2
+2020-01-12 15:00:40.469  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_8
+2020-01-12 15:00:40.470  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_4
+2020-01-12 15:00:40.472  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_8
+2020-01-12 15:00:40.477  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_7
+2020-01-12 15:00:40.478  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_3
+2020-01-12 15:00:40.480  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_9
+2020-01-12 15:00:40.482  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_5
+2020-01-12 15:00:40.485  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_9
+2020-01-12 15:00:40.487  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2020-01-12 15:00:40.490  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2020-01-12 15:00:40.496  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_10
+2020-01-12 15:00:40.497  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_2
+2020-01-12 15:00:40.500  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_10
+2020-01-12 15:00:40.502  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2020-01-12 15:00:40.504  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_3
+2020-01-12 15:00:40.507  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_11
+2020-01-12 15:00:40.509  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_3
+2020-01-12 15:00:40.511  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_11
+2020-01-12 15:00:40.513  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2020-01-12 15:00:40.517  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_12
+2020-01-12 15:00:40.520  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_12
+2020-01-12 15:00:40.522  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2020-01-12 15:00:40.525  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_13
+2020-01-12 15:00:40.529  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_13
+2020-01-12 15:00:40.534  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_8
+2020-01-12 15:00:40.536  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_4
+2020-01-12 15:00:40.537  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_14
+2020-01-12 15:00:40.539  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_6
+2020-01-12 15:00:40.540  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_14
+2020-01-12 15:00:40.546  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2020-01-12 15:00:40.549  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_15
+2020-01-12 15:00:40.552  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_15
+2020-01-12 15:00:40.553  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2020-01-12 15:00:40.557  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_4
+2020-01-12 15:00:40.559  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_2
+2020-01-12 15:00:40.561  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_16
+2020-01-12 15:00:40.562  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_4
+2020-01-12 15:00:40.566  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_16
+2020-01-12 15:00:40.568  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_7
+2020-01-12 15:00:40.571  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_5
+2020-01-12 15:00:40.572  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_3
+2020-01-12 15:00:40.575  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_17
+2020-01-12 15:00:40.576  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_5
+2020-01-12 15:00:40.579  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_17
+2020-01-12 15:00:40.605  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_8
+2020-01-12 15:00:40.610  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_6
+2020-01-12 15:00:40.611  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_4
+2020-01-12 15:00:40.614  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_18
+2020-01-12 15:00:40.615  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_6
+2020-01-12 15:00:40.619  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_18
+2020-01-12 15:00:40.626  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_9
+2020-01-12 15:00:40.629  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingPOST_1
+2020-01-12 15:00:40.631  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_5
+2020-01-12 15:00:40.634  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_19
+2020-01-12 15:00:40.635  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_7
+2020-01-12 15:00:40.636  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_19
+2020-01-12 15:00:40.641  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_9
+2020-01-12 15:00:40.642  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_6
+2020-01-12 15:00:40.645  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_20
+2020-01-12 15:00:40.647  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_7
+2020-01-12 15:00:40.654  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_20
+2020-01-12 15:00:40.658  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_10
+2020-01-12 15:00:40.660  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_21
+2020-01-12 15:00:40.661  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_21
+2020-01-12 15:00:40.663  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_11
+2020-01-12 15:00:40.665  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_7
+2020-01-12 15:00:40.669  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_22
+2020-01-12 15:00:40.670  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_8
+2020-01-12 15:00:40.672  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_22
+2020-01-12 15:00:40.678  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_12
+2020-01-12 15:00:40.680  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_8
+2020-01-12 15:00:40.683  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_23
+2020-01-12 15:00:40.684  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_9
+2020-01-12 15:00:40.685  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_23
+2020-01-12 15:00:40.687  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectAreaByCityIDUsingPOST_1
+2020-01-12 15:00:40.690  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_10
+2020-01-12 15:00:40.694  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_7
+2020-01-12 15:00:40.696  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_5
+2020-01-12 15:00:40.698  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_24
+2020-01-12 15:00:40.700  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_8
+2020-01-12 15:00:40.703  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_24
+2020-01-12 15:00:40.708  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_13
+2020-01-12 15:00:40.709  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_9
+2020-01-12 15:00:40.712  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_25
+2020-01-12 15:00:40.714  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_10
+2020-01-12 15:00:40.715  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_25
+2020-01-12 15:00:40.717  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_11
+2020-01-12 15:00:40.722  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_26
+2020-01-12 15:00:40.725  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_26
+2020-01-12 15:00:40.727  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_12
+2020-01-12 15:00:40.736  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_27
+2020-01-12 15:00:40.741  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_13
+2020-01-12 15:00:40.744  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_8
+2020-01-12 15:00:40.745  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_6
+2020-01-12 15:00:40.748  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_27
+2020-01-12 15:00:40.749  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_9
+2020-01-12 15:00:40.752  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_28
+2020-01-12 15:00:40.754  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_14
+2020-01-12 15:00:40.756  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_7
+2020-01-12 15:00:40.759  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_28
+2020-01-12 15:00:40.760  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_29
+2020-01-12 15:00:40.762  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_14
+2020-01-12 15:00:40.764  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_10
+2020-01-12 15:00:40.767  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_29
+2020-01-12 15:00:40.768  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_11
+2020-01-12 15:00:40.770  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_30
+2020-01-12 15:00:40.772  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_15
+2020-01-12 15:00:40.780  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_30
+2020-01-12 15:00:40.784  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_31
+2020-01-12 15:00:40.786  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_16
+2020-01-12 15:00:40.787  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getAvgAndAllByUserIDUsingPOST_1
+2020-01-12 15:00:40.792  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_32
+2020-01-12 15:00:40.795  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_15
+2020-01-12 15:00:40.797  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIDUsingPOST_11
+2020-01-12 15:00:40.798  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_8
+2020-01-12 15:00:40.800  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_31
+2020-01-12 15:00:40.801  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_12
+2020-01-12 15:00:40.803  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_33
+2020-01-12 15:00:40.806  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingPOST_16
+2020-01-12 15:00:40.807  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getListByUserIDUsingPOST_1
+2020-01-12 15:00:40.816  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_32
+2020-01-12 15:00:40.818  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_34
+2020-01-12 15:00:40.820  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_17
+2020-01-12 15:00:40.821  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByuserIDUsingPOST_1
+2020-01-12 15:00:40.825  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: insertUsingPOST_1
+2020-01-12 15:00:40.829  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_33
+2020-01-12 15:00:40.833  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_35
+2020-01-12 15:00:40.835  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_18
+2020-01-12 15:00:40.837  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getListByUserIDUsingPOST_2
+2020-01-12 15:00:40.841  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_34
+2020-01-12 15:00:40.843  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_36
+2020-01-12 15:00:40.849  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingPOST_2
+2020-01-12 15:00:40.858  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_35
+2020-01-12 15:00:40.860  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_10
+2020-01-12 15:00:40.862  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_37
+2020-01-12 15:00:40.865  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_19
+2020-01-12 15:00:40.869  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_9
+2020-01-12 15:00:40.871  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByUserIDUsingPOST_9
+2020-01-12 15:00:40.873  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: jsonUsingPOST_36
+2020-01-12 15:00:40.874  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_11
+2020-01-12 15:00:40.876  INFO 3440 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: saveUsingPOST_38
+2020-01-12 15:00:40.895  INFO 3440 --- [main] c.h.wxprogram.WxprogramApplicationTests  : Started WxprogramApplicationTests in 7.354 seconds (JVM running for 8.256)
+2020-01-12 15:00:41.151 DEBUG 3440 --- [main] c.h.w.mapper.SportsimgMapper.selectList  : ==>  Preparing: SELECT id AS id,sportsImgUrl,userID,`date`,burnType,productserviceID,burnCalories,isUsed FROM t_sportsimg WHERE (date = ? AND userID = ?) 
+2020-01-12 15:00:41.167 DEBUG 3440 --- [main] c.h.w.mapper.SportsimgMapper.selectList  : ==> Parameters: 2020.01.12(String), 1398908905(Integer)
+2020-01-12 15:00:41.179 DEBUG 3440 --- [main] c.h.w.mapper.SportsimgMapper.selectList  : <==      Total: 0
+2020-01-12 15:00:41.212  INFO 3440 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-12 15:00:41.217  INFO 3440 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-01-12 15:00:41.220  INFO 3440 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

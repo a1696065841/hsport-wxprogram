@@ -98,6 +98,11 @@ public class AjaxResult {
         }
         return o;
     }
+    public void outLogin(HttpServletRequest request,RedisService redisService) {
+        String token = request.getHeader("token");
+        boolean b = redisService.delKey(token);
+
+    }
 
     public  Sysuser isSysUserLogin(HttpServletRequest request,RedisService redisService) {
         String token = request.getHeader("token");
