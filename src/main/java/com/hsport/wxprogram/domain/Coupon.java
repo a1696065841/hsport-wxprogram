@@ -30,7 +30,7 @@ public class Coupon extends Model<Coupon> {
     /**
      * 优惠金额
      */
-    private Double couponMoney;
+    private BigDecimal couponMoney;
     private String imgUrl;
     private String startTime;
     private String endTime;
@@ -78,11 +78,11 @@ public class Coupon extends Model<Coupon> {
         this.couponType = couponType;
     }
 
-    public Double getCouponMoney() {
+    public BigDecimal getCouponMoney() {
         return couponMoney;
     }
 
-    public void setCouponMoney(Double couponMoney) {
+    public void setCouponMoney(BigDecimal couponMoney) {
         this.couponMoney = couponMoney;
     }
 

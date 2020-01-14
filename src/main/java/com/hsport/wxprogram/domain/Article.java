@@ -23,6 +23,20 @@ public class Article extends Model<Article> {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     private String article;
+    private String fuTitle;
+
+    public String getFuTitle() {
+        return fuTitle;
+    }
+
+    public void setFuTitle(String fuTitle) {
+        this.fuTitle = fuTitle;
+    }
+
+    public Long getUserID() {
+        return userID;
+    }
+
     private Long userID;
     /**
      * 文章设计用户的类型()

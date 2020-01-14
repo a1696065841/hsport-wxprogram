@@ -1,6 +1,7 @@
 package com.hsport.wxprogram.web.controller.system;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.hsport.wxprogram.common.util.DateUtil;
 import com.hsport.wxprogram.domain.Coupon;
 import com.hsport.wxprogram.domain.vo.CouponVo;
 import com.hsport.wxprogram.service.ICouponService;
@@ -71,11 +72,14 @@ public class CouponUserController {
     @ApiOperation(value = "该订单下用户所有能用的优惠卷")
     @RequestMapping(value = "/getCanUseCoupon", method = RequestMethod.POST)
     public AjaxResult getCanUseCoupon(@RequestBody CouponVo couponVo) {
+
         List<CouponUser> couponUsers = couponUserService.selectList(new EntityWrapper<CouponUser>().eq("userID", couponVo.getUserID()).eq("status",0));
+        System.out.println(couponUsers);
         ArrayList<Coupon> coupons = new ArrayList<>();
         for (CouponUser couponUser1 : couponUsers) {
-            Coupon coupon = couponService.selectById(couponUser1.getCouponID());
-            if (coupon.getProductID()==couponVo.getProductID()){
+            Coupon coupon = couponService.selectOne(new EntityWrapper<Coupon>().eq("id", couponUser1.getCouponID()).
+                    eq("productID", couponVo.getProductID()).le("startTime", DateUtil.now()).ge("endTime", DateUtil.today()));
+            if (coupon!=null) {
                 coupons.add(coupon);
             }
         }

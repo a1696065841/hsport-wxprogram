@@ -1,12 +1,16 @@
 package com.hsport.wxprogram.service.impl;
 
+import com.aliyuncs.exceptions.ClientException;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.common.util.AjaxResult;
+import com.hsport.wxprogram.common.util.AliyunSmsUtils;
 import com.hsport.wxprogram.common.util.DateUtil;
 import com.hsport.wxprogram.common.util.PageList;
+import com.hsport.wxprogram.domain.Coach;
 import com.hsport.wxprogram.domain.Order;
 import com.hsport.wxprogram.domain.User;
 import com.hsport.wxprogram.domain.vo.OrderVo;
+import com.hsport.wxprogram.mapper.CoachMapper;
 import com.hsport.wxprogram.mapper.OrderMapper;
 import com.hsport.wxprogram.mapper.UserMapper;
 import com.hsport.wxprogram.query.UserQuery;
@@ -33,6 +37,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     UserMapper userMapper;
     @Autowired
     OrderMapper orderMapper;
+    @Autowired
+    CoachMapper coachMapper;
 
     @Override
     public List<User> findUserByCoachID(Long id) {
@@ -62,7 +68,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
-    public AjaxResult updateUserCoach(OrderVo orderVo) {
+    public AjaxResult updateUserCoach(OrderVo orderVo) throws ClientException {
         String orderID = orderVo.getOrderID();
         Order order1 = orderMapper.selectById(orderID);
         order1.setIsDistribution(1);
@@ -70,6 +76,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         User user = userMapper.selectById(orderVo.getUserID());
         user.setCoachID(orderVo.getCoachID());
         userMapper.updateById(user);
+        Coach coach = coachMapper.selectById(orderVo.getCoachID());
+       // AliyunSmsUtils.sendSms(coach.getPhone(),"您已有新的订单啦,请您十分钟内尽快处理哦!");
         return AjaxResult.me();
     }
 }

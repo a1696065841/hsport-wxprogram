@@ -6,7 +6,10 @@ import com.hsport.wxprogram.common.util.UserContext;
 import com.hsport.wxprogram.common.util.picUtil;
 import com.hsport.wxprogram.domain.Foodimg;
 import com.hsport.wxprogram.domain.User;
+import com.hsport.wxprogram.service.impl.PayService;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 
 @RestController
 @RequestMapping("/img")
@@ -21,7 +25,7 @@ import java.nio.file.Paths;
 public class ImgController {
     @Autowired
     HttpServletRequest request;
-
+    private final static Logger logger = LoggerFactory.getLogger(ImgController.class);
     @ApiOperation(value="用户上传图片")
     @RequestMapping(value = "/upLoad",method = RequestMethod.POST)
     public AjaxResult chuanTu(@RequestParam("multipartFile") MultipartFile multipartFile){
@@ -39,4 +43,6 @@ public class ImgController {
             return AjaxResult.me().setMessage("上传图片失败！"+e.getMessage()).setSuccess(false);
         }
     }
+
+
 }

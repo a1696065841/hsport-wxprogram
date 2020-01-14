@@ -16,6 +16,7 @@ import java.util.List;
 @SpringBootApplication
 public class WxprogramApplication   {
 	public static void main(String[] args) {
+
 		SpringApplication.run(WxprogramApplication.class, args);
 	}
 

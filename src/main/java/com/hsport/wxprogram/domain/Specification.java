@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * <p>
@@ -23,7 +24,7 @@ public class Specification extends Model<Specification> {
     private Integer id;
     private String specificationName;
     private String specificationBeizhu;
-    private Double specificationPrice;
+    private BigDecimal specificationPrice;
     private Integer productID;
     private Integer duration;
 
@@ -59,11 +60,11 @@ public class Specification extends Model<Specification> {
         this.specificationBeizhu = specificationBeizhu;
     }
 
-    public Double getSpecificationPrice() {
+    public BigDecimal getSpecificationPrice() {
         return specificationPrice;
     }
 
-    public void setSpecificationPrice(Double specificationPrice) {
+    public void setSpecificationPrice(BigDecimal specificationPrice) {
         this.specificationPrice = specificationPrice;
     }
 

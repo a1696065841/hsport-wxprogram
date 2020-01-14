@@ -223,6 +223,7 @@ public class CoachController {
                 HashMap<String, Object> productMap = new HashMap<>();
                 ArrayList<WorkListVo> undoWorkList = new ArrayList<>();
                 productMap.put("product", product);
+                productMap.put("orderID",order.getId());
                 //总计划
                 WorkListVo theMostSportPlanWork = new WorkListVo();
                 theMostSportPlanWork.setName("总计划");

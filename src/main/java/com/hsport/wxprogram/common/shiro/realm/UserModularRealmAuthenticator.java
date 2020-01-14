@@ -40,7 +40,6 @@ public class UserModularRealmAuthenticator extends ModularRealmAuthenticator {
             return doSingleRealmAuthentication(typeRealms.get(0), userToken);
         }
         else{
-
             return doMultiRealmAuthentication(typeRealms, userToken);
         }
     }

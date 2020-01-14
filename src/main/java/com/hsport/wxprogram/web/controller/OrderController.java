@@ -3,14 +3,14 @@ package com.hsport.wxprogram.web.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.toolkit.StringUtils;
-import com.hsport.wxprogram.common.util.DateUtil;
-import com.hsport.wxprogram.common.util.OrderCodeFactory;
+import com.hsport.wxprogram.common.util.*;
+import com.hsport.wxprogram.common.util.payUtil.PayCommonUtil;
+import com.hsport.wxprogram.common.util.wxutil.PaymentKit;
 import com.hsport.wxprogram.domain.*;
 import com.hsport.wxprogram.service.*;
 import com.hsport.wxprogram.query.OrderQuery;
-import com.hsport.wxprogram.common.util.AjaxResult;
-import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
+import io.netty.util.internal.StringUtil;
 import io.swagger.annotations.ApiOperation;
 import org.aspectj.weaver.ast.Or;
 import org.slf4j.Logger;
@@ -21,10 +21,11 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.math.BigDecimal;
+import java.util.*;
 
 @RestController
 @RequestMapping("/order")
@@ -45,8 +46,59 @@ public class OrderController {
     @Autowired
     public IDetailsService detailsService;
     @Autowired
+    public RedisService redisService;
+    @Autowired
     public IGymService gymService;
     private static Logger logger = LoggerFactory.getLogger(OrderController.class);
+
+    @RequestMapping(value = "/wxgetBack",method = RequestMethod.POST)
+    @CrossOrigin
+    public String  wxgetBack(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        System.out.println("微信支付回调");
+        InputStream inStream = request.getInputStream();
+        ByteArrayOutputStream outSteam = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024];
+        int len = 0;
+        while ((len = inStream.read(buffer)) != -1) {
+            outSteam.write(buffer, 0, len);
+        }
+        String resultxml = new String(outSteam.toByteArray(), "utf-8");
+        Map<String, String> params = PaymentKit.xmlToMap(resultxml);
+        outSteam.close();
+        inStream.close();
+
+        Map<String,String> return_data = new HashMap<String,String>();
+        if (!PayCommonUtil.isTenpaySign(params)) {
+            // 支付失败
+            return_data.put("return_code", "FAIL");
+            return_data.put("return_msg", "return_code不正确");
+            return PaymentKit.toXml(return_data);
+        } else {
+            logger.debug("===============付款成功==============");
+            String out_trade_no = params.get("out_trade_no").split("O")[0];
+            String s = redisService.get(out_trade_no);
+            JSONObject jsonObject = JSONObject.parseObject(s);
+            Order order = JSONObject.toJavaObject(jsonObject, Order.class);
+            order.setOrderType(0);
+            orderService.insert(order);
+            logger.debug("付款成功------------------------"+JSONObject.toJSONString(order));
+            // ------------------------------
+            // ------------------------------
+            // 此处处理订单状态，结合自己的订单数据完成订单状态的更新
+            // ------------------------------
+
+            String total_fee = params.get("total_fee");
+            double v = Double.valueOf(total_fee) / 100;
+
+            String appId = params.get("appid");
+            String tradeNo = params.get("transaction_id");
+
+            return_data.put("return_code", "SUCCESS");
+            return_data.put("return_msg", "OK");
+            return PaymentKit.toXml(return_data);
+        }
+    }
+
     /**
      * 保存和修改公用的
      *
@@ -89,6 +141,7 @@ public class OrderController {
         try {
             ajaxResult = orderService.updateOrderType(order);
         } catch (Exception e) {
+            e.printStackTrace();
             return new AjaxResult("服务器异常,请重试或联系客服!");
         }
         return  ajaxResult;

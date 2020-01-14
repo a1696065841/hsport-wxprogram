@@ -1,5 +1,6 @@
 package com.hsport.wxprogram.service;
 
+import com.aliyuncs.exceptions.ClientException;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hsport.wxprogram.common.util.AjaxResult;
 import com.hsport.wxprogram.common.util.PageList;
@@ -26,5 +27,5 @@ public interface IUserService extends IService<User> {
     List<Object> selectUserCoach(UserQuery query);
     void  updateLoginUser(User user);
     Integer selectUserCoachTotal(UserQuery query);
-    AjaxResult updateUserCoach(OrderVo orderVo);
+    AjaxResult updateUserCoach(OrderVo orderVo) throws ClientException;
 }

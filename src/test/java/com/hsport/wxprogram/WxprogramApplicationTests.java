@@ -9,6 +9,7 @@ import com.hsport.wxprogram.common.util.AjaxResult;
 import com.hsport.wxprogram.common.util.DateUtil;
 import com.hsport.wxprogram.common.util.YanZhenCode;
 import com.hsport.wxprogram.domain.*;
+import com.hsport.wxprogram.mapper.CodeMapper;
 import com.hsport.wxprogram.mapper.TodayspMapper;
 import com.hsport.wxprogram.query.GymQuery;
 import com.hsport.wxprogram.service.*;
@@ -26,10 +27,7 @@ import redis.clients.jedis.JedisPool;
 import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -63,22 +61,33 @@ class WxprogramApplicationTests {
     @Autowired
     IOrderService orderService;
     @Autowired
+    public ICouponUserService couponUserService;
+    @Autowired
+    public ICouponService couponService;
+    @Autowired
     ISportsimgService sportsimgService;
+    @Autowired
+    public ICodeService codeService;
+    @Autowired
+    CodeMapper codeMapper;
+
     @Test
     void contextLoads() throws Exception {
-        EntityWrapper<Sportsimg> userEntityWrapper = new EntityWrapper<>();
-        userEntityWrapper.eq("date", DateUtil.today());
-        userEntityWrapper.eq("userID",1398908905 );
-        List<Sportsimg> sportsimgs = sportsimgService.selectList(userEntityWrapper);
-        System.out.println(sportsimgs);
+        List<Coupon> coupons = couponService.selectList(new EntityWrapper<Coupon>().eq("id", 1).
+                eq("productID", 77777).le("startTime", DateUtil.now()).ge("endTime", DateUtil.today()));
+        Coupon coupon = couponService.selectOne(new EntityWrapper<Coupon>().eq("id", 1).
+                eq("productID", 77777).le("startTime", DateUtil.now()).ge("endTime", DateUtil.today()));
+        System.out.println(coupon);
+        System.out.println(coupons );
     }
 
     @Test
     public void test2() {
-        Todaysp todaysp = new Todaysp();
-        todaysp.setDate(DateUtil.today());
-        todaysp.setUserID(1L);
-        todaysp.setId(1);
+        Timer timer=new Timer();//实例化Timer类
+        timer.schedule(new TimerTask(){
+            public void run(){
+
+                this.cancel();}},100);//五百毫秒
     }
 
 }

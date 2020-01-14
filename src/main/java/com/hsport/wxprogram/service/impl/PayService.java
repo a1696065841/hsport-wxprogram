@@ -1,5 +1,6 @@
 package com.hsport.wxprogram.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.hsport.wxprogram.common.config.WxProgramPayConfig;
 import com.hsport.wxprogram.common.util.wxutil.PaymentApi;
 import com.hsport.wxprogram.common.util.wxutil.PaymentKit;
@@ -53,7 +54,6 @@ public class PayService {
         reqParams.put("sign_type", "MD5");
         //充值订单 商品描述
         reqParams.put("body", projectName + "-充值订单-微信小程序");
-
         //商户订单号
         reqParams.put("out_trade_no", outTradeNo);
         //订单总金额，单位为分
@@ -75,9 +75,9 @@ public class PayService {
         String xmlResult = PaymentApi.pushOrder(reqParams);
         logger.info(xmlResult);
         Map<String, String> result = PaymentKit.xmlToMap(xmlResult);
+        logger.debug("---result------------"+JSONObject.toJSONString(result));
         //预付单信息
         String prepay_id = result.get("prepay_id");
-
         /*
             小程序调起支付数据签名
          */

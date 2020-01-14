@@ -8,6 +8,16 @@ public class UserGenVo {
     private String iv;
     private String code;
     private String  session_key;
+    private String openid;
+    public String getsSrc() {
+        return sSrc;
+    }
+
+    public void setsSrc(String sSrc) {
+        this.sSrc = sSrc;
+    }
+
+    private  String sSrc;
     public String getSession_key() {
         return session_key;
     }

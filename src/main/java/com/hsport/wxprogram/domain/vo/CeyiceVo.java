@@ -13,6 +13,46 @@ public class CeyiceVo {
 
     private String name;
     private Integer sex;
+    private Integer age;
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    private double height;
+    private double weight;
+
+
+
+    public Integer getTunwei() {
+        return tunwei;
+    }
+
+    public void setTunwei(Integer tunwei) {
+        this.tunwei = tunwei;
+    }
+
+    public Integer tunwei;
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
 
     private Integer id;
 

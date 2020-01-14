@@ -26,7 +26,7 @@
         SELECT o.id,o.orderType,o.totalPrice,p.productname,p.pro_desc,p.imgUrl,sp.specificationName
          FROM t_order o
         LEFT JOIN t_product p ON o.productID = p.id LEFT JOIN t_specification sp ON sp.productID=p.id
-         WHERE o.userID=#{keyword}
+         WHERE o.userID=#{keyword} GROUP BY o.id
         limit #{page},#{rows}
     </select>
 

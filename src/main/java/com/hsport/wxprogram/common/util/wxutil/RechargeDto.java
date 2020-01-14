@@ -2,6 +2,7 @@ package com.hsport.wxprogram.common.util.wxutil;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /****************************************************
@@ -25,6 +26,7 @@ public class RechargeDto {
      * 用户id
      */
     private Long userId;
+    private Integer specificationID;
 
     public int getPayType() {
         return payType;
@@ -91,4 +93,7 @@ public class RechargeDto {
     private String code;
 
 
+    public Serializable getSpecificationID() {
+        return specificationID;
+    }
 }

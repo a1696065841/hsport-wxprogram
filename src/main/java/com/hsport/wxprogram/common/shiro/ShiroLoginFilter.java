@@ -41,8 +41,8 @@ public class ShiroLoginFilter extends FormAuthenticationFilter {
             resultData.setSuccess(false);
             resultData.setMessage("鸡毛嘟嘟嘟嘟嘟嘟嘟嘟独孤!");
             httpServletResponse.setContentType("utf-8");
-            httpServletResponse.getWriter().write(JSONObject.toJSONString(resultData));
             httpServletResponse.setStatus(1);
+            httpServletResponse.getWriter().write(JSONObject.toJSONString(resultData));
         }
         return false;
     }

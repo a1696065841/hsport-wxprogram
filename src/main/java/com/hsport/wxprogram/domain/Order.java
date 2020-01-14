@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * <p>
@@ -31,7 +32,7 @@ public class Order extends Model<Order> {
      */
     private String startDate;
     private Integer productID;
-    private Double totalPrice;
+    private BigDecimal totalPrice;
     private Integer orderType;
     /**
      * 订单完成时间
@@ -110,11 +111,11 @@ public class Order extends Model<Order> {
         this.productID = productID;
     }
 
-    public Double getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(Double totalPrice) {
+    public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
 
