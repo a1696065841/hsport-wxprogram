@@ -18,7 +18,7 @@
 
     <select id="selectUserCoach" resultType="map" parameterType="userQuery" >
         SELECT  u.id,u.userType,u.genTime,u.phone loginPhone,u.imgUrl,l.*,c.coachName coachName,SUM(o.totalPrice) as sumPrice
-        FROM t_user u LEFT JOIN t_coach c ON u.coachID = c.id LEFT JOIN t_lxxx l ON u.id=l.userID LEFT JOIN t_order o ON u.id=o.userID GROUP BY u.id
+        FROM t_user u LEFT JOIN t_coach c ON u.coachID = c.id LEFT JOIN t_lxxx l ON u.id=l.userID LEFT JOIN t_order o ON u.id=o.userID GROUP BY u.id ORDER  BY  u.genTime
         limit #{page},#{rows}
     </select>
 
@@ -26,7 +26,6 @@
     <select id="selectUserCoachTotal" resultType="integer" parameterType="userQuery" >
         SELECT COUNT(*)
         FROM t_user u LEFT JOIN t_coach c ON u.coachID = c.id LEFT JOIN t_lxxx l ON u.id=l.userID
-        limit #{page},#{rows}
     </select>
 
 </mapper>

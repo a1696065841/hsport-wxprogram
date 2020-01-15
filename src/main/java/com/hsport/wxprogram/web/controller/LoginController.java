@@ -145,34 +145,6 @@ public class LoginController {
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        String code ="081Wu90l2d0BdC0mj41l2flVZk2Wu90Q";
-        String encryptedData ="U/FIazjgoOLF008mC/uTYKi2TjiVXNeWRFQ2sIjd/HUxslvEyFoywlahBybVuUb/CsaGpBcW2y1AtsOuDsdk6gYj81PS4RbFND42BNYsTvIMHdcO0ZXQcI0jtxFbVx+mUZ8e/YCyNC6IH/HibYcQQur8Av3sotbMYGZb4pZfk8LUspWoaPZS+vqRpo6ST6h/y9fHCMxk4w6veunlP+OIWQ==";
-        String iv ="YDblvrgYlULXs6ugdNfqGg==";
-        String paramss = "appid=" + WxProgramPayConfig.APPID + "&secret=" + WxProgramPayConfig.SECRET + "&js_code=" + code + "&grant_type=" + "authorization_code";
-        String jsonStr = HttpRequest.sendGet("https://api.weixin.qq.com/sns/jscode2session", paramss);
-        logger.debug("jsonStr--------------------"+jsonStr);
-        JSONObject jsonObject = JSON.parseObject(jsonStr);
-        String sessionkey = jsonObject.getString("session_key");
-        System.out.println(sessionkey);
-        // 解密
-        byte[] encrypData = Base64Utils.decodeFromString(encryptedData);
-        byte[] ivData = Base64Utils.decodeFromString(iv);
-        byte[] sessionKey1 = Base64Utils.decodeFromString(sessionkey);
-        AlgorithmParameterSpec ivSpec = new IvParameterSpec(ivData);
-        //java中自带的是PKCS5Padding填充，通过添加BouncyCastle组件来支持PKCS7Padding填充。
-        Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
-        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
-        SecretKeySpec keySpec = new SecretKeySpec(sessionKey1, "AES");
-        cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);
-        String resultString = new String(cipher.doFinal(encrypData), "UTF-8");
-
-        JSONObject object = JSONObject.parseObject(resultString);
-        // 拿到手机号码
-        String phone = object.getString("phoneNumber");
-        logger.debug("phoneNumber------"+phone);
-    }
-
     @RequestMapping(value = "/wxLogin", method = RequestMethod.POST)
     @ResponseBody
     @CrossOrigin

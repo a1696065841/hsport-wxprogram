@@ -25,7 +25,7 @@ public class AliyunSmsUtils {
     // TODO 此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
     static final String accessKeyId = "LTAI4FtVRdJ8UGdZ1fyv8hQE";  // TODO 修改成自己的
     static final String accessKeySecret = "hvM6k0zTZYBtZboeSXzi2jw0oMiNvi";   // TODO 修改成自己的
-    public static SendSmsResponse sendSms(String telephone, String code) throws ClientException {
+    public static SendSmsResponse sendSms(String telephone, String code,String temp) throws ClientException {
         //可自助调整超时时间
         System.setProperty("sun.net.client.defaultConnectTimeout", "10000");
         System.setProperty("sun.net.client.defaultReadTimeout", "10000");
@@ -38,9 +38,9 @@ public class AliyunSmsUtils {
         //必填:待发送手机号
         request.setPhoneNumbers(telephone);
         //必填:短信签名-可在短信控制台中找到
-        request.setSignName("your 签名名称");    // TODO 修改成自己的
+        request.setSignName("氢离子Health");    // TODO 修改成自己的
         //必填:短信模板-可在短信控制台中找到
-        request.setTemplateCode("SMS_182265131");    // TODO 修改成自己的
+        request.setTemplateCode(temp);    // TODO 修改成自己的
         //可选:模板中的变量替换JSON串,如模板内容为"亲爱的${name},您的验证码为${code}"时,此处的值为
 //        request.setTemplateParam("{\"name\":\"Tom\", \"code\":\"123\"}");
         request.setTemplateParam("{\"code\":\"" + code + "\"}");
@@ -95,12 +95,12 @@ public class AliyunSmsUtils {
     public static void setNewcode(){
         newcode = (int)(Math.random()*9999)+100;  //每次调用生成一位四位数的随机数
     }
-    public static void main(String[] args) throws ClientException, InterruptedException {
+       public static void main(String[] args) throws ClientException, InterruptedException {
         setNewcode();
         String code = Integer.toString(getNewcode());
         System.out.println("发送的验证码为："+code);
         //发短信
-        SendSmsResponse response =sendSms("15881690293",code); // TODO 填写你需要测试的手机号码
+        SendSmsResponse response =sendSms("15881690293",code,"SMS_182675849"); // TODO 填写你需要测试的手机号码
         System.out.println("短信接口返回的数据----------------");
         System.out.println("Code=" + response.getCode());
         System.out.println("Message=" + response.getMessage());

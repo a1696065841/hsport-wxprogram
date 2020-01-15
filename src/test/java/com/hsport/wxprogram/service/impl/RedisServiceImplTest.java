@@ -2,10 +2,7 @@ package com.hsport.wxprogram.service.impl;
 
 import java.awt.*;
 import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class RedisServiceImplTest {
     public static void main(String[] args) throws AWTException {

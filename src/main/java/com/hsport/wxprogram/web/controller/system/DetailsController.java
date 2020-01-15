@@ -30,7 +30,7 @@ public class DetailsController {
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Details details){
         try {
-            if(details.getDetailsID()!=null){
+            if(details.getId()!=null){
                 detailsService.updateById(details);
             }else{
                 detailsService.insert(details);

@@ -49,6 +49,10 @@ public class OrderController {
     public RedisService redisService;
     @Autowired
     public IGymService gymService;
+    @Autowired
+    public ICouponService couponService;
+    @Autowired ICouponUserService couponUserService;
+
     private static Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     @RequestMapping(value = "/wxgetBack",method = RequestMethod.POST)
@@ -66,7 +70,6 @@ public class OrderController {
         Map<String, String> params = PaymentKit.xmlToMap(resultxml);
         outSteam.close();
         inStream.close();
-
         Map<String,String> return_data = new HashMap<String,String>();
         if (!PayCommonUtil.isTenpaySign(params)) {
             // 支付失败
@@ -86,7 +89,14 @@ public class OrderController {
             // ------------------------------
             // 此处处理订单状态，结合自己的订单数据完成订单状态的更新
             // ------------------------------
-
+            Integer couponID = order.getCouponID();
+            if (couponID!=null){
+                CouponUser couponUser = couponUserService.selectOne(new EntityWrapper<CouponUser>().eq("userID", order.getUserID())
+                        .eq("couponID", couponID).eq("status",0).orderBy("createTime",true));
+                couponUser.setEndTime(DateUtil.now());
+                couponUser.setStatus(1);
+                couponUserService.updateById(couponUser);
+            }
             String total_fee = params.get("total_fee");
             double v = Double.valueOf(total_fee) / 100;
 

@@ -75,6 +75,7 @@ public class RechargeAPI {
         order.setOrderType(9);
         //获取产品 存入产品价格
         Specification specification = specificationService.selectById(rechargeDto.getSpecificationID());
+
         if (specification == null) {
             return new AjaxResult("产品异常,请联系客服!");
         }
@@ -82,6 +83,7 @@ public class RechargeAPI {
         Coupon coupon = couponService.selectById(rechargeDto.getCouponID());
         BigDecimal totalPrice = specificationPrice;
         if (coupon != null) {
+            order.setCouponID(coupon.getId());
             if (coupon.getCouponType() != null) {
                 if (coupon.getCouponType() == 2) {
                     totalPrice = specificationPrice.subtract(coupon.getCouponMoney());
@@ -94,6 +96,7 @@ public class RechargeAPI {
                 }
             }
         }
+        order.setSpecificationID(specification.getId());
         order.setTotalPrice(totalPrice);
         //生成id
         String outTradeNo = OrderCodeFactory.getOrderCode(rechargeDto.getUserId());

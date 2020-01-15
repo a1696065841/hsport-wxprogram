@@ -54,6 +54,6 @@ public class MD5Util {private static String byteArrayToHexString(byte b[]) {
 
     }
     public static void main(String[] args){
-        System.out.println(creaMd5pwd("123123"));
+        System.out.println(creaMd5pwd("qinglizi123"));
     }
 }

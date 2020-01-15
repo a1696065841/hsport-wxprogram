@@ -9,8 +9,11 @@ import com.hsport.wxprogram.query.UserQuery;
 import com.hsport.wxprogram.common.util.AjaxResult;
 import com.hsport.wxprogram.common.util.PageList;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.hsport.wxprogram.web.controller.LoginController;
 import com.jcraft.jsch.HASH;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -46,7 +49,7 @@ public class UserController {
     public RedisService redisService;
     @Autowired
     public IOrderService orderService;
-
+    private final static Logger logger = LoggerFactory.getLogger(UserController.class);
     /**
      * 保存和修改公用的
      *
@@ -117,9 +120,12 @@ public class UserController {
     @ApiOperation(value = "来获取所有User详细信息并分页", notes = "根据page页数和传入的query查询条件 来获取某些User详细信息")
     @RequestMapping(value = "/selectUserCoach", method = RequestMethod.POST)
     public AjaxResult selectUserCoach(@RequestBody UserQuery query) {
+        Integer page = (query.getPage()-1)*query.getRows();
+        query.setPage(page);
         HashMap<String, Object> map = new HashMap<>();
         map.put("rows", userService.selectUserCoach(query));
         map.put("total", userService.selectUserCoachTotal(query));
+
         return AjaxResult.me().setResultObj(map);
     }
 

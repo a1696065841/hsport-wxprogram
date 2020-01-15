@@ -16,6 +16,9 @@ import com.hsport.wxprogram.service.IOrderService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.hsport.wxprogram.service.IProductService;
 import com.hsport.wxprogram.service.ISportsplanService;
+import com.hsport.wxprogram.web.controller.userBody.UserController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +42,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     ProductMapper productMapper;
     @Autowired
     UserMapper userMapper;
+    private final static Logger logger = LoggerFactory.getLogger(OrderServiceImpl.class);
+
     @Override
     public List<Object> selectOrderMap(OrderQuery query) {
         return orderMapper.selectOrderMap(query);
@@ -71,7 +76,9 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
                 }
             }
         User user = userMapper.selectById(order1.getUserID());
-       // AliyunSmsUtils.sendSms(user.getPhone(),"尊敬的用户您好,您的测评咨询服务已完成,如果过程中你有任何建议或意见请向我们的会员管家沟通!谢谢您,祝您生活愉快!");
+
+       AliyunSmsUtils.sendSms(user.getPhone(),"","SMS_182670944");
+        logger.debug(order.getId()+"订单确认信息已经发送给手机号为"+user.getPhone()+"的用户!");
         orderMapper.updateById(order1);
         return AjaxResult.me();
     }

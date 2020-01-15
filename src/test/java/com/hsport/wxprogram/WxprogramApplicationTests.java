@@ -73,21 +73,8 @@ class WxprogramApplicationTests {
 
     @Test
     void contextLoads() throws Exception {
-        List<Coupon> coupons = couponService.selectList(new EntityWrapper<Coupon>().eq("id", 1).
-                eq("productID", 77777).le("startTime", DateUtil.now()).ge("endTime", DateUtil.today()));
-        Coupon coupon = couponService.selectOne(new EntityWrapper<Coupon>().eq("id", 1).
-                eq("productID", 77777).le("startTime", DateUtil.now()).ge("endTime", DateUtil.today()));
-        System.out.println(coupon);
-        System.out.println(coupons );
     }
 
-    @Test
-    public void test2() {
-        Timer timer=new Timer();//实例化Timer类
-        timer.schedule(new TimerTask(){
-            public void run(){
 
-                this.cancel();}},100);//五百毫秒
-    }
 
 }

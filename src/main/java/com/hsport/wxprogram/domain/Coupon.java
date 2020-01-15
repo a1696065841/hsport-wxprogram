@@ -2,6 +2,7 @@ package com.hsport.wxprogram.domain;
 
 import java.math.BigDecimal;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import java.io.Serializable;
 
@@ -37,6 +38,17 @@ public class Coupon extends Model<Coupon> {
     private BigDecimal fullmoney;
     private Integer productID;
     private Boolean allOrSome;
+
+    @TableField(exist = false)
+    private Integer couponUserID;
+
+    public Integer getCouponUserID() {
+        return couponUserID;
+    }
+
+    public void setCouponUserID(Integer couponUserID) {
+        this.couponUserID = couponUserID;
+    }
 
     public Boolean getAllOrSome() {
         return allOrSome;

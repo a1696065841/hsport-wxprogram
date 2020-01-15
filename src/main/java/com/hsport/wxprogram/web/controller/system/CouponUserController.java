@@ -61,10 +61,14 @@ public class CouponUserController {
     @RequestMapping(value = "/getByuserID", method = RequestMethod.POST)
     public AjaxResult getByuserID(@RequestBody CouponUser couponUser) {
         List<CouponUser> couponUsers = couponUserService.selectList(new EntityWrapper<CouponUser>().eq("userID", couponUser.getUserID()).eq("status",0));
+        System.out.println(couponUser);
         ArrayList<Coupon> coupons = new ArrayList<>();
         for (CouponUser couponUser1 : couponUsers) {
             Coupon coupon = couponService.selectById(couponUser1.getCouponID());
-            coupons.add(coupon);
+            if (coupon!=null) {
+                coupon.setCouponUserID(couponUser1.getCouponID());
+                coupons.add(coupon);
+            }
         }
         return AjaxResult.me().setResultObj(coupons);
     }
@@ -72,7 +76,6 @@ public class CouponUserController {
     @ApiOperation(value = "该订单下用户所有能用的优惠卷")
     @RequestMapping(value = "/getCanUseCoupon", method = RequestMethod.POST)
     public AjaxResult getCanUseCoupon(@RequestBody CouponVo couponVo) {
-
         List<CouponUser> couponUsers = couponUserService.selectList(new EntityWrapper<CouponUser>().eq("userID", couponVo.getUserID()).eq("status",0));
         System.out.println(couponUsers);
         ArrayList<Coupon> coupons = new ArrayList<>();
@@ -80,6 +83,7 @@ public class CouponUserController {
             Coupon coupon = couponService.selectOne(new EntityWrapper<Coupon>().eq("id", couponUser1.getCouponID()).
                     eq("productID", couponVo.getProductID()).le("startTime", DateUtil.now()).ge("endTime", DateUtil.today()));
             if (coupon!=null) {
+                coupon.setCouponUserID(couponUser1.getCouponID());
                 coupons.add(coupon);
             }
         }
@@ -125,8 +129,7 @@ public class CouponUserController {
     */
     @ApiOperation(value="来获取所有CouponUser详细信息并分页", notes="根据page页数和传入的query查询条件 来获取某些CouponUser详细信息")
     @RequestMapping(value = "/json",method = RequestMethod.POST)
-    public AjaxResult json(@RequestBody CouponUserQuery query)
-    {
+    public AjaxResult json(@RequestBody CouponUserQuery query){
         Page<CouponUser> page = new Page<CouponUser>(query.getPage(),query.getRows());
             page = couponUserService.selectPage(page);
             return AjaxResult.me().setResultObj(new PageList<CouponUser>(page.getTotal(),page.getRecords()));

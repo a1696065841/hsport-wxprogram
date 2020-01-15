@@ -5,9 +5,9 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.hsport.wxprogram.domain.Gym">
         <id column="id" property="id" />
-        <result column="gym_address" property="gymAddress" />
-        <result column="gym_phone" property="gymPhone" />
-        <result column="gym_mark" property="gymMark" />
+        <result column="gymAddress" property="gymAddress" />
+        <result column="gymPhone" property="gymPhone" />
+        <result column="gymMark" property="gymMark" />
         <result column="region_id" property="region_id"/>
         <result column="gym_url" property="gym_url"/>
         <result column="xCoordinate" property="xCoordinate"/>

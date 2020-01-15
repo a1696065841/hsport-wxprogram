@@ -1,5 +1,6 @@
 package com.hsport.wxprogram.domain;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
@@ -14,14 +15,16 @@ import java.io.Serializable;
  * @author lhb
  * @since 2020-01-11
  */
-@TableName("coupon_user")
+@TableName("t_coupon_user")
 public class CouponUser extends Model<CouponUser> {
 
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
+    @TableField("userID")
     private Long userID;
+    @TableField("couponID")
     private Integer couponID;
     private String createTime;
     private String endTime;
@@ -29,6 +32,10 @@ public class CouponUser extends Model<CouponUser> {
      * 1为已使用，0为已领取未使用，-1为已过期',
      */
     private Integer status;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
 
     public Integer getId() {
@@ -87,12 +94,12 @@ public class CouponUser extends Model<CouponUser> {
     @Override
     public String toString() {
         return "CouponUser{" +
-        ", id=" + id +
-        ", userID=" + userID +
-        ", couponID=" + couponID +
-        ", createTime=" + createTime +
-        ", endTime=" + endTime +
-        ", status=" + status +
-        "}";
+                "id=" + id +
+                ", userID=" + userID +
+                ", couponID=" + couponID +
+                ", createTime='" + createTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", status=" + status +
+                '}';
     }
 }

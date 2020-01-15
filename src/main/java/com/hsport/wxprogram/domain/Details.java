@@ -20,19 +20,22 @@ public class Details extends Model<Details> {
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "detailsID", type = IdType.AUTO)
-    private Integer detailsID;
+    private Integer id;
     private Integer productID;
     private String imgUrl;
     private String detailsName;
     private String detailsDesc;
 
-
-    public Integer getDetailsID() {
-        return detailsID;
+    public Integer getId() {
+        return id;
     }
 
-    public void setDetailsID(Integer detailsID) {
-        this.detailsID = detailsID;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public Integer getProductID() {
@@ -69,13 +72,13 @@ public class Details extends Model<Details> {
 
     @Override
     protected Serializable pkVal() {
-        return this.detailsID;
+        return this.id;
     }
 
     @Override
     public String toString() {
         return "Details{" +
-        ", detailsID=" + detailsID +
+        ", detailsID=" + id +
         ", productID=" + productID +
         ", imgUrl=" + imgUrl +
         ", detailsName=" + detailsName +

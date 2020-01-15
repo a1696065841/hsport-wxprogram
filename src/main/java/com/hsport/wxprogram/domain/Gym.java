@@ -23,11 +23,8 @@ public class Gym extends Model<Gym> {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
-    @TableField("gym_address")
     private String gymAddress;
-    @TableField("gym_phone")
     private String gymPhone;
-    @TableField("gym_mark")
     private String gymMark;
     private String xCoordinate;
     private String yCoordinate;
